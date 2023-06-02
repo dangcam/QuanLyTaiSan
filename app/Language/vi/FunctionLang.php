@@ -12,8 +12,4 @@ return[
     'function_delete_successful' => 'Xoá chức năng thành công',
     'function_delete_unsuccessful' => 'Xoá chức năng không thành công',
     //
-    'view' => 'Xem',
-    'add' => 'Thêm',
-    'edit' => 'Sửa',
-    'delete' => 'Xoá'
     ];

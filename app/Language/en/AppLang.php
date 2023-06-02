@@ -10,6 +10,7 @@ return[
     'page_user_function' => 'User Authorization',
     'page_user_info' => 'Info User',
     'page_title_report_group' => 'Summary of the reception and settlement of land documents',
+    'page_title_supplier' => 'List Supplier',
 
 
     'do_not_have_permission' => 'You do not have permission!',
@@ -39,6 +40,10 @@ return[
     'system' => 'System',
     'users' => 'Users',
     'report' => 'Report',
+    'category' => 'Category',
+    'type_asset' => 'Type Asset',
+    'asset_management' => 'Asset Management',
+    'other_categories' => 'Other Categories',
     // Chức năng
     'user_function_manager' => 'User Authorization',
     'user_manager'=>'User Manager',

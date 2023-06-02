@@ -71,16 +71,15 @@ abstract class BaseController extends Controller
 
     public function silebar_view()
     {
-        $response = '<li>
-                        <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                            <i class="icon icon-book-open-2"></i><span class="nav-text">'.lang('AppLang.report').'</span>
-                        </a>
-                        <ul aria-expanded="false">';
-                        if($this->libauth->checkFunction('report_group','add'))
-                            $response .= '<li><a href="'.base_url().'dashboard/report_group">'.lang('AppLang.report_group_manager').'</a></li>';
-                            $response .= '<li><a href="'.base_url().'dashboard/report_group/print">'.lang('AppLang.report_group_print').'</a></li>';
-        $response   .='</ul>
-                       </li>';
+        $response = '<li class="nav-label">'.lang('category').'</li>
+                    <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
+                        class="icon icon-tablet-mobile"></i><span class="nav-text">'.lang('AppLang.type_asset').'</span></a></li>';
+
+        $response .= '<li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
+                        class="icon icon-house-search-engine"></i><span class="nav-text">'.lang('AppLang.asset_management').'</span></a></li>';
+        $response .= '<li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
+                        class="icon icon-app-store"></i><span class="nav-text">'.lang('AppLang.other_categories').'</span></a></li>';
+
         $response .= '<li class="nav-label">'.lang('management').'</li>
             <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
                         class="icon icon-settings-gear-64"></i><span class="nav-text">'.lang('AppLang.system').'</span></a>
@@ -89,6 +88,7 @@ abstract class BaseController extends Controller
             $response .= '<li><a href="'.base_url().'dashboard/function">'.lang('AppLang.function_manager').'</a></li>';
         if($this->libauth->checkFunction('group','view'))
             $response .= '<li><a href="'.base_url().'dashboard/group">'.lang('AppLang.group_manager').'</a></li>';
+
         $response .='
                 </ul>
             </li>

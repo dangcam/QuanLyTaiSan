@@ -10,6 +10,7 @@ return[
     'page_user_function' => 'Phân quyền người dùng',
     'page_user_info' => 'Thông tin cá nhân',
     'page_title_report_group' => 'Biểu tổng hợp công tác tiếp nhận và giải quyết HS đất đai',
+    'page_title_supplier' => 'Danh sách Nhà cung cấp',
 
 
     'do_not_have_permission' => 'Bạn không có quyền thực hiện chức năng này!',
@@ -41,6 +42,10 @@ return[
     'report' => 'Báo cáo',
     'year' => 'Năm',
     'month' => 'Tháng',
+    'category' => 'Danh Mục',
+    'type_asset' => 'Loại tài sản',
+    'asset_management' => 'Quản lý tài sản',
+    'other_categories' => 'Danh mục khác',
     // Chức năng
     'user_function_manager' => 'Phân quyền người dùng',
     'user_manager'=>'Quản lý người dùng',
