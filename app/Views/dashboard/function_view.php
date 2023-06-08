@@ -37,6 +37,7 @@
                                 <tr>
                                     <th scope="col"><?=lang('FunctionLang.function_id')?></th>
                                     <th scope="col"><?=lang('FunctionLang.function_name')?></th>
+                                    <th scope="col"><?=lang('FunctionLang.function_group')?></th>
                                     <th scope="col"><?=lang('FunctionLang.function_status')?></th>
                                     <th scope="col">Action</th>
                                 </tr>
@@ -47,6 +48,7 @@
                                 <tr>
                                     <th><?=lang('FunctionLang.function_id')?></th>
                                     <th><?=lang('FunctionLang.function_name')?></th>
+                                    <th><?=lang('FunctionLang.function_group')?></th>
                                     <th><?=lang('FunctionLang.function_status')?></th>
                                     <th>Action</th>
                                 </tr>
@@ -106,6 +108,10 @@
                         <input type="text" name="function_name" class="form-control" id="function_name" required placeholder="<?=lang('FunctionLang.function_name')?>">
                     </div>
                     <div class="form-group">
+                        <label for="message-text" class="col-form-label"><?=lang('FunctionLang.function_group')?></label>
+                        <input type="text" name="function_group" class="form-control" id="function_group" required placeholder="<?=lang('FunctionLang.function_group')?>">
+                    </div>
+                    <div class="form-group">
                         <label for="message-text" class="col-form-label"><?=lang('FunctionLang.function_status')?></label>
                         <select id="function_status" class="form-control"name ="function_status">
                             <option value="1"><?=lang('AppLang.active')?></option>
@@ -160,6 +166,7 @@
             'columns': [
                 {data: 'function_id'},
                 {data: 'function_name'},
+                {data: 'function_group'},
                 {data: 'function_status'},
                 {data: 'active'}
             ]
@@ -169,14 +176,15 @@
             $("#response_danger_modal").hide('fast');
             var button = $(event.relatedTarget); // Button that triggered the modal
             var recipient = button.data('whatever'); // Extract info from data-* attributes
-            var function_id = button.data('function_id')
-            var function_name = button.data('function_name')
-            var group_parent = button.data('group_parent')
-            var function_status = button.data('function_status')
+            var function_id = button.data('function_id');
+            var function_name = button.data('function_name');
+            var function_group = button.data('function_group');
+            var function_status = button.data('function_status');
             var field = document.getElementById("add_edit");
             field.setAttribute("name",recipient);
             $('#function_id').val(function_id);
             $('#function_name').val(function_name);
+            $('#function_group').val(function_group);
             $('#function_status').val(function_status);
             if(recipient=="add"){
                 $('#myModalLabel').text("<?=lang('FunctionLang.add_function')?>");
@@ -236,7 +244,6 @@
                     if (data[0]==0) {
                         $("#response_success").show('fast');
                         $("#response_success").html(data[1]);
-                        //$('#myModal').modal('hide');
                         $('#myModal').modal('toggle');
                         ajaxDataTable.ajax.reload();
                     } else {

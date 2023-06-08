@@ -93,12 +93,13 @@ class FunctionModel extends BaseModel
             $data[] = array(
                 "function_id"=>$record->function_id,
                 "function_name"=>lang('AppLang.'.$record->function_name),
+                "function_group"=>$record->function_group,
                 "function_status"=>$record->function_status==1?'<div class="badge badge-success">'.lang('AppLang.active').'</div>':
                     '<div class="badge badge-danger">'.lang('AppLang.inactive').'</div>',
                 "active"=> ' <span>
                             <a class="mr-4" data-toggle="modal" data-target="#myModal" data-whatever="edit"
                              data-function_id="'.$record->function_id.'" data-function_name ="'.$record->function_name.'"                          
-                            data-function_status ="'.$record->function_status.'"
+                             data-function_status ="'.$record->function_status.'" data-function_group ="'.$record->function_group.'"
                                 data-placement="top" title="'.lang('AppLang.edit').'"><i class="fa fa-pencil color-muted"></i> </a>
                             <a href="#" data-toggle="modal" data-target="#smallModal"
                                 data-placement="top" title="'.lang('AppLang.delete').'" data-function_id="'.$record->function_id.'">
@@ -125,7 +126,8 @@ class FunctionModel extends BaseModel
                     </button>
 					<div class="dropdown-menu">
 						<a class="dropdown-item" data-toggle="modal" data-target="#myModal" data-whatever="edit"
-						 	data-function_id="'.$record->function_id.'" href="#" data-function_name="'.$record->function_name.'" data-function_status="'.$record->function_status.'">
+						 	data-function_id="'.$record->function_id.'" href="#" data-function_name="'.$record->function_name.'" 
+						 	data-function_status="'.$record->function_status.'" data-function_group="'.$record->function_group.'">
 							<i class="fa fa-pencil color-muted"></i>
 								<span class="align-middle">'.lang('AppLang.edit').'</span>
 						</a>

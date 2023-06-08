@@ -53,6 +53,7 @@ return[
     'group_manager' => 'Quản lý chi nhánh',
     'report_group_manager' => 'Báo cáo chi nhánh',
     'report_group_print' => 'Xem báo cáo',
+    'nha_cung_cap' => 'Nhà cung cấp',
 
     'add_data_unsuccessful' => 'Thêm dữ liệu không thành công',
     'add_data_successful' => 'Thêm dữ liệu thành công',

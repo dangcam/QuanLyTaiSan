@@ -2,6 +2,7 @@
 return[
     'function_id'=>'Mã chức năng',
     'function_name'=>'Tên chức năng',
+    'function_group'=>'Nhóm',
     'function_status'=>'Tình trạng',
     'add_function'=>'Thêm mới chức năng',
     'edit_function' => 'Sửa thông tin chức năng',

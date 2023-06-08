@@ -13,15 +13,18 @@ class UserFunctionModel Extends BaseModel
     {
         if(!isset($user_id))
             $user_id = $this->session->get('user_id');
-        $sql = 'SELECT * FROM (SELECT * FROM user_function WHERE user_id = ?) AS UF RIGHT JOIN functions ON functions.function_id = UF.function_id';
-
+        $sql = 'SELECT * FROM (SELECT function_group,function_name,F.function_id,
+                                      function_view,function_add,function_edit,
+                                      function_delete FROM (SELECT * FROM user_function WHERE user_id = ?) AS UF 
+                RIGHT JOIN functions AS F ON F.function_id = UF.function_id) AS UFF ORDER BY function_group';
+// sai góc này
         $result = $this->db->query($sql,[$user_id])->getResult();
         $i=0;
         $response = '';
         foreach ($result as $key) {
             $i++;
             $response .= '<tr >';
-            $response .= '<th>'.$i.'</th>';
+            $response .= '<th>'.$key->function_group.'</th>';
             $response .= '<td>'.lang('AppLang.'.$key->function_name).'
                                  <input type="hidden" value="'.$user_id.'" name="data['.$i.'][user_id]">
                                  <input type="hidden" value="'.$key->function_id.'" name="data['.$i.'][function_id]">

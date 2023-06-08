@@ -2,6 +2,7 @@
 return[
     'function_id'=>'Function ID',
     'function_name'=>'Function Name',
+    'function_group'=>'Group',
     'function_status'=>'Function Status',
     'add_function'=>'Add Function',
     'edit_function' => 'Edit Function',

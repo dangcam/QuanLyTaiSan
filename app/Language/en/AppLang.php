@@ -51,6 +51,7 @@ return[
     'group_manager' => 'Group Management',
     'report_group_manager' => 'Report Group',
     'report_group_print' => 'Report Group View',
+    'nha_cung_cap' => 'Supplies',
 
 
     'add_data_unsuccessful' => 'Add data unsuccessful',

@@ -73,12 +73,27 @@ abstract class BaseController extends Controller
     {
         $response = '<li class="nav-label">'.lang('category').'</li>
                     <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
-                        class="icon icon-tablet-mobile"></i><span class="nav-text">'.lang('AppLang.type_asset').'</span></a></li>';
+                        class="icon icon-tablet-mobile"></i><span class="nav-text">'.lang('AppLang.type_asset').'</span></a>
+                        <ul aria-expanded="false">';
+        if($this->libauth->checkFunction('type_asset','view'))
+            $response .= '<li><a href="'.base_url().'dashboard/type_asset">'.lang('AppLang.type_asset').'</a></li>';
+        $response .= '  </ul>
+                      </li>';
 
         $response .= '<li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
-                        class="icon icon-house-search-engine"></i><span class="nav-text">'.lang('AppLang.asset_management').'</span></a></li>';
+                        class="icon icon-house-search-engine"></i><span class="nav-text">'.lang('AppLang.asset_management').'</span></a>
+                        <ul aria-expanded="false">';
+
+        $response .= '  </ul>
+                       </li>';
+
         $response .= '<li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
-                        class="icon icon-app-store"></i><span class="nav-text">'.lang('AppLang.other_categories').'</span></a></li>';
+                        class="icon icon-app-store"></i><span class="nav-text">'.lang('AppLang.other_categories').'</span></a>
+                        <ul aria-expanded="false">';
+        if($this->libauth->checkFunction('nha_cc','view'))
+            $response .= '<li><a href="'.base_url().'dashboard/nhacc">'.lang('AppLang.nha_cung_cap').'</a></li>';
+        $response .= '  </ul>
+                        </li>';
 
         $response .= '<li class="nav-label">'.lang('management').'</li>
             <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i

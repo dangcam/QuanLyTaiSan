@@ -20,18 +20,10 @@
                     <div class="card-body">
                         <!---->
 
-                        <div class="alert alert-success alert-alt"role="alert" id="response_success">
-                            <strong>Success!</strong> Message has been sent.
-                        </div>
-                        <div class="alert alert-info alert-alt"role="alert" id="response_info">
-                            <strong>Info!</strong> You have got 5 new email.
-                        </div>
-                        <div class="alert alert-warning alert-alt "role="alert" id="response_warning">
-                            <strong>Warning!</strong> Something went wrong. Please check.
-                        </div>
-                        <div class="alert alert-danger alert-alt" role="alert" id="response_danger">
-                            <strong>Error!</strong> Message Sending failed.
-                        </div>
+                        <div class="alert alert-success alert-alt"role="alert" id="response_success"></div>
+                        <div class="alert alert-info alert-alt"role="alert" id="response_info"></div>
+                        <div class="alert alert-warning alert-alt "role="alert" id="response_warning"></div>
+                        <div class="alert alert-danger alert-alt" role="alert" id="response_danger"></div>
 
                         <!---->
                         <div class="basic-form">

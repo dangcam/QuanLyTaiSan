@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th6 02, 2023 lúc 11:33 AM
+-- Thời gian đã tạo: Th6 08, 2023 lúc 11:21 AM
 -- Phiên bản máy phục vụ: 10.4.28-MariaDB
 -- Phiên bản PHP: 8.0.28
 
@@ -30,18 +30,21 @@ SET time_zone = "+00:00";
 CREATE TABLE `functions` (
   `function_id` varchar(20) NOT NULL,
   `function_name` varchar(100) NOT NULL,
-  `function_status` tinyint(2) NOT NULL
+  `function_status` tinyint(2) NOT NULL,
+  `function_group` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `functions`
 --
 
-INSERT INTO `functions` (`function_id`, `function_name`, `function_status`) VALUES
-('function', 'function_manager', 1),
-('group', 'group_manager', 1),
-('report_group', 'report_group_manager', 1),
-('user', 'user_manager', 1);
+INSERT INTO `functions` (`function_id`, `function_name`, `function_status`, `function_group`) VALUES
+('function', 'function_manager', 1, 1),
+('group', 'group_manager', 1, 1),
+('nha_cc', 'nha_cung_cap', 1, 4),
+('report_group', 'report_group_manager', 1, 0),
+('type_asset', 'type_asset', 1, 2),
+('user', 'user_manager', 1, 0);
 
 -- --------------------------------------------------------
 
@@ -83,8 +86,43 @@ INSERT INTO `groups` (`group_id`, `group_name`, `group_parent`, `group_status`) 
 CREATE TABLE `nha_cung_cap` (
   `ma_ncc` varchar(50) NOT NULL,
   `ten_ncc` varchar(200) NOT NULL,
-  `dia_chi` varchar(200) NOT NULL
+  `dia_chi` varchar(200) NOT NULL,
+  `ncc_status` tinyint(2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `nha_cung_cap`
+--
+
+INSERT INTO `nha_cung_cap` (`ma_ncc`, `ten_ncc`, `dia_chi`, `ncc_status`) VALUES
+('NCC000001', 'Nhà cung cấp 001', 'Đường ĐT.741, Thôn Phú Thịnh, Xã Phú Riềng, Huyện Phú Riềng, Tỉnh Bình Phước, Việt Nam', 1),
+('NCC000002', 'Nhà cung cấp 002', 'ĐT741 Bình Phước', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `nhom_tai_san`
+--
+
+CREATE TABLE `nhom_tai_san` (
+  `id` int(11) NOT NULL,
+  `ten_nts` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `nhom_tai_san`
+--
+
+INSERT INTO `nhom_tai_san` (`id`, `ten_nts`) VALUES
+(1, 'Đất'),
+(2, 'Nhà'),
+(3, 'Vật kiến trúc'),
+(4, 'Ô tô'),
+(5, 'Phương tiện vận tải khác'),
+(6, 'Máy móc thiết bị'),
+(7, 'Cây lâu năm, SVLV'),
+(8, 'TSCĐ hữu hình khác'),
+(9, 'TSCĐ vô hình');
 
 -- --------------------------------------------------------
 
@@ -134,7 +172,9 @@ CREATE TABLE `user_function` (
 INSERT INTO `user_function` (`user_id`, `function_id`, `function_view`, `function_add`, `function_edit`, `function_delete`) VALUES
 ('admin', 'function', 1, 1, 1, 1),
 ('admin', 'group', 1, 1, 1, 1),
+('admin', 'nha_cc', 1, 1, 1, 1),
 ('admin', 'report_group', 1, 1, 1, 1),
+('admin', 'type_asset', 1, 1, 1, 1),
 ('admin', 'user', 1, 1, 1, 1),
 ('admin1', 'function', 0, 0, 0, 0),
 ('admin1', 'group', 0, 0, 0, 0),
@@ -168,6 +208,12 @@ ALTER TABLE `nha_cung_cap`
   ADD PRIMARY KEY (`ma_ncc`);
 
 --
+-- Chỉ mục cho bảng `nhom_tai_san`
+--
+ALTER TABLE `nhom_tai_san`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Chỉ mục cho bảng `users`
 --
 ALTER TABLE `users`
@@ -182,21 +228,18 @@ ALTER TABLE `user_function`
   ADD KEY `user_function_ibfk_2` (`function_id`);
 
 --
+-- AUTO_INCREMENT cho các bảng đã đổ
+--
+
+--
+-- AUTO_INCREMENT cho bảng `nhom_tai_san`
+--
+ALTER TABLE `nhom_tai_san`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
 -- Các ràng buộc cho các bảng đã đổ
 --
-
---
--- Các ràng buộc cho bảng `functions`
---
-ALTER TABLE `functions`
-  ADD CONSTRAINT `function_user_function` FOREIGN KEY (`function_id`) REFERENCES `user_function` (`function_id`);
-
---
--- Các ràng buộc cho bảng `users`
---
-ALTER TABLE `users`
-  ADD CONSTRAINT `user_user_function` FOREIGN KEY (`user_id`) REFERENCES `user_function` (`user_id`),
-  ADD CONSTRAINT `users_group` FOREIGN KEY (`group_id`) REFERENCES `groups` (`group_id`);
 
 --
 -- Các ràng buộc cho bảng `user_function`
