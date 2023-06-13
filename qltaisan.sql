@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th6 08, 2023 lúc 11:21 AM
+-- Thời gian đã tạo: Th6 13, 2023 lúc 05:54 AM
 -- Phiên bản máy phục vụ: 10.4.28-MariaDB
 -- Phiên bản PHP: 8.0.28
 
@@ -80,6 +80,28 @@ INSERT INTO `groups` (`group_id`, `group_name`, `group_parent`, `group_status`) 
 -- --------------------------------------------------------
 
 --
+-- Cấu trúc bảng cho bảng `loai_tai_san`
+--
+
+CREATE TABLE `loai_tai_san` (
+  `ma_loai_ts` varchar(20) NOT NULL,
+  `ten_loai_ts` int(100) NOT NULL,
+  `thuoc_loai` varchar(20) NOT NULL,
+  `nhom_ts` int(2) NOT NULL,
+  `tyle_haomon` float NOT NULL,
+  `sonam_sudung` varchar(4) NOT NULL,
+  `ghi_chu` varchar(100) NOT NULL,
+  `ky_nhacnho` int(1) NOT NULL,
+  `so_ky_nhacnho` int(2) NOT NULL,
+  `tk_nguyen_gia` varchar(20) NOT NULL,
+  `tk_haomon` varchar(20) NOT NULL,
+  `tieu_muc` varchar(20) NOT NULL,
+  `su_dung` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Cấu trúc bảng cho bảng `nha_cung_cap`
 --
 
@@ -123,6 +145,69 @@ INSERT INTO `nhom_tai_san` (`id`, `ten_nts`) VALUES
 (7, 'Cây lâu năm, SVLV'),
 (8, 'TSCĐ hữu hình khác'),
 (9, 'TSCĐ vô hình');
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `tieu_muc`
+--
+
+CREATE TABLE `tieu_muc` (
+  `ma_tm` varchar(20) NOT NULL,
+  `ten_tm` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `tieu_muc`
+--
+
+INSERT INTO `tieu_muc` (`ma_tm`, `ten_tm`) VALUES
+('6951', 'Ô tô dùng chung'),
+('6952', 'Ô tô phục vụ chức danh'),
+('6953', 'Ô tô chuyên dùng'),
+('6954', 'Tài sản và thiết bị chuyên dùng'),
+('6955', 'Tài sản và thiết bị văn phòng'),
+('6956', 'Các thiết bị công nghệ thông tin'),
+('6999', 'Tài sản và thiết bị khác');
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `tk_hao_mon`
+--
+
+CREATE TABLE `tk_hao_mon` (
+  `ma_tk` varchar(20) NOT NULL,
+  `ten_tk` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `tk_hao_mon`
+--
+
+INSERT INTO `tk_hao_mon` (`ma_tk`, `ten_tk`) VALUES
+('214', 'Khấu hao và hao mòn lũy kế TSCĐ'),
+('2141', 'Khấu hao và hao mòn lũy kế tài sản cố định hữu hình'),
+('2142', 'Khấu hao và hao mòn lũy kế tài sản cố định vô hình');
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `tk_nguyen_gia`
+--
+
+CREATE TABLE `tk_nguyen_gia` (
+  `ma_tk` varchar(20) NOT NULL,
+  `ten_tk` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `tk_nguyen_gia`
+--
+
+INSERT INTO `tk_nguyen_gia` (`ma_tk`, `ten_tk`) VALUES
+('211', 'Tài sản cố định hữu hình'),
+('213', 'Tài sản cố định vô hình');
 
 -- --------------------------------------------------------
 
@@ -212,6 +297,24 @@ ALTER TABLE `nha_cung_cap`
 --
 ALTER TABLE `nhom_tai_san`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Chỉ mục cho bảng `tieu_muc`
+--
+ALTER TABLE `tieu_muc`
+  ADD PRIMARY KEY (`ma_tm`);
+
+--
+-- Chỉ mục cho bảng `tk_hao_mon`
+--
+ALTER TABLE `tk_hao_mon`
+  ADD PRIMARY KEY (`ma_tk`);
+
+--
+-- Chỉ mục cho bảng `tk_nguyen_gia`
+--
+ALTER TABLE `tk_nguyen_gia`
+  ADD PRIMARY KEY (`ma_tk`);
 
 --
 -- Chỉ mục cho bảng `users`
