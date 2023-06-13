@@ -11,6 +11,7 @@ return[
     'page_user_info' => 'Info User',
     'page_title_report_group' => 'Summary of the reception and settlement of land documents',
     'page_title_supplier' => 'List Supplier',
+    'page_title_type_asset' => 'Type Asset',
 
 
     'do_not_have_permission' => 'You do not have permission!',

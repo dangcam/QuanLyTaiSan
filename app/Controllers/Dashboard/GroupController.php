@@ -1,6 +1,6 @@
 <?php
-namespace App\Controllers\Dashboard;
 
+namespace App\Controllers\Dashboard;
 use App\Controllers\BaseController;
 use App\Models\GroupModel;
 

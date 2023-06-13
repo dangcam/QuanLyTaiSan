@@ -129,25 +129,5 @@ class NhaCCModel extends BaseModel
 
         return $response;
     }
-    public function add_active_source($record)
-    {
-        $string ='<div class="dropdown show">
-					<button type="button" class="btn dropdown-toggle" data-toggle="dropdown">
-                                           <i class="fa fa-bars"></i>
-                    </button>
-					<div class="dropdown-menu">
-						<a class="dropdown-item" data-toggle="modal" data-target="#myModal" data-whatever="edit"
-						 	data-ma_ncc="'.$record->ma_ncc.'" href="#" data-ten_ncc="'.$record->ten_ncc.'" 
-						 	data-ncc_status="'.$record->ncc_status.'" data-dia_chi="'.$record->dia_chi.'" >
-							<i class="fa fa-pencil color-muted"></i>
-								<span class="align-middle">'.lang('AppLang.edit').'</span>
-						</a>
-					  	<a class="dropdown-item text-danger" data-toggle="modal" data-target="#smallModal" data-ma_ncc="'.$record->ma_ncc.'" href="#">
-							<i class="fa fa-close color-danger"></i>
-								<span class="align-middle">'.lang('AppLang.delete').'</span>
-						</a>
-					</div>
-				</div>';
-        return $string;
-    }
+
 }

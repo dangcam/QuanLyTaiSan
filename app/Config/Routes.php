@@ -67,9 +67,13 @@ $routes->group('dashboard',['filter'=>'authFilters'], static function ($routes) 
         $routes->post('edit_nhacc','Dashboard\NhaCCController::edit_nhacc');
         $routes->post('delete_nhacc','Dashboard\NhaCCController::delete_nhacc');
     });
+
     $routes->group('userfunction',static function($routes){
         $routes->post('/','Dashboard\UserFunctionController::index');
         $routes->post('update','Dashboard\UserFunctionController::update');
+    });
+    $routes->group('type_asset',static function($routes){
+        $routes->get('/','Dashboard\LoaiTaiSanController::index');
     });
     $routes->group('report_group',static function($routes){
         $routes->get('/','Dashboard\ReportGroupController::index');
