@@ -8,7 +8,72 @@ class LoaiTaiSanModel Extends BaseModel
     protected $primaryKey = 'ma_loai_ts';
     protected $protectFields = false;
     protected $returnType    = LoaiTaiSanEntity::class;
-
+    protected $validationRules = [
+        'ma_loai_ts'      => 'required|alpha_dash|min_length[3]|max_length[20]|is_unique[loai_tai_san.ma_loai_ts]',
+        'ten_loai_ts'     => 'required|max_length[100]'
+    ];
+    public function add_asset($data)
+    {
+        unset($data['add']);
+        if(!$this->validate($data))
+        {
+            foreach ($this->errors() as $error) {
+                $this->set_message($error);
+            }
+            return 3;
+        }
+        if(!$this->insert($data))
+        {
+            $this->set_message("LoaiTaiSanLang.asset_creation_successful");
+            return 0;
+        }else
+        {
+            $this->set_message("LoaiTaiSanLang.asset_creation_unsuccessful");
+            return 3;
+        }
+    }
+    public function edit_asset($data)
+    {
+        $data_id = $data['ma_loai_ts'];
+        unset($data['edit']);
+        unset($data['ma_loai_ts']);
+        $result = $this->update($data_id,$data);
+        if($result)
+        {
+            $this->set_message("LoaiTaiSanLang.asset_update_successful");
+            return 0;
+        }else
+        {
+            $this->set_message("LoaiTaiSanLang.asset_update_unsuccessful");
+            return 3;
+        }
+    }
+    public function listLoaiTaiSan()
+    {
+        $this->select('ma_loai_ts, ten_loai_ts');
+        $this->where('su_dung',1);
+        return $this->find();
+    }
+    public function listNhomTaiSan()
+    {
+        $tb = $this->db->table('nhom_tai_san');
+        return $tb->get()->getResult();
+    }
+    public function listTKHaoMon()
+    {
+        $tb = $this->db->table('tk_hao_mon');
+        return $tb->get()->getResult();
+    }
+    public function listTKNguyenGia()
+    {
+        $tb = $this->db->table('tk_nguyen_gia');
+        return $tb->get()->getResult();
+    }
+    public function listTieuMuc()
+    {
+        $tb = $this->db->table('tieu_muc');
+        return $tb->get()->getResult();
+    }
 
     public function getLoaiTaiSan($postData=null){
         ## Read value

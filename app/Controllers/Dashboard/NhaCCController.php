@@ -6,7 +6,6 @@ use App\Models\NhaCCModel;
 
 class NhaCCController extends BaseController
 {
-    private $function_model;
     public function __construct()
     {
         $this->ncc_model = new NhaCCModel();
