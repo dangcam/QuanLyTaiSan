@@ -15,6 +15,10 @@ class LoaiTaiSanModel Extends BaseModel
     public function add_asset($data)
     {
         unset($data['add']);
+        if(isset($data['nhac_nho']))
+            $data['nhac_nho'] = 1;
+        if(isset($data['su_dung']))
+            $data['su_dung'] = 1;
         if(!$this->validate($data))
         {
             foreach ($this->errors() as $error) {
@@ -37,6 +41,16 @@ class LoaiTaiSanModel Extends BaseModel
         $data_id = $data['ma_loai_ts'];
         unset($data['edit']);
         unset($data['ma_loai_ts']);
+        //
+        if(isset($data['nhac_nho']))
+            $data['nhac_nho'] = 1;
+        else
+            $data['nhac_nho'] = 0;
+        if(isset($data['su_dung']))
+            $data['su_dung'] = 1;
+        else
+            $data['su_dung'] = 0;
+        //
         $result = $this->update($data_id,$data);
         if($result)
         {
@@ -119,7 +133,7 @@ class LoaiTaiSanModel Extends BaseModel
                              data-ma_loai_ts="'.$record->ma_loai_ts.'" data-ten_loai_ts ="'.$record->ten_loai_ts.'"                          
                              data-thuoc_loai ="'.$record->thuoc_loai.'" data-nhom_ts ="'.$record->nhom_ts.'"
                              data-tyle_haomon ="'.$record->tyle_haomon.'" data-sonam_sudung ="'.$record->sonam_sudung.'"
-                             data-ghi_chu ="'.$record->tyle_haomon.'" data-ghi_chu ="'.$record->sonam_sudung.'"
+                             data-ghi_chu ="'.$record->ghi_chu.'" data-ghi_chu ="'.$record->sonam_sudung.'"
                              data-nhac_nho ="'.$record->nhac_nho.'" data-ky_nhacnho ="'.$record->ky_nhacnho.'"
                              data-so_ky_nhacnho ="'.$record->so_ky_nhacnho.'" data-tk_nguyen_gia ="'.$record->tk_nguyen_gia.'"
                              data-tk_haomon ="'.$record->tk_haomon.'" data-tieu_muc ="'.$record->tieu_muc.'"

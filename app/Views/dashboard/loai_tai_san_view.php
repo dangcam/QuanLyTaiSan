@@ -148,10 +148,10 @@
                     <div class="form-row">
                         <div class="form-group col-md-4">
                             <select id="inputState" class="form-control" id="ky_nhacnho" name="ky_nhacnho">
-                                <option><?=lang('LoaiTaiSanLang.year')?></option>
-                                <option><?=lang('LoaiTaiSanLang.quarter')?></option>
-                                <option><?=lang('LoaiTaiSanLang.month')?></option>
-                                <option><?=lang('LoaiTaiSanLang.day')?></option>
+                                <option value=1><?=lang('LoaiTaiSanLang.year')?></option>
+                                <option value=2><?=lang('LoaiTaiSanLang.quarter')?></option>
+                                <option value=3><?=lang('LoaiTaiSanLang.month')?></option>
+                                <option value=4><?=lang('LoaiTaiSanLang.day')?></option>
                             </select>
                         </div>
                         <div class="form-group col-md-2">
@@ -285,13 +285,17 @@
             $('#tyle_haomon').val(tyle_haomon);
             $('#sonam_sudung').val(sonam_sudung);
             $('#ghi_chu').val(ghi_chu);
-            $('#nhac_nho').val(nhac_nho);
+            if(nhac_nho == 1)
+                $('#nhac_nho').prop("checked", true);
+            else $('#nhac_nho').prop("checked", false);
             $('#ky_nhacnho').val(ky_nhacnho);
             $('#so_ky_nhacnho').val(so_ky_nhacnho);
             $('#tk_nguyen_gia').val(tk_nguyen_gia);
             $('#tk_haomon').val(tk_haomon);
             $('#tieu_muc').val(tieu_muc);
-            $('#su_dung').val(su_dung);
+            if(su_dung == 1)
+                $('#su_dung').prop("checked", true);
+            else $('#su_dung').prop("checked", false);
 
             if(recipient=="add"){
                 $('#myModalLabel').text("<?=lang('LoaiTaiSanLang.add_asset')?>");
@@ -308,6 +312,7 @@
             $("#response_danger_modal").hide('fast');
             var name = $("#add_edit").attr("name");
             var formData = $(this).serialize();
+            console.log(formData);
             $.ajax({
                 url: "<?= base_url() ?>dashboard/type_asset/"+name+"_asset",
                 method: "POST",
