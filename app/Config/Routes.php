@@ -79,6 +79,13 @@ $routes->group('dashboard',['filter'=>'authFilters'], static function ($routes) 
         $routes->post('edit_asset','Dashboard\LoaiTaiSanController::edit_asset');
         $routes->post('delete_asset','Dashboard\LoaiTaiSanController::delete_asset');
     });
+    $routes->group('type_road',static function($routes){
+        $routes->get('/','Dashboard\LoaiTSDuongBoController::index');
+        $routes->post('type_asset_ajax','Dashboard\LoaiTSDuongBoController::type_asset_ajax');
+        $routes->post('add_asset','Dashboard\LoaiTSDuongBoController::add_asset');
+        $routes->post('edit_asset','Dashboard\LoaiTSDuongBoController::edit_asset');
+        $routes->post('delete_asset','Dashboard\LoaiTSDuongBoController::delete_asset');
+    });
     $routes->group('report_group',static function($routes){
         $routes->get('/','Dashboard\ReportGroupController::index');
         $routes->get('print','Dashboard\ReportGroupController::report_print');

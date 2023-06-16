@@ -1,0 +1,104 @@
+CRITICAL - 2023-06-16 07:14:01 --> Call to undefined method App\Models\LoaiTaiSanModel::delete_asset
+in SYSTEMPATH\Model.php on line 842.
+ 1 APPPATH\Controllers\Dashboard\LoaiTaiSanController.php(51): CodeIgniter\Model->__call('delete_asset', [...])
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Dashboard\LoaiTaiSanController->delete_asset()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard\LoaiTaiSanController))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-06-16 07:17:31 --> Undefined array key "ma_loai_ts"
+in APPPATH\Models\LoaiTaiSanModel.php on line 67.
+ 1 APPPATH\Models\LoaiTaiSanModel.php(67): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "ma_loai_ts"', 'APPPATH\\Models\\LoaiTaiSanModel.php', 67)
+ 2 APPPATH\Controllers\Dashboard\LoaiTaiSanController.php(51): App\Models\LoaiTaiSanModel->delete_asset([...])
+ 3 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Dashboard\LoaiTaiSanController->delete_asset()
+ 4 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard\LoaiTaiSanController))
+ 5 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-06-16 07:27:45 --> Attempt to read property "id" on array
+in APPPATH\Views\dashboard\loai_tai_san_view.php on line 120.
+ 1 APPPATH\Views\dashboard\loai_tai_san_view.php(120): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "id" on array', 'APPPATH\\Views\\dashboard\\loai_tai_san_view.php', 120)
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\dashboard\\loai_tai_san_view.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('dashboard/loai_tai_san_view', [], true)
+ 5 APPPATH\Controllers\BaseController.php(68): view('dashboard/loai_tai_san_view', [...])
+ 6 APPPATH\Controllers\Dashboard\LoaiTaiSanController.php(22): App\Controllers\BaseController->page_construct('dashboard/loai_tai_san_view', [...], [...])
+ 7 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Dashboard\LoaiTaiSanController->index()
+ 8 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard\LoaiTaiSanController))
+ 9 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-06-16 07:31:01 --> Cannot use object of type stdClass as array
+in APPPATH\Models\LoaiTaiSanModel.php on line 110.
+ 1 APPPATH\Models\LoaiTaiSanModel.php(138): App\Models\LoaiTaiSanModel->dicNhomTaiSan([...])
+ 2 APPPATH\Controllers\Dashboard\LoaiTaiSanController.php(28): App\Models\LoaiTaiSanModel->getLoaiTaiSan([...])
+ 3 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Dashboard\LoaiTaiSanController->type_asset_ajax()
+ 4 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard\LoaiTaiSanController))
+ 5 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-06-16 07:35:36 --> Undefined array key ""
+in APPPATH\Models\LoaiTaiSanModel.php on line 145.
+ 1 APPPATH\Models\LoaiTaiSanModel.php(145): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key ""', 'APPPATH\\Models\\LoaiTaiSanModel.php', 145)
+ 2 APPPATH\Controllers\Dashboard\LoaiTaiSanController.php(28): App\Models\LoaiTaiSanModel->getLoaiTaiSan([...])
+ 3 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Dashboard\LoaiTaiSanController->type_asset_ajax()
+ 4 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard\LoaiTaiSanController))
+ 5 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-06-16 07:45:57 --> Undefined array key 211
+in APPPATH\Models\LoaiTaiSanModel.php on line 161.
+ 1 APPPATH\Models\LoaiTaiSanModel.php(161): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key 211', 'APPPATH\\Models\\LoaiTaiSanModel.php', 161)
+ 2 APPPATH\Controllers\Dashboard\LoaiTaiSanController.php(28): App\Models\LoaiTaiSanModel->getLoaiTaiSan([...])
+ 3 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Dashboard\LoaiTaiSanController->type_asset_ajax()
+ 4 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard\LoaiTaiSanController))
+ 5 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-06-16 07:48:55 --> Undefined array key 2142
+in APPPATH\Models\LoaiTaiSanModel.php on line 163.
+ 1 APPPATH\Models\LoaiTaiSanModel.php(163): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key 2142', 'APPPATH\\Models\\LoaiTaiSanModel.php', 163)
+ 2 APPPATH\Controllers\Dashboard\LoaiTaiSanController.php(28): App\Models\LoaiTaiSanModel->getLoaiTaiSan([...])
+ 3 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Dashboard\LoaiTaiSanController->type_asset_ajax()
+ 4 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard\LoaiTaiSanController))
+ 5 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-06-16 07:50:45 --> Undefined property: stdClass::$ma_tm
+in APPPATH\Models\LoaiTaiSanModel.php on line 121.
+ 1 APPPATH\Models\LoaiTaiSanModel.php(121): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$ma_tm', 'APPPATH\\Models\\LoaiTaiSanModel.php', 121)
+ 2 APPPATH\Models\LoaiTaiSanModel.php(161): App\Models\LoaiTaiSanModel->dicTK([...])
+ 3 APPPATH\Controllers\Dashboard\LoaiTaiSanController.php(28): App\Models\LoaiTaiSanModel->getLoaiTaiSan([...])
+ 4 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Dashboard\LoaiTaiSanController->type_asset_ajax()
+ 5 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard\LoaiTaiSanController))
+ 6 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-06-16 08:34:36 --> Call to undefined method App\Models\LoaiTSDuongBoModel::listNhomTaiSan
+in SYSTEMPATH\Model.php on line 842.
+ 1 APPPATH\Controllers\Dashboard\LoaiTSDuongBoController.php(18): CodeIgniter\Model->__call('listNhomTaiSan', [])
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Dashboard\LoaiTSDuongBoController->index()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard\LoaiTSDuongBoController))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-06-16 08:36:25 --> (expression)::class cannot be used in constant expressions
+in APPPATH\Models\LoaiTSDuongBoModel.php on line 10.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2023-06-16 08:36:40 --> syntax error, unexpected token "use", expecting "{"
+in APPPATH\Models\LoaiTSDuongBoModel.php on line 3.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(289): CodeIgniter\Autoloader\Autoloader->includeFile('APPPATH\\Models\\LoaiTSDuongBoModel.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(267): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\LoaiTSDuongBoModel')
+ 3 APPPATH\Controllers\Dashboard\LoaiTSDuongBoController.php(11): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\LoaiTSDuongBoModel')
+ 4 SYSTEMPATH\CodeIgniter.php(906): App\Controllers\Dashboard\LoaiTSDuongBoController->__construct()
+ 5 SYSTEMPATH\CodeIgniter.php(490): CodeIgniter\CodeIgniter->createController()
+ 6 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-06-16 08:36:53 --> Class "App\Model\BaseModel" not found
+in APPPATH\Models\LoaiTSDuongBoModel.php on line 5.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once()
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(289): CodeIgniter\Autoloader\Autoloader->includeFile('APPPATH\\Models\\LoaiTSDuongBoModel.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(267): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\LoaiTSDuongBoModel')
+ 4 APPPATH\Controllers\Dashboard\LoaiTSDuongBoController.php(11): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\LoaiTSDuongBoModel')
+ 5 SYSTEMPATH\CodeIgniter.php(906): App\Controllers\Dashboard\LoaiTSDuongBoController->__construct()
+ 6 SYSTEMPATH\CodeIgniter.php(490): CodeIgniter\CodeIgniter->createController()
+ 7 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-06-16 08:37:25 --> Call to undefined method App\Models\LoaiTSDuongBoModel::listNhomTaiSan
+in SYSTEMPATH\Model.php on line 842.
+ 1 APPPATH\Controllers\Dashboard\LoaiTSDuongBoController.php(18): CodeIgniter\Model->__call('listNhomTaiSan', [])
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Dashboard\LoaiTSDuongBoController->index()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard\LoaiTSDuongBoController))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()

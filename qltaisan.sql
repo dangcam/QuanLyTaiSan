@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th6 13, 2023 lúc 05:54 AM
+-- Thời gian đã tạo: Th6 16, 2023 lúc 11:35 AM
 -- Phiên bản máy phục vụ: 10.4.28-MariaDB
 -- Phiên bản PHP: 8.0.28
 
@@ -44,6 +44,7 @@ INSERT INTO `functions` (`function_id`, `function_name`, `function_status`, `fun
 ('nha_cc', 'nha_cung_cap', 1, 4),
 ('report_group', 'report_group_manager', 1, 0),
 ('type_asset', 'type_asset', 1, 2),
+('type_road', 'type_road', 1, 2),
 ('user', 'user_manager', 1, 0);
 
 -- --------------------------------------------------------
@@ -64,6 +65,8 @@ CREATE TABLE `groups` (
 --
 
 INSERT INTO `groups` (`group_id`, `group_name`, `group_parent`, `group_status`) VALUES
+('vpdd', 'VP DD', '', 1),
+('vpdd123', 'VP DD 29', '', 1),
 ('vpddbd', 'Chi nhánh Bù Đăng', 'vpddt', 1),
 ('vpddbdp', 'Chi nhánh Bù Đốp', 'vpddt', 1),
 ('vpddbgm', 'Chi nhánh Bù Gia Mập', 'vpddt', 1),
@@ -85,12 +88,13 @@ INSERT INTO `groups` (`group_id`, `group_name`, `group_parent`, `group_status`) 
 
 CREATE TABLE `loai_tai_san` (
   `ma_loai_ts` varchar(20) NOT NULL,
-  `ten_loai_ts` int(100) NOT NULL,
+  `ten_loai_ts` varchar(100) NOT NULL,
   `thuoc_loai` varchar(20) NOT NULL,
   `nhom_ts` int(2) NOT NULL,
   `tyle_haomon` float NOT NULL,
   `sonam_sudung` varchar(4) NOT NULL,
   `ghi_chu` varchar(100) NOT NULL,
+  `nhac_nho` tinyint(1) NOT NULL,
   `ky_nhacnho` int(1) NOT NULL,
   `so_ky_nhacnho` int(2) NOT NULL,
   `tk_nguyen_gia` varchar(20) NOT NULL,
@@ -98,6 +102,36 @@ CREATE TABLE `loai_tai_san` (
   `tieu_muc` varchar(20) NOT NULL,
   `su_dung` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `loai_tai_san`
+--
+
+INSERT INTO `loai_tai_san` (`ma_loai_ts`, `ten_loai_ts`, `thuoc_loai`, `nhom_ts`, `tyle_haomon`, `sonam_sudung`, `ghi_chu`, `nhac_nho`, `ky_nhacnho`, `so_ky_nhacnho`, `tk_nguyen_gia`, `tk_haomon`, `tieu_muc`, `su_dung`) VALUES
+('LST001', 'Loại tài sản 001', '', 3, 20, '11', 'ghi chú', 0, 4, 15, '211', '2142', '6952', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `loai_ts_duong_bo`
+--
+
+CREATE TABLE `loai_ts_duong_bo` (
+  `ma_loai_ts` varchar(20) NOT NULL,
+  `ten_loai_ts` varchar(100) NOT NULL,
+  `thuoc_loai` varchar(20) NOT NULL,
+  `tyle_haomon` float NOT NULL,
+  `sonam_sudung` varchar(4) NOT NULL,
+  `ghi_chu` varchar(100) NOT NULL,
+  `su_dung` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `loai_ts_duong_bo`
+--
+
+INSERT INTO `loai_ts_duong_bo` (`ma_loai_ts`, `ten_loai_ts`, `thuoc_loai`, `tyle_haomon`, `sonam_sudung`, `ghi_chu`, `su_dung`) VALUES
+('TSDB0001', 'Tài sản hệ thống đường bộ', '', 20, '11', 'ghi chú', 1);
 
 -- --------------------------------------------------------
 
@@ -260,6 +294,7 @@ INSERT INTO `user_function` (`user_id`, `function_id`, `function_view`, `functio
 ('admin', 'nha_cc', 1, 1, 1, 1),
 ('admin', 'report_group', 1, 1, 1, 1),
 ('admin', 'type_asset', 1, 1, 1, 1),
+('admin', 'type_road', 1, 1, 1, 1),
 ('admin', 'user', 1, 1, 1, 1),
 ('admin1', 'function', 0, 0, 0, 0),
 ('admin1', 'group', 0, 0, 0, 0),
@@ -285,6 +320,12 @@ ALTER TABLE `functions`
 --
 ALTER TABLE `groups`
   ADD PRIMARY KEY (`group_id`);
+
+--
+-- Chỉ mục cho bảng `loai_ts_duong_bo`
+--
+ALTER TABLE `loai_ts_duong_bo`
+  ADD PRIMARY KEY (`ma_loai_ts`);
 
 --
 -- Chỉ mục cho bảng `nha_cung_cap`

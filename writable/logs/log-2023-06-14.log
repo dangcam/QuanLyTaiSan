@@ -1,0 +1,21 @@
+CRITICAL - 2023-06-14 01:31:44 --> Undefined property: App\Controllers\Dashboard\LoaiTaiSanController::$ncc_model
+in APPPATH\Controllers\Dashboard\LoaiTaiSanController.php on line 17.
+ 1 APPPATH\Controllers\Dashboard\LoaiTaiSanController.php(17): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\Dashboard\\LoaiTaiSanController::$ncc_model', 'APPPATH\\Controllers\\Dashboard\\LoaiTaiSanController.php', 17)
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Dashboard\LoaiTaiSanController->type_asset_ajax()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard\LoaiTaiSanController))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-06-14 01:32:52 --> Undefined property: App\Controllers\Dashboard\LoaiTaiSanController::$ncc_model
+in APPPATH\Controllers\Dashboard\LoaiTaiSanController.php on line 17.
+ 1 APPPATH\Controllers\Dashboard\LoaiTaiSanController.php(17): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\Dashboard\\LoaiTaiSanController::$ncc_model', 'APPPATH\\Controllers\\Dashboard\\LoaiTaiSanController.php', 17)
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Dashboard\LoaiTaiSanController->type_asset_ajax()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard\LoaiTaiSanController))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-06-14 01:34:29 --> Undefined property: App\Controllers\Dashboard\LoaiTaiSanController::$ncc_model
+in APPPATH\Controllers\Dashboard\LoaiTaiSanController.php on line 17.
+ 1 APPPATH\Controllers\Dashboard\LoaiTaiSanController.php(17): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\Dashboard\\LoaiTaiSanController::$ncc_model', 'APPPATH\\Controllers\\Dashboard\\LoaiTaiSanController.php', 17)
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Dashboard\LoaiTaiSanController->type_asset_ajax()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard\LoaiTaiSanController))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()

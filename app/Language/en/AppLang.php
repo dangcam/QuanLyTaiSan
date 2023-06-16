@@ -12,6 +12,7 @@ return[
     'page_title_report_group' => 'Summary of the reception and settlement of land documents',
     'page_title_supplier' => 'List Supplier',
     'page_title_type_asset' => 'Type Asset',
+    'page_title_type_road' => 'Type Road',
 
 
     'do_not_have_permission' => 'You do not have permission!',
@@ -43,6 +44,7 @@ return[
     'report' => 'Report',
     'category' => 'Category',
     'type_asset' => 'Type Asset',
+    'type_road' => 'Type Road',
     'asset_management' => 'Asset Management',
     'other_categories' => 'Other Categories',
     // Chức năng

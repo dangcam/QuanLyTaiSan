@@ -77,6 +77,8 @@ abstract class BaseController extends Controller
                         <ul aria-expanded="false">';
         if($this->libauth->checkFunction('type_asset','view'))
             $response .= '<li><a href="'.base_url().'dashboard/type_asset">'.lang('AppLang.type_asset').'</a></li>';
+        if($this->libauth->checkFunction('type_road','view'))
+            $response .= '<li><a href="'.base_url().'dashboard/type_road">'.lang('AppLang.type_road').'</a></li>';
         $response .= '  </ul>
                       </li>';
 

@@ -12,6 +12,7 @@ return[
     'page_title_report_group' => 'Biểu tổng hợp công tác tiếp nhận và giải quyết HS đất đai',
     'page_title_supplier' => 'Danh sách Nhà cung cấp',
     'page_title_type_asset' => 'Danh mục loại tài sản',
+    'page_title_type_road' => 'Tài sản HT đường bộ',
 
     'do_not_have_permission' => 'Bạn không có quyền thực hiện chức năng này!',
 
@@ -44,6 +45,7 @@ return[
     'month' => 'Tháng',
     'category' => 'Danh Mục',
     'type_asset' => 'Loại tài sản',
+    'type_road' => 'TS hạ tầng đường bộ',
     'asset_management' => 'Quản lý tài sản',
     'other_categories' => 'Danh mục khác',
     // Chức năng

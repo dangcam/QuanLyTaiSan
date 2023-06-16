@@ -6,7 +6,7 @@
         <div class="row page-titles mx-0">
             <div class="col-sm-6 p-md-0">
                 <div class="welcome-text">
-                    <h4><?=lang('AppLang.page_title_type_asset')?></h4>
+                    <h4><?=lang('AppLang.page_title_type_road')?></h4>
                 </div>
             </div>
         </div>
@@ -35,13 +35,9 @@
                                     <th scope="col"><?=lang('LoaiTaiSanLang.type_asset_id')?></th>
                                     <th scope="col"><?=lang('LoaiTaiSanLang.type_asset_name')?></th>
                                     <th scope="col"><?=lang('LoaiTaiSanLang.category')?></th>
-                                    <th scope="col"><?=lang('LoaiTaiSanLang.asset_group')?></th>
                                     <th scope="col"><?=lang('LoaiTaiSanLang.rate_of_wear')?></th>
                                     <th scope="col"><?=lang('LoaiTaiSanLang.number_of_year')?></th>
                                     <th scope="col"><?=lang('LoaiTaiSanLang.note')?></th>
-                                    <th scope="col"><?=lang('LoaiTaiSanLang.original_price')?></th>
-                                    <th scope="col"><?=lang('LoaiTaiSanLang.depreciation')?></th>
-                                    <th scope="col"><?=lang('LoaiTaiSanLang.subsection')?></th>
                                     <th scope="col"><?=lang('LoaiTaiSanLang.use')?></th>
                                     <th scope="col">Action</th>
                                 </tr>
@@ -53,13 +49,9 @@
                                     <th><?=lang('LoaiTaiSanLang.type_asset_id')?></th>
                                     <th><?=lang('LoaiTaiSanLang.type_asset_name')?></th>
                                     <th><?=lang('LoaiTaiSanLang.category')?></th>
-                                    <th><?=lang('LoaiTaiSanLang.asset_group')?></th>
                                     <th><?=lang('LoaiTaiSanLang.rate_of_wear')?></th>
                                     <th><?=lang('LoaiTaiSanLang.number_of_year')?></th>
                                     <th><?=lang('LoaiTaiSanLang.note')?></th>
-                                    <th><?=lang('LoaiTaiSanLang.original_price')?></th>
-                                    <th><?=lang('LoaiTaiSanLang.depreciation')?></th>
-                                    <th><?=lang('LoaiTaiSanLang.subsection')?></th>
                                     <th><?=lang('LoaiTaiSanLang.use')?></th>
                                     <th>Action</th>
                                 </tr>
@@ -112,17 +104,6 @@
                                 endif ?>
                             </select>
                         </div>
-                        <div class="form-group col-md-6">
-                            <label><?=lang('LoaiTaiSanLang.asset_group')?></label>
-                            <select class="custom-select" id="nhom_ts" name="nhom_ts">
-                                <?php if (isset($list_nhom_tai_san) && count($list_nhom_tai_san)) :
-                                    foreach ($list_nhom_tai_san as $key => $item) : ?>
-                                        <option value="<?=$item->id?>"><?=$item->ten_nts?></option>
-                                    <?php
-                                    endforeach;
-                                endif ?>
-                            </select>
-                        </div>
                         <div class="form-group col-md-3">
                             <label><?=lang('LoaiTaiSanLang.rate_of_wear')?></label>
                             <input type="text" id="tyle_haomon" name="tyle_haomon" class="form-control">
@@ -131,66 +112,9 @@
                             <label><?=lang('LoaiTaiSanLang.number_of_year')?></label>
                             <input type="text" id="sonam_sudung" name="sonam_sudung" class="form-control">
                         </div>
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-md-12">
                             <label><?=lang('LoaiTaiSanLang.note')?></label>
                             <input type="text" id="ghi_chu" name="ghi_chu" class="form-control" placeholder="<?=lang('LoaiTaiSanLang.note')?>">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="form-check">
-                            <input class="form-check-input" id="nhac_nho" name="nhac_nho" type="checkbox">
-                            <label class="form-check-label">
-                                <?=lang('LoaiTaiSanLang.set_up_reminder')?>
-                            </label>
-                        </div>
-                    </div>
-                    <label><?=lang('LoaiTaiSanLang.reminder_period')?></label>
-                    <div class="form-row">
-                        <div class="form-group col-md-4">
-                            <select id="inputState" class="form-control" id="ky_nhacnho" name="ky_nhacnho">
-                                <option value=1><?=lang('LoaiTaiSanLang.year')?></option>
-                                <option value=2><?=lang('LoaiTaiSanLang.quarter')?></option>
-                                <option value=3><?=lang('LoaiTaiSanLang.month')?></option>
-                                <option value=4><?=lang('LoaiTaiSanLang.day')?></option>
-                            </select>
-                        </div>
-                        <div class="form-group col-md-2">
-                            <input type="text" class="form-control" id="so_ky_nhacnho" name="so_ky_nhacnho">
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group col-md-3">
-                            <label><?=lang('LoaiTaiSanLang.original_price')?></label>
-                            <select class="custom-select" id="tk_nguyen_gia" name="tk_nguyen_gia">
-                                <?php if (isset($list_tk_nguyen_gia) && count($list_tk_nguyen_gia)) :
-                                    foreach ($list_tk_nguyen_gia as $key => $item) : ?>
-                                        <option value="<?=$item->ma_tk?>"><?=$item->ten_tk?></option>
-                                    <?php
-                                    endforeach;
-                                endif ?>
-                            </select>
-                        </div>
-                        <div class="form-group col-md-3">
-                            <label><?=lang('LoaiTaiSanLang.depreciation')?></label>
-                            <select class="custom-select" id="tk_haomon" name="tk_haomon">
-                                <?php if (isset($list_tk_hao_mon) && count($list_tk_hao_mon)) :
-                                    foreach ($list_tk_hao_mon as $key => $item) : ?>
-                                        <option value="<?=$item->ma_tk?>"><?=$item->ten_tk?></option>
-                                    <?php
-                                    endforeach;
-                                endif ?>
-                            </select>
-                        </div>
-                        <div class="form-group col-md-3">
-                            <label><?=lang('LoaiTaiSanLang.subsection')?></label>
-                            <select class="custom-select" id="tieu_muc" name="tieu_muc">
-                                <?php if (isset($list_tieu_muc) && count($list_tieu_muc)) :
-                                    foreach ($list_tieu_muc as $key => $item) : ?>
-                                        <option value="<?=$item->ma_tm?>"><?=$item->ten_tm?></option>
-                                    <?php
-                                    endforeach;
-                                endif ?>
-                            </select>
                         </div>
                     </div>
                     <div class="form-group">
@@ -257,7 +181,7 @@
             "aLengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "<?= lang('AppLang.all') ?>"]],
             'searching': true, // Remove default Search Control
             'ajax': {
-                'url': '<?=base_url()?>dashboard/type_asset/type_asset_ajax',
+                'url': '<?=base_url()?>dashboard/type_road/type_asset_ajax',
                 'data': function (data) {
                 }
             },
@@ -265,13 +189,9 @@
                 {data: 'ma_loai_ts'},
                 {data: 'ten_loai_ts'},
                 {data: 'thuoc_loai'},
-                {data: 'nhom_ts'},
                 {data: 'tyle_haomon'},
                 {data: 'sonam_sudung'},
                 {data: 'ghi_chu'},
-                {data: 'tk_nguyen_gia'},
-                {data: 'tk_haomon'},
-                {data: 'tieu_muc'},
                 {data: 'su_dung'},
                 {data: 'active'}
             ]
@@ -284,16 +204,9 @@
             var ma_loai_ts = button.data('ma_loai_ts');
             var ten_loai_ts = button.data('ten_loai_ts');
             var thuoc_loai = button.data('thuoc_loai');
-            var nhom_ts = button.data('nhom_ts');
             var tyle_haomon = button.data('tyle_haomon');
             var sonam_sudung = button.data('sonam_sudung');
             var ghi_chu = button.data('ghi_chu');
-            var nhac_nho = button.data('nhac_nho');
-            var ky_nhacnho = button.data('ky_nhacnho');
-            var so_ky_nhacnho = button.data('so_ky_nhacnho');
-            var tk_nguyen_gia = button.data('tk_nguyen_gia');
-            var tk_haomon = button.data('tk_haomon');
-            var tieu_muc = button.data('tieu_muc');
             var su_dung = button.data('su_dung');
 
             var field = document.getElementById("add_edit");
@@ -301,18 +214,9 @@
             $('#ma_loai_ts').val(ma_loai_ts);
             $('#ten_loai_ts').val(ten_loai_ts);
             $('#thuoc_loai').val(thuoc_loai);
-            $('#nhom_ts').val(nhom_ts);
             $('#tyle_haomon').val(tyle_haomon);
             $('#sonam_sudung').val(sonam_sudung);
             $('#ghi_chu').val(ghi_chu);
-            if(nhac_nho == 1)
-                $('#nhac_nho').prop("checked", true);
-            else $('#nhac_nho').prop("checked", false);
-            $('#ky_nhacnho').val(ky_nhacnho);
-            $('#so_ky_nhacnho').val(so_ky_nhacnho);
-            $('#tk_nguyen_gia').val(tk_nguyen_gia);
-            $('#tk_haomon').val(tk_haomon);
-            $('#tieu_muc').val(tieu_muc);
             if(su_dung == 1)
                 $('#su_dung').prop("checked", true);
             else $('#su_dung').prop("checked", false);
@@ -335,7 +239,7 @@
                 $("#response_success").hide('fast');
                 $("#response_danger").hide('fast');
                 $.ajax({
-                    url: '<?= base_url() ?>dashboard/type_asset/delete_asset',
+                    url: '<?= base_url() ?>dashboard/type_road/delete_asset',
                     type: 'POST',
                     data: { ma_loai_ts:recipient },
                     dataType:"json",
@@ -365,7 +269,7 @@
             var formData = $(this).serialize();
             console.log(formData);
             $.ajax({
-                url: "<?= base_url() ?>dashboard/type_asset/"+name+"_asset",
+                url: "<?= base_url() ?>dashboard/type_road/"+name+"_asset",
                 method: "POST",
                 data: formData,
                 dataType: "json",

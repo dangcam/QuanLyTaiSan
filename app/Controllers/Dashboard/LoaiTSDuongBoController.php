@@ -2,24 +2,20 @@
 
 namespace App\Controllers\Dashboard;
 use App\Controllers\BaseController;
-use App\Models\LoaiTaiSanModel;
+use App\Models\LoaiTSDuongBoModel;
 
-class LoaiTaiSanController extends BaseController
+class LoaiTSDuongBoController extends BaseController
 {
     public function __construct()
     {
-        $this->loai_ts_model = new LoaiTaiSanModel();
+        $this->loai_ts_model = new LoaiTSDuongBoModel();
 
     }
     public function index()
     {
         $meta = array('page_title'=>lang('AppLang.page_title_type_asset'));
         $data['list_loai_tai_san'] = $this->loai_ts_model->listLoaiTaiSan();
-        $data['list_nhom_tai_san'] = $this->loai_ts_model->listNhomTaiSan();
-        $data['list_tk_hao_mon'] = $this->loai_ts_model->listTKHaoMon();
-        $data['list_tk_nguyen_gia'] = $this->loai_ts_model->listTKNguyenGia();
-        $data['list_tieu_muc'] = $this->loai_ts_model->listTieuMuc();
-        return $this->page_construct('dashboard/loai_tai_san_view',$meta,$data);
+        return $this->page_construct('dashboard/loai_ts_duong_bo_view',$meta,$data);
     }
     public function type_asset_ajax()
     {
@@ -32,7 +28,7 @@ class LoaiTaiSanController extends BaseController
     //
     public function add_asset()
     {
-        if($this->request->getPost()&&($this->libauth->checkFunction('type_asset','add')))
+        if($this->request->getPost()&&($this->libauth->checkFunction('type_road','add')))
         {
             $data_post = $this->request->getPost();
             $data['result'] = ($this->loai_ts_model->add_asset($data_post));
@@ -45,7 +41,7 @@ class LoaiTaiSanController extends BaseController
     }
     public function delete_asset()
     {
-        if($this->request->getPost()&&($this->libauth->checkFunction('type_asset','delete')))
+        if($this->request->getPost()&&($this->libauth->checkFunction('type_road','delete')))
         {
             $data_post = $this->request->getPost();
             $data['result'] = ($this->loai_ts_model->delete_asset($data_post));
@@ -58,7 +54,7 @@ class LoaiTaiSanController extends BaseController
     }
     public function edit_asset()
     {
-        if($this->request->getPost()&&($this->libauth->checkFunction('type_asset','edit')))
+        if($this->request->getPost()&&($this->libauth->checkFunction('type_road','edit')))
         {
             $data_post = $this->request->getPost();
             $data['result'] = ($this->loai_ts_model->edit_asset($data_post));

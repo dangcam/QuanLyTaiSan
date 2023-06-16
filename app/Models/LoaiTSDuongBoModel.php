@@ -1,13 +1,13 @@
 <?php
 namespace App\Models;
-use App\Entities\LoaiTaiSanEntity;
+use App\Entities\LoaiTSDuongBoEntity;
 
-class LoaiTaiSanModel Extends BaseModel
+class LoaiTSDuongBoModel Extends BaseModel
 {
-    protected $table      = 'loai_tai_san';
+    protected $table      = 'loai_ts_duong_bo';
     protected $primaryKey = 'ma_loai_ts';
     protected $protectFields = false;
-    protected $returnType    = LoaiTaiSanEntity::class;
+    protected $returnType    = LoaiTSDuongBoEntity::class;
     protected $validationRules = [
         'ma_loai_ts'      => 'required|alpha_dash|min_length[3]|max_length[20]|is_unique[loai_tai_san.ma_loai_ts]',
         'ten_loai_ts'     => 'required|max_length[100]'
@@ -15,8 +15,6 @@ class LoaiTaiSanModel Extends BaseModel
     public function add_asset($data)
     {
         unset($data['add']);
-        if(isset($data['nhac_nho']))
-            $data['nhac_nho'] = 1;
         if(isset($data['su_dung']))
             $data['su_dung'] = 1;
         if(!$this->validate($data))
@@ -42,10 +40,6 @@ class LoaiTaiSanModel Extends BaseModel
         unset($data['edit']);
         unset($data['ma_loai_ts']);
         //
-        if(isset($data['nhac_nho']))
-            $data['nhac_nho'] = 1;
-        else
-            $data['nhac_nho'] = 0;
         if(isset($data['su_dung']))
             $data['su_dung'] = 1;
         else
@@ -82,59 +76,8 @@ class LoaiTaiSanModel Extends BaseModel
         $this->where('su_dung',1);
         return $this->find();
     }
-    public function listNhomTaiSan()
-    {
-        $tb = $this->db->table('nhom_tai_san');
-        return $tb->get()->getResult();
-    }
-    public function listTKHaoMon()
-    {
-        $tb = $this->db->table('tk_hao_mon');
-        return $tb->get()->getResult();
-    }
-    public function listTKNguyenGia()
-    {
-        $tb = $this->db->table('tk_nguyen_gia');
-        return $tb->get()->getResult();
-    }
-    public function listTieuMuc()
-    {
-        $tb = $this->db->table('tieu_muc');
-        return $tb->get()->getResult();
-    }
-    public function dicNhomTaiSan($list)
-    {
-        $data = array();
-        if (count($list)) {
-            foreach ($list as $key => $item) {
-                if(!isset($data[$item->id]))
-                    $data[$item->id] = $item->ten_nts;
-            }
-        }
-        return $data;
-    }
-    public function dicTieuMuc($list)
-    {
-        $data = array();
-        if (count($list)) {
-            foreach ($list as $key => $item) {
-                if(!isset($data[$item->ma_tm]))
-                    $data[$item->ma_tm] = $item->ten_tm;
-            }
-        }
-        return $data;
-    }
-    public function dicTK($list)
-    {
-        $data = array();
-        if (count($list)) {
-            foreach ($list as $key => $item) {
-                if(!isset($data[$item->ma_tk]))
-                    $data[$item->ma_tk] = $item->ten_tk;
-            }
-        }
-        return $data;
-    }
+
+
     public function getLoaiTaiSan($postData=null){
         ## Read value
         $draw = $postData['draw'];
@@ -157,36 +100,25 @@ class LoaiTaiSanModel Extends BaseModel
             $this->limit($rowperpage, $start);
         $records = $this->find();
 
-        $dicNhomTaiSan = $this->dicNhomTaiSan($this->listNhomTaiSan());
-        $dicTKNguyenGia = $this->dicTK($this->listTKNguyenGia());
-        $dicTKHaoMon = $this->dicTK($this->listTKHaoMon());
-        $dicTieuMuc = $this->dicTieuMuc($this->listTieuMuc());
+
         $data = array();
         foreach($records as $record ){
             $data[] = array(
                 "ma_loai_ts"=>$record->ma_loai_ts,
                 "ten_loai_ts"=>$record->ten_loai_ts,
                 "thuoc_loai"=>$record->thuoc_loai,
-                "nhom_ts"=>isset($dicNhomTaiSan[$record->nhom_ts])?$dicNhomTaiSan[$record->nhom_ts]:$record->nhom_ts,
+                "nhom_ts"=>$record->nhom_ts,
                 "tyle_haomon"=>$record->tyle_haomon,
                 "sonam_sudung"=>$record->sonam_sudung,
                 "ghi_chu"=>$record->ghi_chu,
-                "tk_nguyen_gia"=>isset($dicTKNguyenGia[$record->tk_nguyen_gia])?$dicTKNguyenGia[$record->tk_nguyen_gia]:$record->tk_nguyen_gia,
-                "tk_haomon"=>isset($dicTKHaoMon[$record->tk_haomon])?$dicTKHaoMon[$record->tk_haomon]:$record->tk_haomon,
-                "tieu_muc"=>isset($dicTieuMuc[$record->tieu_muc])?$dicTieuMuc[$record->tieu_muc]:$record->tieu_muc,
-
                 "su_dung"=>$record->su_dung==1?'<div class="badge badge-success">'.lang('AppLang.active').'</div>':
                     '<div class="badge badge-danger">'.lang('AppLang.inactive').'</div>',
                 "active"=> ' <span>
                             <a class="mr-4" data-toggle="modal" data-target="#myModal" data-whatever="edit"
                              data-ma_loai_ts="'.$record->ma_loai_ts.'" data-ten_loai_ts ="'.$record->ten_loai_ts.'"                          
-                             data-thuoc_loai ="'.$record->thuoc_loai.'" data-nhom_ts ="'.$record->nhom_ts.'"
-                             data-tyle_haomon ="'.$record->tyle_haomon.'" data-sonam_sudung ="'.$record->sonam_sudung.'"
-                             data-ghi_chu ="'.$record->ghi_chu.'" data-ghi_chu ="'.$record->sonam_sudung.'"
-                             data-nhac_nho ="'.$record->nhac_nho.'" data-ky_nhacnho ="'.$record->ky_nhacnho.'"
-                             data-so_ky_nhacnho ="'.$record->so_ky_nhacnho.'" data-tk_nguyen_gia ="'.$record->tk_nguyen_gia.'"
-                             data-tk_haomon ="'.$record->tk_haomon.'" data-tieu_muc ="'.$record->tieu_muc.'"
-                             data-su_dung ="'.$record->su_dung.'"                             
+                             data-thuoc_loai ="'.$record->thuoc_loai.'" data-tyle_haomon ="'.$record->tyle_haomon.'" 
+                             data-sonam_sudung ="'.$record->sonam_sudung.'" data-ghi_chu ="'.$record->ghi_chu.'" 
+                             data-ghi_chu ="'.$record->sonam_sudung.'" data-su_dung ="'.$record->su_dung.'"                             
                                 data-placement="top" title="'.lang('AppLang.edit').'"><i class="fa fa-pencil color-muted"></i> </a>
                             <a href="#" data-toggle="modal" data-target="#smallModal"
                                 data-placement="top" title="'.lang('AppLang.delete').'" data-ma_loai_ts="'.$record->ma_loai_ts.'">
