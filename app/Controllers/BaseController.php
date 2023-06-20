@@ -79,6 +79,11 @@ abstract class BaseController extends Controller
             $response .= '<li><a href="'.base_url().'dashboard/type_asset">'.lang('AppLang.type_asset').'</a></li>';
         if($this->libauth->checkFunction('type_road','view'))
             $response .= '<li><a href="'.base_url().'dashboard/type_road">'.lang('AppLang.type_road').'</a></li>';
+        if($this->libauth->checkFunction('ccdc','view'))
+            $response .= '<li><a href="'.base_url().'dashboard/tool">'.lang('AppLang.tool').'</a></li>';
+        if($this->libauth->checkFunction('tbyte','view'))
+            $response .= '<li><a href="'.base_url().'dashboard/tbyte">'.lang('AppLang.tbyte').'</a></li>';
+
         $response .= '  </ul>
                       </li>';
 

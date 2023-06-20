@@ -86,6 +86,20 @@ $routes->group('dashboard',['filter'=>'authFilters'], static function ($routes) 
         $routes->post('edit_asset','Dashboard\LoaiTSDuongBoController::edit_asset');
         $routes->post('delete_asset','Dashboard\LoaiTSDuongBoController::delete_asset');
     });
+    $routes->group('tool',static function($routes){
+        $routes->get('/','Dashboard\CCDCController::index');
+        $routes->post('tool_ajax','Dashboard\CCDCController::tool_ajax');
+        $routes->post('add_tool','Dashboard\CCDCController::add_tool');
+        $routes->post('edit_tool','Dashboard\CCDCController::edit_tool');
+        $routes->post('delete_tool','Dashboard\CCDCController::delete_tool');
+    });
+    $routes->group('tbyte',static function($routes){
+        $routes->get('/','Dashboard\TBYTeController::index');
+        $routes->post('tbyte_ajax','Dashboard\TBYTeController::tbyte_ajax');
+        $routes->post('add_tbyte','Dashboard\TBYTeController::add_tbyte');
+        $routes->post('edit_tbyte','Dashboard\TBYTeController::edit_tbyte');
+        $routes->post('delete_tbyte','Dashboard\TBYTeController::delete_tbyte');
+    });
     $routes->group('report_group',static function($routes){
         $routes->get('/','Dashboard\ReportGroupController::index');
         $routes->get('print','Dashboard\ReportGroupController::report_print');

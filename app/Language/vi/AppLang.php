@@ -11,11 +11,13 @@ return[
     'page_user_info' => 'Thông tin cá nhân',
     'page_title_report_group' => 'Biểu tổng hợp công tác tiếp nhận và giải quyết HS đất đai',
     'page_title_supplier' => 'Danh sách Nhà cung cấp',
+    'page_title_tool' => 'Danh sách Công cụ dụng cụ',
     'page_title_type_asset' => 'Danh mục loại tài sản',
     'page_title_type_road' => 'Tài sản HT đường bộ',
+    'page_title_tbyte' => 'Thiết bị y tế',
+    'page_title_project' => 'Danh mục dự án',
 
     'do_not_have_permission' => 'Bạn không có quyền thực hiện chức năng này!',
-
 
     // form
     'all' => 'Tất cả',
@@ -44,6 +46,9 @@ return[
     'year' => 'Năm',
     'month' => 'Tháng',
     'category' => 'Danh Mục',
+    'tool' => 'Công cụ, dụng cụ',
+    'project' => 'Dự án',
+    'tbyte' => 'Thiết bị YTế',
     'type_asset' => 'Loại tài sản',
     'type_road' => 'TS hạ tầng đường bộ',
     'asset_management' => 'Quản lý tài sản',

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th6 16, 2023 lúc 11:35 AM
+-- Thời gian đã tạo: Th6 20, 2023 lúc 11:44 AM
 -- Phiên bản máy phục vụ: 10.4.28-MariaDB
 -- Phiên bản PHP: 8.0.28
 
@@ -24,6 +24,41 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Cấu trúc bảng cho bảng `cong_dung_cu`
+--
+
+CREATE TABLE `cong_dung_cu` (
+  `ma_ccdc` varchar(20) NOT NULL,
+  `ten_ccdc` varchar(100) NOT NULL,
+  `thuoc_loai` varchar(20) NOT NULL,
+  `ghi_chu` varchar(100) NOT NULL,
+  `su_dung` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `cong_dung_cu`
+--
+
+INSERT INTO `cong_dung_cu` (`ma_ccdc`, `ten_ccdc`, `thuoc_loai`, `ghi_chu`, `su_dung`) VALUES
+('CCDC001', 'Dụng cụ văn phòng', '', 'ghi chú', 1),
+('CCDC002', ' Văn phòng phẩm', '', 'ghi chú', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `du_an`
+--
+
+CREATE TABLE `du_an` (
+  `ma_da` varchar(20) NOT NULL,
+  `ten_da` varchar(100) NOT NULL,
+  `dien_giai` varchar(100) NOT NULL,
+  `su_dung` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Cấu trúc bảng cho bảng `functions`
 --
 
@@ -39,10 +74,12 @@ CREATE TABLE `functions` (
 --
 
 INSERT INTO `functions` (`function_id`, `function_name`, `function_status`, `function_group`) VALUES
+('ccdc', 'tool', 1, 2),
 ('function', 'function_manager', 1, 1),
 ('group', 'group_manager', 1, 1),
 ('nha_cc', 'nha_cung_cap', 1, 4),
 ('report_group', 'report_group_manager', 1, 0),
+('tbyte', 'tbyte', 1, 2),
 ('type_asset', 'type_asset', 1, 2),
 ('type_road', 'type_road', 1, 2),
 ('user', 'user_manager', 1, 0);
@@ -183,6 +220,27 @@ INSERT INTO `nhom_tai_san` (`id`, `ten_nts`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Cấu trúc bảng cho bảng `thiet_bi_yte`
+--
+
+CREATE TABLE `thiet_bi_yte` (
+  `ma_tb` varchar(20) NOT NULL,
+  `ten_tb` varchar(100) NOT NULL,
+  `thuoc_loai` varchar(20) NOT NULL,
+  `ghi_chu` varchar(100) NOT NULL,
+  `su_dung` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `thiet_bi_yte`
+--
+
+INSERT INTO `thiet_bi_yte` (`ma_tb`, `ten_tb`, `thuoc_loai`, `ghi_chu`, `su_dung`) VALUES
+('TBYT001', 'Máy ghi điện não', '', 'ghi chú', 1);
+
+-- --------------------------------------------------------
+
+--
 -- Cấu trúc bảng cho bảng `tieu_muc`
 --
 
@@ -289,10 +347,12 @@ CREATE TABLE `user_function` (
 --
 
 INSERT INTO `user_function` (`user_id`, `function_id`, `function_view`, `function_add`, `function_edit`, `function_delete`) VALUES
+('admin', 'ccdc', 1, 1, 1, 1),
 ('admin', 'function', 1, 1, 1, 1),
 ('admin', 'group', 1, 1, 1, 1),
 ('admin', 'nha_cc', 1, 1, 1, 1),
 ('admin', 'report_group', 1, 1, 1, 1),
+('admin', 'tbyte', 1, 1, 1, 1),
 ('admin', 'type_asset', 1, 1, 1, 1),
 ('admin', 'type_road', 1, 1, 1, 1),
 ('admin', 'user', 1, 1, 1, 1),
@@ -308,6 +368,18 @@ INSERT INTO `user_function` (`user_id`, `function_id`, `function_view`, `functio
 --
 -- Chỉ mục cho các bảng đã đổ
 --
+
+--
+-- Chỉ mục cho bảng `cong_dung_cu`
+--
+ALTER TABLE `cong_dung_cu`
+  ADD PRIMARY KEY (`ma_ccdc`);
+
+--
+-- Chỉ mục cho bảng `du_an`
+--
+ALTER TABLE `du_an`
+  ADD PRIMARY KEY (`ma_da`);
 
 --
 -- Chỉ mục cho bảng `functions`
@@ -338,6 +410,12 @@ ALTER TABLE `nha_cung_cap`
 --
 ALTER TABLE `nhom_tai_san`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Chỉ mục cho bảng `thiet_bi_yte`
+--
+ALTER TABLE `thiet_bi_yte`
+  ADD PRIMARY KEY (`ma_tb`);
 
 --
 -- Chỉ mục cho bảng `tieu_muc`
