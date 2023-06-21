@@ -100,6 +100,13 @@ $routes->group('dashboard',['filter'=>'authFilters'], static function ($routes) 
         $routes->post('edit_tbyte','Dashboard\TBYTeController::edit_tbyte');
         $routes->post('delete_tbyte','Dashboard\TBYTeController::delete_tbyte');
     });
+    $routes->group('project',static function($routes){
+        $routes->get('/','Dashboard\DuAnController::index');
+        $routes->post('project_ajax','Dashboard\DuAnController::project_ajax');
+        $routes->post('add_project','Dashboard\DuAnController::add_project');
+        $routes->post('edit_project','Dashboard\DuAnController::edit_project');
+        $routes->post('delete_project','Dashboard\DuAnController::delete_project');
+    });
     $routes->group('report_group',static function($routes){
         $routes->get('/','Dashboard\ReportGroupController::index');
         $routes->get('print','Dashboard\ReportGroupController::report_print');

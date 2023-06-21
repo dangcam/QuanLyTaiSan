@@ -1,0 +1,35 @@
+CRITICAL - 2023-06-21 03:11:30 --> Call to undefined method App\Models\DuAnModel::listTBYTe
+in SYSTEMPATH\Model.php on line 842.
+ 1 APPPATH\Controllers\Dashboard\DuAnController.php(19): CodeIgniter\Model->__call('listTBYTe', [])
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Dashboard\DuAnController->index()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard\DuAnController))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-06-21 03:11:56 --> Call to undefined method App\Models\DuAnModel::listTBYTe
+in SYSTEMPATH\Model.php on line 842.
+ 1 APPPATH\Controllers\Dashboard\DuAnController.php(19): CodeIgniter\Model->__call('listTBYTe', [])
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Dashboard\DuAnController->index()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard\DuAnController))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-06-21 03:11:57 --> Call to undefined method App\Models\DuAnModel::listTBYTe
+in SYSTEMPATH\Model.php on line 842.
+ 1 APPPATH\Controllers\Dashboard\DuAnController.php(19): CodeIgniter\Model->__call('listTBYTe', [])
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Dashboard\DuAnController->index()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard\DuAnController))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-06-21 03:11:58 --> Call to undefined method App\Models\DuAnModel::listTBYTe
+in SYSTEMPATH\Model.php on line 842.
+ 1 APPPATH\Controllers\Dashboard\DuAnController.php(19): CodeIgniter\Model->__call('listTBYTe', [])
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Dashboard\DuAnController->index()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard\DuAnController))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-06-21 03:12:30 --> Call to undefined method App\Models\DuAnModel::getTBYTe
+in SYSTEMPATH\Model.php on line 842.
+ 1 APPPATH\Controllers\Dashboard\DuAnController.php(27): CodeIgniter\Model->__call('getTBYTe', [...])
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Dashboard\DuAnController->project_ajax()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard\DuAnController))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()

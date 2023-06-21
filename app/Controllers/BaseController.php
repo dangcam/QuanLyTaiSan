@@ -99,6 +99,9 @@ abstract class BaseController extends Controller
                         <ul aria-expanded="false">';
         if($this->libauth->checkFunction('nha_cc','view'))
             $response .= '<li><a href="'.base_url().'dashboard/nhacc">'.lang('AppLang.nha_cung_cap').'</a></li>';
+        if($this->libauth->checkFunction('project','view'))
+            $response .= '<li><a href="'.base_url().'dashboard/project">'.lang('AppLang.project').'</a></li>';
+
         $response .= '  </ul>
                         </li>';
 
