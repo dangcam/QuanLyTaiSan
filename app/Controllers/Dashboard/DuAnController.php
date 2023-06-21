@@ -24,7 +24,7 @@ class DuAnController extends BaseController
     {
         if($this->request->getPost())
         {
-            $data = $this->da_model->getTBYTe($this->request->getPost());
+            $data = $this->da_model->getDuAn($this->request->getPost());
             echo json_encode($data);
         }
     }
