@@ -1,0 +1,55 @@
+ERROR - 2023-06-22 07:35:25 --> mysqli_sql_exception: Unknown column 'so_qd' in 'order clause' in D:\Xampp\htdocs\QuanLyTaiSan\system\Database\MySQLi\Connection.php:295
+Stack trace:
+#0 D:\Xampp\htdocs\QuanLyTaiSan\system\Database\MySQLi\Connection.php(295): mysqli->query('SELECT *\nFROM `...', 0)
+#1 D:\Xampp\htdocs\QuanLyTaiSan\system\Database\BaseConnection.php(691): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 D:\Xampp\htdocs\QuanLyTaiSan\system\Database\BaseConnection.php(605): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 D:\Xampp\htdocs\QuanLyTaiSan\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 D:\Xampp\htdocs\QuanLyTaiSan\system\Model.php(203): CodeIgniter\Database\BaseBuilder->get()
+#5 D:\Xampp\htdocs\QuanLyTaiSan\system\BaseModel.php(557): CodeIgniter\Model->doFind(false, NULL)
+#6 D:\Xampp\htdocs\QuanLyTaiSan\app\Models\DuAnModel.php(93): CodeIgniter\BaseModel->find()
+#7 D:\Xampp\htdocs\QuanLyTaiSan\app\Controllers\Dashboard\DuAnController.php(27): App\Models\DuAnModel->getDuAn(Array)
+#8 D:\Xampp\htdocs\QuanLyTaiSan\system\CodeIgniter.php(934): App\Controllers\Dashboard\DuAnController->project_ajax()
+#9 D:\Xampp\htdocs\QuanLyTaiSan\system\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard\DuAnController))
+#10 D:\Xampp\htdocs\QuanLyTaiSan\system\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 D:\Xampp\htdocs\QuanLyTaiSan\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2023-06-22 07:35:25 --> Unknown column 'so_qd' in 'order clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 645.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `du_an`
+WHERE `ten_da` LIKE :ten_da: ESCAPE \'!\'
+ORDER BY `so_qd` ASC
+ LIMIT 10', [...], false)
+ 2 SYSTEMPATH\Model.php(203): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(557): CodeIgniter\Model->doFind(false, null)
+ 4 APPPATH\Models\DuAnModel.php(93): CodeIgniter\BaseModel->find()
+ 5 APPPATH\Controllers\Dashboard\DuAnController.php(27): App\Models\DuAnModel->getDuAn([...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Dashboard\DuAnController->project_ajax()
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard\DuAnController))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-06-22 07:40:09 --> Call to undefined method App\Models\TrangCapModel::getDuAn
+in SYSTEMPATH\Model.php on line 842.
+ 1 APPPATH\Controllers\Dashboard\TrangCapController.php(28): CodeIgniter\Model->__call('getDuAn', [...])
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Dashboard\TrangCapController->tc_ajax()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard\TrangCapController))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-06-22 08:32:46 --> Undefined property: stdClass::$id
+in APPPATH\Models\TrangCapModel.php on line 78.
+ 1 APPPATH\Models\TrangCapModel.php(78): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$id', 'APPPATH\\Models\\TrangCapModel.php', 78)
+ 2 APPPATH\Models\TrangCapModel.php(107): App\Models\TrangCapModel->dicDonVi([...])
+ 3 APPPATH\Controllers\Dashboard\TrangCapController.php(29): App\Models\TrangCapModel->getTrangCap([...])
+ 4 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Dashboard\TrangCapController->tc_ajax()
+ 5 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard\TrangCapController))
+ 6 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-06-22 08:32:56 --> Undefined property: stdClass::$id
+in APPPATH\Models\TrangCapModel.php on line 78.
+ 1 APPPATH\Models\TrangCapModel.php(78): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$id', 'APPPATH\\Models\\TrangCapModel.php', 78)
+ 2 APPPATH\Models\TrangCapModel.php(107): App\Models\TrangCapModel->dicDonVi([...])
+ 3 APPPATH\Controllers\Dashboard\TrangCapController.php(29): App\Models\TrangCapModel->getTrangCap([...])
+ 4 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Dashboard\TrangCapController->tc_ajax()
+ 5 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard\TrangCapController))
+ 6 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()

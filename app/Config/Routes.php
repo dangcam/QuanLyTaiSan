@@ -107,6 +107,20 @@ $routes->group('dashboard',['filter'=>'authFilters'], static function ($routes) 
         $routes->post('edit_project','Dashboard\DuAnController::edit_project');
         $routes->post('delete_project','Dashboard\DuAnController::delete_project');
     });
+    $routes->group('decision',static function($routes){
+        $routes->get('/','Dashboard\TrangCapController::index');
+        $routes->post('decision_ajax','Dashboard\TrangCapController::tc_ajax');
+        $routes->post('add_decision','Dashboard\TrangCapController::add_tc');
+        $routes->post('edit_decision','Dashboard\TrangCapController::edit_tc');
+        $routes->post('delete_decision','Dashboard\TrangCapController::delete_tc');
+    });
+    $routes->group('funding',static function($routes){
+        $routes->get('/','Dashboard\KinhPhiController::index');
+        $routes->post('funding_ajax','Dashboard\KinhPhiController::funding_ajax');
+        $routes->post('add_funding','Dashboard\KinhPhiController::add_funding');
+        $routes->post('edit_funding','Dashboard\KinhPhiController::edit_funding');
+        $routes->post('delete_funding','Dashboard\KinhPhiController::delete_funding');
+    });
     $routes->group('report_group',static function($routes){
         $routes->get('/','Dashboard\ReportGroupController::index');
         $routes->get('print','Dashboard\ReportGroupController::report_print');

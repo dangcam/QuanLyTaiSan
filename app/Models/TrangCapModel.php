@@ -1,21 +1,21 @@
 <?php
 namespace App\Models;
 
-use App\Entities\TBYTeEntity;
+use App\Entities\TrangCapEntity;
 
-class TBYTeModel extends BaseModel
+class TrangCapModel extends BaseModel
 {
-    protected $table      = 'thiet_bi_yte';
-    protected $primaryKey = 'ma_tb';
+    protected $table      = 'trang_cap';
+    protected $primaryKey = 'so_qd';
     protected $useAutoIncrement = true;
     protected $protectFields = false;
-    protected $returnType = TBYTeEntity::class;
+    protected $returnType = TrangCapEntity::class;
     protected $validationRules = [
-        'ma_tb'      => 'required|alpha_dash|min_length[3]|max_length[20]|is_unique[thiet_bi_yte.ma_tb]',
-        'ten_tb'     => 'required|max_length[50]'
+        'so_qd'      => 'required|alpha_dash|min_length[3]|max_length[20]|is_unique[trang_cap.so_qd]',
+        'ten_qd'     => 'required|max_length[50]'
     ];
     //
-    public function add_tb($data)
+    public function add_tc($data)
     {
         unset($data['add']);
         if(!$this->validate($data))
@@ -27,50 +27,61 @@ class TBYTeModel extends BaseModel
         }
         if(!$this->insert($data))
         {
-            $this->set_message("TBYTeLang.tb_creation_successful");
+            $this->set_message("TrangCapLang.tc_creation_successful");
             return 0;
         }else
         {
-            $this->set_message("TBYTeLang.tb_creation_unsuccessful");
+            $this->set_message("TrangCapLang.tc_creation_unsuccessful");
             return 3;
         }
     }
-    public function edit_tb($data)
+    public function edit_tc($data)
     {
-        $data_id = $data['ma_tb'];
+        $data_id = $data['so_qd'];
         unset($data['edit']);
-        unset($data['ma_tb']);
+        unset($data['so_qd']);
         $result = $this->update($data_id,$data);
         if($result)
         {
-            $this->set_message("TBYTeLang.tb_update_successful");
+            $this->set_message("TrangCapLang.tc_update_successful");
             return 0;
         }else
         {
-            $this->set_message("TBYTeLang.tb_update_unsuccessful");
+            $this->set_message("TrangCapLang.tc_update_unsuccessful");
             return 3;
         }
     }
-    public function delete_tb($data)
+    public function delete_tc($data)
     {
-        $data_id = $data['ma_tb'];
-        if($this->where('ma_tb',$data_id)->delete())
+        $data_id = $data['so_qd'];
+        if($this->where('so_qd',$data_id)->delete())
         {
-            $this->set_message("TBYTeLang.tb_delete_successful");
+            $this->set_message("TrangCapLang.tc_delete_successful");
             return 0;
         }else
         {
-            $this->set_message("TBYTeLang.tb_delete_unsuccessful");
+            $this->set_message("TrangCapLang.tc_delete_unsuccessful");
             return 3;
         }
     }
-    public function listTBYTe()
+
+    public function listDonVi()
     {
-        $this->select('ma_tb, ten_tb');
-        $this->where('su_dung',1);
-        return $this->find();
+        $tb = $this->db->table('don_vi_qd');
+        return $tb->get()->getResult();
     }
-    public function getTBYTe($postData=null){
+    public function dicDonVi($list)
+    {
+        $data = array();
+        if (count($list)) {
+            foreach ($list as $key => $item) {
+                if(!isset($data[$item->ma_dv]))
+                    $data[$item->ma_dv] = $item->ten_dv;
+            }
+        }
+        return $data;
+    }
+    public function getTrangCap($postData=null){
         ## Read value
         $draw = $postData['draw'];
         $start = $postData['start'];
@@ -86,30 +97,28 @@ class TBYTeModel extends BaseModel
         $records = $this->find();
         $totalRecords = $records[0]->allcount;
         ## Fetch records
-        $this->like('ten_tb',$strInput);
+        $this->like('ten_qd',$strInput);
         $this->orderBy($columnName, $columnSortOrder);
         if($rowperpage!=-1)
             $this->limit($rowperpage, $start);
         $records = $this->find();
 
         $data = array();
-
+        $dicDonVi = $this->dicDonVi($this->listDonVi());
         foreach($records as $record ){
             $data[] = array(
-                "ma_tb"=>$record->ma_tb,
-                "ten_tb"=>$record->ten_tb,
-                "thuoc_loai"=>$record->thuoc_loai,
-                "ghi_chu"=>$record->ghi_chu,
+                "so_qd"=>$record->so_qd,
+                "ten_qd"=>$record->ten_qd,
+                "don_vi"=>isset($dicDonVi[$record->don_vi])?$dicDonVi[$record->don_vi]:$record->don_vi,
                 "su_dung"=>$record->su_dung==1?'<div class="badge badge-success">'.lang('AppLang.active').'</div>':
                     '<div class="badge badge-danger">'.lang('AppLang.inactive').'</div>',
                 "active"=> ' <span>
                             <a class="mr-4" data-toggle="modal" data-target="#myModal" data-whatever="edit"
-                             data-ma_tb="'.$record->ma_tb.'" data-ten_tb ="'.$record->ten_tb.'"                          
-                             data-thuoc_loai ="'.$record->thuoc_loai.'" data-ghi_chu ="'.$record->ghi_chu.'"
-                             data-su_dung ="'.$record->su_dung.'"
+                             data-so_qd="'.$record->so_qd.'" data-ten_qd ="'.$record->ten_qd.'"                          
+                             data-don_vi ="'.$record->don_vi.'" data-su_dung ="'.$record->su_dung.'"
                                 data-placement="top" title="'.lang('AppLang.edit').'"><i class="fa fa-pencil color-muted"></i> </a>
                             <a href="#" data-toggle="modal" data-target="#smallModal"
-                                data-placement="top" title="'.lang('AppLang.delete').'" data-ma_tb="'.$record->ma_tb.'">
+                                data-placement="top" title="'.lang('AppLang.delete').'" data-so_qd="'.$record->so_qd.'">
                                 <i class="fa fa-close color-danger"></i></a>
                             </span>'
             );

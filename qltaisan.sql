@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th6 20, 2023 lúc 11:44 AM
+-- Thời gian đã tạo: Th6 23, 2023 lúc 11:29 AM
 -- Phiên bản máy phục vụ: 10.4.28-MariaDB
 -- Phiên bản PHP: 8.0.28
 
@@ -46,15 +46,40 @@ INSERT INTO `cong_dung_cu` (`ma_ccdc`, `ten_ccdc`, `thuoc_loai`, `ghi_chu`, `su_
 -- --------------------------------------------------------
 
 --
+-- Cấu trúc bảng cho bảng `don_vi_qd`
+--
+
+CREATE TABLE `don_vi_qd` (
+  `ma_dv` varchar(20) NOT NULL,
+  `ten_dv` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `don_vi_qd`
+--
+
+INSERT INTO `don_vi_qd` (`ma_dv`, `ten_dv`) VALUES
+('1076047', 'Văn phòng Đoàn ĐBQH và HĐND tỉnh Bình Phước');
+
+-- --------------------------------------------------------
+
+--
 -- Cấu trúc bảng cho bảng `du_an`
 --
 
 CREATE TABLE `du_an` (
   `ma_da` varchar(20) NOT NULL,
   `ten_da` varchar(100) NOT NULL,
-  `dien_giai` varchar(100) NOT NULL,
+  `ghi_chu` varchar(100) NOT NULL,
   `su_dung` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `du_an`
+--
+
+INSERT INTO `du_an` (`ma_da`, `ten_da`, `ghi_chu`, `su_dung`) VALUES
+('DA001', 'Dự Án Minh Hưng 1', 'ghi chú', 1);
 
 -- --------------------------------------------------------
 
@@ -76,8 +101,11 @@ CREATE TABLE `functions` (
 INSERT INTO `functions` (`function_id`, `function_name`, `function_status`, `function_group`) VALUES
 ('ccdc', 'tool', 1, 2),
 ('function', 'function_manager', 1, 1),
+('funding', 'funding', 1, 3),
 ('group', 'group_manager', 1, 1),
 ('nha_cc', 'nha_cung_cap', 1, 4),
+('project', 'project', 1, 4),
+('provide_equipment', 'provide_equipment', 1, 4),
 ('report_group', 'report_group_manager', 1, 0),
 ('tbyte', 'tbyte', 1, 2),
 ('type_asset', 'type_asset', 1, 2),
@@ -169,6 +197,52 @@ CREATE TABLE `loai_ts_duong_bo` (
 
 INSERT INTO `loai_ts_duong_bo` (`ma_loai_ts`, `ten_loai_ts`, `thuoc_loai`, `tyle_haomon`, `sonam_sudung`, `ghi_chu`, `su_dung`) VALUES
 ('TSDB0001', 'Tài sản hệ thống đường bộ', '', 20, '11', 'ghi chú', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `nguon_hinh_thanh`
+--
+
+CREATE TABLE `nguon_hinh_thanh` (
+  `ma_nguon` int(2) NOT NULL,
+  `ten_nguon` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `nguon_hinh_thanh`
+--
+
+INSERT INTO `nguon_hinh_thanh` (`ma_nguon`, `ten_nguon`) VALUES
+(1, 'Nguồn viện trợ, vay nợ nước ngoài'),
+(2, 'Nguồn phí được khấu trừ để lại'),
+(3, 'Quỹ phúc lợi'),
+(4, 'Quỹ phát triển hoạt động sự nghiệp'),
+(5, 'Nguồn vốn kinh doanh'),
+(6, 'Nguồn khác'),
+(7, 'Nguồn NSNN cấp');
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `nguon_kinh_phi`
+--
+
+CREATE TABLE `nguon_kinh_phi` (
+  `ma_kp` varchar(20) NOT NULL,
+  `ten_kp` varchar(100) NOT NULL,
+  `thuoc_nguon` varchar(20) NOT NULL,
+  `nguon_ht` int(2) NOT NULL,
+  `ghi_chu` varchar(100) NOT NULL,
+  `su_dung` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `nguon_kinh_phi`
+--
+
+INSERT INTO `nguon_kinh_phi` (`ma_kp`, `ten_kp`, `thuoc_nguon`, `nguon_ht`, `ghi_chu`, `su_dung`) VALUES
+('1', 'Ngân sách Trung ương', '', 7, '', 1);
 
 -- --------------------------------------------------------
 
@@ -304,6 +378,26 @@ INSERT INTO `tk_nguyen_gia` (`ma_tk`, `ten_tk`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Cấu trúc bảng cho bảng `trang_cap`
+--
+
+CREATE TABLE `trang_cap` (
+  `so_qd` varchar(20) NOT NULL,
+  `ten_qd` varchar(100) NOT NULL,
+  `don_vi` varchar(20) NOT NULL,
+  `su_dung` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `trang_cap`
+--
+
+INSERT INTO `trang_cap` (`so_qd`, `ten_qd`, `don_vi`, `su_dung`) VALUES
+('QDTC0001', 'Quyết định trang cấp 0001', '', 1);
+
+-- --------------------------------------------------------
+
+--
 -- Cấu trúc bảng cho bảng `users`
 --
 
@@ -349,8 +443,11 @@ CREATE TABLE `user_function` (
 INSERT INTO `user_function` (`user_id`, `function_id`, `function_view`, `function_add`, `function_edit`, `function_delete`) VALUES
 ('admin', 'ccdc', 1, 1, 1, 1),
 ('admin', 'function', 1, 1, 1, 1),
+('admin', 'funding', 1, 1, 1, 1),
 ('admin', 'group', 1, 1, 1, 1),
 ('admin', 'nha_cc', 1, 1, 1, 1),
+('admin', 'project', 1, 1, 1, 1),
+('admin', 'provide_equipment', 1, 1, 1, 1),
 ('admin', 'report_group', 1, 1, 1, 1),
 ('admin', 'tbyte', 1, 1, 1, 1),
 ('admin', 'type_asset', 1, 1, 1, 1),
@@ -376,6 +473,12 @@ ALTER TABLE `cong_dung_cu`
   ADD PRIMARY KEY (`ma_ccdc`);
 
 --
+-- Chỉ mục cho bảng `don_vi_qd`
+--
+ALTER TABLE `don_vi_qd`
+  ADD PRIMARY KEY (`ma_dv`);
+
+--
 -- Chỉ mục cho bảng `du_an`
 --
 ALTER TABLE `du_an`
@@ -398,6 +501,18 @@ ALTER TABLE `groups`
 --
 ALTER TABLE `loai_ts_duong_bo`
   ADD PRIMARY KEY (`ma_loai_ts`);
+
+--
+-- Chỉ mục cho bảng `nguon_hinh_thanh`
+--
+ALTER TABLE `nguon_hinh_thanh`
+  ADD PRIMARY KEY (`ma_nguon`);
+
+--
+-- Chỉ mục cho bảng `nguon_kinh_phi`
+--
+ALTER TABLE `nguon_kinh_phi`
+  ADD PRIMARY KEY (`ma_kp`);
 
 --
 -- Chỉ mục cho bảng `nha_cung_cap`
@@ -436,6 +551,12 @@ ALTER TABLE `tk_nguyen_gia`
   ADD PRIMARY KEY (`ma_tk`);
 
 --
+-- Chỉ mục cho bảng `trang_cap`
+--
+ALTER TABLE `trang_cap`
+  ADD PRIMARY KEY (`so_qd`);
+
+--
 -- Chỉ mục cho bảng `users`
 --
 ALTER TABLE `users`
@@ -452,6 +573,12 @@ ALTER TABLE `user_function`
 --
 -- AUTO_INCREMENT cho các bảng đã đổ
 --
+
+--
+-- AUTO_INCREMENT cho bảng `nguon_hinh_thanh`
+--
+ALTER TABLE `nguon_hinh_thanh`
+  MODIFY `ma_nguon` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT cho bảng `nhom_tai_san`

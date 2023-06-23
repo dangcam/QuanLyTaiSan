@@ -11,7 +11,7 @@ class NhaCCModel extends BaseModel
     protected $protectFields = false;
     protected $returnType    = NhaCCEntity::class;
     protected $validationRules = [
-        'ma_ncc'      => 'required|alpha_dash|min_length[3]|max_length[20]|is_unique[functions.function_id]',
+        'ma_ncc'      => 'required|alpha_dash|min_length[3]|max_length[20]|is_unique[nha_cung_cap.ma_ncc]',
         'ten_ncc'     => 'required|max_length[50]'
     ];
     //

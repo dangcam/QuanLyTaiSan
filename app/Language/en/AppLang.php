@@ -16,7 +16,8 @@ return[
     'page_title_type_road' => 'Type Road',
     'page_title_tbyte' => 'Medical equipment',
     'page_title_project' => 'Project',
-
+    'page_title_provide_equipment' => 'Decide to supply equipment',
+    'page_title_funding' => 'Funding',
 
     'do_not_have_permission' => 'You do not have permission!',
 
@@ -53,6 +54,8 @@ return[
     'project' => 'Project',
     'asset_management' => 'Asset Management',
     'other_categories' => 'Other Categories',
+    'provide_equipment' => 'Provide equipment',
+    'funding' => 'Funding',
     // Chức năng
     'user_function_manager' => 'User Authorization',
     'user_manager'=>'User Manager',

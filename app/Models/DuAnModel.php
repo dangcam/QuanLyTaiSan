@@ -11,7 +11,7 @@ class DuAnModel extends BaseModel
     protected $protectFields = false;
     protected $returnType = TBYTeEntity::class;
     protected $validationRules = [
-        'ma_da'      => 'required|alpha_dash|min_length[3]|max_length[20]|is_unique[functions.function_id]',
+        'ma_da'      => 'required|alpha_dash|min_length[3]|max_length[20]|is_unique[du_an.ma_da]',
         'ten_da'     => 'required|max_length[50]'
     ];
     //

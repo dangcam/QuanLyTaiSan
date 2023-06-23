@@ -11,7 +11,7 @@ class CongDungCuModel extends BaseModel
     protected $protectFields = false;
     protected $returnType = FunctionEntity::class;
     protected $validationRules = [
-        'ma_ccdc'      => 'required|alpha_dash|min_length[3]|max_length[20]|is_unique[functions.function_id]',
+        'ma_ccdc'      => 'required|alpha_dash|min_length[3]|max_length[20]|is_unique[cong_dung_cu.ma_ccdc]',
         'ten_ccdc'     => 'required|max_length[50]'
     ];
     //

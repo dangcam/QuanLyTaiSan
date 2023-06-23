@@ -16,6 +16,8 @@ return[
     'page_title_type_road' => 'Tài sản HT đường bộ',
     'page_title_tbyte' => 'Thiết bị y tế',
     'page_title_project' => 'Danh mục dự án',
+    'page_title_provide_equipment' => 'Danh mục quyết định trang cấp',
+    'page_title_funding' => 'Danh mục nguồn kinh phí',
 
     'do_not_have_permission' => 'Bạn không có quyền thực hiện chức năng này!',
 
@@ -53,6 +55,8 @@ return[
     'type_road' => 'TS hạ tầng đường bộ',
     'asset_management' => 'Quản lý tài sản',
     'other_categories' => 'Danh mục khác',
+    'provide_equipment' => 'Quyết định trang cấp',
+    'funding' => 'Nguồn kinh phí',
     // Chức năng
     'user_function_manager' => 'Phân quyền người dùng',
     'user_manager'=>'Quản lý người dùng',

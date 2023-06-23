@@ -90,7 +90,8 @@ abstract class BaseController extends Controller
         $response .= '<li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
                         class="icon icon-house-search-engine"></i><span class="nav-text">'.lang('AppLang.asset_management').'</span></a>
                         <ul aria-expanded="false">';
-
+        if($this->libauth->checkFunction('funding','view'))
+            $response .= '<li><a href="'.base_url().'dashboard/funding">'.lang('AppLang.funding').'</a></li>';
         $response .= '  </ul>
                        </li>';
 
@@ -101,6 +102,8 @@ abstract class BaseController extends Controller
             $response .= '<li><a href="'.base_url().'dashboard/nhacc">'.lang('AppLang.nha_cung_cap').'</a></li>';
         if($this->libauth->checkFunction('project','view'))
             $response .= '<li><a href="'.base_url().'dashboard/project">'.lang('AppLang.project').'</a></li>';
+        if($this->libauth->checkFunction('provide_equipment','view'))
+            $response .= '<li><a href="'.base_url().'dashboard/decision">'.lang('AppLang.provide_equipment').'</a></li>';
 
         $response .= '  </ul>
                         </li>';
