@@ -18,6 +18,7 @@ return[
     'page_title_project' => 'Project',
     'page_title_provide_equipment' => 'Decide to supply equipment',
     'page_title_funding' => 'Funding',
+    'page_title_position' => 'Position',
 
     'do_not_have_permission' => 'You do not have permission!',
 
@@ -56,6 +57,7 @@ return[
     'other_categories' => 'Other Categories',
     'provide_equipment' => 'Provide equipment',
     'funding' => 'Funding',
+    'position' => 'Position',
     // Chức năng
     'user_function_manager' => 'User Authorization',
     'user_manager'=>'User Manager',

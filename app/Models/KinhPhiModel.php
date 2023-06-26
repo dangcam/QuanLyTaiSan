@@ -1,6 +1,7 @@
 <?php
 namespace App\Models;
 
+use App\Entities\KinhPhiEntity;
 use App\Entities\TBYTeEntity;
 
 class KinhPhiModel extends BaseModel
@@ -9,7 +10,7 @@ class KinhPhiModel extends BaseModel
     protected $primaryKey = 'ma_kp';
     protected $useAutoIncrement = true;
     protected $protectFields = false;
-    protected $returnType = TBYTeEntity::class;
+    protected $returnType = KinhPhiEntity::class;
     protected $validationRules = [
         'ma_kp'      => 'required|alpha_dash|min_length[1]|max_length[20]|is_unique[nguon_kinh_phi.ma_kp]',
         'ten_kp'     => 'required|max_length[50]'
@@ -70,10 +71,32 @@ class KinhPhiModel extends BaseModel
         $this->where('su_dung',1);
         return $this->find();
     }
+    public function dicKinhPhi($list)
+    {
+        $data = array();
+        if (count($list)) {
+            foreach ($list as $key => $item) {
+                if(!isset($data[$item->ma_kp]))
+                    $data[$item->ma_kp] = $item->ten_kp;
+            }
+        }
+        return $data;
+    }
     public function listNguonHT()
     {
         $tb = $this->db->table('nguon_hinh_thanh');
         return $tb->get()->getResult();
+    }
+    public function dicNguonHT($list)
+    {
+        $data = array();
+        if (count($list)) {
+            foreach ($list as $key => $item) {
+                if(!isset($data[$item->ma_nguon]))
+                    $data[$item->ma_nguon] = $item->ten_nguon;
+            }
+        }
+        return $data;
     }
     public function getKinhPhi($postData=null){
         ## Read value
@@ -98,13 +121,14 @@ class KinhPhiModel extends BaseModel
         $records = $this->find();
 
         $data = array();
-
-        foreach($records as $record ){
+        $dicKinhPhi = $this->dicKinhPhi($this->listKinhPhi());
+        $dicNguonHT = $this->dicNguonHT($this->listNguonHT());
+        foreach($records as $record){
             $data[] = array(
                 "ma_kp"=>$record->ma_kp,
                 "ten_kp"=>$record->ten_kp,
-                "thuoc_nguon"=>$record->thuoc_nguon,
-                "nguon_ht"=>$records->nguon_ht,
+                "thuoc_nguon"=>isset($dicKinhPhi[$record->thuoc_nguon])?$dicKinhPhi[$record->thuoc_nguon]:$record->thuoc_nguon,
+                "nguon_ht"=>isset($dicNguonHT[$record->nguon_ht])?$dicNguonHT[$record->nguon_ht]:$record->nguon_ht,
                 "ghi_chu"=>$record->ghi_chu,
                 "su_dung"=>$record->su_dung==1?'<div class="badge badge-success">'.lang('AppLang.active').'</div>':
                     '<div class="badge badge-danger">'.lang('AppLang.inactive').'</div>',
@@ -117,7 +141,7 @@ class KinhPhiModel extends BaseModel
                             <a href="#" data-toggle="modal" data-target="#smallModal"
                                 data-placement="top" title="'.lang('AppLang.delete').'" data-ma_kp="'.$record->ma_kp.'">
                                 <i class="fa fa-close color-danger"></i></a>
-                            </span>'
+                            </span>',
             );
         }
 

@@ -1,21 +1,21 @@
 <?php
 namespace App\Models;
 
-use App\Entities\DuAnEntity;
+use App\Entities\ChucVuEntity;
 
-class DuAnModel extends BaseModel
+class ChucVuModel extends BaseModel
 {
-    protected $table      = 'du_an';
-    protected $primaryKey = 'ma_da';
+    protected $table      = 'chuc_vu';
+    protected $primaryKey = 'ma_cv';
     protected $useAutoIncrement = true;
     protected $protectFields = false;
-    protected $returnType = DuAnEntity::class;
+    protected $returnType = ChucVuEntity::class;
     protected $validationRules = [
-        'ma_da'      => 'required|alpha_dash|min_length[3]|max_length[20]|is_unique[du_an.ma_da]',
-        'ten_da'     => 'required|max_length[50]'
+        'ma_cv'      => 'required|alpha_cvsh|min_length[3]|max_length[20]|is_unique[du_an.ma_cv]',
+        'ten_cv'     => 'required|max_length[50]'
     ];
     //
-    public function add_da($data)
+    public function add_cv($data)
     {
         unset($data['add']);
         if(!$this->validate($data))
@@ -27,50 +27,45 @@ class DuAnModel extends BaseModel
         }
         if(!$this->insert($data))
         {
-            $this->set_message("DuAnLang.da_creation_successful");
+            $this->set_message("ChucVuLang.cv_creation_successful");
             return 0;
         }else
         {
-            $this->set_message("DuAnLang.da_creation_unsuccessful");
+            $this->set_message("ChucVuLang.cv_creation_unsuccessful");
             return 3;
         }
     }
-    public function edit_da($data)
+    public function edit_cv($data)
     {
-        $data_id = $data['ma_da'];
+        $data_id = $data['ma_cv'];
         unset($data['edit']);
-        unset($data['ma_da']);
+        unset($data['ma_cv']);
         $result = $this->update($data_id,$data);
         if($result)
         {
-            $this->set_message("DuAnLang.da_update_successful");
+            $this->set_message("ChucVuLang.cv_update_successful");
             return 0;
         }else
         {
-            $this->set_message("DuAnLang.da_update_unsuccessful");
+            $this->set_message("ChucVuLang.cv_update_unsuccessful");
             return 3;
         }
     }
-    public function delete_da($data)
+    public function delete_cv($data)
     {
-        $data_id = $data['ma_da'];
-        if($this->where('ma_da',$data_id)->delete())
+        $data_id = $data['ma_cv'];
+        if($this->where('ma_cv',$data_id)->delete())
         {
-            $this->set_message("DuAnLang.da_delete_successful");
+            $this->set_message("ChucVuLang.cv_delete_successful");
             return 0;
         }else
         {
-            $this->set_message("DuAnLang.da_delete_unsuccessful");
+            $this->set_message("ChucVuLang.cv_delete_unsuccessful");
             return 3;
         }
     }
-    public function listDuAn()
-    {
-        $this->select('ma_da, ten_da');
-        $this->where('su_dung',1);
-        return $this->find();
-    }
-    public function getDuAn($postData=null){
+
+    public function getChucVu($postData=null){
         ## Read value
         $draw = $postData['draw'];
         $start = $postData['start'];
@@ -86,7 +81,7 @@ class DuAnModel extends BaseModel
         $records = $this->find();
         $totalRecords = $records[0]->allcount;
         ## Fetch records
-        $this->like('ten_da',$strInput);
+        $this->like('ten_cv',$strInput);
         $this->orderBy($columnName, $columnSortOrder);
         if($rowperpage!=-1)
             $this->limit($rowperpage, $start);
@@ -96,18 +91,16 @@ class DuAnModel extends BaseModel
 
         foreach($records as $record ){
             $data[] = array(
-                "ma_da"=>$record->ma_da,
-                "ten_da"=>$record->ten_da,
+                "ma_cv"=>$record->ma_cv,
+                "ten_cv"=>$record->ten_cv,
                 "ghi_chu"=>$record->ghi_chu,
-                "su_dung"=>$record->su_dung==1?'<div class="badge badge-success">'.lang('AppLang.active').'</div>':
-                    '<div class="badge badge-danger">'.lang('AppLang.inactive').'</div>',
                 "active"=> ' <span>
                             <a class="mr-4" data-toggle="modal" data-target="#myModal" data-whatever="edit"
-                             data-ma_da="'.$record->ma_da.'" data-ten_da ="'.$record->ten_da.'"                          
-                             data-ghi_chu ="'.$record->ghi_chu.'" data-su_dung ="'.$record->su_dung.'"
+                             data-ma_cv="'.$record->ma_cv.'" data-ten_cv ="'.$record->ten_cv.'"                          
+                             data-ghi_chu ="'.$record->ghi_chu.'"
                                 data-placement="top" title="'.lang('AppLang.edit').'"><i class="fa fa-pencil color-muted"></i> </a>
                             <a href="#" data-toggle="modal" data-target="#smallModal"
-                                data-placement="top" title="'.lang('AppLang.delete').'" data-ma_da="'.$record->ma_da.'">
+                                data-placement="top" title="'.lang('AppLang.delete').'" data-ma_cv="'.$record->ma_cv.'">
                                 <i class="fa fa-close color-danger"></i></a>
                             </span>'
             );

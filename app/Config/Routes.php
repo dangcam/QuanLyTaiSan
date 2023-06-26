@@ -121,6 +121,13 @@ $routes->group('dashboard',['filter'=>'authFilters'], static function ($routes) 
         $routes->post('edit_funding','Dashboard\KinhPhiController::edit_funding');
         $routes->post('delete_funding','Dashboard\KinhPhiController::delete_funding');
     });
+    $routes->group('position',static function($routes){
+        $routes->get('/','Dashboard\ChucVuController::index');
+        $routes->post('position_ajax','Dashboard\ChucVuController::position_ajax');
+        $routes->post('add_position','Dashboard\ChucVuController::add_position');
+        $routes->post('edit_position','Dashboard\ChucVuController::edit_position');
+        $routes->post('delete_position','Dashboard\ChucVuController::delete_position');
+    });
     $routes->group('report_group',static function($routes){
         $routes->get('/','Dashboard\ReportGroupController::index');
         $routes->get('print','Dashboard\ReportGroupController::report_print');

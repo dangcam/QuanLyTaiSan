@@ -3,7 +3,7 @@
 namespace App\Entities;
 use CodeIgniter\Entity\Entity;
 
-class TBYTeEntity extends Entity{
+class KinhPhiEntity extends Entity{
     protected $ma_kp;
     protected $ten_kp;
     protected $thuoc_nguon;
