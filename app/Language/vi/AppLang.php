@@ -19,6 +19,7 @@ return[
     'page_title_provide_equipment' => 'Danh mục quyết định trang cấp',
     'page_title_funding' => 'Danh mục nguồn kinh phí',
     'page_title_position' => 'Chức vụ/Chức danh',
+    'page_title_department' => 'Bộ phận sử dụng tài khoản',
 
     'do_not_have_permission' => 'Bạn không có quyền thực hiện chức năng này!',
 
@@ -59,6 +60,7 @@ return[
     'provide_equipment' => 'Quyết định trang cấp',
     'funding' => 'Nguồn kinh phí',
     'position' => 'Chức vụ/Chức danh',
+    'department' => 'Bộ phận',
     // Chức năng
     'user_function_manager' => 'Phân quyền người dùng',
     'user_manager'=>'Quản lý người dùng',

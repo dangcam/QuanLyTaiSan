@@ -174,11 +174,9 @@
             if(recipient=="add"){
                 $('#myModalLabel').text("<?=lang('ChucVuLang.add_cv')?>");
                 $('#ma_cv').prop("readonly",false);
-                $('#su_dung').val(1);
             }else {
                 $('#myModalLabel').text("<?=lang('ChucVuLang.edit_cv')?>");
                 $('#ma_cv').prop("readonly",true);
-                $('#su_dung').val(su_dung);
             }
         });
         // Delete

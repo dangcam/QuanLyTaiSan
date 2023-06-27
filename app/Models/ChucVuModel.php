@@ -11,7 +11,7 @@ class ChucVuModel extends BaseModel
     protected $protectFields = false;
     protected $returnType = ChucVuEntity::class;
     protected $validationRules = [
-        'ma_cv'      => 'required|alpha_cvsh|min_length[3]|max_length[20]|is_unique[du_an.ma_cv]',
+        'ma_cv'      => 'required|alpha_dash|min_length[3]|max_length[20]|is_unique[chuc_vu.ma_cv]',
         'ten_cv'     => 'required|max_length[50]'
     ];
     //
