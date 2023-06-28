@@ -128,6 +128,13 @@ $routes->group('dashboard',['filter'=>'authFilters'], static function ($routes) 
         $routes->post('edit_position','Dashboard\ChucVuController::edit_position');
         $routes->post('delete_position','Dashboard\ChucVuController::delete_position');
     });
+    $routes->group('department',static function($routes){
+        $routes->get('/','Dashboard\BoPhanController::index');
+        $routes->post('department_ajax','Dashboard\BoPhanController::department_ajax');
+        $routes->post('add_department','Dashboard\BoPhanController::add_department');
+        $routes->post('edit_department','Dashboard\BoPhanController::edit_department');
+        $routes->post('delete_department','Dashboard\BoPhanController::delete_department');
+    });
     $routes->group('report_group',static function($routes){
         $routes->get('/','Dashboard\ReportGroupController::index');
         $routes->get('print','Dashboard\ReportGroupController::report_print');
