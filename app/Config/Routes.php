@@ -135,6 +135,13 @@ $routes->group('dashboard',['filter'=>'authFilters'], static function ($routes) 
         $routes->post('edit_department','Dashboard\BoPhanController::edit_department');
         $routes->post('delete_department','Dashboard\BoPhanController::delete_department');
     });
+    $routes->group('nguoi_dung',static function($routes){
+        $routes->get('/','Dashboard\NguoiDungController::index');
+        $routes->post('nd_ajax','Dashboard\NguoiDungController::nguoi_dung_ajax');
+        $routes->post('add_nd','Dashboard\NguoiDungController::add_nguoi_dung');
+        $routes->post('edit_nd','Dashboard\NguoiDungController::edit_nguoi_dung');
+        $routes->post('delete_nd','Dashboard\NguoiDungController::delete_nguoi_dung');
+    });
     $routes->group('report_group',static function($routes){
         $routes->get('/','Dashboard\ReportGroupController::index');
         $routes->get('print','Dashboard\ReportGroupController::report_print');

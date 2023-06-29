@@ -61,6 +61,7 @@ return[
     'funding' => 'Nguồn kinh phí',
     'position' => 'Chức vụ/Chức danh',
     'department' => 'Bộ phận',
+    'user' => 'Người sử dụng',
     // Chức năng
     'user_function_manager' => 'Phân quyền người dùng',
     'user_manager'=>'Quản lý người dùng',

@@ -1,0 +1,49 @@
+CRITICAL - 2023-06-29 09:00:23 --> Call to undefined method App\Models\NguoiDungModel::listKinhPhi
+in SYSTEMPATH\Model.php on line 842.
+ 1 APPPATH\Controllers\Dashboard\NguoiDungController.php(19): CodeIgniter\Model->__call('listKinhPhi', [])
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Dashboard\NguoiDungController->index()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard\NguoiDungController))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-06-29 09:01:25 --> Call to undefined method App\Models\NguoiDungModel::getKinhPhi
+in SYSTEMPATH\Model.php on line 842.
+ 1 APPPATH\Controllers\Dashboard\NguoiDungController.php(29): CodeIgniter\Model->__call('getKinhPhi', [...])
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Dashboard\NguoiDungController->nguoi_dung_ajax()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard\NguoiDungController))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-06-29 09:14:16 --> Call to undefined method App\Models\NguoiDungModel::getKinhPhi
+in SYSTEMPATH\Model.php on line 842.
+ 1 APPPATH\Controllers\Dashboard\NguoiDungController.php(29): CodeIgniter\Model->__call('getKinhPhi', [...])
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Dashboard\NguoiDungController->nguoi_dung_ajax()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard\NguoiDungController))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-06-29 09:14:55 --> Call to undefined method App\Models\NguoiDungModel::getKinhPhi
+in SYSTEMPATH\Model.php on line 842.
+ 1 APPPATH\Controllers\Dashboard\NguoiDungController.php(29): CodeIgniter\Model->__call('getKinhPhi', [...])
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Dashboard\NguoiDungController->nguoi_dung_ajax()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard\NguoiDungController))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-06-29 09:15:16 --> Call to undefined method App\Models\NguoiDungModel::getKinhPhi
+in SYSTEMPATH\Model.php on line 842.
+ 1 APPPATH\Controllers\Dashboard\NguoiDungController.php(29): CodeIgniter\Model->__call('getKinhPhi', [...])
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Dashboard\NguoiDungController->nguoi_dung_ajax()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard\NguoiDungController))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-06-29 09:15:52 --> Call to undefined method App\Models\NguoiDungModel::getKinhPhi
+in SYSTEMPATH\Model.php on line 842.
+ 1 APPPATH\Controllers\Dashboard\NguoiDungController.php(29): CodeIgniter\Model->__call('getKinhPhi', [...])
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Dashboard\NguoiDungController->nguoi_dung_ajax()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard\NguoiDungController))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-06-29 09:16:57 --> Call to undefined method App\Models\NguoiDungModel::add_kp
+in SYSTEMPATH\Model.php on line 842.
+ 1 APPPATH\Controllers\Dashboard\NguoiDungController.php(38): CodeIgniter\Model->__call('add_kp', [...])
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Dashboard\NguoiDungController->add_nguoi_dung()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard\NguoiDungController))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()

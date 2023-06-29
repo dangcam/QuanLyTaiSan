@@ -60,6 +60,7 @@ return[
     'funding' => 'Funding',
     'position' => 'Position',
     'department' => 'Department',
+    'user' => 'Users',
     // Chức năng
     'user_function_manager' => 'User Authorization',
     'user_manager'=>'User Manager',
