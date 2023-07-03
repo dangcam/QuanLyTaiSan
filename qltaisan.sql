@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th6 30, 2023 lúc 10:28 AM
+-- Thời gian đã tạo: Th7 03, 2023 lúc 11:42 AM
 -- Phiên bản máy phục vụ: 10.4.28-MariaDB
 -- Phiên bản PHP: 8.0.28
 
@@ -101,6 +101,34 @@ CREATE TABLE `cong_dung_cu` (
 INSERT INTO `cong_dung_cu` (`ma_ccdc`, `ten_ccdc`, `thuoc_loai`, `ghi_chu`, `su_dung`) VALUES
 ('CCDC001', 'Dụng cụ văn phòng', '', 'ghi chú', 1),
 ('CCDC002', ' Văn phòng phẩm', '', 'ghi chú', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `dinh_muc`
+--
+
+CREATE TABLE `dinh_muc` (
+  `ma_dm_ts` varchar(20) NOT NULL,
+  `ma_dm` varchar(20) NOT NULL,
+  `dinh_muc` float NOT NULL,
+  `don_gia` float NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `dm_tai_san`
+--
+
+CREATE TABLE `dm_tai_san` (
+  `ma_dm` int(20) NOT NULL,
+  `ten_dm` varchar(100) NOT NULL,
+  `thuoc_loai` varchar(20) NOT NULL,
+  `don_vi` varchar(10) NOT NULL,
+  `dinh_muc` int(1) NOT NULL,
+  `su_dung` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -593,6 +621,18 @@ ALTER TABLE `chuong_md`
 --
 ALTER TABLE `cong_dung_cu`
   ADD PRIMARY KEY (`ma_ccdc`);
+
+--
+-- Chỉ mục cho bảng `dinh_muc`
+--
+ALTER TABLE `dinh_muc`
+  ADD PRIMARY KEY (`ma_dm_ts`,`ma_dm`);
+
+--
+-- Chỉ mục cho bảng `dm_tai_san`
+--
+ALTER TABLE `dm_tai_san`
+  ADD PRIMARY KEY (`ma_dm`);
 
 --
 -- Chỉ mục cho bảng `don_vi_qd`
