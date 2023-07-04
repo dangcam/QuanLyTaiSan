@@ -96,6 +96,8 @@ abstract class BaseController extends Controller
             $response .= '<li><a href="'.base_url().'dashboard/position">'.lang('AppLang.position').'</a></li>';
         if($this->libauth->checkFunction('department','view'))
             $response .= '<li><a href="'.base_url().'dashboard/department">'.lang('AppLang.department').'</a></li>';
+        if($this->libauth->checkFunction('property_norms','view'))
+            $response .= '<li><a href="'.base_url().'dashboard/dm_ts">'.lang('AppLang.property_norms').'</a></li>';
         if($this->libauth->checkFunction('nguoi_dung','view'))
             $response .= '<li><a href="'.base_url().'dashboard/nguoi_dung">'.lang('AppLang.user').'</a></li>';
 

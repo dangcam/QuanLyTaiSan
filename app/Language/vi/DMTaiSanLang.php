@@ -7,6 +7,10 @@ return[
     'dinh_muc' => 'Định mức',
     'su_dung' => 'Sử dụng',
 
+    'shared' => 'Dùng chung',
+    'department' => 'Phòng ban',
+    'position' => 'Chức vụ/chức danh',
+
     'add_dm'=>'Thêm loại định mức tài sản',
     'edit_dm' => 'Sửa loại định mức tài sản',
     'dm_creation_successful' => 'Thêm loại định mức tài sản thành công',

@@ -142,6 +142,13 @@ $routes->group('dashboard',['filter'=>'authFilters'], static function ($routes) 
         $routes->post('edit_nd','Dashboard\NguoiDungController::edit_nguoi_dung');
         $routes->post('delete_nd','Dashboard\NguoiDungController::delete_nguoi_dung');
     });
+    $routes->group('dm_ts',static function($routes){
+        $routes->get('/','Dashboard\DMTaiSanController::index');
+        $routes->post('dm_ajax','Dashboard\DMTaiSanController::dm_ajax');
+        $routes->post('add_dm','Dashboard\DMTaiSanController::add_dm');
+        $routes->post('edit_dm','Dashboard\DMTaiSanController::edit_dm');
+        $routes->post('delete_dm','Dashboard\DMTaiSanController::delete_dm');
+    });
     $routes->group('report_group',static function($routes){
         $routes->get('/','Dashboard\ReportGroupController::index');
         $routes->get('print','Dashboard\ReportGroupController::report_print');

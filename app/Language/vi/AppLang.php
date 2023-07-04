@@ -20,6 +20,7 @@ return[
     'page_title_funding' => 'Danh mục nguồn kinh phí',
     'page_title_position' => 'Chức vụ/Chức danh',
     'page_title_department' => 'Bộ phận sử dụng tài khoản',
+    'page_title_property_norms' => 'Loại định mức tài sản',
 
     'do_not_have_permission' => 'Bạn không có quyền thực hiện chức năng này!',
 
@@ -62,6 +63,7 @@ return[
     'position' => 'Chức vụ/Chức danh',
     'department' => 'Bộ phận',
     'user' => 'Người sử dụng',
+    'property_norms' => 'Loại ĐM Tài sản',
     // Chức năng
     'user_function_manager' => 'Phân quyền người dùng',
     'user_manager'=>'Quản lý người dùng',

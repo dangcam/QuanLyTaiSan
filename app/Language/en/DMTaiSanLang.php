@@ -7,6 +7,10 @@ return[
     'dinh_muc' => 'Quota',
     'su_dung' => 'Use',
 
+    'shared' => 'Shared',
+    'department' => 'Department',
+    'position' => 'Position',
+
     'add_dm'=>'Add Property norms',
     'edit_dm' => 'Edit Property norms',
     'dm_creation_successful' => 'Property norms Creation Successful',

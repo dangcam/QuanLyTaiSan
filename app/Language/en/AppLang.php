@@ -20,6 +20,7 @@ return[
     'page_title_funding' => 'Funding',
     'page_title_position' => 'Position',
     'page_title_department' => 'Asset use department',
+    'page_title_property_norms' => 'Type of property norm',
 
     'do_not_have_permission' => 'You do not have permission!',
 
@@ -61,6 +62,7 @@ return[
     'position' => 'Position',
     'department' => 'Department',
     'user' => 'Users',
+    'property_norms' => 'Property norms',
     // Chức năng
     'user_function_manager' => 'User Authorization',
     'user_manager'=>'User Manager',
