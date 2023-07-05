@@ -6,6 +6,9 @@ return[
     'don_vi' => 'Đơn vị tính',
     'dinh_muc' => 'Định mức',
     'su_dung' => 'Sử dụng',
+    'don_gia' => 'Đơn giá tối đa',
+    'bo_phan' => 'Bộ phận',
+    'chuc_vu' => 'Chức vụ',
 
     'shared' => 'Dùng chung',
     'department' => 'Phòng ban',

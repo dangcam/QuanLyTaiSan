@@ -6,6 +6,9 @@ return[
     'don_vi' => 'Unit',
     'dinh_muc' => 'Quota',
     'su_dung' => 'Use',
+    'don_gia' => 'Maximum unit price',
+    'bo_phan' => 'Department',
+    'chuc_vu' => 'Position',
 
     'shared' => 'Shared',
     'department' => 'Department',

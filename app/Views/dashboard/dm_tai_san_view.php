@@ -113,7 +113,6 @@
                         </div>
                     </div>
                     <div class="form-row">
-
                         <div class="form-group col-md-6">
                             <label><?=lang('DMTaiSanLang.dinh_muc')?></label>
                             <select class="custom-select" id="dinh_muc" name="dinh_muc">
@@ -122,6 +121,9 @@
                                 <option value="3"><?=lang('DMTaiSanLang.position')?></option>
                             </select>
                         </div>
+                    </div>
+                    <div class="form-row" id="tab_dinh_muc">
+
                     </div>
 
                     <div class="form-group">
@@ -180,7 +182,39 @@
 <!---->
 <script>
     jQuery(document).ready(function($) {
-        let max_ncc = '';
+        let html_dung_chung =
+            "<div class=\"form-group col-md-6\">\n" +
+            "   <label><?=lang('DMTaiSanLang.ma_dm')?></label>\n" +
+            "       <input type=\"text\" id=\"\" name=\"data[dinh_muc]\"\n" +
+            "           class=\"form-control\" placeholder=\"<?=lang('DMTaiSanLang.dinh_muc')?>\">\n" +
+            "</div>\n" +
+            "<div class=\"form-group col-md-6\">\n" +
+            "   <label><?=lang('DMTaiSanLang.don_gia')?></label>\n" +
+            "       <input type=\"text\" id=\"\" name=\"data[don_gia]\"\n" +
+            "           class=\"form-control\" placeholder=\"<?=lang('DMTaiSanLang.don_gia')?>\">\n" +
+            "</div>";
+        let html_bo_phan =
+            " <div class=\"form-group col-md-3\">\n" +
+            "   <label><?=lang('DMTaiSanLang.bo_phan')?></label>\n" +
+            "   <select class=\"custom-select\" id=\"truc_thuoc\" name=\"truc_thuoc\">\n" +
+                   <?php if (isset($list_bo_phan) && count($list_bo_phan)) :
+                           foreach ($list_bo_phan as $key => $item) : ?>+
+            "               <option value=\"<?=$item->ma_bp?>\"><?=$item->ten_bp?></option>\n" +
+                           <?php
+                           endforeach;
+                   endif ?> +
+            "   </select>\n" +
+            "</div>"+
+            "<div class=\"form-group col-md-3\">\n" +
+            "   <label><?=lang('DMTaiSanLang.ma_dm')?></label>\n" +
+            "       <input type=\"text\" id=\"\" name=\"data[dinh_muc]\"\n" +
+            "           class=\"form-control\" placeholder=\"<?=lang('DMTaiSanLang.dinh_muc')?>\">\n" +
+            "</div>\n" +
+            "<div class=\"form-group col-md-3\">\n" +
+            "   <label><?=lang('DMTaiSanLang.ten_dm')?></label>\n" +
+            "       <input type=\"text\" id=\"\" name=\"data[don_gia]\"\n" +
+            "           class=\"form-control\" placeholder=\"<?=lang('DMTaiSanLang.don_gia')?>\">\n" +
+            "</div>";
         var ajaxDataTable = $('#data-table').DataTable({
             'processing': true,
             'serverSide': true,
@@ -231,6 +265,13 @@
             }else {
                 $('#myModalLabel').text("<?=lang('DMTaiSanLang.edit_dm')?>");
                 $('#ma_dm').prop("readonly",true);
+            }
+            if(dinh_muc == 1){
+
+            }else if(dinh_muc == 2){
+
+            }else {
+
             }
         });
         // Delete
@@ -293,6 +334,18 @@
                     $("#response_danger_modal").html(data);
                 }
             });
+        });
+        $('#dinh_muc').change(function(){
+            if(this.value == 1){
+                // dùng chung
+                $("#tab_dinh_muc").html(html_dung_chung);
+            }else
+                if(this.value == 2){
+                    // phòng ban
+                    $("#tab_dinh_muc").html(html_bo_phan);
+            }else {
+                    // chức vụ
+                };
         });
     });
 </script>

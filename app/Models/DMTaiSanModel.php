@@ -70,6 +70,16 @@ class DMTaiSanModel Extends BaseModel
             return 3;
         }
     }
+    public function listBoPhan()
+    {
+        $tb = $this->db->table('bo_phan')->select('ma_bp,ten_bp');
+        return $tb->get()->getResult();
+    }
+    public function listChucVu()
+    {
+        $tb = $this->db->table('chuc_vu')->select('ma_cv,ten_cv');
+        return $tb->get()->getResult();
+    }
     public function listDMTaiSan()
     {
         $this->select('ma_dm, ten_dm');

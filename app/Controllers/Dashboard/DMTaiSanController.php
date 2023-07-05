@@ -15,6 +15,8 @@ class DMTaiSanController extends BaseController
     {
         $meta = array('page_title'=>lang('AppLang.page_title_property_norms'));
         $data['list_dm_tai_san'] = $this->dm_ts_model->listDMTaiSan();
+        $data['list_chuc_vu'] = $this->dm_ts_model->listChucVu();
+        $data['list_bo_phan'] = $this->dm_ts_model->listBoPhan();
 
         return $this->page_construct('dashboard/dm_tai_san_view',$meta,$data);
     }
