@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th7 03, 2023 lúc 11:42 AM
+-- Thời gian đã tạo: Th7 07, 2023 lúc 11:18 AM
 -- Phiên bản máy phục vụ: 10.4.28-MariaDB
 -- Phiên bản PHP: 8.0.28
 
@@ -195,6 +195,7 @@ INSERT INTO `functions` (`function_id`, `function_name`, `function_status`, `fun
 ('nha_cc', 'nha_cung_cap', 1, 4),
 ('position', 'position', 1, 3),
 ('project', 'project', 1, 4),
+('property_norms', 'property_norms', 1, 3),
 ('provide_equipment', 'provide_equipment', 1, 4),
 ('report_group', 'report_group_manager', 1, 0),
 ('tbyte', 'tbyte', 1, 2),
@@ -579,6 +580,7 @@ INSERT INTO `user_function` (`user_id`, `function_id`, `function_view`, `functio
 ('admin', 'nha_cc', 1, 1, 1, 1),
 ('admin', 'position', 1, 1, 1, 1),
 ('admin', 'project', 1, 1, 1, 1),
+('admin', 'property_norms', 1, 1, 1, 1),
 ('admin', 'provide_equipment', 1, 1, 1, 1),
 ('admin', 'report_group', 1, 1, 1, 1),
 ('admin', 'tbyte', 1, 1, 1, 1),

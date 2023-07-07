@@ -193,16 +193,43 @@
             "       <input type=\"text\" id=\"\" name=\"data[don_gia]\"\n" +
             "           class=\"form-control\" placeholder=\"<?=lang('DMTaiSanLang.don_gia')?>\">\n" +
             "</div>";
+        let list_bo_phan = "";
+        <?php if (isset($list_bo_phan) && count($list_bo_phan)) :
+                foreach ($list_bo_phan as $key => $item) : ?>
+            list_bo_phan +="<option value=\"<?=$item->ma_bp?>\"><?=$item->ten_bp?></option>\n";
+        <?php
+                endforeach;
+            endif ?>
+
+         let list_chuc_vu = "";
+        <?php if (isset($list_chuc_vu) && count($list_chuc_vu)) :
+            foreach ($list_chuc_vu as $key => $item) : ?>
+                list_chuc_vu +="<option value=\"<?=$item->ma_cv?>\"><?=$item->ten_cv?></option>\n";
+        <?php
+                endforeach;
+            endif ?>
         let html_bo_phan =
             " <div class=\"form-group col-md-3\">\n" +
             "   <label><?=lang('DMTaiSanLang.bo_phan')?></label>\n" +
-            "   <select class=\"custom-select\" id=\"truc_thuoc\" name=\"truc_thuoc\">\n" +
-                   <?php if (isset($list_bo_phan) && count($list_bo_phan)) :
-                           foreach ($list_bo_phan as $key => $item) : ?>+
-            "               <option value=\"<?=$item->ma_bp?>\"><?=$item->ten_bp?></option>\n" +
-                           <?php
-                           endforeach;
-                   endif ?> +
+            "   <select class=\"custom-select\" id=\"\" name=\"data[ma_dm]\">\n" +
+                  list_bo_phan +
+            "   </select>\n" +
+            "</div>"+
+            "<div class=\"form-group col-md-3\">\n" +
+            "   <label><?=lang('DMTaiSanLang.ma_dm')?></label>\n" +
+            "       <input type=\"text\" id=\"\" name=\"data[dinh_muc]\"\n" +
+            "           class=\"form-control\" placeholder=\"<?=lang('DMTaiSanLang.dinh_muc')?>\">\n" +
+            "</div>\n" +
+            "<div class=\"form-group col-md-3\">\n" +
+            "   <label><?=lang('DMTaiSanLang.ten_dm')?></label>\n" +
+            "       <input type=\"text\" id=\"\" name=\"data[don_gia]\"\n" +
+            "           class=\"form-control\" placeholder=\"<?=lang('DMTaiSanLang.don_gia')?>\">\n" +
+            "</div>";
+        let html_chuc_vu =
+            " <div class=\"form-group col-md-3\">\n" +
+            "   <label><?=lang('DMTaiSanLang.chuc_vu')?></label>\n" +
+            "   <select class=\"custom-select\" id=\"\" name=\"data[ma_dm]\">\n" +
+                list_chuc_vu +
             "   </select>\n" +
             "</div>"+
             "<div class=\"form-group col-md-3\">\n" +
@@ -345,6 +372,7 @@
                     $("#tab_dinh_muc").html(html_bo_phan);
             }else {
                     // chức vụ
+                    $("#tab_dinh_muc").html(html_chuc_vu);
                 };
         });
     });
