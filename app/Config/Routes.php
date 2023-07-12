@@ -148,6 +148,7 @@ $routes->group('dashboard',['filter'=>'authFilters'], static function ($routes) 
         $routes->post('add_dm','Dashboard\DMTaiSanController::add_dm');
         $routes->post('edit_dm','Dashboard\DMTaiSanController::edit_dm');
         $routes->post('delete_dm','Dashboard\DMTaiSanController::delete_dm');
+        $routes->post('list_dinh_muc','Dashboard\DMTaiSanController::list_dinh_muc');
     });
     $routes->group('report_group',static function($routes){
         $routes->get('/','Dashboard\ReportGroupController::index');

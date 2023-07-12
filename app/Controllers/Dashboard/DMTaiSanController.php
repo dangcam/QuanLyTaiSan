@@ -28,13 +28,21 @@ class DMTaiSanController extends BaseController
             echo json_encode($data);
         }
     }
+    public function list_dinh_muc()
+    {
+        if($this->request->getPost())
+        {
+            $data = $this->dm_ts_model->listDinhMuc($this->request->getPost());
+            echo json_encode($data);
+        }
+    }
     //
     public function add_dm()
     {
         if($this->request->getPost()&&($this->libauth->checkFunction('property_norms','add')))
         {
             $data_post = $this->request->getPost();
-            $data['result'] = ($this->dm_ts_model->add_asset($data_post));
+            $data['result'] = ($this->dm_ts_model->add_dm($data_post));
             $data['message']= $this->dm_ts_model->get_messages();
             echo json_encode(array_values($data));
         }
@@ -47,7 +55,7 @@ class DMTaiSanController extends BaseController
         if($this->request->getPost()&&($this->libauth->checkFunction('property_norms','delete')))
         {
             $data_post = $this->request->getPost();
-            $data['result'] = ($this->dm_ts_model->delete_asset($data_post));
+            $data['result'] = ($this->dm_ts_model->delete_dm($data_post));
             $data['message']= $this->dm_ts_model->get_messages();
             echo json_encode(array_values($data));
         }
@@ -60,7 +68,7 @@ class DMTaiSanController extends BaseController
         if($this->request->getPost()&&($this->libauth->checkFunction('property_norms','edit')))
         {
             $data_post = $this->request->getPost();
-            $data['result'] = ($this->dm_ts_model->edit_asset($data_post));
+            $data['result'] = ($this->dm_ts_model->edit_dm($data_post));
             $data['message']= $this->dm_ts_model->get_messages();
             echo json_encode(array_values($data));
         }else

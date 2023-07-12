@@ -15,6 +15,8 @@ class DMTaiSanModel Extends BaseModel
     public function add_dm($data)
     {
         unset($data['add']);
+        $data_dm = $data['data'];
+        unset($data['data']);
         if(isset($data['su_dung']))
             $data['su_dung'] = 1;
         if(!$this->validate($data))
@@ -27,6 +29,11 @@ class DMTaiSanModel Extends BaseModel
         if(!$this->insert($data))
         {
             $this->set_message("DMTaiSanLang.dm_creation_successful");
+            $this->db->table('dinh_muc')->where('ma_dm_ts',$data['ma_dm'])->delete();
+            foreach ($data_dm as $index => $item ) {
+                $item['ma_dm_ts'] = $data['ma_dm'];;
+                $this->db->table('dinh_muc')->insert($item);
+            }
             return 0;
         }else
         {
@@ -37,6 +44,8 @@ class DMTaiSanModel Extends BaseModel
     public function edit_dm($data)
     {
         $data_id = $data['ma_dm'];
+        $data_dm = $data['data'];
+        unset($data['data']);
         unset($data['edit']);
         unset($data['ma_dm']);
         //
@@ -49,6 +58,11 @@ class DMTaiSanModel Extends BaseModel
         if($result)
         {
             $this->set_message("DMTaiSanLang.dm_update_successful");
+            $this->db->table('dinh_muc')->where('ma_dm_ts',$data_id)->delete();
+            foreach ($data_dm as $index => $item ) {
+                $item['ma_dm_ts'] = $data_id;
+                $this->db->table('dinh_muc')->insert($item);
+            }
             return 0;
         }else
         {
@@ -62,6 +76,7 @@ class DMTaiSanModel Extends BaseModel
 
         if($this->where('ma_dm',$data_id)->delete())
         {
+            $this->db->table('dinh_muc')->where('ma_dm_ts',$data_id)->delete();
             $this->set_message("DMTaiSanLang.dm_delete_successful");
             return 0;
         }else
@@ -78,6 +93,11 @@ class DMTaiSanModel Extends BaseModel
     public function listChucVu()
     {
         $tb = $this->db->table('chuc_vu')->select('ma_cv,ten_cv');
+        return $tb->get()->getResult();
+    }
+    public function listDinhMuc($ma_dm_st)
+    {
+        $tb = $this->db->table('dinh_muc')->where('ma_dm_ts',$ma_dm_st);
         return $tb->get()->getResult();
     }
     public function listDMTaiSan()
@@ -123,6 +143,7 @@ class DMTaiSanModel Extends BaseModel
         $dicDMTaiSan = $this->dicDMTaiSan($this->listDMTaiSan());
         $data = array();
         foreach($records as $record ){
+
             $data[] = array(
                 "ma_dm"=>$record->ma_dm,
                 "ten_dm"=>$record->ten_dm,
