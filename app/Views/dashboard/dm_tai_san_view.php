@@ -122,7 +122,7 @@
                             </select>
                         </div>
                     </div>
-                    <div class="form-row" id="tab_dinh_muc">
+                    <div id="tab_dinh_muc">
 
                     </div>
 
@@ -163,6 +163,25 @@
         </div>
     </div>
 </div>
+<div class="modal fade" id="smallModal_DinhMuc" tabindex="-1" role="dialog" aria-labelledby="smallModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="smallModalLabel"><?=lang('AppLang.notify')?></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <?=lang('AppLang.are_you_sure')?>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="modal-btn-no_dm" class="btn btn-white" data-dismiss="modal"><?=lang('AppLang.no')?></button>
+                <button type="button" id="modal-btn-yes_dm" class="btn btn-primary"><?=lang('AppLang.yes')?></button>
+            </div>
+        </div>
+    </div>
+</div>
 <!---->
 
 <script src="vendor/jqueryui/js/jquery-ui.min.js"></script>
@@ -177,98 +196,140 @@
 <link href="vendor/datatables.net-bs4/css/dataTables.bootstrap4.min.css" rel="stylesheet">
 <script src="vendor/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
 <script src="js/plugins-init/datatables.init.js"></script>
+<script src="vendor/jquery-steps/build/jquery.steps.min.js"></script>
 
 
 <!---->
-<script>
-    jQuery(document).ready(function($) {
-        let html_dung_chung ="";
-        let html_bo_phan = "";
-        let html_chuc_vu = "";
-        function create_dung_chung(stt=1,data = ['0','0','0']){
-            html_dung_chung =  "<div class=\"form-group col-md-6\">\n" +
-                "   <input name=\"data["+stt+"][ma_dm]\" value=\"dung_chung\" type=\"hidden\">" +
-                "   <label><?=lang('DMTaiSanLang.ma_dm')?></label>\n" +
-                "       <input type=\"text\" name=\"data["+stt+"][dinh_muc]\" value=\""+data[1]+"\"\n" +
-                "           class=\"form-control\" placeholder=\"<?=lang('DMTaiSanLang.dinh_muc')?>\">\n" +
-                "</div>\n" +
-                "<div class=\"form-group col-md-6\">\n" +
-                "   <label><?=lang('DMTaiSanLang.don_gia')?></label>\n" +
-                "       <input type=\"text\" name=\"data["+stt+"][don_gia]\" value=\""+data[2]+"\"\n" +
-                "           class=\"form-control\" placeholder=\"<?=lang('DMTaiSanLang.don_gia')?>\">\n" +
-                "</div>";
-        };
-        let list_bo_phan = "";
-        <?php if (isset($list_bo_phan) && count($list_bo_phan)) :
-                foreach ($list_bo_phan as $key => $item) : ?>
-            list_bo_phan +="<option value=\"<?=$item->ma_bp?>\"><?=$item->ten_bp?></option>\n";
-        <?php
-                endforeach;
-            endif ?>
 
-         let list_chuc_vu = "";
-        <?php if (isset($list_chuc_vu) && count($list_chuc_vu)) :
-            foreach ($list_chuc_vu as $key => $item) : ?>
-                list_chuc_vu +="<option value=\"<?=$item->ma_cv?>\"><?=$item->ten_cv?></option>\n";
-        <?php
-                endforeach;
-            endif ?>
-        function create_bo_phan(stt=1,data = ['0','0','0']){
-            html_bo_phan +=
-                " <div id=\""+stt+"_bo_phan\" class=\"form-group col-md-3\">\n" +
-                "   <label><?=lang('DMTaiSanLang.bo_phan')?></label>\n" +
-                "   <select class=\"custom-select\" id=\"\" name=\"data["+stt+"][ma_dm]\">\n" +
-                list_bo_phan +
-                "   </select>\n" +
-                "</div>"+
-                "<div class=\"form-group col-md-3\">\n" +
-                "   <label><?=lang('DMTaiSanLang.ma_dm')?></label>\n" +
-                "       <input type=\"text\" id=\"\" name=\"data["+stt+"][dinh_muc]\"\n" +
-                "           class=\"form-control\" placeholder=\"<?=lang('DMTaiSanLang.dinh_muc')?>\">\n" +
-                "</div>\n" +
-                "<div class=\"form-group col-md-3\">\n" +
-                "   <label><?=lang('DMTaiSanLang.ten_dm')?></label>\n" +
-                "       <input type=\"text\" id=\"\" name=\"data["+stt+"][don_gia]\"\n" +
-                "           class=\"form-control\" placeholder=\"<?=lang('DMTaiSanLang.don_gia')?>\">\n" +
-                "</div>\n" +
-                "<div class =\"form-group \">\n" +
-                "   <label>Action</label>\n" +
-                "   <div class=\"form-control\"><a href=\"javascript:void()\" class=\"mr-4\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Edit\">" +
-                "           <i class=\"fa fa-plus color-muted\"></i> </a>" +
-                "          <a href=\"#\" data-toggle=\"modal\" data-target=\"#smallModal\"\n" +
-                "             data-placement=\"top\" title=\"'.lang('AppLang.delete').'\" data-id_row_dinh_muc=\"\">\n" +
-                "           <i class=\"fa fa-close color-danger\"></i></a>\n" +
-                "   </div>\n" +
-                "</div>";
-        };
+<script type="text/javascript">
+    let html_dung_chung ="";
+    let html_bo_phan = "";
+    let html_chuc_vu = "";
+    let stt_bo_phan = 1;
+    let stt_chuc_vu = 1;
 
-        html_chuc_vu =
-            "<div class=\"form-group col-md-3\">\n" +
-            "   <label><?=lang('DMTaiSanLang.chuc_vu')?></label>\n" +
-            "   <select class=\"custom-select\" id=\"\" name=\"data[1][ma_dm]\">\n" +
-                list_chuc_vu +
+    let list_bo_phan = "";
+    <?php if (isset($list_bo_phan) && count($list_bo_phan)) :
+    foreach ($list_bo_phan as $key => $item) : ?>
+    list_bo_phan +="<option value=\"<?=$item->ma_bp?>\"><?=$item->ten_bp?></option>\n";
+    <?php
+    endforeach;
+    endif ?>
+
+    let list_chuc_vu = "";
+    <?php if (isset($list_chuc_vu) && count($list_chuc_vu)) :
+    foreach ($list_chuc_vu as $key => $item) : ?>
+    list_chuc_vu +="<option value=\"<?=$item->ma_cv?>\"><?=$item->ten_cv?></option>\n";
+    <?php
+    endforeach;
+    endif ?>
+    function create_dung_chung(stt=1,data = ['0','0','0']){
+        html_dung_chung =
+            "<div class=\"form-row\" id=\"\">" +
+            "   <div class=\"form-group col-md-6\">\n" +
+            "       <input name=\"data["+stt+"][ma_dm]\" value=\"dung_chung\" type=\"hidden\">" +
+            "       <label><?=lang('DMTaiSanLang.ma_dm')?></label>\n" +
+            "           <input type=\"text\" name=\"data["+stt+"][dinh_muc]\" value=\""+data[1]+"\"\n" +
+            "               class=\"form-control\" placeholder=\"<?=lang('DMTaiSanLang.dinh_muc')?>\">\n" +
+            "   </div>\n" +
+            "   <div class=\"form-group col-md-6\">\n" +
+            "       <label><?=lang('DMTaiSanLang.don_gia')?></label>\n" +
+            "           <input type=\"text\" name=\"data["+stt+"][don_gia]\" value=\""+data[2]+"\"\n" +
+            "               class=\"form-control\" placeholder=\"<?=lang('DMTaiSanLang.don_gia')?>\">\n" +
+            "   </div>" +
+            "</div>";
+    };
+    function create_bo_phan(stt=1,data = ['0','0','0']){
+        html_bo_phan +=
+            "<div class=\"form-row\" id=\""+stt+"_bo_phan\">" +
+            " <div id=\""+stt+"_bo_phan\" class=\"form-group col-md-3\">\n" +
+            "   <label><?=lang('DMTaiSanLang.bo_phan')?></label>\n" +
+            "   <select class=\"custom-select\" id=\"\" name=\"data["+stt+"][ma_dm]\" value=\""+data[0]+"\">\n" +
+            list_bo_phan +
             "   </select>\n" +
             "</div>"+
             "<div class=\"form-group col-md-3\">\n" +
             "   <label><?=lang('DMTaiSanLang.ma_dm')?></label>\n" +
-            "       <input type=\"text\" id=\"\" name=\"data[1][dinh_muc]\"\n" +
+            "       <input type=\"text\" id=\"\" name=\"data["+stt+"][dinh_muc]\" value=\""+data[1]+"\" \n" +
             "           class=\"form-control\" placeholder=\"<?=lang('DMTaiSanLang.dinh_muc')?>\">\n" +
             "</div>\n" +
             "<div class=\"form-group col-md-3\">\n" +
             "   <label><?=lang('DMTaiSanLang.ten_dm')?></label>\n" +
-            "       <input type=\"text\" id=\"\" name=\"data[1][don_gia]\"\n" +
+            "       <input type=\"text\" id=\"\" name=\"data["+stt+"][don_gia]\" value=\""+data[2]+"\" \n" +
+            "           class=\"form-control\" placeholder=\"<?=lang('DMTaiSanLang.don_gia')?>\">\n" +
+            "</div>\n" +
+            "<div class =\"form-group \">\n" +
+            "   <label>Action</label>\n" +
+            "   <div class=\"form-control\">" +
+            "           <a href=\"javascript:void()\" class=\"mr-4\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Add\">" +
+            "           <i class=\"fa fa-plus color-muted\"></i> </a>";
+        if(stt>1) {
+            html_bo_phan +=
+                "          <a href=\"#\" data-toggle=\"modal\" data-target=\"#smallModal_DinhMuc\"\n" +
+                "             data-placement=\"top\" title=\"'.lang('AppLang.delete').'\" data-id_row_dinh_muc=\""+stt+"_bo_phan\">\n" +
+                "           <i class=\"fa fa-close color-danger\"></i></a>\n"
+        }
+        html_bo_phan +=
+            "   </div>\n" +
+            "</div>" +
+            "</div>";
+    };
+    function create_chuc_vu(stt=1,data = ['0','0','0']){
+        html_chuc_vu +=
+            "<div class=\"form-row\" id=\""+stt+"_chuc_vu\">" +
+            "<div class=\"form-group col-md-3\">\n" +
+            "   <label><?=lang('DMTaiSanLang.chuc_vu')?></label>\n" +
+            "   <select class=\"custom-select\" id=\"\" name=\"data["+stt+"][ma_dm]\" value=\""+data[0]+"\">\n" +
+            list_chuc_vu +
+            "   </select>\n" +
+            "</div>"+
+            "<div class=\"form-group col-md-3\">\n" +
+            "   <label><?=lang('DMTaiSanLang.ma_dm')?></label>\n" +
+            "       <input type=\"text\" id=\"\" name=\"data["+stt+"][dinh_muc]\" value=\""+data[0]+"\" \n" +
+            "           class=\"form-control\" placeholder=\"<?=lang('DMTaiSanLang.dinh_muc')?>\">\n" +
+            "</div>\n" +
+            "<div class=\"form-group col-md-3\">\n" +
+            "   <label><?=lang('DMTaiSanLang.ten_dm')?></label>\n" +
+            "       <input type=\"text\" id=\"\" name=\"data["+stt+"][don_gia]\" value=\""+data[0]+"\" \n" +
             "           class=\"form-control\" placeholder=\"<?=lang('DMTaiSanLang.don_gia')?>\">\n" +
             "</div>\n" +
             "<div class =\"form-group\">\n" +
             "   <label>Action</label>\n" +
             "   <div class=\"form-control\">" +
-            "       <a href=\"javascript:void()\" class=\"mr-4\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Edit\">" +
-            "           <i class=\"fa fa-plus color-muted\"></i> </a>" +
-            "          <a href=\"#\" data-toggle=\"modal\" data-target=\"#smallModal\"\n" +
-            "             data-placement=\"top\" title=\"'.lang('AppLang.delete').'\" data-id_row_dinh_muc=\"\">\n" +
-            "           <i class=\"fa fa-close color-danger\"></i></a>\n" +
+            "       <a href=\"javascript:void(add_row_chuc_vu())\" id=\"add_row_bo_phan\" class=\"mr-4\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Add\">" +
+            "           <i class=\"fa fa-plus color-muted\"></i> </a>";
+        if(stt>1) {
+            html_bo_phan +=
+                "          <a href=\"#\" data-toggle=\"modal\" data-target=\"#smallModal_DinhMuc\"\n" +
+                "             data-placement=\"top\" title=\"'.lang('AppLang.delete').'\" data-id_row_dinh_muc=\""+stt+"_bo_phan\">\n" +
+                "           <i class=\"fa fa-close color-danger\"></i></a>\n"
+        }
+        html_bo_phan +=
             "   </div>\n" +
+            "</div>" +
             "</div>";
+    };
+    function add_row_chuc_vu() {
+        create_chuc_vu(stt_chuc_vu++,['0','0','0']);
+        loadViewDinhMuc(3);
+    };
+    function loadViewDinhMuc(loai_dm){
+        if(loai_dm==1){
+            // dùng chung
+            $("#tab_dinh_muc").html(html_dung_chung);
+        }else
+        if(loai_dm==2){
+            // phòng ban
+            $("#tab_dinh_muc").html(html_bo_phan);
+        }else
+        if(loai_dm==3){
+            // chức vụ
+            $("#tab_dinh_muc").html(html_chuc_vu);
+        }else{
+            $("#tab_dinh_muc").html("");
+        };
+    };
+    jQuery(document).ready(function($) {
 
         var ajaxDataTable = $('#data-table').DataTable({
             'processing': true,
@@ -316,6 +377,13 @@
 
             if(recipient=="add"){
                 create_dung_chung();
+                html_bo_phan = "";
+                stt_bo_phan = 1;
+                create_bo_phan();
+                html_chuc_vu ="";
+                stt_chuc_vu = 1;
+                create_chuc_vu();
+                //
                 $('#myModalLabel').text("<?=lang('DMTaiSanLang.add_dm')?>");
                 $('#ma_dm').prop("readonly",false);
             }else {
@@ -332,8 +400,25 @@
                         if(dinh_muc == 1){
                             data.forEach(async (dm)=>{
                                 var row = [dm.ma_dm,dm.dinh_muc,dm.don_gia];
-                                create_dung_chung(2,row );
-                                console.log(html_dung_chung);
+                                create_dung_chung(1,row );
+
+                            });
+                        } else
+                        if(dinh_muc == 2){
+                            html_bo_phan = "";
+                            stt_bo_phan = 1;
+                            data.forEach(async (dm)=>{
+                                var row = [dm.ma_dm,dm.dinh_muc,dm.don_gia];
+                                create_dung_chung(stt_bo_phan,row );
+                                stt_bo_phan++;
+                            });
+                        }else{
+                            html_chuc_vu ="";
+                            stt_chuc_vu = 1;
+                            data.forEach(async (dm)=>{
+                                var row = [dm.ma_dm,dm.dinh_muc,dm.don_gia];
+                                create_chuc_vu(stt_chuc_vu,row );
+                                stt_chuc_vu++;
                             });
                         }
                     },
@@ -375,6 +460,16 @@
                 });
             });
         });
+        $('#smallModal_DinhMuc').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget) // Button that triggered the modal
+            var recipient = button.data('id_row_dinh_muc') // Extract info from data-* attributes
+            $("#modal-btn-yes_dm").on("click", function(event){
+                $("#smallModal_DinhMuc").modal('hide');
+                event.preventDefault();
+                $("#"+recipient).remove();
+                console.log(recipient);
+            });
+        });
         $('#form_id').on('submit', function (event) {
             event.preventDefault();
             $("#response_success").hide('fast');
@@ -405,25 +500,10 @@
                 }
             });
         });
-        function loadViewDinhMuc(loai_dm){
-            if(loai_dm==1){
-                // dùng chung
-                console.log(html_dung_chung);
-                $("#tab_dinh_muc").html(html_dung_chung);
-            }else
-            if(loai_dm==2){
-                // phòng ban
-                $("#tab_dinh_muc").html(html_bo_phan);
-            }else
-            if(loai_dm==3){
-                // chức vụ
-                $("#tab_dinh_muc").html(html_chuc_vu);
-            }else{
-                $("#tab_dinh_muc").html("");
-            };
-        };
+
         $('#dinh_muc').change(function(){
            loadViewDinhMuc(this.value);
         });
+
     });
 </script>
