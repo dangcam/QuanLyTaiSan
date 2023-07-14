@@ -1,0 +1,22 @@
+ERROR - 2023-07-14 03:02:33 --> mysqli_sql_exception: Duplicate entry 'DMTS0001-BP001' for key 'PRIMARY' in D:\Xampp\htdocs\QuanLyTaiSan\system\Database\MySQLi\Connection.php:295
+Stack trace:
+#0 D:\Xampp\htdocs\QuanLyTaiSan\system\Database\MySQLi\Connection.php(295): mysqli->query('INSERT INTO `di...', 0)
+#1 D:\Xampp\htdocs\QuanLyTaiSan\system\Database\BaseConnection.php(691): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `di...')
+#2 D:\Xampp\htdocs\QuanLyTaiSan\system\Database\BaseConnection.php(605): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `di...')
+#3 D:\Xampp\htdocs\QuanLyTaiSan\system\Database\BaseBuilder.php(2309): CodeIgniter\Database\BaseConnection->query('INSERT INTO `di...', Array, false)
+#4 D:\Xampp\htdocs\QuanLyTaiSan\app\Models\DMTaiSanModel.php(64): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 D:\Xampp\htdocs\QuanLyTaiSan\app\Controllers\Dashboard\DMTaiSanController.php(71): App\Models\DMTaiSanModel->edit_dm(Array)
+#6 D:\Xampp\htdocs\QuanLyTaiSan\system\CodeIgniter.php(934): App\Controllers\Dashboard\DMTaiSanController->edit_dm()
+#7 D:\Xampp\htdocs\QuanLyTaiSan\system\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard\DMTaiSanController))
+#8 D:\Xampp\htdocs\QuanLyTaiSan\system\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 D:\Xampp\htdocs\QuanLyTaiSan\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2023-07-14 03:02:33 --> Duplicate entry 'DMTS0001-BP001' for key 'PRIMARY'
+in SYSTEMPATH\Database\BaseConnection.php on line 645.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2309): CodeIgniter\Database\BaseConnection->query('INSERT INTO `dinh_muc` (`ma_dm`, `dinh_muc`, `don_gia`, `ma_dm_ts`) VALUES (:ma_dm:, :dinh_muc:, :don_gia:, :ma_dm_ts:)', [...], false)
+ 2 APPPATH\Models\DMTaiSanModel.php(64): CodeIgniter\Database\BaseBuilder->insert([...])
+ 3 APPPATH\Controllers\Dashboard\DMTaiSanController.php(71): App\Models\DMTaiSanModel->edit_dm([...])
+ 4 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Dashboard\DMTaiSanController->edit_dm()
+ 5 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard\DMTaiSanController))
+ 6 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
