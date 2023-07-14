@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th7 07, 2023 lúc 11:18 AM
+-- Thời gian đã tạo: Th7 14, 2023 lúc 06:09 AM
 -- Phiên bản máy phục vụ: 10.4.28-MariaDB
 -- Phiên bản PHP: 8.0.28
 
@@ -41,7 +41,8 @@ CREATE TABLE `bo_phan` (
 --
 
 INSERT INTO `bo_phan` (`ma_bp`, `ten_bp`, `truc_thuoc`, `ghi_chu`, `chuong_md`, `khoan_md`) VALUES
-('BP001', 'Bộ phận 001', '', '', '', '');
+('BP001', 'Bộ phận 001', '', '', '', ''),
+('BP002', 'Bộ phận 002', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -115,6 +116,13 @@ CREATE TABLE `dinh_muc` (
   `don_gia` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- Đang đổ dữ liệu cho bảng `dinh_muc`
+--
+
+INSERT INTO `dinh_muc` (`ma_dm_ts`, `ma_dm`, `dinh_muc`, `don_gia`) VALUES
+('DMTS0001', 'dung_chung', 250, 360);
+
 -- --------------------------------------------------------
 
 --
@@ -122,13 +130,20 @@ CREATE TABLE `dinh_muc` (
 --
 
 CREATE TABLE `dm_tai_san` (
-  `ma_dm` int(20) NOT NULL,
+  `ma_dm` varchar(20) NOT NULL,
   `ten_dm` varchar(100) NOT NULL,
   `thuoc_loai` varchar(20) NOT NULL,
   `don_vi` varchar(10) NOT NULL,
   `dinh_muc` int(1) NOT NULL,
   `su_dung` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `dm_tai_san`
+--
+
+INSERT INTO `dm_tai_san` (`ma_dm`, `ten_dm`, `thuoc_loai`, `don_vi`, `dinh_muc`, `su_dung`) VALUES
+('DMTS0001', 'Loại định mức tài sản 001', '', 'Cái', 1, 1);
 
 -- --------------------------------------------------------
 
