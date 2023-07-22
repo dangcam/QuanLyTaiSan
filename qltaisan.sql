@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th7 21, 2023 lúc 12:54 PM
--- Phiên bản máy phục vụ: 10.4.28-MariaDB
--- Phiên bản PHP: 8.0.28
+-- Thời gian đã tạo: Th7 22, 2023 lúc 07:06 PM
+-- Phiên bản máy phục vụ: 10.4.27-MariaDB
+-- Phiên bản PHP: 8.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -439,6 +439,35 @@ INSERT INTO `nhom_tai_san` (`id`, `ten_nts`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Cấu trúc bảng cho bảng `tai_san`
+--
+
+CREATE TABLE `tai_san` (
+  `nam_ke_khai` int(11) NOT NULL,
+  `loai_tai_san` varchar(20) NOT NULL,
+  `ma_tai_san` varchar(20) NOT NULL,
+  `ten_tai_san` varchar(100) NOT NULL,
+  `so_luong` int(11) NOT NULL,
+  `don_vi_tinh` varchar(10) NOT NULL,
+  `bo_phan_su_dung` varchar(20) NOT NULL,
+  `hien_trang_su_dung` int(11) NOT NULL,
+  `ngay_mua` varchar(10) NOT NULL,
+  `ngay_bd_su_dung` varchar(10) NOT NULL,
+  `ngay_ghi_tang` varchar(10) NOT NULL,
+  `nam_theo_doi` int(11) NOT NULL,
+  `ngay_bd_tinh_hm` varchar(10) NOT NULL,
+  `so_nam_su_dung` int(11) NOT NULL,
+  `ty_le_hao_mon` float NOT NULL,
+  `hm_kh_nam` int(11) NOT NULL,
+  `so_nam_sd_con_lai` int(11) NOT NULL,
+  `ngay_kt_hm` varchar(10) NOT NULL,
+  `hm_luy_ke` int(11) NOT NULL,
+  `gia_tri_don_lai` float NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Cấu trúc bảng cho bảng `thiet_bi_yte`
 --
 
@@ -682,6 +711,12 @@ ALTER TABLE `khoan_md`
   ADD PRIMARY KEY (`ma`);
 
 --
+-- Chỉ mục cho bảng `loai_tai_san`
+--
+ALTER TABLE `loai_tai_san`
+  ADD PRIMARY KEY (`ma_loai_ts`);
+
+--
 -- Chỉ mục cho bảng `loai_ts_duong_bo`
 --
 ALTER TABLE `loai_ts_duong_bo`
@@ -716,6 +751,12 @@ ALTER TABLE `nha_cung_cap`
 --
 ALTER TABLE `nhom_tai_san`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Chỉ mục cho bảng `tai_san`
+--
+ALTER TABLE `tai_san`
+  ADD PRIMARY KEY (`loai_tai_san`);
 
 --
 -- Chỉ mục cho bảng `thiet_bi_yte`
