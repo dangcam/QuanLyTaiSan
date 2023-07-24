@@ -21,6 +21,7 @@ return[
     'page_title_position' => 'Position',
     'page_title_department' => 'Asset use department',
     'page_title_property_norms' => 'Type of property norm',
+    'page_title_tai_san' => 'List of assets',
 
     'do_not_have_permission' => 'You do not have permission!',
 
@@ -43,6 +44,7 @@ return[
     'yes' => 'Yes',
     'no' => 'No',
     'please_enter_information'=> 'Please enter information',
+    'year' => 'Year',
     // menu
     'dashboard' => 'Dashboard',
     'management' => 'Management',
@@ -71,6 +73,7 @@ return[
     'report_group_manager' => 'Report Group',
     'report_group_print' => 'Report Group View',
     'nha_cung_cap' => 'Supplies',
+    'tai_san' => 'Assets',
 
 
     'add_data_unsuccessful' => 'Add data unsuccessful',

@@ -157,6 +157,9 @@ $routes->group('dashboard',['filter'=>'authFilters'], static function ($routes) 
         $routes->post('data_report_group_print','Dashboard\ReportGroupController::data_report_group_print');
         $routes->post('save_report_group','Dashboard\ReportGroupController::save_report_group');
     });
+    $routes->group('tai_san',static function($routes) {
+        $routes->get('/', 'Dashboard\TaiSanController::index');
+    });
 });
 //$routes->post('login', 'Login::index');
 

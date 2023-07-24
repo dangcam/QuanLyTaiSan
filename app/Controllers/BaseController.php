@@ -71,7 +71,17 @@ abstract class BaseController extends Controller
 
     public function silebar_view()
     {
-        $response = '<li class="nav-label">'.lang('category').'</li>
+        $response ='';
+        $response .= '<li><a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                        <i class="icon icon-layers-3"></i><span class="nav-text">'.lang('AppLang.tai_san').'</span></a>
+                        <ul aria-expanded="false">';
+        if($this->libauth->checkFunction('tai_san','view'))
+            $response .= '<li><a href="'.base_url().'dashboard/tai_san">'.lang('AppLang.tai_san').'</a></li>';
+
+        $response .= '  </ul>
+                      </li>';
+
+        $response .= '<li class="nav-label">'.lang('category').'</li>
                     <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
                         class="icon icon-tablet-mobile"></i><span class="nav-text">'.lang('AppLang.type_asset').'</span></a>
                         <ul aria-expanded="false">';
@@ -83,7 +93,6 @@ abstract class BaseController extends Controller
             $response .= '<li><a href="'.base_url().'dashboard/tool">'.lang('AppLang.tool').'</a></li>';
         if($this->libauth->checkFunction('tbyte','view'))
             $response .= '<li><a href="'.base_url().'dashboard/tbyte">'.lang('AppLang.tbyte').'</a></li>';
-
         $response .= '  </ul>
                       </li>';
 

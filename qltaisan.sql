@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th7 22, 2023 lúc 07:06 PM
--- Phiên bản máy phục vụ: 10.4.27-MariaDB
--- Phiên bản PHP: 8.2.0
+-- Thời gian đã tạo: Th7 24, 2023 lúc 11:46 AM
+-- Phiên bản máy phục vụ: 10.4.28-MariaDB
+-- Phiên bản PHP: 8.0.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -213,6 +213,7 @@ INSERT INTO `functions` (`function_id`, `function_name`, `function_status`, `fun
 ('property_norms', 'property_norms', 1, 3),
 ('provide_equipment', 'provide_equipment', 1, 4),
 ('report_group', 'report_group_manager', 1, 0),
+('tai_san', 'tai_san', 1, 5),
 ('tbyte', 'tbyte', 1, 2),
 ('type_asset', 'type_asset', 1, 2),
 ('type_road', 'type_road', 1, 2),
@@ -451,6 +452,9 @@ CREATE TABLE `tai_san` (
   `don_vi_tinh` varchar(10) NOT NULL,
   `bo_phan_su_dung` varchar(20) NOT NULL,
   `hien_trang_su_dung` int(11) NOT NULL,
+  `trang_thai` int(11) NOT NULL,
+  `nguon_hinh_thanh` varchar(20) NOT NULL,
+  `gia_tri` int(11) NOT NULL,
   `ngay_mua` varchar(10) NOT NULL,
   `ngay_bd_su_dung` varchar(10) NOT NULL,
   `ngay_ghi_tang` varchar(10) NOT NULL,
@@ -462,7 +466,7 @@ CREATE TABLE `tai_san` (
   `so_nam_sd_con_lai` int(11) NOT NULL,
   `ngay_kt_hm` varchar(10) NOT NULL,
   `hm_luy_ke` int(11) NOT NULL,
-  `gia_tri_don_lai` float NOT NULL
+  `gia_tri_con_lai` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
@@ -627,6 +631,7 @@ INSERT INTO `user_function` (`user_id`, `function_id`, `function_view`, `functio
 ('admin', 'property_norms', 1, 1, 1, 1),
 ('admin', 'provide_equipment', 1, 1, 1, 1),
 ('admin', 'report_group', 1, 1, 1, 1),
+('admin', 'tai_san', 1, 1, 1, 1),
 ('admin', 'tbyte', 1, 1, 1, 1),
 ('admin', 'type_asset', 1, 1, 1, 1),
 ('admin', 'type_road', 1, 1, 1, 1),
