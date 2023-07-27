@@ -52,3 +52,77 @@
 
     </div>
 </div>
+
+<script src="vendor/datatables/js/jquery.dataTables.min.js"></script>
+<link href="vendor/datatables.net-bs4/css/dataTables.bootstrap4.min.css" rel="stylesheet">
+<script src="vendor/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="js/plugins-init/datatables.init.js"></script>
+
+<script>
+    jQuery(document).ready(function($) {
+        var ajaxDataTable = $('#data-table').DataTable({
+            'processing': true,
+            'serverSide': true,
+            'serverMethod': 'post',
+            "aLengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "<?= lang('AppLang.all') ?>"]],
+            'searching': true, // Remove default Search Control
+            'ajax': {
+                'url': '<?=base_url()?>dashboard/tai_san/tai_san_ajax',
+                'data': function (data) {
+                    data.searchYear = $('#nam_ke_khai').val();
+                }
+            },
+            'columns': [
+                {data: 'ma_tai_san'},
+                {data: 'ten_tai_san'},
+                {data: 'loai_tai_san'},
+                {data: 'bo_phan_su_dung'},
+                {data: 'so_luong'},
+                {data: 'gia_tri'},
+                {data: 'hm_luy_ke'},
+                {data: 'gia_tri_con_lai'},
+                {data: 'ngay_ghi_tang'},
+                {data: 'trang_thai'},
+                {data: 'active'}
+            ]
+        });
+
+        $('#nam_ke_khai').change(function(){
+            ajaxDataTable.draw();
+        });
+        // Delete
+        $('#smallModal').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget) // Button that triggered the modal
+            var recipient = button.data('group_id') // Extract info from data-* attributes
+            $("#modal-btn-yes").on("click", function(event){
+                $("#smallModal").modal('hide');
+                event.preventDefault();
+                $("#response_success").hide('fast');
+                $("#response_danger").hide('fast');
+                $.ajax({
+                    url: '<?= base_url() ?>dashboard/group/delete_group',
+                    type: 'POST',
+                    data: { group_id:recipient },
+                    dataType:"json",
+                    success:function (data) {
+                        if(data[0]==0){
+                            $("#response_success").show('fast');
+                            $("#response_success").html(data[1]);
+                            groupDataTable.ajax.reload();
+                            treeGroup();
+                        }else {
+                            $("#response_danger").show('fast');
+                            $("#response_danger").html(data[1]);
+                        }
+                    },
+                    error:function (data) {
+                        $("#response_danger").show('fast');
+                        $("#response_danger").html(data);
+                    }
+                });
+            });
+        });
+
+
+    });
+</script>

@@ -102,6 +102,11 @@ class TaiSanModel Extends BaseModel
         $tb = $this->db->table('trang_thai');
         return $tb->get()->getResult();
     }
+    public function listBoPhan()
+    {
+        $tb = $this->db->table('bo_phan');
+        return $tb->get()->getResult();
+    }
     public function dicNhomTaiSan($list)
     {
         $data = array();
@@ -135,6 +140,17 @@ class TaiSanModel Extends BaseModel
         }
         return $data;
     }
+    public function dicBoPhan($list)
+    {
+        $data = array();
+        if (count($list)) {
+            foreach ($list as $key => $item) {
+                if(!isset($data[$item->ma_bp]))
+                    $data[$item->ma_bp] = $item->ten_bp;
+            }
+        }
+        return $data;
+    }
     public function getTaiSan($postData=null){
         ## Read value
         $draw = $postData['draw'];
@@ -144,30 +160,28 @@ class TaiSanModel Extends BaseModel
         $columnName = $postData['columns'][$columnIndex]['data']; // Column name
         $columnSortOrder = $postData['order'][0]['dir']; // asc or desc
         $strInput=$postData['search']['value'];
-
+        // Custom search filter
+        $searchYear = $postData['searchYear'];
         //
         ## Total number of records without filtering
-        $this->select('count(*) as allcount');
+        $this->select('count(*) as allcount')->where('nam_ke_khai',$searchYear);
         $records = $this->find();
         $totalRecords = $records[0]->allcount;
         ## Fetch records
-        $this->like('ten_tai_san',$strInput);
+        $this->like('ten_tai_san',$strInput)->where('nam_ke_khai',$searchYear);
         $this->orderBy($columnName, $columnSortOrder);
         if($rowperpage!=-1)
             $this->limit($rowperpage, $start);
         $records = $this->find();
 
-        $dicNhomTaiSan = $this->dicNhomTaiSan($this->listNhomTaiSan());
-        $dicTKNguyenGia = $this->dicTK($this->listTKNguyenGia());
-        $dicTKHaoMon = $this->dicTK($this->listTKHaoMon());
-        $dicTieuMuc = $this->dicTieuMuc($this->listTieuMuc());
+        $dicBoPhan = $this->dicBoPhan($this->listBoPhan());
         $data = array();
         foreach($records as $record ){
             $data[] = array(
                 "ma_tai_san"=>$record->ma_tai_san,
                 "ten_tai_san"=>$record->ten_tai_san,
                 "loai_tai_san"=>$record->loai_tai_san,
-                "bo_phan_su_dung"=>isset($dicNhomTaiSan[$record->bo_phan_su_dung])?$dicNhomTaiSan[$record->bo_phan_su_dung]:$record->bo_phan_su_dung,
+                "bo_phan_su_dung"=>isset($dicBoPhan[$record->bo_phan_su_dung])?$dicBoPhan[$record->bo_phan_su_dung]:$record->bo_phan_su_dung,
                 "so_luong"=>$record->so_luong,
                 "gia_tri"=>$record->gia_tri,
                 "hm_luy_ke"=>$record->hm_luy_ke,
