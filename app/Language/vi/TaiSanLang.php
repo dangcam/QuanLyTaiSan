@@ -26,6 +26,8 @@ return[
     'gia_tri_con_lai' => 'Giá trị đơn hàng',
     //
     'khai_bao_tai_san' => 'Khai báo tài sản',
+    'thong_tin_chung' => 'Thông tin chung',
+    'thong_tin_hm' => 'Thông tin hao mòn',
 
     'add_taisan'=>'Thêm tài sản',
     'edit_taisan' => 'Sửa tài sản',

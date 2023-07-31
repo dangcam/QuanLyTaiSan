@@ -26,6 +26,8 @@ return[
     'gia_tri_con_lai' => 'Order value',
     //
     'khai_bao_tai_san' => 'Declare asset',
+    'thong_tin_chung' => 'Info general',
+    'thong_tin_hm' => 'Info atrophy',
 
     'add_taisan'=>'Add Asset',
     'edit_taisan' => 'Edit Asset',
