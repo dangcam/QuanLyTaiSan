@@ -10,19 +10,13 @@
                 <div class="col-sm-6 p-md-0">
                     <div class="form-group row">
                         <div class="col-lg-6">
-                            <select class="form-control" id="val-skill" name="val-skill">
-                                <option value="">Please select</option>
-                                <option value="html">HTML</option>
-                                <option value="css">CSS</option>
-                                <option value="javascript">JavaScript</option>
-                                <option value="angular">Angular</option>
-                                <option value="angular">React</option>
-                                <option value="vuejs">Vue.js</option>
-                                <option value="ruby">Ruby</option>
-                                <option value="php">PHP</option>
-                                <option value="asp">ASP.NET</option>
-                                <option value="python">Python</option>
-                                <option value="mysql">MySQL</option>
+                            <select class="form-control" id="loai_tai_san" name="loai_tai_san">
+                                <?php if (isset($list_nhom_tai_san) && count($list_nhom_tai_san)) :
+                                    foreach ($list_nhom_tai_san as $key => $item) : ?>
+                                        <option value="<?=$item->id?>"><?=$item->ten_nts?></option>
+                                    <?php
+                                    endforeach;
+                                endif ?>
                             </select>
                         </div>
                         <button type="button" onclick="location.href='<?= base_url() ?>dashboard/tai_san'"
@@ -93,42 +87,55 @@
                                     <div class="form-row">
                                         <div class="form-group col-md-6">
                                             <label><?=lang('TaiSanLang.ngay_mua')?></label>
-                                            <input type="text" class="form-control" placeholder="" id="mdate" data-dtp="dtp_fyJxr">
+                                            <input type="date" name="ngay_mua" id="ngay_mua" class="form-control" placeholder=""  >
                                         </div>
                                         <div class="form-group col-md-6">
-                                            <label>Email</label>
-                                            <input type="email" class="form-control" placeholder="Email">
+                                            <label><?=lang('TaiSanLang.ngay_bd_su_dung')?></label>
+                                            <input type="date" name="ngay_bd_su_dung" id="ngay_bd_su_dung" class="form-control"  placeholder="">
                                         </div>
                                         <div class="form-group col-md-6">
-                                            <label>Password</label>
-                                            <input type="password" class="form-control" placeholder="Password">
+                                            <label><?=lang('TaiSanLang.ngay_ghi_tang')?></label>
+                                            <input type="date" name="ngay_ghi_tang" id="ngay_ghi_tang" class="form-control" placeholder="">
                                         </div>
-                                        <div class="form-group col-md-6">
-                                            <label>City</label>
-                                            <input type="text" class="form-control">
+                                        <div class="form-group col-md-4">
+                                            <label><?=lang('TaiSanLang.nam_theo_doi')?></label>
+                                            <input type="text" name="nam_theo_doi" id="nam_theo_doi" readonly class="form-control">
                                         </div>
                                     </div>
                                     <div class="form-row">
-                                        <div class="form-group col-md-4">
-                                            <label>State</label>
-                                            <select id="inputState" class="form-control">
-                                                <option selected="">Choose...</option>
-                                                <option>Option 1</option>
-                                                <option>Option 2</option>
-                                                <option>Option 3</option>
-                                            </select>
+                                        <div class="form-group col-md-6">
+                                            <label><?=lang('TaiSanLang.ngay_bd_tinh_hm')?></label>
+                                            <input type="date" name="ngay_bd_tinh_hm" id="ngay_bd_tinh_hm" class="form-control">
                                         </div>
-                                        <div class="form-group col-md-2">
-                                            <label>Zip</label>
-                                            <input type="text" class="form-control">
+                                        <div class="form-group col-md-6">
+                                            <label><?=lang('TaiSanLang.so_nam_su_dung')?></label>
+                                            <input type="text" name="so_nam_su_dung" id="so_nam_su_dung" class="form-control">
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label><?=lang('TaiSanLang.ty_le_hao_mon')?></label>
+                                            <input type="text" name="ty_le_hao_mon" id="ty_le_hao_mon" readonly class="form-control">
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label><?=lang('TaiSanLang.hm_kh_nam')?></label>
+                                            <input type="text" name="hm_kh_nam" id="hm_kh_nam" class="form-control">
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label><?=lang('TaiSanLang.so_nam_sd_con_lai')?></label>
+                                            <input type="text" name="so_nam_sd_con_lai" id="so_nam_sd_con_lai" readonly class="form-control">
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label><?=lang('TaiSanLang.ngay_kt_hm')?></label>
+                                            <input type="date" name="ngay_kt_hm" id="ngay_kt_hm" class="form-control">
                                         </div>
                                     </div>
-                                    <div class="form-group">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox">
-                                            <label class="form-check-label">
-                                                Check me out
-                                            </label>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label><?=lang('TaiSanLang.hm_luy_ke')?></label>
+                                            <input type="text" name="hm_luy_ke" id="hm_luy_ke" class="form-control">
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label><?=lang('TaiSanLang.gia_tri_con_lai')?></label>
+                                            <input type="text" name="gia_tri_con_lai" id="gia_tri_con_lai" readonly class="form-control">
                                         </div>
                                     </div>
                             </div>
@@ -141,33 +148,3 @@
     </div>
 </div>
 
-<!-- Daterangepicker -->
-<!-- momment js is must -->
-<script src="vendor/moment/moment.min.js"></script>
-<script src="vendor/bootstrap-daterangepicker/daterangepicker.js"></script>
-
-<!-- clockpicker -->
-<script src="vendor/clockpicker/js/bootstrap-clockpicker.min.js"></script>
-<!-- asColorPicker -->
-<script src="vendor/jquery-asColor/jquery-asColor.min.js"></script>
-<script src="vendor/jquery-asGradient/jquery-asGradient.min.js"></script>
-<script src="vendor/jquery-asColorPicker/js/jquery-asColorPicker.min.js"></script>
-<!-- Material color picker -->
-<script src="vendor/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js"></script>
-<!-- pickdate -->
-<script src="vendor/pickadate/picker.js"></script>
-<script src="vendor/pickadate/picker.time.js"></script>
-<script src="vendor/pickadate/picker.date.js"></script>
-
-
-
-<!-- Daterangepicker -->
-<script src="js/plugins-init/bs-daterange-picker-init.js"></script>
-<!-- Clockpicker init -->
-<script src="js/plugins-init/clock-picker-init.js"></script>
-<!-- asColorPicker init -->
-<script src="js/plugins-init/jquery-asColorPicker.init.js"></script>
-<!-- Material color picker init -->
-<script src="js/plugins-init/material-date-picker-init.js"></script>
-<!-- Pickdate -->
-<script src="js/plugins-init/pickadate-init.js"></script>

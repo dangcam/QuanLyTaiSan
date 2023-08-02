@@ -23,7 +23,7 @@ return[
     'so_nam_sd_con_lai' => 'Số năm SD còn lại',
     'ngay_kt_hm' => 'Ngày KT HM',
     'hm_luy_ke' => 'HM luỹ kế',
-    'gia_tri_con_lai' => 'Giá trị đơn hàng',
+    'gia_tri_con_lai' => 'Giá trị còn lại',
     //
     'khai_bao_tai_san' => 'Khai báo tài sản',
     'thong_tin_chung' => 'Thông tin chung',
