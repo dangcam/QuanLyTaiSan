@@ -251,7 +251,7 @@
             "<div class=\"form-row\" id=\""+stt+"_nguon_hinh_thanh\">" +
             " <div class=\"form-group col-md-3\">\n" +
             "   <label><?=lang('TaiSanLang.nguon_hinh_thanh')?></label>\n" +
-            "   <select class=\"custom-select\" id=\"\" name=\"data["+stt+"][ma_kp]\" value=\""+data[0]+"\">\n";
+            "   <select class=\"custom-select\" id=\"nguon_hinh_thanh_ma_kp_"+stt+"\" name=\"data["+stt+"][ma_kp]\" value=\""+data[0]+"\">\n";
 
         <?php if (isset($list_kinh_phi) && count($list_kinh_phi)) :
         foreach ($list_kinh_phi as $key => $item) : ?>
@@ -293,7 +293,9 @@
         // Lặp qua các giá trị trong biến giaTriValues
         Object.keys(giaTriValues).forEach((inputId) => {
             const giaTri = giaTriValues[inputId];
-            //console.log(`Trường nhập ${inputId}: Giá trị ban đầu = ${giaTri}`);
+            $('#nguon_hinh_thanh_ma_kp_'+inputId).val(giaTriValues[inputId][0]);
+            $('#nguon_hinh_thanh_gia_tri_'+inputId).val( parseFloat(giaTriValues[inputId][1]|| 0));
+            console.log(`Trường nhập ${inputId}: Giá trị ban đầu = ${giaTri}`);
         });
         set_Listener_input_gia_tri();
     };
@@ -309,12 +311,15 @@
         const giaTriElements = document.querySelectorAll('input[id^="nguon_hinh_thanh_gia_tri"]');
         giaTriElements.forEach((element) => {
             const match = element.id.match(/\d+/);
-            if (match) {
-                console.log(parseInt(match[0]);
+            if (match.length>0) {
+                giaTriValues[match[0]][1] = parseFloat(element.value || 0);
+                giaTriValues[match[0]][0] = $('#nguon_hinh_thanh_ma_kp_'+match[0]).val();
                 sum += parseFloat(element.value || 0); // Nếu giá trị rỗng hoặc không hợp lệ, coi như là 0
             }
         });
-        alert(`Tổng giá trị là: ${sum}`);
+        const tongNguyenGiaLabel = document.getElementById("tong_nguyen_gia");
+        tongNguyenGiaLabel.innerText = `${sum.toLocaleString()}`;
+        //alert(`Tổng giá trị là: ${sum}`);
     }
     function set_Listener_input_gia_tri() {
         // Lắng nghe sự kiện "input" của các trường nhập
