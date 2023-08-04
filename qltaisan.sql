@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th7 26, 2023 lúc 01:16 PM
+-- Thời gian đã tạo: Th8 04, 2023 lúc 12:30 PM
 -- Phiên bản máy phục vụ: 10.4.28-MariaDB
 -- Phiên bản PHP: 8.0.28
 
@@ -444,14 +444,20 @@ INSERT INTO `nhom_tai_san` (`id`, `ten_nts`) VALUES
 --
 
 CREATE TABLE `tai_san` (
-  `nam_ke_khai` int(11) NOT NULL,
+  `nhom_tai_san` int(11) NOT NULL,
   `loai_tai_san` varchar(20) NOT NULL,
   `ma_tai_san` varchar(20) NOT NULL,
   `ten_tai_san` varchar(100) NOT NULL,
+  `ly_do_tang` varchar(20) NOT NULL,
   `so_luong` int(11) NOT NULL,
   `don_vi_tinh` varchar(10) NOT NULL,
   `bo_phan_su_dung` varchar(20) NOT NULL,
-  `hien_trang_su_dung` int(11) NOT NULL,
+  `quan_ly_nha_nuoc` int(11) NOT NULL,
+  `hdsn_kkd` int(11) NOT NULL,
+  `hdsn_kd` int(11) NOT NULL,
+  `hdsn_ldlk` int(11) NOT NULL,
+  `hdsn_ct` int(11) NOT NULL,
+  `su_dung_khac` int(11) NOT NULL,
   `trang_thai` int(11) NOT NULL,
   `nguon_hinh_thanh` varchar(20) NOT NULL,
   `gia_tri` int(11) NOT NULL,
@@ -761,7 +767,7 @@ ALTER TABLE `nhom_tai_san`
 -- Chỉ mục cho bảng `tai_san`
 --
 ALTER TABLE `tai_san`
-  ADD PRIMARY KEY (`loai_tai_san`);
+  ADD PRIMARY KEY (`ma_tai_san`);
 
 --
 -- Chỉ mục cho bảng `thiet_bi_yte`
