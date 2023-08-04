@@ -88,9 +88,9 @@ class TaiSanModel Extends BaseModel
         $tb = $this->db->table('nhom_tai_san');
         return $tb->get()->getResult();
     }
-    public function listTKHaoMon()
+    public function listKinhPhi()
     {
-        $tb = $this->db->table('tk_hao_mon');
+        $tb = $this->db->table('nguon_kinh_phi');
         return $tb->get()->getResult();
     }
     public function listTKNguyenGia()

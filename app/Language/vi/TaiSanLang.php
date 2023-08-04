@@ -37,6 +37,7 @@ return[
     'thong_tin_chung' => 'Thông tin chung',
     'thong_tin_hm' => 'Thông tin hao mòn',
     'nguyen_gia' => 'Nguyên giá',
+    'tong_nguyen_gia' => 'TỔNG NGUYÊN GIÁ',
     'gia_tri' => 'Giá trị',
 
     'add_taisan'=>'Thêm tài sản',

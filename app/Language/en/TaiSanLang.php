@@ -30,6 +30,7 @@ return[
     'thong_tin_chung' => 'Info general',
     'thong_tin_hm' => 'Info atrophy',
     'nguyen_gia' => 'Original price',
+    'tong_nguyen_gia' => 'Total Original price',
     'gia_tri' => 'Value',
 
     'add_taisan'=>'Add Asset',

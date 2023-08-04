@@ -18,7 +18,7 @@ class TaiSanController extends BaseController
     public function tai_san_ct()
     {
         $meta = array('page_title'=>lang('AppLang.page_title_tai_san'));
-        $data['list_loai_tai_san'] = $this->tai_san_model->listLoaiTaiSan();
+        $data['list_kinh_phi'] = $this->tai_san_model->listKinhPhi();
         $data['list_nhom_tai_san'] = $this->tai_san_model->listNhomTaiSan();
         return $this->page_construct('dashboard/tai_san_ct_view',$meta,$data);
     }

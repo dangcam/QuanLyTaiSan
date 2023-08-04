@@ -1,6 +1,6 @@
 <div class="content-body">
     <div class="container-fluid">
-        <form>
+        <form method="post" id="form_id">
             <div class="row page-titles mx-0">
                 <div class="col-sm-6 p-md-0">
                     <div class="welcome-text">
@@ -21,8 +21,15 @@
                             </select>
                         </div>
                         <button type="button" onclick="location.href='<?= base_url() ?>dashboard/tai_san'"
-                                id="btn_cancel" class="btn btn-warning"><?=lang('AppLang.cancel')?></button>                    </div>
+                                id="btn_cancel" class="btn btn-warning"><?=lang('AppLang.cancel')?></button>
+                    </div>
                 </div>
+                <!---->
+                <div class="alert alert-success alert-alt"role="alert" id="response_success"></div>
+                <div class="alert alert-info alert-alt"role="alert" id="response_info"></div>
+                <div class="alert alert-warning alert-alt "role="alert" id="response_warning"></div>
+                <div class="alert alert-danger alert-alt" role="alert" id="response_danger"></div>
+                <!---->
             </div>
             <div class="row">
                 <div class="col-lg-8">
@@ -63,10 +70,9 @@
                                     <div class="form-group col-md-3">
                                         <label><?=lang('TaiSanLang.don_vi_tinh')?> <span class="text-danger">*</span></label>
                                         <select id="don_vi_tinh" name="don_vi_tinh" class="form-control">
-                                            <option>Tiếp nhận</option>
-                                            <option>Mua sắm</option>
-                                            <option>Kiểm kê phát hiện thừa</option>
-                                            <option>Khác</option>
+                                            <option>Mảnh</option>
+                                            <option>Cái</option>
+                                            <option>Chiếc</option>
                                         </select>
                                     </div>
                                     <div class="form-group col-md-6">
@@ -84,8 +90,11 @@
                                 <div class="form-group">
                                     <h6><?=lang('TaiSanLang.nguyen_gia')?> <span class="text-danger">*</span></h6>
                                     <div id="tab_nguon_hinh_thanh">
-
                                     </div>
+                                </div>
+                                <div class="form-row font-weight-bold">
+                                    <div class="form-group col-md-5"><label><?=lang('TaiSanLang.tong_nguyen_gia')?> </label></div>
+                                    <div class="form-group col-md-7"><label id ="tong_nguyen_gia"></label></div>
                                 </div>
                                 <div class="form-group">
                                     <h6><?=lang('TaiSanLang.hien_trang_su_dung')?> <span class="text-danger">*</span></h6>
@@ -128,6 +137,7 @@
                                         </div>
                                     </div>
                                 </div>
+                                <button type="submit" id="add_edit" name="add_tai_san" class="btn btn-primary "><?=lang('AppLang.save')?></button>
                             </div>
                         </div>
                     </div>
@@ -203,50 +213,117 @@
     </div>
 </div>
 <script type="text/javascript">
+    $('#form_id').on('submit', function (event) {
+        event.preventDefault();
+        $("#response_success").hide('fast');
+        $("#response_danger").hide('fast');
+        $("#response_danger_modal").hide('fast');
+        var name = $("#add_edit").attr("name");
+        var formData = $(this).serialize();
+        $.ajax({
+            url: "<?= base_url() ?>dashboard/dm_ts/"+name+"_dm",
+            method: "POST",
+            data: formData,
+            dataType: "json",
+            success: function (data) {
+                if (data[0]==0) {
+                    $("#response_success").show('fast');
+                    $("#response_success").html(data[1]);
+                    $('#myModal').modal('toggle');
+                    ajaxDataTable.ajax.reload();
+                } else {
+                    $("#response_danger_modal").show('fast');
+                    $("#response_danger_modal").html(data[1]);
+                }
+            },
+            error: function (data) {
+                $("#response_danger_modal").show('fast');
+                $("#response_danger_modal").html(data);
+            }
+        });
+    });
     let html_nguon_hinh_thanh = ""; // Nguồn kinh phí
     let stt_nguon_hinh_thanh = 0;
-    function create_nguon_hinh_thanh(stt=1,data = ['0','0','0']){
-        html_nguon_hinh_thanh +=
-            "<div class=\"form-row\" id=\""+stt+"nguon_hinh_thanh\">" +
-            " <div id=\""+stt+"nguon_hinh_thanh\" class=\"form-group col-md-3\">\n" +
+    const giaTriValues = {};
+    function create_nguon_hinh_thanh(stt=1,data = ['0','0']){
+        let
+        text_nguon_hinh_thanh =
+            "<div class=\"form-row\" id=\""+stt+"_nguon_hinh_thanh\">" +
+            " <div class=\"form-group col-md-3\">\n" +
             "   <label><?=lang('TaiSanLang.nguon_hinh_thanh')?></label>\n" +
             "   <select class=\"custom-select\" id=\"\" name=\"data["+stt+"][ma_kp]\" value=\""+data[0]+"\">\n";
 
         <?php if (isset($list_kinh_phi) && count($list_kinh_phi)) :
         foreach ($list_kinh_phi as $key => $item) : ?>
-        html_nguon_hinh_thanh +="<option value=\"<?=$item->ma_kp?>\" "+("<?=$item->ma_kp?>"==data[0]? "selected":"")+ " ><?=$item->ten_kp?></option>\n";
+        text_nguon_hinh_thanh +="<option value=\"<?=$item->ma_kp?>\" "+("<?=$item->ma_kp?>"==data[0]? "selected":"")+ " ><?=$item->ten_kp?></option>\n";
         <?php
         endforeach;
         endif ?>
-        html_nguon_hinh_thanh +=
+        text_nguon_hinh_thanh +=
             "   </select>\n" +
             "</div>"+
             "<div class=\"form-group col-md-3\">\n" +
-            "   <label><?=lang('DMTaiSanLang.gia_tri')?></label>\n" +
-            "       <input type=\"text\" id=\"\" name=\"data["+stt+"][gia_tri]\" value=\""+data[1]+"\" \n" +
+            "   <label><?=lang('TaiSanLang.gia_tri')?></label>\n" +
+            "       <input type=\"text\" id=\"nguon_hinh_thanh_gia_tri_"+stt+"\" name=\"data["+stt+"][gia_tri]\" value=\""+data[1]+"\" \n" +
             "           class=\"form-control\" placeholder=\"<?=lang('TaiSanLang.gia_tri')?>\">\n" +
             "</div>\n" +
             "<div class =\"form-group \">\n" +
             "   <label>Action</label>\n" +
             "   <div class=\"form-control\">" +
-            "           <a href=\"javascript:void(add_row_bo_phan())\" class=\"mr-4\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Add\">" +
+            "           <a href=\"javascript:void(add_row_nguon_hinh_thanh(['0','0']))\" class=\"mr-4\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Add\">" +
             "           <i class=\"fa fa-plus color-muted\"></i> </a>";
         if(stt>1) {
-            html_nguon_hinh_thanh +=
-                "          <a href=\"#\" data-toggle=\"modal\" data-target=\"#smallModal_DinhMuc\"\n" +
-                "             data-placement=\"top\" title=\"<?=lang('AppLang.delete')?>\" data-id_row_dinh_muc=\""+stt+"_bo_phan\">\n" +
+            text_nguon_hinh_thanh +=
+                "          <a href=\"javascript:void(remove_row_nguon_hinh_thanh('"+stt+"_nguon_hinh_thanh'))\" class=\"mr-4\" " +
+                "               data-toggle=\"tooltip\" data-placement=\"top\" title=\"<?=lang('AppLang.delete')?>\">" +
                 "           <i class=\"fa fa-close color-danger\"></i></a>\n"
         }
-        html_nguon_hinh_thanh +=
+        text_nguon_hinh_thanh +=
             "   </div>\n" +
             "</div>" +
             "</div>";
+        return text_nguon_hinh_thanh;
     };
-    function add_row_bo_phan() {
+    function add_row_nguon_hinh_thanh(data_row) {
         stt_nguon_hinh_thanh = stt_nguon_hinh_thanh+1;
-        create_nguon_hinh_thanh(stt_bo_phan,['0','0','0']);
+        giaTriValues[stt_nguon_hinh_thanh] = data_row;
+        html_nguon_hinh_thanh = $("#tab_nguon_hinh_thanh").html();
+        html_nguon_hinh_thanh += create_nguon_hinh_thanh(stt_nguon_hinh_thanh,data_row);
         $("#tab_nguon_hinh_thanh").html(html_nguon_hinh_thanh);
+        // Lặp qua các giá trị trong biến giaTriValues
+        Object.keys(giaTriValues).forEach((inputId) => {
+            const giaTri = giaTriValues[inputId];
+            //console.log(`Trường nhập ${inputId}: Giá trị ban đầu = ${giaTri}`);
+        });
+        set_Listener_input_gia_tri();
     };
-    add_row_bo_phan();
+    function remove_row_nguon_hinh_thanh(id) {
+        $("#"+id).remove();
+        html_nguon_hinh_thanh = $("#tab_nguon_hinh_thanh").html();
+        calculateSum();
+    };
+    add_row_nguon_hinh_thanh(['0','0']);
+    // Hàm tính tổng và hiển thị kết quả
+    function calculateSum() {
+        let sum = 0;
+        const giaTriElements = document.querySelectorAll('input[id^="nguon_hinh_thanh_gia_tri"]');
+        giaTriElements.forEach((element) => {
+            const match = element.id.match(/\d+/);
+            if (match) {
+                console.log(parseInt(match[0]);
+                sum += parseFloat(element.value || 0); // Nếu giá trị rỗng hoặc không hợp lệ, coi như là 0
+            }
+        });
+        alert(`Tổng giá trị là: ${sum}`);
+    }
+    function set_Listener_input_gia_tri() {
+        // Lắng nghe sự kiện "input" của các trường nhập
+        const giaTriInputs = document.querySelectorAll('input[id^="nguon_hinh_thanh_gia_tri"]');
+        giaTriInputs.forEach((input) => {
+            input.addEventListener("input", calculateSum);
+        });
+    }
+
+
 </script>
 

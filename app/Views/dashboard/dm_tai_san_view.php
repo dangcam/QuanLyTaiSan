@@ -226,7 +226,7 @@
     function create_bo_phan(stt=1,data = ['0','0','0']){
         html_bo_phan +=
             "<div class=\"form-row\" id=\""+stt+"_bo_phan\">" +
-            " <div id=\""+stt+"_bo_phan\" class=\"form-group col-md-3\">\n" +
+            " <div class=\"form-group col-md-3\">\n" +
             "   <label><?=lang('DMTaiSanLang.bo_phan')?></label>\n" +
             "   <select class=\"custom-select\" id=\"\" name=\"data["+stt+"][ma_dm]\" value=\""+data[0]+"\">\n";
 
