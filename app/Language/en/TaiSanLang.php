@@ -1,9 +1,10 @@
 <?php
 return[
-    'nam_ke_declare' => 'Year of declaration',
-    'type_tai_san' => 'Asset type',
+    'nhom_tai_san' => 'Asset group',
+    'loai_tai_san' => 'Asset type',
     'ma_tai_san' => 'Property code',
     'ten_tai_san' => 'Property name',
+    'ly_do_tang' => 'Reason for increase',
     'so_luong' => 'Amount',
     'don_vi_tinh' => 'Unit of measure',
     'bo_phan_su_dung' => 'Usage parts',
@@ -28,6 +29,8 @@ return[
     'khai_bao_tai_san' => 'Declare asset',
     'thong_tin_chung' => 'Info general',
     'thong_tin_hm' => 'Info atrophy',
+    'nguyen_gia' => 'Original price',
+    'gia_tri' => 'Value',
 
     'add_taisan'=>'Add Asset',
     'edit_taisan' => 'Edit Asset',

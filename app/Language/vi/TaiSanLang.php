@@ -1,9 +1,10 @@
 <?php
 return[
-    'nam_ke_khai' => 'Năm kê khai',
+    'nhom_tai_san' => 'Nhóm tài sản',
     'loai_tai_san' => 'Loại tài sản',
     'ma_tai_san' => 'Mã tài sản',
     'ten_tai_san' => 'Tên tài sản',
+    'ly_do_tang' => 'Lý do tăng',
     'so_luong' => 'Số lượng',
     'don_vi_tinh' => 'Đơn vị tính',
     'bo_phan_su_dung' => 'Bộ phận sử dụng',
@@ -11,6 +12,13 @@ return[
     'trang_thai' => 'Trạng thái tài sản',
     'nguon_hinh_thanh' => 'Nguồn hình thành',
     'gia_tri' => 'Nguyên giá',
+    // HOẠT ĐỘNG SỰ NGHIỆP
+    'quan_ly_nha_nuoc' => 'Quản lý nhà nước',
+    'hdsn_kkd' => 'HĐSN - Không KD',
+    'hdsn_kd' =>'HĐSN - KD',
+    'hdsn_ldlk' => 'HĐSN - LDLK',
+    'hdsn_ct' => 'HĐSN - Cho thuê',
+    'su_dung_khac' => 'Sử dụng khác',
     // THÔNG TIN HAO MÒN
     'ngay_mua' => 'Ngày mua',
     'ngay_bd_su_dung' => 'Ngày BD sử dụng',
@@ -28,6 +36,8 @@ return[
     'khai_bao_tai_san' => 'Khai báo tài sản',
     'thong_tin_chung' => 'Thông tin chung',
     'thong_tin_hm' => 'Thông tin hao mòn',
+    'nguyen_gia' => 'Nguyên giá',
+    'gia_tri' => 'Giá trị',
 
     'add_taisan'=>'Thêm tài sản',
     'edit_taisan' => 'Sửa tài sản',

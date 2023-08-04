@@ -7,7 +7,7 @@
                         <div class="form-group row">
                             <label class="col-lg-1 col-form-label" ><?=lang('AppLang.year')?></label>
                             <div class="col-lg-2">
-                                <select class="form-control" id="nam_ke_khai" name="nam_ke_khai">
+                                <select class="form-control" id="nam_theo_doi" name="nam_theo_doi">
                                     <?php
                                     $nowYear =2022;
                                     foreach (range(date('Y'), $nowYear) as $i) {
@@ -70,7 +70,7 @@
             'ajax': {
                 'url': '<?=base_url()?>dashboard/tai_san/tai_san_ajax',
                 'data': function (data) {
-                    data.searchYear = $('#nam_ke_khai').val();
+                    data.searchYear = $('#nam_theo_doi').val();
                 }
             },
             'columns': [

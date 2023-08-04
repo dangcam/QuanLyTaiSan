@@ -4,14 +4,21 @@ namespace App\Entities;
 use CodeIgniter\Entity\Entity;
 
 class TaiSanEntity extends Entity{
-    protected $nam_ke_khai;
+    protected $nhom_tai_san;
     protected $loai_tai_san;
     protected $ma_tai_san;
     protected $ten_tai_san;
+    protected $ly_do_tang;
     protected $so_luong;
     protected $don_vi_tinh;
     protected $bo_phan_su_dung;
-    protected $hien_trang_su_dung;
+	// HOẠT ĐỘNG SỰ NGHIỆP
+    protected $quan_ly_nha_nuoc;
+    protected $hdsn_kkd;
+    protected $hdsn_kd;
+    protected $hdsn_ldlk;
+    protected $hdsn_ct;
+    protected $su_dung_khac;
     protected $trang_thai;
     // THÔNG TIN HAO MÒN
     protected $ngay_mua;

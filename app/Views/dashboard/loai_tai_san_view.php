@@ -159,7 +159,7 @@
                         </div>
                     </div>
                     <div class="form-row">
-                        <div class="form-group col-md-3">
+                        <div class="form-group col-md-4">
                             <label><?=lang('LoaiTaiSanLang.original_price')?></label>
                             <select class="custom-select" id="tk_nguyen_gia" name="tk_nguyen_gia">
                                 <?php if (isset($list_tk_nguyen_gia) && count($list_tk_nguyen_gia)) :
@@ -170,7 +170,7 @@
                                 endif ?>
                             </select>
                         </div>
-                        <div class="form-group col-md-3">
+                        <div class="form-group col-md-4">
                             <label><?=lang('LoaiTaiSanLang.depreciation')?></label>
                             <select class="custom-select" id="tk_haomon" name="tk_haomon">
                                 <?php if (isset($list_tk_hao_mon) && count($list_tk_hao_mon)) :
@@ -181,7 +181,7 @@
                                 endif ?>
                             </select>
                         </div>
-                        <div class="form-group col-md-3">
+                        <div class="form-group col-md-4">
                             <label><?=lang('LoaiTaiSanLang.subsection')?></label>
                             <select class="custom-select" id="tieu_muc" name="tieu_muc">
                                 <?php if (isset($list_tieu_muc) && count($list_tieu_muc)) :

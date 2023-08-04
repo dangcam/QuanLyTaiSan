@@ -9,6 +9,7 @@
                 </div>
                 <div class="col-sm-6 p-md-0">
                     <div class="form-group row">
+                        <input value="" name="trang_thai" id="trang_thai" hidden>
                         <div class="col-lg-6">
                             <select class="form-control" id="loai_tai_san" name="loai_tai_san">
                                 <?php if (isset($list_nhom_tai_san) && count($list_nhom_tai_san)) :
@@ -20,8 +21,7 @@
                             </select>
                         </div>
                         <button type="button" onclick="location.href='<?= base_url() ?>dashboard/tai_san'"
-                                id="btn_cancel" class="btn btn-warning"><?=lang('AppLang.cancel')?></button>
-                    </div>
+                                id="btn_cancel" class="btn btn-warning"><?=lang('AppLang.cancel')?></button>                    </div>
                 </div>
             </div>
             <div class="row">
@@ -34,43 +34,98 @@
                             <div class="basic-form">
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
-                                        <label>First Name</label>
-                                        <input type="text" class="form-control" placeholder="1234 Main St">
+                                        <label><?=lang('TaiSanLang.loai_tai_san')?> <span class="text-danger">*</span></label>
+                                        <input type="text" name="loai_tai_san" id="loai_tai_san" class="form-control" placeholder="">
                                     </div>
                                     <div class="form-group col-md-6">
-                                        <label>Email</label>
-                                        <input type="email" class="form-control" placeholder="Email">
+                                        <label><?=lang('TaiSanLang.ma_tai_san')?> <span class="text-danger">*</span></label>
+                                        <input type="text" name="ma_tai_san" id="ma_tai_san" class="form-control" placeholder="">
                                     </div>
                                     <div class="form-group col-md-6">
-                                        <label>Password</label>
-                                        <input type="password" class="form-control" placeholder="Password">
+                                        <label><?=lang('TaiSanLang.ten_tai_san')?> <span class="text-danger">*</span></label>
+                                        <input type="text" name="ten_tai_san" id="ten_tai_san" class="form-control" placeholder="">
                                     </div>
                                     <div class="form-group col-md-6">
-                                        <label>City</label>
-                                        <input type="text" class="form-control">
+                                        <label><?=lang('TaiSanLang.ly_do_tang')?> <span class="text-danger">*</span></label>
+                                        <select id="ly_do_tang" name="ly_do_tang" class="form-control">
+                                            <option>Tiếp nhận</option>
+                                            <option>Mua sắm</option>
+                                            <option>Kiểm kê phát hiện thừa</option>
+                                            <option>Khác</option>
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="form-row">
-                                    <div class="form-group col-md-4">
-                                        <label>State</label>
-                                        <select id="inputState" class="form-control">
-                                            <option selected="">Choose...</option>
-                                            <option>Option 1</option>
-                                            <option>Option 2</option>
-                                            <option>Option 3</option>
+                                    <div class="form-group col-md-3">
+                                        <label><?=lang('TaiSanLang.so_luong')?> <span class="text-danger">*</span></label>
+                                        <input type="text" name="so_luong" id="so_luong" class="form-control" placeholder="">
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <label><?=lang('TaiSanLang.don_vi_tinh')?> <span class="text-danger">*</span></label>
+                                        <select id="don_vi_tinh" name="don_vi_tinh" class="form-control">
+                                            <option>Tiếp nhận</option>
+                                            <option>Mua sắm</option>
+                                            <option>Kiểm kê phát hiện thừa</option>
+                                            <option>Khác</option>
                                         </select>
                                     </div>
-                                    <div class="form-group col-md-2">
-                                        <label>Zip</label>
-                                        <input type="text" class="form-control">
+                                    <div class="form-group col-md-6">
+                                        <label><?=lang('TaiSanLang.bo_phan_su_dung')?> <span class="text-danger">*</span></label>
+                                        <select class="form-control" id="bo_phan_su_dung" name="bo_phan_su_dung">
+                                            <?php if (isset($list_bo_phan_su_dung) && count($list_bo_phan_su_dung)) :
+                                                foreach ($list_bo_phan_su_dung as $key => $item) : ?>
+                                                    <option value="<?=$item->ma_bp?>"><?=$item->ten_bp?></option>
+                                                <?php
+                                                endforeach;
+                                            endif ?>
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox">
-                                        <label class="form-check-label">
-                                            Check me out
-                                        </label>
+                                    <h6><?=lang('TaiSanLang.nguyen_gia')?> <span class="text-danger">*</span></h6>
+                                    <div id="tab_nguon_hinh_thanh">
+
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <h6><?=lang('TaiSanLang.hien_trang_su_dung')?> <span class="text-danger">*</span></h6>
+                                    <div class="form-group">
+                                        <div class="form-check form-check-inline">
+                                            <label class="form-check-label">
+                                                <input type="checkbox" id="quan_ly_nha_nuoc" name="quan_ly_nha_nuoc"
+                                                       class="form-check-input" value="" ><?=lang('TaiSanLang.quan_ly_nha_nuoc')?>
+                                            </label>
+                                        </div>
+                                        <div class="form-check form-check-inline disabled">
+                                            <label class="form-check-label">
+                                                <input type="checkbox" id="hdsn_kkd" name="hdsn_kkd"
+                                                       class="form-check-input" value="" disabled><?=lang('TaiSanLang.hdsn_kkd')?>
+                                            </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <label class="form-check-label">
+                                                <input type="checkbox" id="hdsn_kd" name="hdsn_kd"
+                                                       class="form-check-input" value="" disabled><?=lang('TaiSanLang.hdsn_kd')?>
+                                            </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <label class="form-check-label">
+                                                <input type="checkbox" id="hdsn_ldlk" name="hdsn_ldlk"
+                                                       class="form-check-input" value="" disabled><?=lang('TaiSanLang.hdsn_ldlk')?>
+                                            </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <label class="form-check-label">
+                                                <input type="checkbox" id="hdsn_ct" name="hdsn_ct"
+                                                       class="form-check-input" value="" disabled><?=lang('TaiSanLang.hdsn_ct')?>
+                                            </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <label class="form-check-label">
+                                                <input type="checkbox" id="su_dung_khac" name="su_dung_khac"
+                                                       class="form-check-input" value="" ><?=lang('TaiSanLang.su_dung_khac')?>
+                                            </label>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -86,15 +141,15 @@
                             <div class="basic-form">
                                     <div class="form-row">
                                         <div class="form-group col-md-6">
-                                            <label><?=lang('TaiSanLang.ngay_mua')?></label>
+                                            <label><?=lang('TaiSanLang.ngay_mua')?> <span class="text-danger">*</span></label>
                                             <input type="date" name="ngay_mua" id="ngay_mua" class="form-control" placeholder=""  >
                                         </div>
                                         <div class="form-group col-md-6">
-                                            <label><?=lang('TaiSanLang.ngay_bd_su_dung')?></label>
+                                            <label><?=lang('TaiSanLang.ngay_bd_su_dung')?> <span class="text-danger">*</span></label>
                                             <input type="date" name="ngay_bd_su_dung" id="ngay_bd_su_dung" class="form-control"  placeholder="">
                                         </div>
                                         <div class="form-group col-md-6">
-                                            <label><?=lang('TaiSanLang.ngay_ghi_tang')?></label>
+                                            <label><?=lang('TaiSanLang.ngay_ghi_tang')?> <span class="text-danger">*</span></label>
                                             <input type="date" name="ngay_ghi_tang" id="ngay_ghi_tang" class="form-control" placeholder="">
                                         </div>
                                         <div class="form-group col-md-4">
@@ -104,7 +159,7 @@
                                     </div>
                                     <div class="form-row">
                                         <div class="form-group col-md-6">
-                                            <label><?=lang('TaiSanLang.ngay_bd_tinh_hm')?></label>
+                                            <label><?=lang('TaiSanLang.ngay_bd_tinh_hm')?> <span class="text-danger">*</span></label>
                                             <input type="date" name="ngay_bd_tinh_hm" id="ngay_bd_tinh_hm" class="form-control">
                                         </div>
                                         <div class="form-group col-md-6">
@@ -147,4 +202,51 @@
         </form>
     </div>
 </div>
+<script type="text/javascript">
+    let html_nguon_hinh_thanh = ""; // Nguồn kinh phí
+    let stt_nguon_hinh_thanh = 0;
+    function create_nguon_hinh_thanh(stt=1,data = ['0','0','0']){
+        html_nguon_hinh_thanh +=
+            "<div class=\"form-row\" id=\""+stt+"nguon_hinh_thanh\">" +
+            " <div id=\""+stt+"nguon_hinh_thanh\" class=\"form-group col-md-3\">\n" +
+            "   <label><?=lang('TaiSanLang.nguon_hinh_thanh')?></label>\n" +
+            "   <select class=\"custom-select\" id=\"\" name=\"data["+stt+"][ma_kp]\" value=\""+data[0]+"\">\n";
+
+        <?php if (isset($list_kinh_phi) && count($list_kinh_phi)) :
+        foreach ($list_kinh_phi as $key => $item) : ?>
+        html_nguon_hinh_thanh +="<option value=\"<?=$item->ma_kp?>\" "+("<?=$item->ma_kp?>"==data[0]? "selected":"")+ " ><?=$item->ten_kp?></option>\n";
+        <?php
+        endforeach;
+        endif ?>
+        html_nguon_hinh_thanh +=
+            "   </select>\n" +
+            "</div>"+
+            "<div class=\"form-group col-md-3\">\n" +
+            "   <label><?=lang('DMTaiSanLang.gia_tri')?></label>\n" +
+            "       <input type=\"text\" id=\"\" name=\"data["+stt+"][gia_tri]\" value=\""+data[1]+"\" \n" +
+            "           class=\"form-control\" placeholder=\"<?=lang('TaiSanLang.gia_tri')?>\">\n" +
+            "</div>\n" +
+            "<div class =\"form-group \">\n" +
+            "   <label>Action</label>\n" +
+            "   <div class=\"form-control\">" +
+            "           <a href=\"javascript:void(add_row_bo_phan())\" class=\"mr-4\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Add\">" +
+            "           <i class=\"fa fa-plus color-muted\"></i> </a>";
+        if(stt>1) {
+            html_nguon_hinh_thanh +=
+                "          <a href=\"#\" data-toggle=\"modal\" data-target=\"#smallModal_DinhMuc\"\n" +
+                "             data-placement=\"top\" title=\"<?=lang('AppLang.delete')?>\" data-id_row_dinh_muc=\""+stt+"_bo_phan\">\n" +
+                "           <i class=\"fa fa-close color-danger\"></i></a>\n"
+        }
+        html_nguon_hinh_thanh +=
+            "   </div>\n" +
+            "</div>" +
+            "</div>";
+    };
+    function add_row_bo_phan() {
+        stt_nguon_hinh_thanh = stt_nguon_hinh_thanh+1;
+        create_nguon_hinh_thanh(stt_bo_phan,['0','0','0']);
+        $("#tab_nguon_hinh_thanh").html(html_nguon_hinh_thanh);
+    };
+    add_row_bo_phan();
+</script>
 

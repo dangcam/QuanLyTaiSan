@@ -165,11 +165,11 @@ class TaiSanModel Extends BaseModel
         $searchYear = $postData['searchYear'];
         //
         ## Total number of records without filtering
-        $this->select('count(*) as allcount')->where('nam_ke_khai',$searchYear);
+        $this->select('count(*) as allcount')->where('nam_theo_doi',$searchYear);
         $records = $this->find();
         $totalRecords = $records[0]->allcount;
         ## Fetch records
-        $this->like('ten_tai_san',$strInput)->where('nam_ke_khai',$searchYear);
+        $this->like('ten_tai_san',$strInput)->where('nam_theo_doi',$searchYear);
         $this->orderBy($columnName, $columnSortOrder);
         if($rowperpage!=-1)
             $this->limit($rowperpage, $start);
