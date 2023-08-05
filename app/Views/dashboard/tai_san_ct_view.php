@@ -11,7 +11,7 @@
                     <div class="form-group row">
                         <input value="" name="trang_thai" id="trang_thai" hidden>
                         <div class="col-lg-6">
-                            <select class="form-control" id="loai_tai_san" name="loai_tai_san">
+                            <select class="form-control" id="nhom_tai_san" name="nhom_tai_san">
                                 <?php if (isset($list_nhom_tai_san) && count($list_nhom_tai_san)) :
                                     foreach ($list_nhom_tai_san as $key => $item) : ?>
                                         <option value="<?=$item->id?>"><?=$item->ten_nts?></option>
@@ -42,7 +42,8 @@
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <label><?=lang('TaiSanLang.loai_tai_san')?> <span class="text-danger">*</span></label>
-                                        <input type="text" name="loai_tai_san" id="loai_tai_san" class="form-control" placeholder="">
+                                        <select class="form-control" id="loai_tai_san" name="loai_tai_san">
+                                        </select>
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label><?=lang('TaiSanLang.ma_tai_san')?> <span class="text-danger">*</span></label>
@@ -328,7 +329,20 @@
             input.addEventListener("input", calculateSum);
         });
     }
-
+    $('#nhom_tai_san').change(function(){
+        load_loai_tai_san(this.value);
+    });
+    function load_loai_tai_san(id_nhom){
+        $.ajax({
+            url: "<?= base_url() ?>dashboard/tai_san/loai_tai_san_ajax",
+            method: "POST",
+            dataType: "json",
+            data: {id_nhom: id_nhom},
+            success: function (data) {
+                $("#loai_tai_san").html(data);
+            }
+        });
+    }
 
 </script>
 

@@ -76,12 +76,18 @@ class TaiSanModel Extends BaseModel
             return 3;
         }
     }
-    public function listLoaiTaiSan()
+    public function listLoaiTaiSan($nhom_ts)
     {
         $tb = $this->db->table('loai_tai_san');
         $tb->select('ma_loai_ts, ten_loai_ts');
         $tb->where('su_dung',1);
-        return $tb->get()->getResult();
+        $tb->where('nhom_ts',$nhom_ts);
+        $result = $tb->get()->getResult();
+        $response = '';
+        foreach ($result as $key){
+            $response .='<option value="'.$key->ma_loai_ts.'">'.$key->ten_loai_ts.'</option>';
+        }
+        return $response;
     }
     public function listNhomTaiSan()
     {
