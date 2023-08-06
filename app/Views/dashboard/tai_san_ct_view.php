@@ -331,30 +331,35 @@
     }
     $('#nhom_tai_san').change(function(){
         load_loai_tai_san(this.value);
-        $('#loai_tai_san').val('');
+        load_loai_tai_san_ct();
     });
     $('#loai_tai_san').change(function(){
         load_loai_tai_san_ct();
     });
 
     function load_loai_tai_san_ct() {
-        $.ajax({
-            url: "<?= base_url() ?>dashboard/tai_san/loai_tai_san_ct_ajax",
-            method: "POST",
-            dataType: "json",
-            data: {ma_loai_ts: $('#loai_tai_san').val()},
-            success: function (data) {
-                console.log(data);
-                console.log($('#loai_tai_san').val());
-
-            }
-        });
+        let ma_loai_ts = $('#loai_tai_san').val();
+        if(ma_loai_ts !== null && ma_loai_ts.length>0) {
+            $.ajax({
+                url: "<?= base_url() ?>dashboard/tai_san/loai_tai_san_ct_ajax",
+                method: "POST",
+                dataType: "json",
+                data: {ma_loai_ts:ma_loai_ts},
+                success: function (data) {
+                    if(data !== null && Array.isArray(data) && data.length > 0) {
+                        console.log(data[0]);
+                        $("#ty_le_hao_mon").val(data[0]["tyle_haomon"]);
+                    }
+                }
+            });
+        }
     }
     function load_loai_tai_san(id_nhom){
         $.ajax({
             url: "<?= base_url() ?>dashboard/tai_san/loai_tai_san_ajax",
             method: "POST",
             dataType: "json",
+            async: false,
             data: {id_nhom: id_nhom},
             success: function (data) {
                 $("#loai_tai_san").html(data);
