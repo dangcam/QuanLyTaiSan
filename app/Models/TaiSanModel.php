@@ -89,6 +89,13 @@ class TaiSanModel Extends BaseModel
         }
         return $response;
     }
+    public function getLoaiTaiSan($ma_loai_ts)
+    {
+        $tb = $this->db->table('loai_tai_san');
+        $tb->where('su_dung',1);
+        $tb->where('ma_loai_ts',$ma_loai_ts);
+        return $tb->get()->getResult();
+    }
     public function listNhomTaiSan()
     {
         $tb = $this->db->table('nhom_tai_san');

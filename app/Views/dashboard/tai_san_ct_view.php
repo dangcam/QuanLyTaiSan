@@ -296,7 +296,7 @@
             const giaTri = giaTriValues[inputId];
             $('#nguon_hinh_thanh_ma_kp_'+inputId).val(giaTriValues[inputId][0]);
             $('#nguon_hinh_thanh_gia_tri_'+inputId).val( parseFloat(giaTriValues[inputId][1]|| 0));
-            console.log(`Trường nhập ${inputId}: Giá trị ban đầu = ${giaTri}`);
+            //console.log(`Trường nhập ${inputId}: Giá trị ban đầu = ${giaTri}`);
         });
         set_Listener_input_gia_tri();
     };
@@ -331,7 +331,25 @@
     }
     $('#nhom_tai_san').change(function(){
         load_loai_tai_san(this.value);
+        $('#loai_tai_san').val('');
     });
+    $('#loai_tai_san').change(function(){
+        load_loai_tai_san_ct();
+    });
+
+    function load_loai_tai_san_ct() {
+        $.ajax({
+            url: "<?= base_url() ?>dashboard/tai_san/loai_tai_san_ct_ajax",
+            method: "POST",
+            dataType: "json",
+            data: {ma_loai_ts: $('#loai_tai_san').val()},
+            success: function (data) {
+                console.log(data);
+                console.log($('#loai_tai_san').val());
+
+            }
+        });
+    }
     function load_loai_tai_san(id_nhom){
         $.ajax({
             url: "<?= base_url() ?>dashboard/tai_san/loai_tai_san_ajax",

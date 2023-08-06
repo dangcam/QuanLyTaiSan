@@ -41,4 +41,15 @@ class TaiSanController extends BaseController
             echo json_encode('No Data');
         }
     }
+    public function loai_tai_san_ct_ajax()
+    {
+        if($this->request->getPost())
+        {
+            $data = $this->request->getPost();
+            $return_value = $this->tai_san_model->getLoaiTaiSan($data['ma_loai_ts']);
+            echo json_encode($return_value);
+        }else {
+            echo json_encode('No Data');
+        }
+    }
 }
