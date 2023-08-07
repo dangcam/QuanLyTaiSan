@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th8 04, 2023 lúc 12:30 PM
+-- Thời gian đã tạo: Th8 07, 2023 lúc 11:40 AM
 -- Phiên bản máy phục vụ: 10.4.28-MariaDB
 -- Phiên bản PHP: 8.0.28
 
@@ -393,6 +393,25 @@ INSERT INTO `nguon_kinh_phi` (`ma_kp`, `ten_kp`, `thuoc_nguon`, `nguon_ht`, `ghi
 -- --------------------------------------------------------
 
 --
+-- Cấu trúc bảng cho bảng `nguyen_gia`
+--
+
+CREATE TABLE `nguyen_gia` (
+  `ma_kp` int(11) NOT NULL,
+  `ma_tai_san` varchar(20) NOT NULL,
+  `gia_tri` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `nguyen_gia`
+--
+
+INSERT INTO `nguyen_gia` (`ma_kp`, `ma_tai_san`, `gia_tri`) VALUES
+(0, 'MTS0001', 0);
+
+-- --------------------------------------------------------
+
+--
 -- Cấu trúc bảng cho bảng `nha_cung_cap`
 --
 
@@ -474,6 +493,13 @@ CREATE TABLE `tai_san` (
   `hm_luy_ke` int(11) NOT NULL,
   `gia_tri_con_lai` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `tai_san`
+--
+
+INSERT INTO `tai_san` (`nhom_tai_san`, `loai_tai_san`, `ma_tai_san`, `ten_tai_san`, `ly_do_tang`, `so_luong`, `don_vi_tinh`, `bo_phan_su_dung`, `quan_ly_nha_nuoc`, `hdsn_kkd`, `hdsn_kd`, `hdsn_ldlk`, `hdsn_ct`, `su_dung_khac`, `trang_thai`, `nguon_hinh_thanh`, `gia_tri`, `ngay_mua`, `ngay_bd_su_dung`, `ngay_ghi_tang`, `nam_theo_doi`, `ngay_bd_tinh_hm`, `so_nam_su_dung`, `ty_le_hao_mon`, `hm_kh_nam`, `so_nam_sd_con_lai`, `ngay_kt_hm`, `hm_luy_ke`, `gia_tri_con_lai`) VALUES
+(3, 'LST001', 'MTS0001', 'Tài sản 0001', 'Tiếp nhận', 1, 'Mảnh', 'BP001', 1, 0, 0, 0, 0, 0, 0, '', 0, '2023-08-07', '2023-08-07', '2023-08-07', 2023, '2023-08-07', 11, 20, 0, 11, '2034-08-07', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -750,6 +776,12 @@ ALTER TABLE `nguon_hinh_thanh`
 --
 ALTER TABLE `nguon_kinh_phi`
   ADD PRIMARY KEY (`ma_kp`);
+
+--
+-- Chỉ mục cho bảng `nguyen_gia`
+--
+ALTER TABLE `nguyen_gia`
+  ADD PRIMARY KEY (`ma_kp`,`ma_tai_san`);
 
 --
 -- Chỉ mục cho bảng `nha_cung_cap`
