@@ -38,7 +38,10 @@ return[
     'thong_tin_hm' => 'Thông tin hao mòn',
     'nguyen_gia' => 'Nguyên giá',
     'tong_nguyen_gia' => 'TỔNG NGUYÊN GIÁ',
-    'gia_tri' => 'Giá trị',
+    'trang_thai_0' => 'Chưa ghi tăng',
+    'trang_thai_1' => 'Đang sử dụng',
+    'trang_thai_2' => 'Đã ghi giảm',
+
 
     'add_taisan'=>'Thêm tài sản',
     'edit_taisan' => 'Sửa tài sản',

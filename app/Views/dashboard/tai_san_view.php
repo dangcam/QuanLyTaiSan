@@ -17,7 +17,7 @@
                                 </select>
                             </div>
                             <div class="col-lg-4">
-                                <button onclick="location.href='<?= base_url() ?>dashboard/tai_san/tai_san_ct'"
+                                <button onclick="location.href='<?= base_url() ?>dashboard/tai_san/tai_san_ct?year='+$('#nam_theo_doi').val()"
                                         type="button" id="khai_bao_tai_san" class="btn btn-rounded btn-success">
                                     <span class="btn-icon-left text-success"><i class="fa fa-upload color-success"></i>
                                         </span><?=lang('TaiSanLang.khai_bao_tai_san')?></button>

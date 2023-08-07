@@ -12,14 +12,30 @@ class TaiSanController extends BaseController
     }
     public function index()
     {
-        $meta = array('page_title'=>lang('AppLang.page_title_tai_san'));
-        return $this->page_construct('dashboard/tai_san_view',$meta);
+        if($this->libauth->checkFunction('tai_san','view')) {
+        $meta = array('page_title' => lang('AppLang.page_title_tai_san'));
+        return $this->page_construct('dashboard/tai_san_view', $meta);
+        }else
+            return view('errors/html/error_403');
     }
     public function tai_san_ct()
     {
         $meta = array('page_title'=>lang('AppLang.page_title_tai_san'));
         $data['list_kinh_phi'] = $this->tai_san_model->listKinhPhi();
         $data['list_nhom_tai_san'] = $this->tai_san_model->listNhomTaiSan();
+        $data['list_bo_phan_su_dung'] = $this->tai_san_model->listBoPhan();
+        // Get the 'year' parameter value from the URL
+        if($this->request->getGet()) {
+            $year = $this->request->getGet('year');
+            $ma_tai_san = $this->request->getGet('ma_tai_san');
+        }
+        else {
+            $year = date('Y');
+            $ma_tai_san = '';
+        }
+        $data['selected_year'] = $year;
+        $data['ma_tai_san'] = $ma_tai_san;
+
         return $this->page_construct('dashboard/tai_san_ct_view',$meta,$data);
     }
     public function tai_san_ajax()
@@ -50,6 +66,19 @@ class TaiSanController extends BaseController
             echo json_encode($return_value);
         }else {
             echo json_encode('No Data');
+        }
+    }
+    public function add_tai_san()
+    {
+        if($this->request->getPost()&&($this->libauth->checkFunction('tai_san','add')))
+        {
+            $data_post = $this->request->getPost();
+            $data['result'] = ($this->tai_san_model->add_tai_san($data_post));
+            $data['message']= $this->tai_san_model->get_messages();
+            echo json_encode(array_values($data));
+        }
+        else {
+            echo json_encode(array_values($this->libauth->getError()));
         }
     }
 }

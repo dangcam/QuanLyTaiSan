@@ -15,10 +15,9 @@ class TaiSanModel Extends BaseModel
     public function add_tai_san($data)
     {
         unset($data['add']);
-        if(isset($data['nhac_nho']))
-            $data['nhac_nho'] = 1;
-        if(isset($data['su_dung']))
-            $data['su_dung'] = 1;
+        $data_nguyen_gia = $data['data'];
+        unset($data['data']);
+
         if(!$this->validate($data))
         {
             foreach ($this->errors() as $error) {
@@ -28,24 +27,27 @@ class TaiSanModel Extends BaseModel
         }
         if(!$this->insert($data))
         {
-            $this->set_message("TaiSanLang.tai_san_creation_successful");
+            $this->set_message("TaiSanLang.taisan_creation_successful");
+            $this->db->table('nguyen_gia')->where('ma_tai_san',$data['ma_tai_san'])->delete();
+            foreach ($data_nguyen_gia as $index => $item ) {
+                $item['ma_tai_san'] = $data['ma_tai_san'];;
+                $this->db->table('nguyen_gia')->insert($item);
+            }
             return 0;
         }else
         {
-            $this->set_message("TaiSanLang.tai_san_creation_unsuccessful");
+            $this->set_message("TaiSanLang.taisan_creation_unsuccessful");
             return 3;
         }
     }
-    public function edit_tai_san($data)
+    public function edit_dm($data)
     {
-        $data_id = $data['ma_tai_san'];
+        $data_id = $data['ma_dm'];
+        $data_dm = $data['data'];
+        unset($data['data']);
         unset($data['edit']);
-        unset($data['ma_tai_san']);
+        unset($data['ma_dm']);
         //
-        if(isset($data['nhac_nho']))
-            $data['nhac_nho'] = 1;
-        else
-            $data['nhac_nho'] = 0;
         if(isset($data['su_dung']))
             $data['su_dung'] = 1;
         else
@@ -54,11 +56,16 @@ class TaiSanModel Extends BaseModel
         $result = $this->update($data_id,$data);
         if($result)
         {
-            $this->set_message("TaiSanLang.tai_san_update_successful");
+            $this->set_message("DMTaiSanLang.dm_update_successful");
+            $this->db->table('dinh_muc')->where('ma_dm_ts',$data_id)->delete();
+            foreach ($data_dm as $index => $item ) {
+                $item['ma_dm_ts'] = $data_id;
+                $this->db->table('dinh_muc')->insert($item);
+            }
             return 0;
         }else
         {
-            $this->set_message("TaiSanLang.tai_san_update_unsuccessful");
+            $this->set_message("DMTaiSanLang.dm_update_unsuccessful");
             return 3;
         }
     }
@@ -201,16 +208,10 @@ class TaiSanModel Extends BaseModel
                 "hm_luy_ke"=>$record->hm_luy_ke,
                 "gia_tri_con_lai"=>$record->gia_tri_con_lai,
                 "ngay_ghi_tang"=>$record->ngay_ghi_tang,
-                "trang_thai"=>$record->trang_thai,           
+                "trang_thai"=>lang('TaiSanLang.trang_thai_'.$record->trang_thai),
                 "active"=> ' <span>
-                            <a class="mr-4" data-toggle="modal" data-target="#myModal" data-whatever="edit"
-                             data-ma_tai_san="'.$record->ma_tai_san.'" data-ten_tai_san ="'.$record->ten_tai_san.'"                          
-                             data-loai_tai_san ="'.$record->loai_tai_san.'" data-bo_phan_su_dung ="'.$record->bo_phan_su_dung.'"
-                             data-so_luong ="'.$record->so_luong.'" data-gia_tri ="'.$record->gia_tri.'"
-                             data-hm_luy_ke ="'.$record->hm_luy_ke.'"                         
-                             data-gia_tri_con_lai ="'.$record->gia_tri_con_lai.'"
-                             data-trang_thai ="'.$record->trang_thai.'"
-                                                      
+                            <a class="mr-4"                              
+                                      href="'.base_url().'dashboard/tai_san/tai_san_ct?year='.$record->nam_theo_doi.'&ma_tai_san='.$record->ma_tai_san.'"                                                                                                   
                                 data-placement="top" title="'.lang('AppLang.edit').'"><i class="fa fa-pencil color-muted"></i> </a>
                             <a href="#" data-toggle="modal" data-target="#smallModal"
                                 data-placement="top" title="'.lang('AppLang.delete').'" data-ma_tai_san="'.$record->ma_tai_san.'">
