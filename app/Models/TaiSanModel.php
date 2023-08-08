@@ -40,27 +40,35 @@ class TaiSanModel Extends BaseModel
             return 3;
         }
     }
-    public function edit_dm($data)
+    public function edit_tai_san($data)
     {
-        $data_id = $data['ma_dm'];
+        $data_id = $data['ma_tai_san'];
         $data_dm = $data['data'];
         unset($data['data']);
         unset($data['edit']);
         unset($data['ma_dm']);
         //
-        if(isset($data['su_dung']))
-            $data['su_dung'] = 1;
-        else
-            $data['su_dung'] = 0;
+        if(!isset($data['quan_ly_nha_nuoc']))
+            $data['quan_ly_nha_nuoc'] = 0;
+        if(!isset($data['hdsn_kkd']))
+            $data['hdsn_kkd'] = 0;
+        if(!isset($data['$hdsn_kd']))
+            $data['hdsn_kd'] = 0;
+        if(!isset($data['hdsn_ldlk']))
+            $data['hdsn_ldlk'] = 0;
+        if(!isset($data['hdsn_ct']))
+            $data['hdsn_ct'] = 0;
+        if(!isset($data['su_dung_khac']))
+            $data['su_dung_khac'] = 0;
         //
         $result = $this->update($data_id,$data);
         if($result)
         {
-            $this->set_message("DMTaiSanLang.dm_update_successful");
-            $this->db->table('dinh_muc')->where('ma_dm_ts',$data_id)->delete();
+            $this->set_message("TaiSanLang.dm_update_successful");
+            $this->db->table('nguyen_gia')->where('ma_tai_san',$data_id)->delete();
             foreach ($data_dm as $index => $item ) {
-                $item['ma_dm_ts'] = $data_id;
-                $this->db->table('dinh_muc')->insert($item);
+                $item['ma_tai_san'] = $data_id;
+                $this->db->table('nguyen_gia')->insert($item);
             }
             return 0;
         }else
@@ -75,11 +83,12 @@ class TaiSanModel Extends BaseModel
 
         if($this->where('ma_tai_san',$data_id)->delete())
         {
-            $this->set_message("TaiSanLang.tai_san_delete_successful");
+            $this->db->table('nguyen_gia')->where('ma_tai_san',$data_id)->delete();
+            $this->set_message("TaiSanLang.taisan_delete_successful");
             return 0;
         }else
         {
-            $this->set_message("TaiSanLang.tai_san_delete_unsuccessful");
+            $this->set_message("TaiSanLang.taisan_delete_unsuccessful");
             return 3;
         }
     }

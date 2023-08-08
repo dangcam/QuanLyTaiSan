@@ -9,7 +9,7 @@ class LoaiTaiSanModel Extends BaseModel
     protected $protectFields = false;
     protected $returnType    = LoaiTaiSanEntity::class;
     protected $validationRules = [
-        'ma_loai_ts'      => 'required|alpha_dash|min_length[3]|max_length[20]|is_unique[loai_tai_san.ma_loai_ts]',
+        'ma_loai_ts'      => 'required|alpha_dash|min_length[1]|max_length[20]|is_unique[loai_tai_san.ma_loai_ts]',
         'ten_loai_ts'     => 'required|max_length[100]'
     ];
     public function add_asset($data)

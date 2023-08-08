@@ -81,4 +81,28 @@ class TaiSanController extends BaseController
             echo json_encode(array_values($this->libauth->getError()));
         }
     }
+    public function delete_tai_san()
+    {
+        if($this->request->getPost()&&($this->libauth->checkFunction('tai_san','delete')))
+        {
+            $data_post = $this->request->getPost();
+            $data['result'] = ($this->tai_san_model->delete_tai_san($data_post));
+            $data['message']= $this->tai_san_model->get_messages();
+            echo json_encode(array_values($data));
+        }
+        else {
+            echo json_encode(array_values($this->libauth->getError()));
+        }
+    }
+    public function edit_tai_san()
+    {
+        if($this->request->getPost()&&($this->libauth->checkFunction('tai_san','edit')))
+        {
+            $data_post = $this->request->getPost();
+            $data['result'] = ($this->tai_san_model->edit_tai_san($data_post));
+            $data['message']= $this->tai_san_model->get_messages();
+            echo json_encode(array_values($data));
+        }else
+            echo json_encode(array_values($this->libauth->getError()));
+    }
 }

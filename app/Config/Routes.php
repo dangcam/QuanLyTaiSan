@@ -161,6 +161,8 @@ $routes->group('dashboard',['filter'=>'authFilters'], static function ($routes) 
         $routes->get('/', 'Dashboard\TaiSanController::index');
         $routes->post('tai_san_ajax','Dashboard\TaiSanController::tai_san_ajax');
         $routes->post('add_tai_san','Dashboard\TaiSanController::add_tai_san');
+        $routes->post('edit_tai_san','Dashboard\TaiSanController::edit_tai_san');
+        $routes->post('delete_tai_san','Dashboard\TaiSanController::delete_tai_san');
         $routes->post('loai_tai_san_ajax','Dashboard\TaiSanController::loai_tai_san_ajax');
         $routes->post('loai_tai_san_ct_ajax','Dashboard\TaiSanController::loai_tai_san_ct_ajax');
         $routes->add('tai_san_ct','Dashboard\TaiSanController::tai_san_ct');

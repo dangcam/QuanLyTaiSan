@@ -25,6 +25,12 @@
                         </div>
                     </div>
                     <div class="card-body">
+                        <!---->
+                        <div class="alert alert-success alert-alt"role="alert" id="response_success"></div>
+                        <div class="alert alert-info alert-alt"role="alert" id="response_info"></div>
+                        <div class="alert alert-warning alert-alt "role="alert" id="response_warning"></div>
+                        <div class="alert alert-danger alert-alt" role="alert" id="response_danger"></div>
+                        <!---->
                         <div class="table-responsive">
                             <table id="data-table" class="table table-bordered table-striped verticle-middle table-responsive-sm" style="width:100%">
                                 <thead>
@@ -51,6 +57,26 @@
             </div>
         </div>
 
+    </div>
+</div>
+
+<div class="modal fade" id="smallModal" tabindex="-1" role="dialog" aria-labelledby="smallModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="smallModalLabel"><?=lang('AppLang.notify')?></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <?=lang('AppLang.are_you_sure')?>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="modal-btn-no" class="btn btn-white" data-dismiss="modal"><?=lang('AppLang.no')?></button>
+                <button type="button" id="modal-btn-yes" class="btn btn-primary"><?=lang('AppLang.yes')?></button>
+            </div>
+        </div>
     </div>
 </div>
 
@@ -94,23 +120,23 @@
         // Delete
         $('#smallModal').on('show.bs.modal', function (event) {
             var button = $(event.relatedTarget) // Button that triggered the modal
-            var recipient = button.data('group_id') // Extract info from data-* attributes
+            var recipient = button.data('ma_tai_san') // Extract info from data-* attributes
             $("#modal-btn-yes").on("click", function(event){
                 $("#smallModal").modal('hide');
                 event.preventDefault();
                 $("#response_success").hide('fast');
                 $("#response_danger").hide('fast');
                 $.ajax({
-                    url: '<?= base_url() ?>dashboard/group/delete_group',
+                    url: '<?= base_url() ?>dashboard/tai_san/delete_tai_san',
                     type: 'POST',
-                    data: { group_id:recipient },
+                    data: { ma_tai_san:recipient },
                     dataType:"json",
                     success:function (data) {
                         if(data[0]==0){
                             $("#response_success").show('fast');
                             $("#response_success").html(data[1]);
-                            groupDataTable.ajax.reload();
-                            treeGroup();
+                            ajaxDataTable.ajax.reload();
+
                         }else {
                             $("#response_danger").show('fast');
                             $("#response_danger").html(data[1]);
