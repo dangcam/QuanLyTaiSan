@@ -68,6 +68,17 @@ class TaiSanController extends BaseController
             echo json_encode('No Data');
         }
     }
+    public function tai_san_ct_ajax()
+    {
+        if($this->request->getPost())
+        {
+            $data = $this->request->getPost();
+            $return_value = $this->tai_san_model->getTaiSanCT($data['ma_tai_san']);
+            echo json_encode($return_value);
+        }else {
+            echo json_encode('No Data');
+        }
+    }
     public function add_tai_san()
     {
         if($this->request->getPost()&&($this->libauth->checkFunction('tai_san','add')))

@@ -97,6 +97,7 @@ class TaiSanModel Extends BaseModel
         $tb = $this->db->table('loai_tai_san');
         $tb->select('ma_loai_ts, ten_loai_ts');
         $tb->where('su_dung',1);
+        $tb->where('tyle_haomon > ',0);
         $tb->where('nhom_ts',$nhom_ts);
         $result = $tb->get()->getResult();
         $response = '';
@@ -180,6 +181,10 @@ class TaiSanModel Extends BaseModel
             }
         }
         return $data;
+    }
+    public function getTaiSanCT($ma_tai_san){
+        $this->where('ma_tai_san',$ma_tai_san);
+        return $this->find();
     }
     public function getTaiSan($postData=null){
         ## Read value

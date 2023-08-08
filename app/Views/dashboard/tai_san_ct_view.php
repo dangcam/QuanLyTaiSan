@@ -323,6 +323,9 @@
         const tongNguyenGiaLabel = document.getElementById("tong_nguyen_gia");
         tongNguyenGiaLabel.innerText = `${sum.toLocaleString()}`;
         sum_nguyen_gia = sum;
+        const tyle_haomon = parseFloat($("#ty_le_hao_mon").val() || 0);
+        let hm_kh_nam = sum * tyle_haomon / 100;
+        $('#hm_kh_nam').val(hm_kh_nam);
         gia_tri_con_lai();
         //alert(`Tổng giá trị là: ${sum}`);
     }
@@ -344,16 +347,18 @@
         gia_tri_con_lai();
     });
     function gia_tri_con_lai(){
+
         $('#gia_tri_con_lai').val((sum_nguyen_gia - parseInt( $('#hm_luy_ke').val()||0)));
     }
     $('#so_nam_su_dung,#ngay_bd_tinh_hm').change(function(){
         currentDate = new Date();
-        const year_now = parseInt(currentDate.getFullYear());
-        const year_hm = parseInt($('#ngay_bd_tinh_hm').val().substring(0, 4));
-        const sonam_sudung = parseInt($("#so_nam_su_dung").val());
+        const year_now = parseInt(currentDate.getFullYear()||0);
+        const year_hm = parseInt($('#ngay_bd_tinh_hm').val().substring(0, 4)||0);
+        const sonam_sudung = parseInt($("#so_nam_su_dung").val()||0);
+        const hm_kh_nam = parseInt($("#hm_kh_nam").val()||0);
         let sonam_conlai = sonam_sudung- (year_now - year_hm);
         $('#so_nam_sd_con_lai').val(sonam_conlai);
-
+        $('#hm_luy_ke').val((year_now - year_hm)*hm_kh_nam);
         const ngay_kt_hm = new Date($('#ngay_bd_tinh_hm').val());
         ngay_kt_hm.setFullYear(ngay_kt_hm.getFullYear() + sonam_sudung);
         $('#ngay_kt_hm').val(ngay_kt_hm.toISOString().slice(0, 10));
@@ -399,6 +404,43 @@
         if(ma_tai_san.length>0){
             $('#text_add_edit_tai_san').html("<?=lang('TaiSanLang.edit_taisan')?>");
             field.setAttribute("name",'edit');
+            $.ajax({
+                url: "<?= base_url() ?>dashboard/tai_san/tai_san_ct_ajax",
+                method: "POST",
+                dataType: "json",
+                //async: false,
+                data: {ma_tai_san:ma_tai_san},
+                success: function (data) {
+                    if(data !== null && Array.isArray(data) && data.length > 0) {
+                        console.log(data);
+                        $("#ty_le_hao_mon").val(data[0]["ty_le_hao_mon"]);
+                        $("#so_nam_su_dung").val(data[0]["so_nam_su_dung"]);
+                        $("#ngay_mua").val(data[0]["ngay_mua"]);
+                        $("#ngay_bd_su_dung").val(data[0]["ngay_bd_su_dung"]);
+                        $("#ngay_ghi_tang").val(data[0]["ngay_ghi_tang"]);
+                        $("#nam_theo_doi").val(data[0]["nam_theo_doi"]);
+                        $("#ngay_bd_tinh_hm").val(data[0]["ngay_bd_tinh_hm"]);
+                        $("#so_nam_su_dung").val(data[0]["so_nam_su_dung"]);
+                        $("#ty_le_hao_mon").val(data[0]["ty_le_hao_mon"]);
+                        $("#hm_kh_nam").val(data[0]["hm_kh_nam"]);
+                        $("#so_nam_sd_con_lai").val(data[0]["so_nam_sd_con_lai"]);
+                        $("#ngay_kt_hm").val(data[0]["ngay_kt_hm"]);
+                        $("#hm_luy_ke").val(data[0]["hm_luy_ke"]);
+                        $("#gia_tri_con_lai").val(data[0]["gia_tri_con_lai"]);
+
+                        $("#nhom_tai_san").val(data[0]["nhom_tai_san"]);
+                        $("#nhom_tai_san").trigger("change");
+                        $("#loai_tai_san").val(data[0]["loai_tai_san"]);
+                        $("#ma_tai_san").val(data[0]["ma_tai_san"]);
+                        $('#ma_tai_san').prop("readonly",true);
+                        $("#ten_tai_san").val(data[0]["ten_tai_san"]);
+                        $("#ly_do_tang").val(data[0]["ly_do_tang"]);
+                        $("#so_luong").val(data[0]["so_luong"]);
+                        $("#don_vi_tinh").val(data[0]["don_vi_tinh"]);
+                        $("#bo_phan_su_dung").val(data[0]["bo_phan_su_dung"]);
+                    }
+                }
+            });
         }else {
             $('#text_add_edit_tai_san').html("<?=lang('TaiSanLang.add_taisan')?>");
             field.setAttribute("name",'add');
@@ -406,7 +448,7 @@
             const currentDate = new Date();
             // Format the date as "yyyy-MM-dd"
             const formattedDate = currentDate.toISOString().slice(0, 10);
-
+            $('#ma_tai_san').prop("readonly",false);
             $('#nam_theo_doi').val(nam_theo_doi);
             $('#ngay_mua').val(formattedDate);
             $('#ngay_bd_su_dung').val(formattedDate);

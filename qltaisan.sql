@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th8 07, 2023 lúc 11:40 AM
+-- Thời gian đã tạo: Th8 08, 2023 lúc 12:34 PM
 -- Phiên bản máy phục vụ: 10.4.28-MariaDB
 -- Phiên bản PHP: 8.0.28
 
@@ -41,8 +41,14 @@ CREATE TABLE `bo_phan` (
 --
 
 INSERT INTO `bo_phan` (`ma_bp`, `ten_bp`, `truc_thuoc`, `ghi_chu`, `chuong_md`, `khoan_md`) VALUES
-('BP001', 'Bộ phận 001', '', '', '', ''),
-('BP002', 'Bộ phận 002', '', '', '', '');
+('DDD_BD', 'Đội đo đạc và bản đồ', '', '', '', ''),
+('PCSDL-LT', 'Phòng Cơ sở dữ liệu và Lưu trữ', '', '', '', ''),
+('PDK_CG', 'Phòng Đăng ký và cấp giấy chứng nhận', '', '', '', ''),
+('PHC-TH', 'Phòng Hành chính - Tổng hợp', '', '', '', ''),
+('PKHTC', 'Phòng Kế hoạch - Tài chính', '', '', '', ''),
+('PKT', 'Phòng Kỹ thuật', '', '', '', ''),
+('PPTQD', 'Phòng Phát triển quỹ đất', '', '', '', ''),
+('VPDKDD', 'Văn Phòng Đăng Ký đất đai tỉnh Bình Phước', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -298,7 +304,14 @@ CREATE TABLE `loai_tai_san` (
 --
 
 INSERT INTO `loai_tai_san` (`ma_loai_ts`, `ten_loai_ts`, `thuoc_loai`, `nhom_ts`, `tyle_haomon`, `sonam_sudung`, `ghi_chu`, `nhac_nho`, `ky_nhacnho`, `so_ky_nhacnho`, `tk_nguyen_gia`, `tk_haomon`, `tieu_muc`, `su_dung`) VALUES
-('LST001', 'Loại tài sản 001', '', 3, 20, '11', 'ghi chú', 0, 4, 15, '211', '2142', '6952', 1);
+('1', 'Nhà, công trình xây dựng', 'I', 2, 0, '', '', 0, 1, 0, '21111', '2141', '9301', 1),
+('101', 'Biệt thự, công trình xây dựng cấp đặc biệt', '1', 2, 1.25, '80', '', 0, 1, 0, '21111', '2141', '9301', 1),
+('2', 'Vật kiến trúc', 'I', 3, 0, '', '', 0, 1, 0, '', '', '', 1),
+('201', 'Kho chứa, bể chứa, bãi đỗ, sân phơi, sân chơi, sân thể thao, bể bơi', '2', 3, 5, '20', '', 0, 1, 0, '', '', '', 1),
+('5', 'Máy móc thiết bị', 'I', 6, 0, '', '', 0, 1, 0, '', '', '', 1),
+('501', 'Máy móc, thiết bị văn phòng phổ biến', '5', 6, 0, '', '', 0, 1, 0, '', '', '', 1),
+('50101', 'Máy vi tính để bàn', '501', 6, 20, '5', '', 0, 1, 0, '', '', '', 1),
+('I', 'Tài sản cố định hữu hình', '', 0, 0, '', '', 0, 1, 0, '211', '2141', '', 1);
 
 -- --------------------------------------------------------
 
@@ -407,7 +420,7 @@ CREATE TABLE `nguyen_gia` (
 --
 
 INSERT INTO `nguyen_gia` (`ma_kp`, `ma_tai_san`, `gia_tri`) VALUES
-(0, 'MTS0001', 0);
+(1, 'TSMT001', 14581000);
 
 -- --------------------------------------------------------
 
@@ -499,7 +512,7 @@ CREATE TABLE `tai_san` (
 --
 
 INSERT INTO `tai_san` (`nhom_tai_san`, `loai_tai_san`, `ma_tai_san`, `ten_tai_san`, `ly_do_tang`, `so_luong`, `don_vi_tinh`, `bo_phan_su_dung`, `quan_ly_nha_nuoc`, `hdsn_kkd`, `hdsn_kd`, `hdsn_ldlk`, `hdsn_ct`, `su_dung_khac`, `trang_thai`, `nguon_hinh_thanh`, `gia_tri`, `ngay_mua`, `ngay_bd_su_dung`, `ngay_ghi_tang`, `nam_theo_doi`, `ngay_bd_tinh_hm`, `so_nam_su_dung`, `ty_le_hao_mon`, `hm_kh_nam`, `so_nam_sd_con_lai`, `ngay_kt_hm`, `hm_luy_ke`, `gia_tri_con_lai`) VALUES
-(3, 'LST001', 'MTS0001', 'Tài sản 0001', 'Tiếp nhận', 1, 'Mảnh', 'BP001', 1, 0, 0, 0, 0, 0, 0, '', 0, '2023-08-07', '2023-08-07', '2023-08-07', 2023, '2023-08-07', 11, 20, 0, 11, '2034-08-07', 0, 0);
+(6, '50101', 'TSMT001', 'Máy tính để bàn', 'Tiếp nhận', 1, 'Cái', 'PKT', 0, 0, 0, 0, 0, 0, 0, '', 0, '2023-08-08', '2023-08-08', '2023-08-08', 2023, '2023-08-08', 5, 20, 0, 5, '2028-08-08', 0, 14581000);
 
 -- --------------------------------------------------------
 
@@ -544,7 +557,8 @@ INSERT INTO `tieu_muc` (`ma_tm`, `ten_tm`) VALUES
 ('6954', 'Tài sản và thiết bị chuyên dùng'),
 ('6955', 'Tài sản và thiết bị văn phòng'),
 ('6956', 'Các thiết bị công nghệ thông tin'),
-('6999', 'Tài sản và thiết bị khác');
+('6999', 'Tài sản và thiết bị khác'),
+('9301', 'Chi xây dựng các công trình, hạng mục công trình');
 
 -- --------------------------------------------------------
 
@@ -583,6 +597,7 @@ CREATE TABLE `tk_nguyen_gia` (
 
 INSERT INTO `tk_nguyen_gia` (`ma_tk`, `ten_tk`) VALUES
 ('211', 'Tài sản cố định hữu hình'),
+('21111', 'Nhà cửa'),
 ('213', 'Tài sản cố định vô hình');
 
 -- --------------------------------------------------------
