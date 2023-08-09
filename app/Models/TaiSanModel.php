@@ -31,7 +31,8 @@ class TaiSanModel Extends BaseModel
             $this->db->table('nguyen_gia')->where('ma_tai_san',$data['ma_tai_san'])->delete();
             foreach ($data_nguyen_gia as $index => $item ) {
                 $item['ma_tai_san'] = $data['ma_tai_san'];;
-                $this->db->table('nguyen_gia')->insert($item);
+                if(strlen($item['ma_kp']) > 0)
+                    $this->db->table('nguyen_gia')->insert($item);
             }
             return 0;
         }else
@@ -46,7 +47,7 @@ class TaiSanModel Extends BaseModel
         $data_dm = $data['data'];
         unset($data['data']);
         unset($data['edit']);
-        unset($data['ma_dm']);
+        unset($data['ma_tai_san']);
         //
         if(!isset($data['quan_ly_nha_nuoc']))
             $data['quan_ly_nha_nuoc'] = 0;
@@ -64,16 +65,17 @@ class TaiSanModel Extends BaseModel
         $result = $this->update($data_id,$data);
         if($result)
         {
-            $this->set_message("TaiSanLang.dm_update_successful");
+            $this->set_message("TaiSanLang.taisan_update_successful");
             $this->db->table('nguyen_gia')->where('ma_tai_san',$data_id)->delete();
             foreach ($data_dm as $index => $item ) {
                 $item['ma_tai_san'] = $data_id;
-                $this->db->table('nguyen_gia')->insert($item);
+                if(strlen($item['ma_kp']) > 0)
+                    $this->db->table('nguyen_gia')->insert($item);
             }
             return 0;
         }else
         {
-            $this->set_message("DMTaiSanLang.dm_update_unsuccessful");
+            $this->set_message("TaiSanLang.taisan_update_unsuccessful");
             return 3;
         }
     }
@@ -91,6 +93,11 @@ class TaiSanModel Extends BaseModel
             $this->set_message("TaiSanLang.taisan_delete_unsuccessful");
             return 3;
         }
+    }
+    public function listNguyenGia($ma_tai_san)
+    {
+        $tb = $this->db->table('nguyen_gia')->where('ma_tai_san',$ma_tai_san);
+        return $tb->get()->getResult();
     }
     public function listLoaiTaiSan($nhom_ts)
     {
@@ -123,14 +130,14 @@ class TaiSanModel Extends BaseModel
         $tb = $this->db->table('nguon_kinh_phi');
         return $tb->get()->getResult();
     }
-    public function listTKNguyenGia()
+    public function listDuAn()
     {
-        $tb = $this->db->table('gia_tri_con_lai');
+        $tb = $this->db->table('du_an');
         return $tb->get()->getResult();
     }
-    public function listTieuMuc()
+    public function listTrangCap()
     {
-        $tb = $this->db->table('trang_thai');
+        $tb = $this->db->table('trang_cap');
         return $tb->get()->getResult();
     }
     public function listBoPhan()

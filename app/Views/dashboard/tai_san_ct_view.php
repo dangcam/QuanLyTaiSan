@@ -88,6 +88,36 @@
                                         </select>
                                     </div>
                                 </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-4">
+                                        <label><?=lang('TaiSanLang.qd_trang_cap')?> </label>
+                                        <select class="form-control" id="qd_trang_cap"  name="qd_trang_cap">
+                                            <option value=""></option>
+                                            <?php if (isset($list_trang_cap) && count($list_trang_cap)) :
+                                                foreach ($list_trang_cap as $key => $item) : ?>
+                                                    <option value="<?=$item->so_qd?>"><?=$item->ten_qd?></option>
+                                                <?php
+                                                endforeach;
+                                            endif ?>
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-md-2">
+                                        <label><?=lang('TaiSanLang.ngay_dq_trang_cap')?></label>
+                                        <input type="date" name="ngay_dq_trang_cap" id="ngay_dq_trang_cap"  class="form-control" placeholder="">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label><?=lang('TaiSanLang.du_an')?> </label>
+                                        <select class="form-control" id="du_an"  name="du_an">
+                                            <option value=""></option>
+                                            <?php if (isset($list_du_an) && count($list_du_an)) :
+                                                foreach ($list_du_an as $key => $item) : ?>
+                                                    <option value="<?=$item->ma_da?>"><?=$item->ten_da?></option>
+                                                <?php
+                                                endforeach;
+                                            endif ?>
+                                        </select>
+                                    </div>
+                                </div>
                                 <div class="form-group">
                                     <h6><?=lang('TaiSanLang.nguyen_gia')?> <span class="text-danger">*</span></h6>
                                     <div id="tab_nguon_hinh_thanh">
@@ -151,7 +181,7 @@
                         <div class="card-body">
                             <div class="basic-form">
                                     <div class="form-row">
-                                        <div class="form-group col-md-6">
+                                        <div id="div_ngay_mua" class="form-group col-md-6">
                                             <label><?=lang('TaiSanLang.ngay_mua')?> <span class="text-danger">*</span></label>
                                             <input type="date" name="ngay_mua" id="ngay_mua" required class="form-control" placeholder=""  >
                                         </div>
@@ -169,37 +199,37 @@
                                         </div>
                                     </div>
                                     <div class="form-row">
-                                        <div class="form-group col-md-6">
+                                        <div id="div_ngay_bd_tinh_hm" class="form-group col-md-6">
                                             <label><?=lang('TaiSanLang.ngay_bd_tinh_hm')?> <span class="text-danger">*</span></label>
                                             <input type="date" name="ngay_bd_tinh_hm" id="ngay_bd_tinh_hm" required class="form-control">
                                         </div>
-                                        <div class="form-group col-md-6">
+                                        <div id="div_so_nam_su_dung" class="form-group col-md-6">
                                             <label><?=lang('TaiSanLang.so_nam_su_dung')?></label>
                                             <input type="text" name="so_nam_su_dung" id="so_nam_su_dung" readonly class="form-control">
                                         </div>
-                                        <div class="form-group col-md-6">
+                                        <div id="div_ty_le_hao_mon" class="form-group col-md-6">
                                             <label><?=lang('TaiSanLang.ty_le_hao_mon')?></label>
                                             <input type="text" name="ty_le_hao_mon" id="ty_le_hao_mon" readonly class="form-control">
                                         </div>
-                                        <div class="form-group col-md-6">
+                                        <div id="div_hm_kh_nam" class="form-group col-md-6">
                                             <label><?=lang('TaiSanLang.hm_kh_nam')?></label>
                                             <input type="text" name="hm_kh_nam" id="hm_kh_nam" class="form-control">
                                         </div>
-                                        <div class="form-group col-md-6">
+                                        <div id="div_so_nam_sd_con_lai" class="form-group col-md-6">
                                             <label><?=lang('TaiSanLang.so_nam_sd_con_lai')?></label>
                                             <input type="text" name="so_nam_sd_con_lai" id="so_nam_sd_con_lai" readonly class="form-control">
                                         </div>
-                                        <div class="form-group col-md-6">
+                                        <div id="div_ngay_kt_hm" class="form-group col-md-6">
                                             <label><?=lang('TaiSanLang.ngay_kt_hm')?></label>
                                             <input type="date" name="ngay_kt_hm" id="ngay_kt_hm" class="form-control">
                                         </div>
                                     </div>
                                     <div class="form-row">
-                                        <div class="form-group col-md-6">
+                                        <div id="div_hm_luy_ke" class="form-group col-md-6">
                                             <label><?=lang('TaiSanLang.hm_luy_ke')?></label>
                                             <input type="text" name="hm_luy_ke" id="hm_luy_ke" class="form-control">
                                         </div>
-                                        <div class="form-group col-md-6">
+                                        <div id="div_gia_tri_con_lai" class="form-group col-md-6">
                                             <label><?=lang('TaiSanLang.gia_tri_con_lai')?></label>
                                             <input type="text" name="gia_tri_con_lai" id="gia_tri_con_lai" readonly class="form-control">
                                         </div>
@@ -234,6 +264,7 @@
                 if (data[0]==0) {
                     $("#response_success").show('fast');
                     $("#response_success").html(data[1]);
+                    window.location="<?= base_url() ?>dashboard/tai_san/";
                 } else {
                     $("#response_danger_modal").show('fast');
                     $("#response_danger_modal").html(data[1]);
@@ -307,7 +338,6 @@
         html_nguon_hinh_thanh = $("#tab_nguon_hinh_thanh").html();
         calculateSum();
     };
-    add_row_nguon_hinh_thanh(['0','0']);
     // Hàm tính tổng và hiển thị kết quả
     function calculateSum() {
         let sum = 0;
@@ -339,6 +369,7 @@
     $('#nhom_tai_san').change(function(){
         load_loai_tai_san(this.value);
         load_loai_tai_san_ct();
+        load_view_nhom_tai_san(this.value)
     });
     $('#loai_tai_san').change(function(){
         load_loai_tai_san_ct();
@@ -359,6 +390,7 @@
         let sonam_conlai = sonam_sudung- (year_now - year_hm);
         $('#so_nam_sd_con_lai').val(sonam_conlai);
         $('#hm_luy_ke').val((year_now - year_hm)*hm_kh_nam);
+        $("#hm_luy_ke").trigger("change");
         const ngay_kt_hm = new Date($('#ngay_bd_tinh_hm').val());
         ngay_kt_hm.setFullYear(ngay_kt_hm.getFullYear() + sonam_sudung);
         $('#ngay_kt_hm').val(ngay_kt_hm.toISOString().slice(0, 10));
@@ -413,6 +445,9 @@
                 success: function (data) {
                     if(data !== null && Array.isArray(data) && data.length > 0) {
                         console.log(data);
+                        $("#nhom_tai_san").val(data[0]["nhom_tai_san"]);
+                        $("#nhom_tai_san").trigger("change");
+                        
                         $("#ty_le_hao_mon").val(data[0]["ty_le_hao_mon"]);
                         $("#so_nam_su_dung").val(data[0]["so_nam_su_dung"]);
                         $("#ngay_mua").val(data[0]["ngay_mua"]);
@@ -428,16 +463,58 @@
                         $("#hm_luy_ke").val(data[0]["hm_luy_ke"]);
                         $("#gia_tri_con_lai").val(data[0]["gia_tri_con_lai"]);
 
-                        $("#nhom_tai_san").val(data[0]["nhom_tai_san"]);
-                        $("#nhom_tai_san").trigger("change");
+
                         $("#loai_tai_san").val(data[0]["loai_tai_san"]);
                         $("#ma_tai_san").val(data[0]["ma_tai_san"]);
-                        $('#ma_tai_san').prop("readonly",true);
+                        $('#ma_tai_san').prop("readonly", true);
                         $("#ten_tai_san").val(data[0]["ten_tai_san"]);
                         $("#ly_do_tang").val(data[0]["ly_do_tang"]);
                         $("#so_luong").val(data[0]["so_luong"]);
                         $("#don_vi_tinh").val(data[0]["don_vi_tinh"]);
                         $("#bo_phan_su_dung").val(data[0]["bo_phan_su_dung"]);
+                        $("#qd_trang_cap").val(data[0]["qd_trang_cap"]);
+                        $("#ngay_dq_trang_cap").val(data[0]["ngay_dq_trang_cap"]);
+                        $("#du_an").val(data[0]["du_an"]);
+
+                        if(data[0]["quan_ly_nha_nuoc"] == 1)
+                            $('#quan_ly_nha_nuoc').prop("checked", true);
+                        else $('#quan_ly_nha_nuoc').prop("checked", false);
+                        if(data[0]["hdsn_kkd"] == 1)
+                            $('#hdsn_kkd').prop("checked", true);
+                        else $('#hdsn_kkd').prop("checked", false);
+                        if(data[0]["hdsn_kd"] == 1)
+                            $('#hdsn_kd').prop("checked", true);
+                        else $('#hdsn_kd').prop("checked", false);
+                        if(data[0]["hdsn_ldlk"] == 1)
+                            $('#hdsn_ldlk').prop("checked", true);
+                        else $('#hdsn_ldlk').prop("checked", false);
+                        if(data[0]["hdsn_ct"] == 1)
+                            $('#hdsn_ct').prop("checked", true);
+                        else $('#hdsn_ct').prop("checked", false);
+                        if(data[0]["su_dung_khac"] == 1)
+                            $('#su_dung_khac').prop("checked", true);
+                        else $('#su_dung_khac').prop("checked", false);
+
+
+                        $.ajax({
+                            url: "<?= base_url() ?>dashboard/tai_san/nguyen_gia_ajax",
+                            method: "POST",
+                            async: false,
+                            dataType: "json",
+                            data: {ma_tai_san: data[0]["ma_tai_san"]},
+                            success: function (data) {
+                                if (data !== null && Array.isArray(data) && data.length > 0) {
+                                    data.forEach(async (dm) => {
+                                        var row = [dm.ma_kp, dm.gia_tri];
+                                        add_row_nguon_hinh_thanh(row);
+                                    });
+                                    calculateSum();
+                                }
+                            },
+                            error: function (data) {
+                                console.log(data);
+                            }
+                        });
                     }
                 }
             });
@@ -455,6 +532,37 @@
             $('#ngay_ghi_tang').val(formattedDate);
             $('#ngay_bd_tinh_hm').val(formattedDate);
 
+            add_row_nguon_hinh_thanh(['0','0']);
+        }
+    }
+    function load_view_nhom_tai_san(nhom_tai_san) {
+        $('#div_ngay_mua').show();
+        $('#div_ngay_bd_tinh_hm').show();
+        $('#div_so_nam_su_dung').show();
+        $('#div_ty_le_hao_mon').show();
+        $('#div_hm_kh_nam').show();
+        $('#div_so_nam_sd_con_lai').show();
+        $('#div_ngay_kt_hm').show();
+        $('#div_hm_luy_ke').show();
+        $('#div_gia_tri_con_lai').show();
+        switch(nhom_tai_san) {
+            case '1':
+                $('#div_ngay_mua').hide();
+                $('#div_ngay_bd_tinh_hm').hide();
+                $('#div_so_nam_su_dung').hide();
+                $('#div_ty_le_hao_mon').hide();
+                $('#div_hm_kh_nam').hide();
+                $('#div_so_nam_sd_con_lai').hide();
+                $('#div_ngay_kt_hm').hide();
+                $('#div_hm_luy_ke').hide();
+                $('#div_gia_tri_con_lai').hide();
+
+                break;
+            case '2':
+                // code block
+                break;
+            default:
+            // code block
         }
     }
 </script>

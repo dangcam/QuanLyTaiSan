@@ -12,6 +12,9 @@ return[
     'page_thai' => 'Asset status',
     'nguon_hinh_thanh' => 'Formation source',
     'gia_tri' => 'Value',
+    'qd_trang_cap'=>'Asset grant decision',
+    'ngay_dq_trang_cap'=>'Decision date',
+    'du_an'=>'Project',
     // COMPLETE INFORMATION
     'now_buy' => 'Buy date',
     'day_bd_su_dung' => 'Day BD used',

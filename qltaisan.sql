@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th8 08, 2023 lúc 12:34 PM
+-- Thời gian đã tạo: Th8 09, 2023 lúc 10:51 AM
 -- Phiên bản máy phục vụ: 10.4.28-MariaDB
 -- Phiên bản PHP: 8.0.28
 
@@ -401,7 +401,15 @@ CREATE TABLE `nguon_kinh_phi` (
 --
 
 INSERT INTO `nguon_kinh_phi` (`ma_kp`, `ten_kp`, `thuoc_nguon`, `nguon_ht`, `ghi_chu`, `su_dung`) VALUES
-('1', 'Ngân sách Trung ương', '', 7, '', 1);
+('1', 'Ngân sách Trung ương', '', 7, '', 1),
+('2', 'Ngân sách Tỉnh', '', 7, '', 1),
+('3', 'Ngân sách Huyện', '', 7, '', 1),
+('4', 'Phí, lệ phí để lại', '', 2, '', 1),
+('5', 'Nguồn viện trợ, tài trợ', '', 1, '', 1),
+('6', ' Nguồn khác', '', 6, '', 1),
+('7', 'Ngân sách Xã', '', 7, '', 1),
+('8', 'Quỹ phúc lợi', '', 3, '', 1),
+('9', 'Quỹ phát triển hoạt động sự nghiệp', '', 4, '', 1);
 
 -- --------------------------------------------------------
 
@@ -420,7 +428,7 @@ CREATE TABLE `nguyen_gia` (
 --
 
 INSERT INTO `nguyen_gia` (`ma_kp`, `ma_tai_san`, `gia_tri`) VALUES
-(1, 'TSMT001', 14581000);
+(1, 'TSMT001', 14500000);
 
 -- --------------------------------------------------------
 
@@ -467,7 +475,8 @@ INSERT INTO `nhom_tai_san` (`id`, `ten_nts`) VALUES
 (6, 'Máy móc thiết bị'),
 (7, 'Cây lâu năm, SVLV'),
 (8, 'TSCĐ hữu hình khác'),
-(9, 'TSCĐ vô hình');
+(9, 'TSCĐ vô hình'),
+(10, 'TSCĐ đặc thù');
 
 -- --------------------------------------------------------
 
@@ -484,6 +493,9 @@ CREATE TABLE `tai_san` (
   `so_luong` int(11) NOT NULL,
   `don_vi_tinh` varchar(10) NOT NULL,
   `bo_phan_su_dung` varchar(20) NOT NULL,
+  `qd_trang_cap` varchar(20) NOT NULL,
+  `ngay_dq_trang_cap` varchar(20) NOT NULL,
+  `du_an` varchar(20) NOT NULL,
   `quan_ly_nha_nuoc` int(11) NOT NULL,
   `hdsn_kkd` int(11) NOT NULL,
   `hdsn_kd` int(11) NOT NULL,
@@ -511,8 +523,8 @@ CREATE TABLE `tai_san` (
 -- Đang đổ dữ liệu cho bảng `tai_san`
 --
 
-INSERT INTO `tai_san` (`nhom_tai_san`, `loai_tai_san`, `ma_tai_san`, `ten_tai_san`, `ly_do_tang`, `so_luong`, `don_vi_tinh`, `bo_phan_su_dung`, `quan_ly_nha_nuoc`, `hdsn_kkd`, `hdsn_kd`, `hdsn_ldlk`, `hdsn_ct`, `su_dung_khac`, `trang_thai`, `nguon_hinh_thanh`, `gia_tri`, `ngay_mua`, `ngay_bd_su_dung`, `ngay_ghi_tang`, `nam_theo_doi`, `ngay_bd_tinh_hm`, `so_nam_su_dung`, `ty_le_hao_mon`, `hm_kh_nam`, `so_nam_sd_con_lai`, `ngay_kt_hm`, `hm_luy_ke`, `gia_tri_con_lai`) VALUES
-(6, '50101', 'TSMT001', 'Máy tính để bàn', 'Tiếp nhận', 1, 'Cái', 'PKT', 0, 0, 0, 0, 0, 0, 0, '', 0, '2023-08-08', '2023-08-08', '2023-08-08', 2023, '2023-08-08', 5, 20, 0, 5, '2028-08-08', 0, 14581000);
+INSERT INTO `tai_san` (`nhom_tai_san`, `loai_tai_san`, `ma_tai_san`, `ten_tai_san`, `ly_do_tang`, `so_luong`, `don_vi_tinh`, `bo_phan_su_dung`, `qd_trang_cap`, `ngay_dq_trang_cap`, `du_an`, `quan_ly_nha_nuoc`, `hdsn_kkd`, `hdsn_kd`, `hdsn_ldlk`, `hdsn_ct`, `su_dung_khac`, `trang_thai`, `nguon_hinh_thanh`, `gia_tri`, `ngay_mua`, `ngay_bd_su_dung`, `ngay_ghi_tang`, `nam_theo_doi`, `ngay_bd_tinh_hm`, `so_nam_su_dung`, `ty_le_hao_mon`, `hm_kh_nam`, `so_nam_sd_con_lai`, `ngay_kt_hm`, `hm_luy_ke`, `gia_tri_con_lai`) VALUES
+(6, '50101', 'TSMT001', 'Máy tính để bàn', 'Tiếp nhận', 1, 'Cái', 'PKT', '', '', '', 1, 0, 0, 0, 0, 1, 0, '', 0, '2022-08-08', '2022-08-08', '2022-08-08', 2023, '2022-08-08', 5, 20, 2900000, 4, '2027-08-08', 2900000, 11600000);
 
 -- --------------------------------------------------------
 
@@ -874,7 +886,7 @@ ALTER TABLE `nguon_hinh_thanh`
 -- AUTO_INCREMENT cho bảng `nhom_tai_san`
 --
 ALTER TABLE `nhom_tai_san`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- Các ràng buộc cho các bảng đã đổ

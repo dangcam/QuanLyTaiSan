@@ -12,6 +12,9 @@ class TaiSanEntity extends Entity{
     protected $so_luong;
     protected $don_vi_tinh;
     protected $bo_phan_su_dung;
+    protected $qd_trang_cap;
+    protected $ngay_dq_trang_cap;
+    protected $du_an;
 	// HOẠT ĐỘNG SỰ NGHIỆP
     protected $quan_ly_nha_nuoc;
     protected $hdsn_kkd;

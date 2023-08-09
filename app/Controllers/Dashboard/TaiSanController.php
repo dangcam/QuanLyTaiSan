@@ -24,6 +24,8 @@ class TaiSanController extends BaseController
         $data['list_kinh_phi'] = $this->tai_san_model->listKinhPhi();
         $data['list_nhom_tai_san'] = $this->tai_san_model->listNhomTaiSan();
         $data['list_bo_phan_su_dung'] = $this->tai_san_model->listBoPhan();
+        $data['list_trang_cap'] = $this->tai_san_model->listTrangCap();
+        $data['list_du_an'] = $this->tai_san_model->listDuAn();
         // Get the 'year' parameter value from the URL
         if($this->request->getGet()) {
             $year = $this->request->getGet('year');
@@ -79,6 +81,15 @@ class TaiSanController extends BaseController
             echo json_encode('No Data');
         }
     }
+    public function nguyen_gia_ajax()
+    {
+        if($this->request->getPost())
+        {
+            $data = $this->tai_san_model->listNguyenGia($this->request->getPost());
+            echo json_encode($data);
+        }
+    }
+
     public function add_tai_san()
     {
         if($this->request->getPost()&&($this->libauth->checkFunction('tai_san','add')))

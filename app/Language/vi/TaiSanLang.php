@@ -12,6 +12,10 @@ return[
     'trang_thai' => 'Trạng thái tài sản',
     'nguon_hinh_thanh' => 'Nguồn hình thành',
     'gia_tri' => 'Nguyên giá',
+
+    'qd_trang_cap'=>'QĐ Trang cấp',
+    'ngay_dq_trang_cap'=>'Ngày QĐ',
+    'du_an'=>'Dự án',
     // HOẠT ĐỘNG SỰ NGHIỆP
     'quan_ly_nha_nuoc' => 'Quản lý nhà nước',
     'hdsn_kkd' => 'HĐSN - Không KD',
