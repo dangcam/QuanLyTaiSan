@@ -88,6 +88,33 @@
                                         </select>
                                     </div>
                                 </div>
+                                <div class="form-row" id="div_dia_chi">
+                                    <div class="form-group col-md-3">
+                                        <label><?=lang('TaiSanLang.ma_tinh')?> <span class="text-danger">*</span></label>
+                                        <select class="form-control" id="ma_tinh" required name="ma_tinh">
+                                            <?php if (isset($list_dm_tinh) && count($list_dm_tinh)) :
+                                                foreach ($list_dm_tinh as $key => $item) : ?>
+                                                    <option value="<?=$item->ma?>"><?=$item->ten?></option>
+                                                <?php
+                                                endforeach;
+                                            endif ?>
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <label><?=lang('TaiSanLang.ma_huyen')?> <span class="text-danger">*</span></label>
+                                        <select class="form-control" id="ma_huyen" required name="ma_huyen">
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <label><?=lang('TaiSanLang.ma_xa')?> <span class="text-danger">*</span></label>
+                                        <select class="form-control" id="ma_xa" required name="ma_xa">
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <label><?=lang('TaiSanLang.dia_chi')?> <span class="text-danger">*</span></label>
+                                        <input type="text" name="dia_chi" id="dia_chi" required class="form-control" placeholder="">
+                                    </div>
+                                </div>
                                 <div class="form-row">
                                     <div class="form-group col-md-4">
                                         <label><?=lang('TaiSanLang.qd_trang_cap')?> </label>

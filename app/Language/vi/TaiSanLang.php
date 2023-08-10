@@ -12,6 +12,10 @@ return[
     'trang_thai' => 'Trạng thái tài sản',
     'nguon_hinh_thanh' => 'Nguồn hình thành',
     'gia_tri' => 'Nguyên giá',
+    'ma_tinh' => 'Tỉnh/TP',
+    'ma_huyen' => 'Quận/Huyện',
+    'ma_xa' => 'Phường/xã',
+    'dia_chi' => 'Địa chỉ',
 
     'qd_trang_cap'=>'QĐ Trang cấp',
     'ngay_dq_trang_cap'=>'Ngày QĐ',

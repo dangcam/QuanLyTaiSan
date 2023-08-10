@@ -15,6 +15,10 @@ return[
     'qd_trang_cap'=>'Asset grant decision',
     'ngay_dq_trang_cap'=>'Decision date',
     'du_an'=>'Project',
+    'ma_tinh' => 'Province/city',
+    'ma_huyen' => 'District/District',
+    'ma_xa' => 'Ward/commune',
+    'dia_chi' => 'Address',
     // COMPLETE INFORMATION
     'now_buy' => 'Buy date',
     'day_bd_su_dung' => 'Day BD used',
