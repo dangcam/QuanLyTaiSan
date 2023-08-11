@@ -17,6 +17,10 @@ return[
     'ma_xa' => 'Phường/xã',
     'dia_chi' => 'Địa chỉ',
 
+    'thong_tin_ke_khai' => 'Thông tin kê khai',
+    'loai_tai_san_ke_khai' => 'Loại tài sản kê khai',
+    'thong_so_ky_thuat' => 'Thông số kỹ thuật',
+
     'qd_trang_cap'=>'QĐ Trang cấp',
     'ngay_dq_trang_cap'=>'Ngày QĐ',
     'du_an'=>'Dự án',

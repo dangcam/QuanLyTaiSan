@@ -102,17 +102,17 @@
                                     </div>
                                     <div class="form-group col-md-3">
                                         <label><?=lang('TaiSanLang.ma_huyen')?> <span class="text-danger">*</span></label>
-                                        <select class="form-control" id="ma_huyen" required name="ma_huyen">
+                                        <select class="form-control" id="ma_huyen"  name="ma_huyen">
                                         </select>
                                     </div>
                                     <div class="form-group col-md-3">
                                         <label><?=lang('TaiSanLang.ma_xa')?> <span class="text-danger">*</span></label>
-                                        <select class="form-control" id="ma_xa" required name="ma_xa">
+                                        <select class="form-control" id="ma_xa"  name="ma_xa">
                                         </select>
                                     </div>
                                     <div class="form-group col-md-3">
                                         <label><?=lang('TaiSanLang.dia_chi')?> <span class="text-danger">*</span></label>
-                                        <input type="text" name="dia_chi" id="dia_chi" required class="form-control" placeholder="">
+                                        <input type="text" name="dia_chi" id="dia_chi"  class="form-control" placeholder="">
                                     </div>
                                 </div>
                                 <div class="form-row">
@@ -143,6 +143,27 @@
                                                 endforeach;
                                             endif ?>
                                         </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <h6><?=lang('TaiSanLang.thong_tin_ke_khai')?></h6>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-4">
+                                            <label><?=lang('TaiSanLang.loai_tai_san_ke_khai')?></label>
+                                            <select class="form-control" id="loai_tai_san_ke_khai" disabled name="loai_tai_san_ke_khai">
+                                                <option value="1">Đất</option>
+                                                <option value="2">Nhà</option>
+                                                <option value="3">Xe ô tô</option>
+                                                <option value="4">Tài sản trên 500 triệu</option>
+                                                <option value="5">Tài sản dưới 500 triệu</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-row" id="div_thong_so_ky_thuat">
+                                        <div class="form-group col-md-12">
+                                            <label><?=lang('TaiSanLang.thong_so_ky_thuat')?></label>
+                                            <textarea class="form-control" rows="3" id="thong_so_ky_thuat" name="thong_so_ky_thuat" style="height: 56px;"></textarea>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -200,7 +221,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4">
+                <div class="col-lg-4"> <!------ Thông tin hao mòn------>
                     <div class="card">
                         <div class="card-header">
                             <h4 class="card-title"><?=lang('TaiSanLang.thong_tin_hm')?></h4>
@@ -404,6 +425,31 @@
     $('#hm_luy_ke').change(function () {
         gia_tri_con_lai();
     });
+    $('#ma_tinh').change(function () {
+        $.ajax({
+            url: "<?= base_url() ?>dashboard/tai_san/ma_huyen_ajax",
+            method: "POST",
+            dataType: "json",
+            async: false,
+            data: {ma_tinh:this.value},
+            success: function (data) {
+                $("#ma_huyen").html(data);
+                //$("#ma_huyen").trigger("change");
+            }
+        });
+    });
+    $('#ma_huyen').change(function () {
+        $.ajax({
+            url: "<?= base_url() ?>dashboard/tai_san/ma_xa_ajax",
+            method: "POST",
+            dataType: "json",
+            async: false,
+            data: {ma_huyen:this.value},
+            success: function (data) {
+                $("#ma_xa").html(data);
+            }
+        });
+    });
     function gia_tri_con_lai(){
 
         $('#gia_tri_con_lai').val((sum_nguyen_gia - parseInt( $('#hm_luy_ke').val()||0)));
@@ -489,8 +535,14 @@
                         $("#ngay_kt_hm").val(data[0]["ngay_kt_hm"]);
                         $("#hm_luy_ke").val(data[0]["hm_luy_ke"]);
                         $("#gia_tri_con_lai").val(data[0]["gia_tri_con_lai"]);
-
-
+                        //
+                        $("#ma_tinh").val(data[0]["ma_tinh"]);
+                        $("#ma_tinh").trigger("change");
+                        $("#ma_huyen").val(data[0]["ma_huyen"]);
+                        $("#ma_huyen").trigger("change");
+                        $("#ma_xa").val(data[0]["ma_xa"]);
+                        $("#dia_chi").val(data[0]["dia_chi"]);
+                        //
                         $("#loai_tai_san").val(data[0]["loai_tai_san"]);
                         $("#ma_tai_san").val(data[0]["ma_tai_san"]);
                         $('#ma_tai_san').prop("readonly", true);
@@ -502,6 +554,8 @@
                         $("#qd_trang_cap").val(data[0]["qd_trang_cap"]);
                         $("#ngay_dq_trang_cap").val(data[0]["ngay_dq_trang_cap"]);
                         $("#du_an").val(data[0]["du_an"]);
+                        $("#loai_tai_san_ke_khai").val(data[0]["loai_tai_san_ke_khai"]);
+                        $("#thong_so_ky_thuat").val(data[0]["thong_so_ky_thuat"]);
 
                         if(data[0]["quan_ly_nha_nuoc"] == 1)
                             $('#quan_ly_nha_nuoc').prop("checked", true);
@@ -560,6 +614,7 @@
             $('#ngay_bd_tinh_hm').val(formattedDate);
 
             add_row_nguon_hinh_thanh(['0','0']);
+            load_view_nhom_tai_san('1');
         }
     }
     function load_view_nhom_tai_san(nhom_tai_san) {
@@ -572,6 +627,10 @@
         $('#div_ngay_kt_hm').show();
         $('#div_hm_luy_ke').show();
         $('#div_gia_tri_con_lai').show();
+
+        $('#div_dia_chi').hide();
+        $('#div_thong_so_ky_thuat').show();
+
         switch(nhom_tai_san) {
             case '1':
                 $('#div_ngay_mua').hide();
@@ -584,12 +643,29 @@
                 $('#div_hm_luy_ke').hide();
                 $('#div_gia_tri_con_lai').hide();
 
+                $('#div_dia_chi').show();
+                $("#loai_tai_san_ke_khai").val(1);
+                $('#div_thong_so_ky_thuat').hide();
                 break;
             case '2':
-                // code block
+                $('#div_dia_chi').show();
+                $("#loai_tai_san_ke_khai").val(2);
+                $('#div_thong_so_ky_thuat').hide();
+                break;
+            case '3':
+                $("#loai_tai_san_ke_khai").val(4);
+                $('#div_thong_so_ky_thuat').hide();
+                break;
+            case '4':
+                $("#loai_tai_san_ke_khai").val(3);
+                break;
+            case '5':
+                $("#loai_tai_san_ke_khai").val(4);
                 break;
             default:
-            // code block
+                $("#loai_tai_san_ke_khai").val(5);
+                break;
+
         }
     }
 </script>

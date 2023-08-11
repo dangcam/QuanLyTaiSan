@@ -167,6 +167,8 @@ $routes->group('dashboard',['filter'=>'authFilters'], static function ($routes) 
         $routes->post('loai_tai_san_ct_ajax','Dashboard\TaiSanController::loai_tai_san_ct_ajax');
         $routes->post('tai_san_ct_ajax','Dashboard\TaiSanController::tai_san_ct_ajax');
         $routes->post('nguyen_gia_ajax','Dashboard\TaiSanController::nguyen_gia_ajax');
+        $routes->post('ma_huyen_ajax','Dashboard\TaiSanController::ma_huyen_ajax');
+        $routes->post('ma_xa_ajax','Dashboard\TaiSanController::ma_xa_ajax');
         $routes->add('tai_san_ct','Dashboard\TaiSanController::tai_san_ct');
     });
 });

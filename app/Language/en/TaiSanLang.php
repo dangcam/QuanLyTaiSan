@@ -19,6 +19,10 @@ return[
     'ma_huyen' => 'District/District',
     'ma_xa' => 'Ward/commune',
     'dia_chi' => 'Address',
+
+    'thong_tin_ke_khai' => 'Declaration information',
+    'loai_tai_san_ke_khai' => 'Declared property type',
+    'thong_so_ky_thuat' => 'Specifications',
     // COMPLETE INFORMATION
     'now_buy' => 'Buy date',
     'day_bd_su_dung' => 'Day BD used',

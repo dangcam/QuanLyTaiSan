@@ -113,6 +113,28 @@ class TaiSanModel Extends BaseModel
         }
         return $response;
     }
+    public function listHuyen($ma_tinh)
+    {
+        $tb = $this->db->table('dm_huyen');
+        $tb->where('ma_tinh',$ma_tinh);
+        $result = $tb->get()->getResult();
+        $response = '';
+        foreach ($result as $key){
+            $response .='<option value="'.$key->ma.'">'.$key->ten.'</option>';
+        }
+        return $response;
+    }
+    public function listXa($ma_huyen)
+    {
+        $tb = $this->db->table('dm_xa');
+        $tb->where('ma_huyen',$ma_huyen);
+        $result = $tb->get()->getResult();
+        $response = '';
+        foreach ($result as $key){
+            $response .='<option value="'.$key->ma.'">'.$key->ten.'</option>';
+        }
+        return $response;
+    }
     public function getLoaiTaiSan($ma_loai_ts)
     {
         $tb = $this->db->table('loai_tai_san');
@@ -128,6 +150,11 @@ class TaiSanModel Extends BaseModel
     public function listKinhPhi()
     {
         $tb = $this->db->table('nguon_kinh_phi');
+        return $tb->get()->getResult();
+    }
+    public function listTinh()
+    {
+        $tb = $this->db->table('dm_tinh');
         return $tb->get()->getResult();
     }
     public function listDuAn()

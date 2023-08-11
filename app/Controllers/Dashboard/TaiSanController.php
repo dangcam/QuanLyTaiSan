@@ -26,6 +26,7 @@ class TaiSanController extends BaseController
         $data['list_bo_phan_su_dung'] = $this->tai_san_model->listBoPhan();
         $data['list_trang_cap'] = $this->tai_san_model->listTrangCap();
         $data['list_du_an'] = $this->tai_san_model->listDuAn();
+        $data['list_dm_tinh'] = $this->tai_san_model->listTinh();
         // Get the 'year' parameter value from the URL
         if($this->request->getGet()) {
             $year = $this->request->getGet('year');
@@ -54,6 +55,28 @@ class TaiSanController extends BaseController
         {
             $data = $this->request->getPost();
             $return_value = $this->tai_san_model->listLoaiTaiSan($data['id_nhom']);
+            echo json_encode($return_value);
+        }else {
+            echo json_encode('No Data');
+        }
+    }
+    public function ma_huyen_ajax()
+    {
+        if($this->request->getPost())
+        {
+            $data = $this->request->getPost();
+            $return_value = $this->tai_san_model->listHuyen($data['ma_tinh']);
+            echo json_encode($return_value);
+        }else {
+            echo json_encode('No Data');
+        }
+    }
+    public function ma_xa_ajax()
+    {
+        if($this->request->getPost())
+        {
+            $data = $this->request->getPost();
+            $return_value = $this->tai_san_model->listXa($data['ma_huyen']);
             echo json_encode($return_value);
         }else {
             echo json_encode('No Data');
