@@ -22,6 +22,31 @@ class TaiSanEntity extends Entity{
     protected $loai_tai_san_ke_khai;
     protected $thong_so_ky_thuat;
 
+    protected $so_tang;
+    protected $chieu_dai;
+    protected $dien_tich_xd;
+    protected $the_tich;
+    protected $nam_xay_dung;
+    protected $nuoc_san_xuat;
+    protected $bien_kiem_soat;
+    protected $nhan_xe;
+    protected $model;
+    protected $so_seri;
+    protected $so_may;
+    protected $tai_trong;
+    protected $so_cho_ngoi;
+    protected $so_cau;
+    protected $cong_suat_xe;
+    protected $dung_tich_xe;
+    protected $giay_cndk_so;
+    protected $ngay_dk;
+    protected $co_quan_cap_dk;
+    protected $nguon_goc_xe;
+    protected $mau_son;
+    protected $nguoi_su_dung;
+    protected $hinh_thuc_bo_tri_su_dung;
+    protected $chuc_danh_su_dung;
+
 	// HOẠT ĐỘNG SỰ NGHIỆP
     protected $quan_ly_nha_nuoc;
     protected $hdsn_kkd;

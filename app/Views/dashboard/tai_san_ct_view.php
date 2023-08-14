@@ -88,6 +88,20 @@
                                         </select>
                                     </div>
                                 </div>
+                                <div class="from-row" id="div_su_dung">
+                                    <div class="form-group col-md-3">
+                                        <label><?=lang('TaiSanLang.nguoi_su_dung')?> </label>
+                                        <input type="text" name="nguoi_su_dung" id="nguoi_su_dung"  class="form-control" placeholder="">
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <label><?=lang('TaiSanLang.chuc_danh_su_dung')?> </label>
+                                        <input type="text" name="chuc_danh_su_dung" id="chuc_danh_su_dung"  class="form-control" placeholder="">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label><?=lang('TaiSanLang.hinh_thuc_bo_tri_su_dung')?> </label>
+                                        <input type="text" name="hinh_thuc_bo_tri_su_dung" id="hinh_thuc_bo_tri_su_dung"  class="form-control" placeholder="">
+                                    </div>
+                                </div>
                                 <div class="form-row" id="div_dia_chi">
                                     <div class="form-group col-md-3">
                                         <label><?=lang('TaiSanLang.ma_tinh')?> <span class="text-danger">*</span></label>
