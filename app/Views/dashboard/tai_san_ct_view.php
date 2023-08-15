@@ -88,20 +88,109 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="from-row" id="div_su_dung">
-                                    <div class="form-group col-md-3">
+                                <div class="form-row" id="div_su_dung">
+                                    <div class="form-group col-md-3" >
                                         <label><?=lang('TaiSanLang.nguoi_su_dung')?> </label>
                                         <input type="text" name="nguoi_su_dung" id="nguoi_su_dung"  class="form-control" placeholder="">
                                     </div>
-                                    <div class="form-group col-md-3">
+                                    <div class="form-group col-md-3" id="div_chuc_danh_su_dung">
                                         <label><?=lang('TaiSanLang.chuc_danh_su_dung')?> </label>
                                         <input type="text" name="chuc_danh_su_dung" id="chuc_danh_su_dung"  class="form-control" placeholder="">
                                     </div>
-                                    <div class="form-group col-md-6">
+                                    <div class="form-group col-md-6" id="div_hinh_thuc_bo_tri_su_dung">
                                         <label><?=lang('TaiSanLang.hinh_thuc_bo_tri_su_dung')?> </label>
                                         <input type="text" name="hinh_thuc_bo_tri_su_dung" id="hinh_thuc_bo_tri_su_dung"  class="form-control" placeholder="">
                                     </div>
                                 </div>
+                                <div class="form-row" id="div_kich_thuoc">
+                                    <div class="form-group col-md-3" id="div_so_tang">
+                                        <label><?=lang('TaiSanLang.so_tang')?> </label>
+                                        <input type="text" name="so_tang" id="so_tang"  class="form-control" placeholder="">
+                                    </div>
+                                    <div class="form-group col-md-3" id="div_chieu_dai" >
+                                        <label><?=lang('TaiSanLang.chieu_dai')?> </label>
+                                        <input type="text" name="chieu_dai" id="chieu_dai"  class="form-control" placeholder="">
+                                    </div>
+                                    <div class="form-group col-md-3" id="div_dien_tich_xd">
+                                        <label><?=lang('TaiSanLang.dien_tich_xd')?> </label>
+                                        <input type="text" name="dien_tich_xd" id="dien_tich_xd"  class="form-control" placeholder="">
+                                    </div>
+                                    <div class="form-group col-md-3" id ="div_the_tich">
+                                        <label><?=lang('TaiSanLang.the_tich')?> </label>
+                                        <input type="text" name="the_tich" id="the_tich"  class="form-control" placeholder="">
+                                    </div>
+                                    <div class="form-group col-md-3" id = "div_nam_xay_dung">
+                                        <label><?=lang('TaiSanLang.nam_xay_dung')?> </label>
+                                        <input type="text" name="nam_xay_dung" id="nam_xay_dung"  class="form-control" placeholder="">
+                                    </div>
+                                    <div class="form-group col-md-3" id="div_nuoc_san_xuat">
+                                        <label><?=lang('TaiSanLang.nuoc_san_xuat')?> </label>
+                                        <input type="text" name="nuoc_san_xuat" id="nuoc_san_xuat"  class="form-control" placeholder="">
+                                    </div>
+                                    <div class="form-group col-md-3" id="div_nhan_xe">
+                                        <label><?=lang('TaiSanLang.nhan_xe')?> </label>
+                                        <input type="text" name="nhan_xe" id="nhan_xe"  class="form-control" placeholder="">
+                                    </div>
+                                    <div class="form-group col-md-3" id="div_model">
+                                        <label><?=lang('TaiSanLang.model')?> </label>
+                                        <input type="text" name="model" id="model"  class="form-control" placeholder="">
+                                    </div>
+                                    <div class="form-group col-md-3" id="div_so_seri">
+                                        <label><?=lang('TaiSanLang.so_seri')?> </label>
+                                        <input type="text" name="so_seri" id="so_seri"  class="form-control" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="form-row" id = "div_phuong_tien">
+                                    <div class="form-group col-md-3" >
+                                        <label><?=lang('TaiSanLang.bien_kiem_soat')?> </label>
+                                        <input type="text" name="bien_kiem_soat" id="bien_kiem_soat"  class="form-control" placeholder="">
+                                    </div>
+                                    <div class="form-group col-md-3" >
+                                        <label><?=lang('TaiSanLang.so_may')?> </label>
+                                        <input type="text" name="so_may" id="so_may"  class="form-control" placeholder="">
+                                    </div>
+                                    <div class="form-group col-md-3" >
+                                        <label><?=lang('TaiSanLang.tai_trong')?> </label>
+                                        <input type="text" name="tai_trong" id="tai_trong"  class="form-control" placeholder="">
+                                    </div>
+                                    <div class="form-group col-md-3" >
+                                        <label><?=lang('TaiSanLang.so_cho_ngoi')?> </label>
+                                        <input type="text" name="so_cho_ngoi" id="so_cho_ngoi"  class="form-control" placeholder="">
+                                    </div>
+                                    <div class="form-group col-md-3" >
+                                        <label><?=lang('TaiSanLang.so_cau')?> </label>
+                                        <input type="text" name="so_cau" id="so_cau"  class="form-control" placeholder="">
+                                    </div>
+                                    <div class="form-group col-md-3" >
+                                        <label><?=lang('TaiSanLang.cong_suat_xe')?> </label>
+                                        <input type="text" name="cong_suat_xe" id="cong_suat_xe"  class="form-control" placeholder="">
+                                    </div>
+                                    <div class="form-group col-md-3" >
+                                        <label><?=lang('TaiSanLang.dung_tich_xe')?> </label>
+                                        <input type="text" name="dung_tich_xe" id="dung_tich_xe"  class="form-control" placeholder="">
+                                    </div>
+                                    <div class="form-group col-md-3" >
+                                        <label><?=lang('TaiSanLang.giay_cndk_so')?> </label>
+                                        <input type="text" name="giay_cndk_so" id="giay_cndk_so"  class="form-control" placeholder="">
+                                    </div>
+                                    <div class="form-group col-md-3" >
+                                        <label><?=lang('TaiSanLang.ngay_dk')?> </label>
+                                        <input type="text" name="ngay_dk" id="ngay_dk"  class="form-control" placeholder="">
+                                    </div>
+                                    <div class="form-group col-md-3" >
+                                        <label><?=lang('TaiSanLang.co_quan_cap_dk')?> </label>
+                                        <input type="text" name="co_quan_cap_dk" id="co_quan_cap_dk"  class="form-control" placeholder="">
+                                    </div>
+                                    <div class="form-group col-md-3" >
+                                        <label><?=lang('TaiSanLang.nguon_goc_xe')?> </label>
+                                        <input type="text" name="nguon_goc_xe" id="nguon_goc_xe"  class="form-control" placeholder="">
+                                    </div>
+                                    <div class="form-group col-md-3" >
+                                        <label><?=lang('TaiSanLang.mau_son')?> </label>
+                                        <input type="text" name="mau_son" id="mau_son"  class="form-control" placeholder="">
+                                    </div>
+                                </div>
+
                                 <div class="form-row" id="div_dia_chi">
                                     <div class="form-group col-md-3">
                                         <label><?=lang('TaiSanLang.ma_tinh')?> <span class="text-danger">*</span></label>
@@ -656,6 +745,9 @@
                 $('#div_ngay_kt_hm').hide();
                 $('#div_hm_luy_ke').hide();
                 $('#div_gia_tri_con_lai').hide();
+                $('#div_kich_thuoc').hide();
+                $('#div_phuong_tien').hide();
+                $('#div_su_dung').hide();
 
                 $('#div_dia_chi').show();
                 $("#loai_tai_san_ke_khai").val(1);
@@ -665,16 +757,76 @@
                 $('#div_dia_chi').show();
                 $("#loai_tai_san_ke_khai").val(2);
                 $('#div_thong_so_ky_thuat').hide();
+                $('#div_su_dung').hide();
+                $('#div_phuong_tien').hide();
+                //
+                $('#div_kich_thuoc').show();
+                $('#div_so_tang').show();
+                $('#div_chieu_dai').hide();
+                $('#div_the_tich').hide();
+                $('#div_dien_tich_xd').show();
+                $('#div_nam_xay_dung').show();
+                $('#div_nuoc_san_xuat').hide();
+                $('#div_nhan_xe').hide();
+                $('#div_so_seri').hide();
+                $('#div_model').hide();
+                //
+
                 break;
             case '3':
                 $("#loai_tai_san_ke_khai").val(4);
                 $('#div_thong_so_ky_thuat').hide();
+                $('#div_phuong_tien').hide();
+                $('#div_su_dung').hide();
+                //
+                $('#div_kich_thuoc').show();
+                $('#div_so_tang').hide();
+                $('#div_chieu_dai').show();
+                $('#div_the_tich').show();
+                $('#div_dien_tich_xd').show();
+                $('#div_nam_xay_dung').show();
+                $('#div_nuoc_san_xuat').show();
+                $('#div_nhan_xe').hide();
+                $('#div_so_seri').hide();
+                $('#div_model').hide();
+                //
                 break;
             case '4':
                 $("#loai_tai_san_ke_khai").val(3);
+                $('#div_phuong_tien').show();
+                //
+                $('#div_kich_thuoc').show();
+                $('#div_so_tang').hide();
+                $('#div_chieu_dai').hide();
+                $('#div_the_tich').hide();
+                $('#div_dien_tich_xd').hide();
+                $('#div_nam_xay_dung').show();
+                $('#div_nuoc_san_xuat').show();
+                $('#div_nhan_xe').show();
+                $('#div_so_seri').show();
+                $('#div_model').show();
+                //
+                $('#div_su_dung').show();
+                $('#div_chuc_danh_su_dung').hide();
+
                 break;
             case '5':
                 $("#loai_tai_san_ke_khai").val(4);
+                $('#div_phuong_tien').show();
+                //
+                $('#div_kich_thuoc').show();
+                $('#div_so_tang').hide();
+                $('#div_chieu_dai').hide();
+                $('#div_the_tich').hide();
+                $('#div_dien_tich_xd').hide();
+                $('#div_nam_xay_dung').show();
+                $('#div_nuoc_san_xuat').show();
+                $('#div_nhan_xe').show();
+                $('#div_so_seri').show();
+                $('#div_model').show();
+                //
+                $('#div_su_dung').show();
+                $('#div_chuc_danh_su_dung').show();
                 break;
             default:
                 $("#loai_tai_san_ke_khai").val(5);
