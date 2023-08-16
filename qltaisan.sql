@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th8 14, 2023 lúc 11:54 AM
+-- Thời gian đã tạo: Th8 16, 2023 lúc 11:38 AM
 -- Phiên bản máy phục vụ: 10.4.28-MariaDB
 -- Phiên bản PHP: 8.0.28
 
@@ -11963,8 +11963,8 @@ CREATE TABLE `tai_san` (
   `hdsn_ct` int(11) NOT NULL,
   `su_dung_khac` int(11) NOT NULL,
   `trang_thai` int(11) NOT NULL,
-  `nguon_hinh_thanh` varchar(20) NOT NULL,
-  `gia_tri` int(11) NOT NULL,
+  `tong_dien_tich` int(10) NOT NULL,
+  `gia_tri_dat` int(11) NOT NULL,
   `ngay_mua` varchar(10) NOT NULL,
   `ngay_bd_su_dung` varchar(10) NOT NULL,
   `ngay_ghi_tang` varchar(10) NOT NULL,
@@ -11976,15 +11976,16 @@ CREATE TABLE `tai_san` (
   `so_nam_sd_con_lai` int(11) NOT NULL,
   `ngay_kt_hm` varchar(10) NOT NULL,
   `hm_luy_ke` int(11) NOT NULL,
-  `gia_tri_con_lai` float NOT NULL
+  `gia_tri_con_lai` float NOT NULL,
+  `muc_dich_su_dung` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `tai_san`
 --
 
-INSERT INTO `tai_san` (`nhom_tai_san`, `loai_tai_san`, `ma_tai_san`, `ten_tai_san`, `ly_do_tang`, `so_luong`, `don_vi_tinh`, `bo_phan_su_dung`, `ma_tinh`, `ma_huyen`, `ma_xa`, `dia_chi`, `so_tang`, `chieu_dai`, `dien_tich_xd`, `the_tich`, `nam_xay_dung`, `nuoc_san_xuat`, `bien_kiem_soat`, `nhan_xe`, `model`, `so_seri`, `so_may`, `tai_trong`, `so_cho_ngoi`, `so_cau`, `cong_suat_xe`, `dung_tich_xe`, `giay_cndk_so`, `ngay_dk`, `co_quan_cap_dk`, `nguon_goc_xe`, `mau_son`, `nguoi_su_dung`, `hinh_thuc_bo_tri_su_dung`, `chuc_danh_su_dung`, `qd_trang_cap`, `ngay_dq_trang_cap`, `du_an`, `loai_tai_san_ke_khai`, `thong_so_ky_thuat`, `quan_ly_nha_nuoc`, `hdsn_kkd`, `hdsn_kd`, `hdsn_ldlk`, `hdsn_ct`, `su_dung_khac`, `trang_thai`, `nguon_hinh_thanh`, `gia_tri`, `ngay_mua`, `ngay_bd_su_dung`, `ngay_ghi_tang`, `nam_theo_doi`, `ngay_bd_tinh_hm`, `so_nam_su_dung`, `ty_le_hao_mon`, `hm_kh_nam`, `so_nam_sd_con_lai`, `ngay_kt_hm`, `hm_luy_ke`, `gia_tri_con_lai`) VALUES
-(6, '50101', 'TSMT001', 'Máy tính để bàn', 'Tiếp nhận', 1, 'Cái', 'PKT', '70', '698', '25264', 'Đường ĐT.741, Thôn Phú Thịnh', 0, 0, 0, 0, 0, 0, '', '', '', '', '', 0, 0, 0, 0, 0, '', '', '', '', '', '', '', '', '', '', '', 5, 'Thông số kỹ thuật máy tính để bàn', 1, 0, 0, 0, 0, 1, 0, '', 0, '2022-08-08', '2022-08-08', '2022-08-08', 2023, '2022-08-08', 5, 20, 2900000, 4, '2027-08-08', 2900000, 11600000);
+INSERT INTO `tai_san` (`nhom_tai_san`, `loai_tai_san`, `ma_tai_san`, `ten_tai_san`, `ly_do_tang`, `so_luong`, `don_vi_tinh`, `bo_phan_su_dung`, `ma_tinh`, `ma_huyen`, `ma_xa`, `dia_chi`, `so_tang`, `chieu_dai`, `dien_tich_xd`, `the_tich`, `nam_xay_dung`, `nuoc_san_xuat`, `bien_kiem_soat`, `nhan_xe`, `model`, `so_seri`, `so_may`, `tai_trong`, `so_cho_ngoi`, `so_cau`, `cong_suat_xe`, `dung_tich_xe`, `giay_cndk_so`, `ngay_dk`, `co_quan_cap_dk`, `nguon_goc_xe`, `mau_son`, `nguoi_su_dung`, `hinh_thuc_bo_tri_su_dung`, `chuc_danh_su_dung`, `qd_trang_cap`, `ngay_dq_trang_cap`, `du_an`, `loai_tai_san_ke_khai`, `thong_so_ky_thuat`, `quan_ly_nha_nuoc`, `hdsn_kkd`, `hdsn_kd`, `hdsn_ldlk`, `hdsn_ct`, `su_dung_khac`, `trang_thai`, `tong_dien_tich`, `gia_tri_dat`, `ngay_mua`, `ngay_bd_su_dung`, `ngay_ghi_tang`, `nam_theo_doi`, `ngay_bd_tinh_hm`, `so_nam_su_dung`, `ty_le_hao_mon`, `hm_kh_nam`, `so_nam_sd_con_lai`, `ngay_kt_hm`, `hm_luy_ke`, `gia_tri_con_lai`, `muc_dich_su_dung`) VALUES
+(6, '50101', 'TSMT001', 'Máy tính để bàn', 'Tiếp nhận', 1, 'Cái', 'PKT', '70', '698', '25264', 'Đường ĐT.741, Thôn Phú Thịnh', 0, 0, 0, 0, 0, 0, '', '', '', '', '', 0, 0, 0, 0, 0, '', '', '', '', '', '', '', '', '', '', '', 5, 'Thông số kỹ thuật máy tính để bàn', 1, 0, 0, 0, 0, 1, 0, 0, 0, '2022-08-08', '2022-08-08', '2022-08-08', 2023, '2022-08-08', 5, 20, 2900000, 4, '2027-08-08', 2900000, 11600000, '');
 
 -- --------------------------------------------------------
 

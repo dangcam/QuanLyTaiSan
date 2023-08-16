@@ -22,6 +22,10 @@ class TaiSanEntity extends Entity{
     protected $loai_tai_san_ke_khai;
     protected $thong_so_ky_thuat;
 
+    protected $gia_tri_dat;
+    protected $tong_dien_tich;
+    protected $muc_dich_su_dung;
+
     protected $so_tang;
     protected $chieu_dai;
     protected $dien_tich_xd;
