@@ -59,6 +59,10 @@ class TaiSanEntity extends Entity{
     protected $hdsn_ct;
     protected $su_dung_khac;
     protected $trang_thai;
+    protected $de_o;
+    protected $bo_trong;
+    protected $bi_lan_chiem;
+    protected $su_dung_hon_hop;
     // THÔNG TIN HAO MÒN
     protected $ngay_mua;
     protected $ngay_bd_su_dung;

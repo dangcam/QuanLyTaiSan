@@ -56,10 +56,7 @@
                                     <div class="form-group col-md-6">
                                         <label><?=lang('TaiSanLang.ly_do_tang')?> <span class="text-danger">*</span></label>
                                         <select id="ly_do_tang" name="ly_do_tang" required class="form-control">
-                                            <option>Tiếp nhận</option>
-                                            <option>Mua sắm</option>
-                                            <option>Kiểm kê phát hiện thừa</option>
-                                            <option>Khác</option>
+
                                         </select>
                                     </div>
                                 </div>
@@ -120,7 +117,7 @@
                                         <input type="text" name="the_tich" id="the_tich"  class="form-control" placeholder="">
                                     </div>
                                     <div class="form-group col-md-3" id = "div_nam_xay_dung">
-                                        <label><?=lang('TaiSanLang.nam_xay_dung')?> </label>
+                                        <label id="lbl_nam_xay_dung"><?=lang('TaiSanLang.nam_xay_dung')?> </label>
                                         <input type="text" name="nam_xay_dung" id="nam_xay_dung"  class="form-control" placeholder="">
                                     </div>
                                     <div class="form-group col-md-3" id="div_nuoc_san_xuat">
@@ -132,11 +129,11 @@
                                         <input type="text" name="nhan_xe" id="nhan_xe"  class="form-control" placeholder="">
                                     </div>
                                     <div class="form-group col-md-3" id="div_model">
-                                        <label><?=lang('TaiSanLang.model')?> </label>
+                                        <label id="lbl_model"><?=lang('TaiSanLang.model')?> </label>
                                         <input type="text" name="model" id="model"  class="form-control" placeholder="">
                                     </div>
                                     <div class="form-group col-md-3" id="div_so_seri">
-                                        <label><?=lang('TaiSanLang.so_seri')?> </label>
+                                        <label id="lbl_so_seri"><?=lang('TaiSanLang.so_seri')?> </label>
                                         <input type="text" name="so_seri" id="so_seri"  class="form-control" placeholder="">
                                     </div>
                                 </div>
@@ -305,43 +302,7 @@
 
                                 <div class="form-group">
                                     <h6><?=lang('TaiSanLang.hien_trang_su_dung')?> <span class="text-danger">*</span></h6>
-                                    <div class="form-group">
-                                        <div class="form-check form-check-inline">
-                                            <label class="form-check-label">
-                                                <input type="checkbox" id="quan_ly_nha_nuoc" name="quan_ly_nha_nuoc"
-                                                       class="form-check-input" value="1" ><?=lang('TaiSanLang.quan_ly_nha_nuoc')?>
-                                            </label>
-                                        </div>
-                                        <div class="form-check form-check-inline disabled">
-                                            <label class="form-check-label">
-                                                <input type="checkbox" id="hdsn_kkd" name="hdsn_kkd"
-                                                       class="form-check-input" value="1" readonly><?=lang('TaiSanLang.hdsn_kkd')?>
-                                            </label>
-                                        </div>
-                                        <div class="form-check form-check-inline">
-                                            <label class="form-check-label">
-                                                <input type="checkbox" id="hdsn_kd" name="hdsn_kd"
-                                                       class="form-check-input" value="1" readonly><?=lang('TaiSanLang.hdsn_kd')?>
-                                            </label>
-                                        </div>
-                                        <div class="form-check form-check-inline">
-                                            <label class="form-check-label">
-                                                <input type="checkbox" id="hdsn_ldlk" name="hdsn_ldlk"
-                                                       class="form-check-input" value="1" readonly><?=lang('TaiSanLang.hdsn_ldlk')?>
-                                            </label>
-                                        </div>
-                                        <div class="form-check form-check-inline">
-                                            <label class="form-check-label">
-                                                <input type="checkbox" id="hdsn_ct" name="hdsn_ct"
-                                                       class="form-check-input" value="1" readonly><?=lang('TaiSanLang.hdsn_ct')?>
-                                            </label>
-                                        </div>
-                                        <div class="form-check form-check-inline">
-                                            <label class="form-check-label">
-                                                <input type="checkbox" id="su_dung_khac" name="su_dung_khac"
-                                                       class="form-check-input" value="1" ><?=lang('TaiSanLang.su_dung_khac')?>
-                                            </label>
-                                        </div>
+                                    <div class="form-group" id="div_hien_trang">
                                     </div>
                                 </div>
                                 <button type="submit" id="add_edit" name="add_tai_san" class="btn btn-primary "><?=lang('AppLang.save')?></button>
@@ -422,6 +383,102 @@
 <script type="text/javascript">
     let nam_theo_doi = <?=(isset($selected_year)?$selected_year:Date().getFullYear())?>;
     let ma_tai_san = "<?=(isset($ma_tai_san)?$ma_tai_san:'')?>";
+    let html_hien_trang = "<div class=\"form-check form-check-inline\">\n" +
+        "                                            <label class=\"form-check-label\">\n" +
+        "                                                <input type=\"checkbox\" id=\"quan_ly_nha_nuoc\" name=\"quan_ly_nha_nuoc\"\n" +
+        "                                                       class=\"form-check-input\" value=\"1\" ><?=lang('TaiSanLang.quan_ly_nha_nuoc')?>\n" +
+        "                                            </label>\n" +
+        "                                        </div>\n" +
+        "                                        <div class=\"form-check form-check-inline disabled\">\n" +
+        "                                            <label class=\"form-check-label\">\n" +
+        "                                                <input type=\"checkbox\" id=\"hdsn_kkd\" name=\"hdsn_kkd\"\n" +
+        "                                                       class=\"form-check-input\" value=\"1\" readonly><?=lang('TaiSanLang.hdsn_kkd')?>\n" +
+        "                                            </label>\n" +
+        "                                        </div>\n" +
+        "                                        <div class=\"form-check form-check-inline\">\n" +
+        "                                            <label class=\"form-check-label\">\n" +
+        "                                                <input type=\"checkbox\" id=\"hdsn_kd\" name=\"hdsn_kd\"\n" +
+        "                                                       class=\"form-check-input\" value=\"1\" readonly><?=lang('TaiSanLang.hdsn_kd')?>\n" +
+        "                                            </label>\n" +
+        "                                        </div>\n" +
+        "                                        <div class=\"form-check form-check-inline\">\n" +
+        "                                            <label class=\"form-check-label\">\n" +
+        "                                                <input type=\"checkbox\" id=\"hdsn_ldlk\" name=\"hdsn_ldlk\"\n" +
+        "                                                       class=\"form-check-input\" value=\"1\" readonly><?=lang('TaiSanLang.hdsn_ldlk')?>\n" +
+        "                                            </label>\n" +
+        "                                        </div>\n" +
+        "                                        <div class=\"form-check form-check-inline\">\n" +
+        "                                            <label class=\"form-check-label\">\n" +
+        "                                                <input type=\"checkbox\" id=\"hdsn_ct\" name=\"hdsn_ct\"\n" +
+        "                                                       class=\"form-check-input\" value=\"1\" readonly><?=lang('TaiSanLang.hdsn_ct')?>\n" +
+        "                                            </label>\n" +
+        "                                        </div>\n" +
+        "                                        <div class=\"form-check form-check-inline\">\n" +
+        "                                            <label class=\"form-check-label\">\n" +
+        "                                                <input type=\"checkbox\" id=\"su_dung_khac\" name=\"su_dung_khac\"\n" +
+        "                                                       class=\"form-check-input\" value=\"1\" ><?=lang('TaiSanLang.su_dung_khac')?>\n" +
+        "                                            </label>\n" +
+        "                                        </div>";
+    let html_hien_trang_dat_nha = "<div class=\"form-row\">\n" +
+        "                                            <div class=\"form-group col-md-2\" >\n" +
+        "                                                <label><?=lang('TaiSanLang.quan_ly_nha_nuoc')?> </label>\n" +
+        "                                                <input type=\"text\" name=\"quan_ly_nha_nuoc\" id=\"quan_ly_nha_nuoc\"  class=\"form-control\" placeholder=\"\">\n" +
+        "                                            </div>\n" +
+        "                                            <div class=\"form-group col-md-2\" >\n" +
+        "                                                <label><?=lang('TaiSanLang.hdsn_kkd')?> </label>\n" +
+        "                                                <input type=\"text\" name=\"hdsn_kkd\" id=\"hdsn_kkd\"  class=\"form-control\" placeholder=\"\">\n" +
+        "                                            </div>\n" +
+        "                                            <div class=\"form-group col-md-2\" >\n" +
+        "                                                <label><?=lang('TaiSanLang.hdsn_kd')?> </label>\n" +
+        "                                                <input type=\"text\" name=\"hdsn_kd\" id=\"hdsn_kd\"  class=\"form-control\" placeholder=\"\">\n" +
+        "                                            </div>\n" +
+        "                                            <div class=\"form-group col-md-2\" >\n" +
+        "                                                <label><?=lang('TaiSanLang.hdsn_ldlk')?> </label>\n" +
+        "                                                <input type=\"text\" name=\"hdsn_ldlk\" id=\"hdsn_ldlk\"  class=\"form-control\" placeholder=\"\">\n" +
+        "                                            </div>\n" +
+        "                                            <div class=\"form-group col-md-2\" >\n" +
+        "                                                <label><?=lang('TaiSanLang.hdsn_ct')?> </label>\n" +
+        "                                                <input type=\"text\" name=\"hdsn_ct\" id=\"hdsn_ct\"  class=\"form-control\" placeholder=\"\">\n" +
+        "                                            </div>\n" +
+        "                                            <div class=\"form-group col-md-2\" >\n" +
+        "                                                <label><?=lang('TaiSanLang.de_o')?> </label>\n" +
+        "                                                <input type=\"text\" name=\"de_o\" id=\"de_o\"  class=\"form-control\" placeholder=\"\">\n" +
+        "                                            </div>\n" +
+        "                                            <div class=\"form-group col-md-2\" >\n" +
+        "                                                <label><?=lang('TaiSanLang.bo_trong')?> </label>\n" +
+        "                                                <input type=\"text\" name=\"bo_trong\" id=\"bo_trong\"  class=\"form-control\" placeholder=\"\">\n" +
+        "                                            </div>\n" +
+        "                                            <div class=\"form-group col-md-2\" >\n" +
+        "                                                <label><?=lang('TaiSanLang.bi_lan_chiem')?> </label>\n" +
+        "                                                <input type=\"text\" name=\"bi_lan_chiem\" id=\"bi_lan_chiem\"  class=\"form-control\" placeholder=\"\">\n" +
+        "                                            </div>\n" +
+        "                                            <div class=\"form-group col-md-2\" >\n" +
+        "                                                <label><?=lang('TaiSanLang.su_dung_hon_hop')?> </label>\n" +
+        "                                                <input type=\"text\" name=\"su_dung_hon_hop\" id=\"su_dung_hon_hop\"  class=\"form-control\" placeholder=\"\">\n" +
+        "                                            </div>\n" +
+        "                                            <div class=\"form-group col-md-2\" >\n" +
+        "                                                <label><?=lang('TaiSanLang.su_dung_khac')?> </label>\n" +
+        "                                                <input type=\"text\" name=\"su_dung_khac\" id=\"su_dung_khac\"  class=\"form-control\" placeholder=\"\">\n" +
+        "                                            </div>\n" +
+        "                                        </div>";
+    let html_ly_do_tang_nha = "<option>Nhà nước giao đất</option>\n" +
+        "                      <option>Nhà nước cho thuê đất</option>\n" +
+        "                      <option>Nhà nước cho thuê đất</option>\n" +
+        "                      <option>Tiếp nhận</option>\n" +
+        "                      <option>Mua sắm</option>\n" +
+        "                      <option>Kiểm kê phát hiện thừa</option>\n" +
+        "                      <option>Khác</option>       ";
+    let html_ly_do_tang_dat =
+        "                      <option>Đầu tư xây dựng</option>\n" +
+        "                      <option>Tiếp nhận</option>\n" +
+        "                      <option>Mua sắm</option>\n" +
+        "                      <option>Kiểm kê phát hiện thừa</option>\n" +
+        "                      <option>Khác</option>       ";
+    let html_ly_do_tang =
+        "                      <option>Tiếp nhận</option>\n" +
+        "                      <option>Mua sắm</option>\n" +
+        "                      <option>Kiểm kê phát hiện thừa</option>\n" +
+        "                      <option>Khác</option>       ";
     let sum_nguyen_gia = 0;
     $('#form_id').on('submit', function (event) {
         event.preventDefault();
@@ -553,6 +610,7 @@
     $('#hm_luy_ke').change(function () {
         gia_tri_con_lai();
     });
+
     $('#ma_tinh').change(function () {
         $.ajax({
             url: "<?= base_url() ?>dashboard/tai_san/ma_huyen_ajax",
@@ -641,7 +699,7 @@
                 url: "<?= base_url() ?>dashboard/tai_san/tai_san_ct_ajax",
                 method: "POST",
                 dataType: "json",
-                //async: false,
+                async: false,
                 data: {ma_tai_san:ma_tai_san},
                 success: function (data) {
                     if(data !== null && Array.isArray(data) && data.length > 0) {
@@ -649,6 +707,7 @@
                         $("#nhom_tai_san").val(data[0]["nhom_tai_san"]);
                         $("#nhom_tai_san").trigger("change");
                         
+                        $("#trang_thai").val(data[0]["trang_thai"]);
                         $("#ty_le_hao_mon").val(data[0]["ty_le_hao_mon"]);
                         $("#so_nam_su_dung").val(data[0]["so_nam_su_dung"]);
                         $("#ngay_mua").val(data[0]["ngay_mua"]);
@@ -685,25 +744,67 @@
                         $("#loai_tai_san_ke_khai").val(data[0]["loai_tai_san_ke_khai"]);
                         $("#thong_so_ky_thuat").val(data[0]["thong_so_ky_thuat"]);
 
-                        if(data[0]["quan_ly_nha_nuoc"] == 1)
-                            $('#quan_ly_nha_nuoc').prop("checked", true);
-                        else $('#quan_ly_nha_nuoc').prop("checked", false);
-                        if(data[0]["hdsn_kkd"] == 1)
-                            $('#hdsn_kkd').prop("checked", true);
-                        else $('#hdsn_kkd').prop("checked", false);
-                        if(data[0]["hdsn_kd"] == 1)
-                            $('#hdsn_kd').prop("checked", true);
-                        else $('#hdsn_kd').prop("checked", false);
-                        if(data[0]["hdsn_ldlk"] == 1)
-                            $('#hdsn_ldlk').prop("checked", true);
-                        else $('#hdsn_ldlk').prop("checked", false);
-                        if(data[0]["hdsn_ct"] == 1)
-                            $('#hdsn_ct').prop("checked", true);
-                        else $('#hdsn_ct').prop("checked", false);
-                        if(data[0]["su_dung_khac"] == 1)
-                            $('#su_dung_khac').prop("checked", true);
-                        else $('#su_dung_khac').prop("checked", false);
+                        $("#so_tang").val(data[0]["so_tang"]);
+                        $("#chieu_dai").val(data[0]["chieu_dai"]);
+                        $("#dien_tich_xd").val(data[0]["dien_tich_xd"]);
+                        $("#the_tich").val(data[0]["the_tich"]);
+                        $("#nam_xay_dung").val(data[0]["nam_xay_dung"]);
+                        $("#nuoc_san_xuat").val(data[0]["nuoc_san_xuat"]);
+                        $("#bien_kiem_soat").val(data[0]["bien_kiem_soat"]);
+                        $("#nhan_xe").val(data[0]["nhan_xe"]);
+                        $("#model").val(data[0]["model"]);
+                        $("#so_seri").val(data[0]["so_seri"]);
+                        $("#so_may").val(data[0]["so_may"]);
+                        $("#tai_trong").val(data[0]["tai_trong"]);
+                        $("#so_cho_ngoi").val(data[0]["so_cho_ngoi"]);
+                        $("#so_cau").val(data[0]["so_cau"]);
+                        $("#cong_suat_xe").val(data[0]["cong_suat_xe"]);
+                        $("#dung_tich_xe").val(data[0]["dung_tich_xe"]);
+                        $("#giay_cndk_so").val(data[0]["giay_cndk_so"]);
+                        $("#ngay_dk").val(data[0]["ngay_dk"]);
+                        $("#co_quan_cap_dk").val(data[0]["co_quan_cap_dk"]);
+                        $("#nguon_goc_xe").val(data[0]["nguon_goc_xe"]);
+                        $("#mau_son").val(data[0]["mau_son"]);
+                        $("#nguoi_su_dung").val(data[0]["nguoi_su_dung"]);
+                        $("#hinh_thuc_bo_tri_su_dung").val(data[0]["hinh_thuc_bo_tri_su_dung"]);
+                        $("#chuc_danh_su_dung").val(data[0]["chuc_danh_su_dung"]);
+                        $("#gia_tri_dat").val(data[0]["gia_tri_dat"]);
+                        $("#tong_dien_tich").val(data[0]["tong_dien_tich"]);
+                        $("#muc_dich_su_dung").val(data[0]["muc_dich_su_dung"]);
+                        //
+                        if(data[0]["nhom_tai_san"] == 1 || data[0]["nhom_tai_san"] == 2) {
+                            $("#quan_ly_nha_nuoc").val(data[0]["quan_ly_nha_nuoc"]);
+                            $("#hdsn_kkd").val(data[0]["hdsn_kkd"]);
+                            $("#hdsn_kd").val(data[0]["hdsn_kd"]);
+                            $("#hdsn_ldlk").val(data[0]["hdsn_ldlk"]);
+                            $("#hdsn_ct").val(data[0]["hdsn_ct"]);
+                            $("#su_dung_khac").val(data[0]["su_dung_khac"]);
+                            $("#de_o").val(data[0]["de_o"]);
+                            $("#bo_trong").val(data[0]["bo_trong"]);
+                            $("#bi_lan_chiem").val(data[0]["bi_lan_chiem"]);
+                            $("#su_dung_hon_hop").val(data[0]["su_dung_hon_hop"]);
 
+                        }else{
+                            if (data[0]["quan_ly_nha_nuoc"] == 1)
+                                $('#quan_ly_nha_nuoc').prop("checked", true);
+                            else $('#quan_ly_nha_nuoc').prop("checked", false);
+                            if (data[0]["hdsn_kkd"] == 1)
+                                $('#hdsn_kkd').prop("checked", true);
+                            else $('#hdsn_kkd').prop("checked", false);
+                            if (data[0]["hdsn_kd"] == 1)
+                                $('#hdsn_kd').prop("checked", true);
+                            else $('#hdsn_kd').prop("checked", false);
+                            if (data[0]["hdsn_ldlk"] == 1)
+                                $('#hdsn_ldlk').prop("checked", true);
+                            else $('#hdsn_ldlk').prop("checked", false);
+                            if (data[0]["hdsn_ct"] == 1)
+                                $('#hdsn_ct').prop("checked", true);
+                            else $('#hdsn_ct').prop("checked", false);
+                            if (data[0]["su_dung_khac"] == 1)
+                                $('#su_dung_khac').prop("checked", true);
+                            else $('#su_dung_khac').prop("checked", false);
+                        }
+                        //
 
                         $.ajax({
                             url: "<?= base_url() ?>dashboard/tai_san/nguyen_gia_ajax",
@@ -762,6 +863,12 @@
         $('#div_muc_dich_su_dung').hide();
         $('#div_tong_dien_tich').hide();
 
+        $('#div_hien_trang').html(html_hien_trang);
+        $('#ly_do_tang').html(html_ly_do_tang);
+        //
+        $('#lbl_nam_xay_dung').html('<?=lang('TaiSanLang.nam_san_xuat')?>');
+        $('#lbl_model').html('<?=lang('TaiSanLang.model')?>');
+        $('#lbl_so_seri').html('<?=lang('TaiSanLang.so_seri')?>');
         switch(nhom_tai_san) {
             case '1':
                 $('#div_ngay_mua').hide();
@@ -784,6 +891,9 @@
                 $('#div_gia_tri_dat').show();
                 $('#div_muc_dich_su_dung').show();
                 $('#div_tong_dien_tich').show();
+                //
+                $('#div_hien_trang').html(html_hien_trang_dat_nha);
+                $('#ly_do_tang').html(html_ly_do_tang_dat);
                 break;
             case '2':
                 $('#div_dia_chi').show();
@@ -805,6 +915,10 @@
                 //
                 $('#div_muc_dich_su_dung').hide();
                 $('#div_tong_dien_tich').show();
+                $('#div_hien_trang').html(html_hien_trang_dat_nha);
+                $('#ly_do_tang').html(html_ly_do_tang_nha);
+                //
+                $('#lbl_nam_xay_dung').html('<?=lang('TaiSanLang.nam_xay_dung')?>');
                 break;
             case '3':
                 $("#loai_tai_san_ke_khai").val(4);
@@ -843,8 +957,9 @@
                 $('#div_chuc_danh_su_dung').hide();
                 $('#div_nguoi_su_dung').show();
                 $('#div_hinh_thuc_bo_tri_su_dung').show();
-
-
+                //
+                $('#lbl_model').html('<?=lang('TaiSanLang.dong_xe')?>');
+                $('#lbl_so_seri').html('<?=lang('TaiSanLang.so_khung')?>');
                 break;
             case '5':
                 $("#loai_tai_san_ke_khai").val(4);
@@ -865,6 +980,9 @@
                 $('#div_chuc_danh_su_dung').show();
                 $('#div_nguoi_su_dung').show();
                 $('#div_hinh_thuc_bo_tri_su_dung').show();
+                //
+                $('#lbl_model').html('<?=lang('TaiSanLang.dong_xe')?>');
+                $('#lbl_so_seri').html('<?=lang('TaiSanLang.so_khung')?>');
                 break;
             case '6':
                 $("#loai_tai_san_ke_khai").val(5);
@@ -880,6 +998,7 @@
                 $('#div_nhan_xe').show();
                 $('#div_so_seri').show();
                 $('#div_model').show();
+                //
                 break;
             case '7':
                 $("#loai_tai_san_ke_khai").val(5);
@@ -899,6 +1018,8 @@
                 $('#div_chuc_danh_su_dung').hide();
                 $('#div_nguoi_su_dung').hide();
                 $('#div_hinh_thuc_bo_tri_su_dung').show();
+                //
+                $('#lbl_nam_xay_dung').html('<?=lang('TaiSanLang.nam_trong')?>');
                 break;
             default:
                 $("#loai_tai_san_ke_khai").val(5);
@@ -918,9 +1039,16 @@
                 $('#div_chuc_danh_su_dung').hide();
                 $('#div_nguoi_su_dung').hide();
                 $('#div_hinh_thuc_bo_tri_su_dung').show();
+                //
                 break;
-
         }
+        $('#quan_ly_nha_nuoc,#hdsn_kkd,#hdsn_kd,#hdsn_ldlk,#hdsn_ct,#su_dung_khac,#de_o,#bo_trong,#bi_lan_chiem,#su_dung_hon_hop').change(function () {
+            let tong_dien_tich = parseInt( $('#quan_ly_nha_nuoc').val()||0) + parseInt( $('#hdsn_kkd').val()||0) + parseInt( $('#hdsn_kd').val()||0) +
+                parseInt( $('#hdsn_ldlk').val()||0) + parseInt( $('#hdsn_ct').val()||0) + parseInt( $('#su_dung_khac').val()||0) +
+                parseInt( $('#de_o').val()||0) + parseInt( $('#bo_trong').val()||0) + parseInt( $('#bi_lan_chiem').val()||0) +
+                parseInt( $('#su_dung_hon_hop').val()||0);
+            $('#tong_dien_tich').val(tong_dien_tich);
+        });
     }
 </script>
 
