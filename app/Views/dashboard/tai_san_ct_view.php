@@ -833,6 +833,7 @@
             field.setAttribute("name",'add');
             // Get the current date
             const currentDate = new Date();
+            currentDate.setFullYear(nam_theo_doi);
             // Format the date as "yyyy-MM-dd"
             const formattedDate = currentDate.toISOString().slice(0, 10);
             $('#ma_tai_san').prop("readonly",false);

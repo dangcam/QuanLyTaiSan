@@ -77,6 +77,8 @@ abstract class BaseController extends Controller
                         <ul aria-expanded="false">';
         if($this->libauth->checkFunction('tai_san','view'))
             $response .= '<li><a href="'.base_url().'dashboard/tai_san">'.lang('AppLang.tai_san').'</a></li>';
+        if($this->libauth->checkFunction('ghi_tang_tai_san','view'))
+            $response .= '<li><a href="'.base_url().'dashboard/ghitangtaisan">'.lang('AppLang.ghi_tang_tai_san').'</a></li>';
 
         $response .= '  </ul>
                       </li>';

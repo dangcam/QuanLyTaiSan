@@ -27,7 +27,7 @@ return[
     'nam_xay_dung' => 'Năm xây dựng',
     'nuoc_san_xuat' => 'Nước sản xuất',
     'bien_kiem_soat' => 'Biển kiểm soát',
-    'nhan_xe' => 'Nhãn xe',
+    'nhan_xe' => 'Nhãn hiệu',
     'model' => 'Model',
     'so_seri' => 'Số seri',
     'so_may' => 'Số máy',
@@ -59,6 +59,10 @@ return[
     'hdsn_ldlk' => 'HĐSN - LDLK',
     'hdsn_ct' => 'HĐSN - Cho thuê',
     'su_dung_khac' => 'Sử dụng khác',
+    'de_o' => 'Để ở',
+    'bo_trong' => 'Bỏ trống',
+    'bi_lan_chiem' => 'Bị lấn chiếm',
+    'su_dung_hon_hop' => 'Sử dụng hỗn hợp',
     // THÔNG TIN HAO MÒN
     'ngay_mua' => 'Ngày mua',
     'ngay_bd_su_dung' => 'Ngày BD sử dụng',
@@ -81,7 +85,11 @@ return[
     'trang_thai_0' => 'Chưa ghi tăng',
     'trang_thai_1' => 'Đang sử dụng',
     'trang_thai_2' => 'Đã ghi giảm',
-
+    //
+    'nam_san_xuat' => 'Năm sản xuất',
+    'nam_trong' => 'Năm trồng',
+    'dong_xe' => 'Dòng xe',
+    'so_khung' => 'Số khung',
 
     'add_taisan'=>'Thêm tài sản',
     'edit_taisan' => 'Sửa tài sản',

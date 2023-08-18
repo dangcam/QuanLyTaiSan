@@ -22,6 +22,7 @@ return[
     'page_title_department' => 'Bộ phận sử dụng tài khoản',
     'page_title_property_norms' => 'Loại định mức tài sản',
     'page_title_tai_san' => 'Danh sách tài sản cố định',
+    'page_title_ghi_tang' => 'Ghi tăng tài sản',
 
     'do_not_have_permission' => 'Bạn không có quyền thực hiện chức năng này!',
 
@@ -74,6 +75,7 @@ return[
     'report_group_print' => 'Xem báo cáo',
     'nha_cung_cap' => 'Nhà cung cấp',
     'tai_san' => 'Tài sản',
+    'ghi_tang_tai_san' => 'Ghi tăng',
 
     'add_data_unsuccessful' => 'Thêm dữ liệu không thành công',
     'add_data_successful' => 'Thêm dữ liệu thành công',

@@ -157,6 +157,13 @@ $routes->group('dashboard',['filter'=>'authFilters'], static function ($routes) 
         $routes->post('data_report_group_print','Dashboard\ReportGroupController::data_report_group_print');
         $routes->post('save_report_group','Dashboard\ReportGroupController::save_report_group');
     });
+    $routes->group('ghitangtaisan',static function($routes){
+        $routes->get('/','Dashboard\GhiTangTaiSanController::index');
+        $routes->post('ghitang_ajax','Dashboard\GhiTangTaiSanController::ghitang_ajax');
+        $routes->post('add_ghitang','Dashboard\GhiTangTaiSanController::add_ghitang');
+        $routes->post('edit_ghitang','Dashboard\GhiTangTaiSanController::edit_ghitang');
+        $routes->post('delete_ghitang','Dashboard\GhiTangTaiSanController::delete_ghitang');
+    });
     $routes->group('tai_san',static function($routes) {
         $routes->get('/', 'Dashboard\TaiSanController::index');
         $routes->post('tai_san_ajax','Dashboard\TaiSanController::tai_san_ajax');

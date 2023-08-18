@@ -172,39 +172,7 @@ class TaiSanModel Extends BaseModel
         $tb = $this->db->table('bo_phan');
         return $tb->get()->getResult();
     }
-    public function dicNhomTaiSan($list)
-    {
-        $data = array();
-        if (count($list)) {
-            foreach ($list as $key => $item) {
-                if(!isset($data[$item->id]))
-                    $data[$item->id] = $item->ten_nts;
-            }
-        }
-        return $data;
-    }
-    public function dicTieuMuc($list)
-    {
-        $data = array();
-        if (count($list)) {
-            foreach ($list as $key => $item) {
-                if(!isset($data[$item->ma_tm]))
-                    $data[$item->ma_tm] = $item->ten_tm;
-            }
-        }
-        return $data;
-    }
-    public function dicTK($list)
-    {
-        $data = array();
-        if (count($list)) {
-            foreach ($list as $key => $item) {
-                if(!isset($data[$item->ma_tk]))
-                    $data[$item->ma_tk] = $item->ten_tk;
-            }
-        }
-        return $data;
-    }
+
     public function dicBoPhan($list)
     {
         $data = array();

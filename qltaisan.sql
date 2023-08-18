@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th8 16, 2023 lúc 11:38 AM
+-- Thời gian đã tạo: Th8 18, 2023 lúc 11:58 AM
 -- Phiên bản máy phục vụ: 10.4.28-MariaDB
 -- Phiên bản PHP: 8.0.28
 
@@ -11641,6 +11641,7 @@ INSERT INTO `functions` (`function_id`, `function_name`, `function_status`, `fun
 ('department', 'department', 1, 3),
 ('function', 'function_manager', 1, 1),
 ('funding', 'funding', 1, 3),
+('ghi_tang_tai_san', 'ghi_tang_tai_san', 1, 5),
 ('group', 'group_manager', 1, 1),
 ('nguoi_dung', 'user', 1, 3),
 ('nha_cc', 'nha_cung_cap', 1, 4),
@@ -11654,6 +11655,31 @@ INSERT INTO `functions` (`function_id`, `function_name`, `function_status`, `fun
 ('type_asset', 'type_asset', 1, 2),
 ('type_road', 'type_road', 1, 2),
 ('user', 'user_manager', 1, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `ghi_tang_chung_tu`
+--
+
+CREATE TABLE `ghi_tang_chung_tu` (
+  `ma_chung_tu` varchar(20) NOT NULL,
+  `ma_tai_san` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `ghi_tang_tai_san`
+--
+
+CREATE TABLE `ghi_tang_tai_san` (
+  `ma_chung_tu` varchar(20) NOT NULL,
+  `ngay_chung_tu` varchar(20) NOT NULL,
+  `ngay_ghi_tang` varchar(20) NOT NULL,
+  `tong_nguyen_gia` int(11) NOT NULL,
+  `ghi_chu` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -11858,7 +11884,8 @@ CREATE TABLE `nguyen_gia` (
 --
 
 INSERT INTO `nguyen_gia` (`ma_kp`, `ma_tai_san`, `gia_tri`) VALUES
-(1, 'TSMT001', 14500000);
+(1, 'TSMT001', 14500000),
+(8, 'MTS0002', 2147483647);
 
 -- --------------------------------------------------------
 
@@ -11977,15 +12004,20 @@ CREATE TABLE `tai_san` (
   `ngay_kt_hm` varchar(10) NOT NULL,
   `hm_luy_ke` int(11) NOT NULL,
   `gia_tri_con_lai` float NOT NULL,
-  `muc_dich_su_dung` varchar(10) NOT NULL
+  `muc_dich_su_dung` varchar(10) NOT NULL,
+  `de_o` int(11) NOT NULL,
+  `bo_trong` int(11) NOT NULL,
+  `bi_lan_chiem` int(11) NOT NULL,
+  `su_dung_hon_hop` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `tai_san`
 --
 
-INSERT INTO `tai_san` (`nhom_tai_san`, `loai_tai_san`, `ma_tai_san`, `ten_tai_san`, `ly_do_tang`, `so_luong`, `don_vi_tinh`, `bo_phan_su_dung`, `ma_tinh`, `ma_huyen`, `ma_xa`, `dia_chi`, `so_tang`, `chieu_dai`, `dien_tich_xd`, `the_tich`, `nam_xay_dung`, `nuoc_san_xuat`, `bien_kiem_soat`, `nhan_xe`, `model`, `so_seri`, `so_may`, `tai_trong`, `so_cho_ngoi`, `so_cau`, `cong_suat_xe`, `dung_tich_xe`, `giay_cndk_so`, `ngay_dk`, `co_quan_cap_dk`, `nguon_goc_xe`, `mau_son`, `nguoi_su_dung`, `hinh_thuc_bo_tri_su_dung`, `chuc_danh_su_dung`, `qd_trang_cap`, `ngay_dq_trang_cap`, `du_an`, `loai_tai_san_ke_khai`, `thong_so_ky_thuat`, `quan_ly_nha_nuoc`, `hdsn_kkd`, `hdsn_kd`, `hdsn_ldlk`, `hdsn_ct`, `su_dung_khac`, `trang_thai`, `tong_dien_tich`, `gia_tri_dat`, `ngay_mua`, `ngay_bd_su_dung`, `ngay_ghi_tang`, `nam_theo_doi`, `ngay_bd_tinh_hm`, `so_nam_su_dung`, `ty_le_hao_mon`, `hm_kh_nam`, `so_nam_sd_con_lai`, `ngay_kt_hm`, `hm_luy_ke`, `gia_tri_con_lai`, `muc_dich_su_dung`) VALUES
-(6, '50101', 'TSMT001', 'Máy tính để bàn', 'Tiếp nhận', 1, 'Cái', 'PKT', '70', '698', '25264', 'Đường ĐT.741, Thôn Phú Thịnh', 0, 0, 0, 0, 0, 0, '', '', '', '', '', 0, 0, 0, 0, 0, '', '', '', '', '', '', '', '', '', '', '', 5, 'Thông số kỹ thuật máy tính để bàn', 1, 0, 0, 0, 0, 1, 0, 0, 0, '2022-08-08', '2022-08-08', '2022-08-08', 2023, '2022-08-08', 5, 20, 2900000, 4, '2027-08-08', 2900000, 11600000, '');
+INSERT INTO `tai_san` (`nhom_tai_san`, `loai_tai_san`, `ma_tai_san`, `ten_tai_san`, `ly_do_tang`, `so_luong`, `don_vi_tinh`, `bo_phan_su_dung`, `ma_tinh`, `ma_huyen`, `ma_xa`, `dia_chi`, `so_tang`, `chieu_dai`, `dien_tich_xd`, `the_tich`, `nam_xay_dung`, `nuoc_san_xuat`, `bien_kiem_soat`, `nhan_xe`, `model`, `so_seri`, `so_may`, `tai_trong`, `so_cho_ngoi`, `so_cau`, `cong_suat_xe`, `dung_tich_xe`, `giay_cndk_so`, `ngay_dk`, `co_quan_cap_dk`, `nguon_goc_xe`, `mau_son`, `nguoi_su_dung`, `hinh_thuc_bo_tri_su_dung`, `chuc_danh_su_dung`, `qd_trang_cap`, `ngay_dq_trang_cap`, `du_an`, `loai_tai_san_ke_khai`, `thong_so_ky_thuat`, `quan_ly_nha_nuoc`, `hdsn_kkd`, `hdsn_kd`, `hdsn_ldlk`, `hdsn_ct`, `su_dung_khac`, `trang_thai`, `tong_dien_tich`, `gia_tri_dat`, `ngay_mua`, `ngay_bd_su_dung`, `ngay_ghi_tang`, `nam_theo_doi`, `ngay_bd_tinh_hm`, `so_nam_su_dung`, `ty_le_hao_mon`, `hm_kh_nam`, `so_nam_sd_con_lai`, `ngay_kt_hm`, `hm_luy_ke`, `gia_tri_con_lai`, `muc_dich_su_dung`, `de_o`, `bo_trong`, `bi_lan_chiem`, `su_dung_hon_hop`) VALUES
+(2, '101', 'MTS0002', 'Toà nhà chính', 'Tiếp nhận', 1, 'Cái', 'DDD_BD', '70', '698', '25264', 'ĐT741 ', 5, 0, 500, 0, 2023, 0, '', '', '', '', '', 0, 0, 0, 0, 0, '', '', '', '', '', '', '', '', '', '', '', 0, '', 0, 400, 0, 0, 50, 0, 0, 450, 0, '2023-08-17', '2023-08-17', '2023-08-17', 2023, '2023-08-17', 80, 1.25, 26843546, 80, '2103-08-17', 0, 2147480000, '1', 0, 0, 0, 0),
+(6, '50101', 'TSMT001', 'Máy tính để bàn', 'Tiếp nhận', 1, 'Cái', 'PKT', '70', '698', '25264', 'Đường ĐT.741, Thôn Phú Thịnh', 0, 0, 0, 0, 0, 0, '', '', '', '', '', 0, 0, 0, 0, 0, '', '', '', '', '', '', '', '', '', '', '', 5, 'Thông số kỹ thuật máy tính để bàn', 1, 1, 0, 0, 0, 1, 0, 6, 0, '2022-08-08', '2022-08-08', '2022-08-08', 2023, '2022-08-08', 5, 20, 2900000, 4, '2027-08-08', 2900000, 11600000, '', 0, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -12143,6 +12175,7 @@ INSERT INTO `user_function` (`user_id`, `function_id`, `function_view`, `functio
 ('admin', 'department', 1, 1, 1, 1),
 ('admin', 'function', 1, 1, 1, 1),
 ('admin', 'funding', 1, 1, 1, 1),
+('admin', 'ghi_tang_tai_san', 1, 1, 1, 1),
 ('admin', 'group', 1, 1, 1, 1),
 ('admin', 'nguoi_dung', 1, 1, 1, 1),
 ('admin', 'nha_cc', 1, 1, 1, 1),
@@ -12240,6 +12273,18 @@ ALTER TABLE `du_an`
 --
 ALTER TABLE `functions`
   ADD PRIMARY KEY (`function_id`);
+
+--
+-- Chỉ mục cho bảng `ghi_tang_chung_tu`
+--
+ALTER TABLE `ghi_tang_chung_tu`
+  ADD PRIMARY KEY (`ma_chung_tu`,`ma_tai_san`);
+
+--
+-- Chỉ mục cho bảng `ghi_tang_tai_san`
+--
+ALTER TABLE `ghi_tang_tai_san`
+  ADD PRIMARY KEY (`ma_chung_tu`);
 
 --
 -- Chỉ mục cho bảng `groups`

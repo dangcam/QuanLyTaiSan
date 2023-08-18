@@ -22,6 +22,7 @@ return[
     'page_title_department' => 'Asset use department',
     'page_title_property_norms' => 'Type of property norm',
     'page_title_tai_san' => 'List of assets',
+    'page_title_ghi_tang' => 'Record increase in assets',
 
     'do_not_have_permission' => 'You do not have permission!',
 
@@ -74,6 +75,7 @@ return[
     'report_group_print' => 'Report Group View',
     'nha_cung_cap' => 'Supplies',
     'tai_san' => 'Assets',
+    'ghi_tang_tai_san' => 'Write increase',
 
 
     'add_data_unsuccessful' => 'Add data unsuccessful',
