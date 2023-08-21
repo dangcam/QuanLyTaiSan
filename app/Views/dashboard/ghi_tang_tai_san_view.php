@@ -154,6 +154,22 @@
                             <span class="btn-icon-left text-info"><i class="fa fa-plus color-info"></i>
                                     </span><?=lang('GhiTangTaiSanLang.chon_tai_san')?></a>
                     </div>
+                        <div class="table-responsive">
+                            <table id="data-table" class="table table-bordered table-striped verticle-middle table-responsive-sm" style="width:100%">
+                                <thead>
+                                <tr>
+                                    <th scope="col"><?=lang('GhiTangTaiSanLang.ma_chung_tu')?></th>
+                                    <th scope="col"><?=lang('GhiTangTaiSanLang.ngay_chung_tu')?></th>
+                                    <th scope="col"><?=lang('GhiTangTaiSanLang.ngay_ghi_tang')?></th>
+                                    <th scope="col"><?=lang('GhiTangTaiSanLang.tong_nguyen_gia')?></th>
+                                    <th scope="col"><?=lang('GhiTangTaiSanLang.ghi_chu')?></th>
+                                    <th scope="col">Action</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
                 </div>
                 </div>
                 <div class="modal-footer">
