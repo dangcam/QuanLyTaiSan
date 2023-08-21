@@ -6,6 +6,9 @@ return[
     'tong_nguyen_gia' => 'Tổng nguyên giá',
     'ghi_chu' => 'Ghi chú',
 
+
+    'chon_tai_san' => 'Chọn tài sản',
+
     'add_ghitang'=>'Thêm ghi tăng tài sản tài sản',
     'edit_ghitang' => 'Sửa ghi tăng tài sản tài sản',
     'ghitang_creation_successful' => 'Thêm ghi tăng tài sản tài sản thành công',

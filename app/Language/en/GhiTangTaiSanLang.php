@@ -6,6 +6,8 @@ return[
     'tong_nguyen_gia' => 'Total cost',
     'ghi_chu' => 'Note',
 
+    'chon_tai_san' => 'Add asset',
+
     'add_ghitang'=>'Add write increase property asset',
     'edit_ghitang' => 'Edit property assets',
     'ghitang_creation_successful' => 'Added record increase asset asset successfully',

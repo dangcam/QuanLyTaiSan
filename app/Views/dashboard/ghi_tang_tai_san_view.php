@@ -89,44 +89,6 @@
 
 
 <!---->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="alert alert-danger" role="alert" id="response_danger_modal">
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>
-            </div>
-            <div class="modal-header">
-                <h5 class="modal-title" id="myModalLabel">Group</h5>
-                <button type="button" id="close_modal" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <form method="post" id="form_id">
-                <div class="modal-body">
-                    <div class="form-group">
-                        <label for="recipient-name" class="col-form-label"><?=lang('GhiTangTaiSanLang.ma_cv')?></label>
-                        <input type="text" name="ma_cv" class="form-control" id="ma_cv" required placeholder="<?=lang('GhiTangTaiSanLang.ma_cv')?>">
-                    </div>
-                    <div class="form-group">
-                        <label for="message-text" class="col-form-label"><?=lang('GhiTangTaiSanLang.ten_cv')?></label>
-                        <input type="text" name="ten_cv" class="form-control" id="ten_cv" required placeholder="<?=lang('GhiTangTaiSanLang.ten_cv')?>">
-                    </div>                    
-                    <div class="form-group">
-                        <label for="message-text" class="col-form-label"><?=lang('GhiTangTaiSanLang.ghi_chu')?></label>
-                        <input type="text" name="ghi_chu" class="form-control" id="ghi_chu" placeholder="<?=lang('GhiTangTaiSanLang.ghi_chu')?>">
-                    </div>
-                  
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal"><?=lang('AppLang.close')?></button>
-                    <input id="add_edit" type="submit" class="btn btn-primary" name="" value="<?=lang('AppLang.save')?>">
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
 
 <div class="modal fade" id="smallModal" tabindex="-1" role="dialog" aria-labelledby="smallModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-sm" role="document">
@@ -151,19 +113,54 @@
 <div class="modal fade" id="myModal_Full" tabindex="-1" role="dialog" aria-labelledby="smallModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-full"  role="document">
         <div class="modal-content">
+            <div class="alert alert-danger" role="alert" id="response_danger_modal">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
             <div class="modal-header">
-                <h5 class="modal-title">Modal title</h5>
+                <h5 class="modal-title"  id="myModalLabel">Modal title</h5>
                 <button type="button" class="close" data-dismiss="modal">
                     <span>&times;</span>
                 </button>
             </div>
-            <div class="modal-body">
-                Modal body text goes here.
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
+            <form method="post" id="form_id">
+                <div class="modal-body">
+                    <div class="card">
+                        <div class="card-body">
+                    <h6 class="card-title"><?=lang('TaiSanLang.thong_tin_chung')?></h6>
+                    <div class="form-row">
+                        <div class="form-group col-md-3">
+                            <label><?=lang('GhiTangTaiSanLang.ma_chung_tu')?></label>
+                            <input type="text" name="ma_chung_tu" id="ma_chung_tu" class="form-control" placeholder="<?=lang('GhiTangTaiSanLang.ma_chung_tu')?>" required>
+                        </div>
+                        <div class="form-group col-md-2">
+                            <label><?=lang('GhiTangTaiSanLang.ngay_chung_tu')?></label>
+                            <input type="date" name="ngay_chung_tu" id="ngay_chung_tu" class="form-control" placeholder="<?=lang('GhiTangTaiSanLang.ngay_chung_tu')?>" required>
+                        </div>
+                        <div class="form-group col-md-2">
+                            <label><?=lang('GhiTangTaiSanLang.ngay_ghi_tang')?></label>
+                            <input type="date" name="ngay_ghi_tang" id="ngay_ghi_tang" class="form-control" placeholder="<?=lang('GhiTangTaiSanLang.ngay_ghi_tang')?>" required>
+                        </div>
+                        <div class="form-group col-md-5">
+                            <label>Email</label>
+                            <input type="text" name="ghi_chu" id="ghi_chu" class="form-control" placeholder="<?=lang('GhiTangTaiSanLang.ghi_chu')?>" >
+                        </div>
+                    </div>
+                        </div>
+                    <div class="card-header">
+                        <h4 class="card-title"><?=lang('AppLang.page_title_ghi_tang')?></h4>
+                        <a href="#" type="button" class="btn btn-rounded btn-info" data-toggle="modal" data-target="#myModal_Full" data-whatever="add">
+                            <span class="btn-icon-left text-info"><i class="fa fa-plus color-info"></i>
+                                    </span><?=lang('GhiTangTaiSanLang.chon_tai_san')?></a>
+                    </div>
+                </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal"><?=lang('AppLang.close')?></button>
+                    <input id="add_edit" type="submit" class="btn btn-primary" name="" value="<?=lang('AppLang.save')?>">
+                </div>
+            </form>
         </div>
     </div>
 </div>
