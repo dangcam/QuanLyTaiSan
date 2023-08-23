@@ -97,14 +97,15 @@ class GhiTangTaiSanModel Extends BaseModel
         $columnName = $postData['columns'][$columnIndex]['data']; // Column name
         $columnSortOrder = $postData['order'][0]['dir']; // asc or desc
         $strInput=$postData['search']['value'];
-
+        // Custom search filter
+        $searchYear = $postData['searchYear'];
         //
         ## Total number of records without filtering
-        $this->select('count(*) as allcount');
+        $this->select('count(*) as allcount')->where('nam_ghi_tang',$searchYear);
         $records = $this->find();
         $totalRecords = $records[0]->allcount;
         ## Fetch records
-        $this->like('ma_chung_tu',$strInput);
+        $this->like('ma_chung_tu',$strInput)->where('nam_ghi_tang',$searchYear);;
         $this->orderBy($columnName, $columnSortOrder);
         if($rowperpage!=-1)
             $this->limit($rowperpage, $start);

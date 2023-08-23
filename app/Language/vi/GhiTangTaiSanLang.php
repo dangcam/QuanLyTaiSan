@@ -1,7 +1,7 @@
 <?php
 return[
     'ma_chung_tu'=>'Mã',
-    'ngay_chung_tu'=>'Tên ghi tăng tài sản',
+    'ngay_chung_tu'=>'Ngày chứng từ',
     'ngay_ghi_tang' => 'Ngày ghi tăng',
     'tong_nguyen_gia' => 'Tổng nguyên giá',
     'ghi_chu' => 'Ghi chú',

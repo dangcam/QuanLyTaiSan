@@ -9,4 +9,5 @@ class GhiTangTaiSanEntity extends Entity{
     protected $ngay_ghi_tang;
     protected $tong_nguyen_gia;
     protected $ghi_chu;
+    protected $nam_ghi_tang;
 }

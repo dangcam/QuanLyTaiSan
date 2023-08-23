@@ -1602,7 +1602,9 @@ pre {
   -webkit-overflow-scrolling: touch; }
   .table-responsive > .table-bordered {
     border: 0; }
-
+label {
+  color: #4400eb;
+}
 .form-control {
   display: block;
   width: 100%;
@@ -1630,7 +1632,7 @@ pre {
     outline: 0;
     box-shadow: 0 0 0 0.2rem rgba(89, 59, 219, 0.25); }
   .form-control::placeholder {
-    color: #6c757d;
+    color: #6c757d; /* #6c757d */
     opacity: 1; }
   .form-control:disabled, .form-control[readonly] {
     background-color: #e9ecef;
