@@ -24,8 +24,19 @@ class GhiTangTaiSanController extends BaseController
     {
         if($this->request->getPost())
         {
-            $data = $this->ghitang_model->geGhiTangTaiSan($this->request->getPost());
+            $data = $this->ghitang_model->getGhiTangTaiSan($this->request->getPost());
             echo json_encode($data);
+        }
+    }
+    public function taisan_ajax()
+    {
+        if($this->request->getPost())
+        {
+            $data = $this->request->getPost();
+            $return_value = $this->ghitang_model->listTaiSan($data['nam_ghi_tang']);
+            echo json_encode($return_value);
+        }else {
+            echo json_encode('No Data');
         }
     }
     public function add_ghitang()

@@ -114,7 +114,7 @@
             ]
         });
 
-        $('#nam_ke_khai').change(function(){
+        $('#nam_theo_doi').change(function(){
             ajaxDataTable.draw();
         });
         // Delete

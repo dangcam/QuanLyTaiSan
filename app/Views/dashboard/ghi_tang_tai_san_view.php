@@ -181,7 +181,7 @@
                                     <th scope="col">Action</th>
                                 </tr>
                                 </thead>
-                                <tbody id ="lits_tai_san">
+                                <tbody id ="lits_tai_san_ghi_tang">
                                 </tbody>
                             </table>
                         </div>
@@ -196,7 +196,7 @@
     </div>
 </div>
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-xl" role="document">
         <div class="modal-content">
             <div class="alert alert-danger" role="alert" id="response_danger_modal">
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -204,31 +204,29 @@
                 </button>
             </div>
             <div class="modal-header">
-                <h5 class="modal-title" id="myModalLabel">Group</h5>
+                <h5 class="modal-title" id="myModalLabel"><?=lang('GhiTangTaiSanLang.chon_tai_san')?></h5>
                 <button type="button" id="close_modal" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <form method="post" id="form_id">
                 <div class="modal-body">
-                    <div class="form-group">
-                        <label for="recipient-name" class="col-form-label"><?=lang('NhaCCLang.ma_ncc')?></label>
-                        <input type="text" name="ma_ncc" class="form-control" id="ma_ncc" required placeholder="<?=lang('NhaCCLang.ma_ncc')?>">
-                    </div>
-                    <div class="form-group">
-                        <label for="message-text" class="col-form-label"><?=lang('NhaCCLang.ten_ncc')?></label>
-                        <input type="text" name="ten_ncc" class="form-control" id="ten_ncc" required placeholder="<?=lang('NhaCCLang.ten_ncc')?>">
-                    </div>
-                    <div class="form-group">
-                        <label for="message-text" class="col-form-label"><?=lang('NhaCCLang.dia_chi')?></label>
-                        <input type="text" name="dia_chi" class="form-control" id="dia_chi" required placeholder="<?=lang('NhaCCLang.dia_chi')?>">
-                    </div>
-                    <div class="form-group">
-                        <label for="message-text" class="col-form-label"><?=lang('NhaCCLang.ncc_status')?></label>
-                        <select id="ncc_status" class="form-control"name ="ncc_status">
-                            <option value="1"><?=lang('AppLang.active')?></option>
-                            <option value="2"><?=lang('AppLang.inactive')?></option>
-                        </select>
+                    <div class="table-responsive">
+                        <table id="data-table_list_tai_san" class="table table-bordered table-striped verticle-middle table-responsive-sm" style="width:100%">
+                            <thead>
+                            <tr>
+                                <th scope="col"><input type="checkbox" id="selectAll"></th>
+                                <th scope="col"><?=lang('TaiSanLang.ma_tai_san')?></th>
+                                <th scope="col"><?=lang('TaiSanLang.ten_tai_san')?></th>
+                                <th scope="col"><?=lang('TaiSanLang.bo_phan_su_dung')?></th>
+                                <th scope="col"><?=lang('TaiSanLang.gia_tri')?></th>
+                                <th scope="col"><?=lang('TaiSanLang.hm_luy_ke')?></th>
+                                <th scope="col"><?=lang('TaiSanLang.gia_tri_con_lai')?></th>
+                            </tr>
+                            </thead>
+                            <tbody id ="list_tai_san">
+                            </tbody>
+                        </table>
                     </div>
 
                 </div>
@@ -297,18 +295,33 @@
                 $('#myModalLabel').text("<?=lang('GhiTangTaiSanLang.edit_ghitang')?>");
                 $('#ma_chung_tu').prop("readonly",true);
                 $.ajax({
-                    url: "<?= base_url() ?>dashboard/report_group/data_report_group",
+                    url: "<?= base_url() ?>dashboard/ghitangtaisan/ghitang_taisan_ajax",
                     method: "POST",
                     dataType: "json",
                     data: {report_month: $('#report_month').val() },
                     success: function (data) {
-                        $("#list_tai_san").html(data);
+                        $("#list_tai_san_ghi_tang").html(data);
                     },
                     error: function (data) {
-                        $("#list_tai_san").html(data);
+                        $("#list_tai_san_ghi_tang").html(data);
                     }
                 });
             }
+        });
+        $('#myModal').on('show.bs.modal', function (event) {
+            $.ajax({
+                url: "<?= base_url() ?>dashboard/ghitangtaisan/taisan_ajax",
+                method: "POST",
+                dataType: "json",
+                data: {nam_ghi_tang: $('#nam_ghi_tang').val() },
+                success: function (data) {
+                    $("#list_tai_san").html(data);
+                    $('.item-checkbox').trigger("change");
+                },
+                error: function (data) {
+                    $("#list_tai_san").html(data);
+                }
+            });
         });
         // Delete
         $('#smallModal').on('show.bs.modal', function (event) {
@@ -370,6 +383,18 @@
                     $("#response_danger_modal").html(data);
                 }
             });
+        });
+        $('#myModal').on('change', '#selectAll', function () {
+            $('.item-checkbox').prop('checked', this.checked);
+        });
+
+        // Attach the individual checkbox event handler using event delegation
+        $('#myModal').on('change', '.item-checkbox', function () {
+            if ($('.item-checkbox:checked').length === $('.item-checkbox').length) {
+                $('#selectAll').prop('checked', true);
+            } else {
+                $('#selectAll').prop('checked', false);
+            }
         });
     });
 </script>

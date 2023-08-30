@@ -86,9 +86,28 @@ class GhiTangTaiSanModel Extends BaseModel
             return 3;
         }
     }
+    public function listTaiSan($nam_ghi_tang)
+    {
+        $tb = $this->db->table('tai_san');
+        $tb->where('trang_thai',0);
+        $tb->where('nam_theo_doi',$nam_ghi_tang);
+        $result = $tb->get()->getResult();
+        $response = '';
+        foreach ($result as $key){
+            $response .='<tr>';
+            $response .='<td><input type="checkbox" class="item-checkbox"></td>';
+            $response .='<td>'.$key->ma_tai_san.'</td>';
+            $response .='<td>'.$key->ten_tai_san.'</td>';
+            $response .='<td>'.$key->bo_phan_su_dung.'</td>';
+            $response .='<td>'.($key->hm_luy_ke + $key->gia_tri_con_lai).'</td>';
+            $response .='<td>'.($key->hm_luy_ke).'</td>';
+            $response .='<td>'.($key->gia_tri_con_lai).'</td>';
+            $response .='</tr>';
+        }
+        return $response;
+    }
 
-
-    public function geGhiTangTaiSan($postData=null){
+    public function getGhiTangTaiSan($postData=null){
         ## Read value
         $draw = $postData['draw'];
         $start = $postData['start'];
