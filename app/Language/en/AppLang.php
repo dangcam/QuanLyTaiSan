@@ -34,6 +34,7 @@ return[
     'password' => 'Password',
     'active' => 'Active',
     'inactive' => 'Inactive',
+    'add' => 'Add',
     'save' => 'Save',
     'close' => 'Close',
     'delete' => 'Delete',

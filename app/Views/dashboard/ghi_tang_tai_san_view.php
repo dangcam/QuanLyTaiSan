@@ -209,7 +209,6 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form method="post" id="form_id">
                 <div class="modal-body">
                     <div class="table-responsive">
                         <table id="data-table_list_tai_san" class="table table-bordered table-striped verticle-middle table-responsive-sm" style="width:100%">
@@ -232,9 +231,8 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal"><?=lang('AppLang.close')?></button>
-                    <input id="add_edit" type="submit" class="btn btn-primary" name="" value="<?=lang('AppLang.save')?>">
+                    <input id="add_row" type="submit" class="btn btn-primary" name="" value="<?=lang('AppLang.add')?>">
                 </div>
-            </form>
         </div>
     </div>
 </div>
@@ -395,6 +393,32 @@
             } else {
                 $('#selectAll').prop('checked', false);
             }
+        });
+        //
+        $('#add_row').on('click', function (e) {
+            e.preventDefault(); // Prevent the default form submission
+
+            var selectedRows = []; // Array to store the selected row values
+
+            $('.item-checkbox:checked').each(function () {
+                var $row = $(this).closest('tr'); // Get the closest row element
+                var maTaiSan = $row.find('td:eq(1)').text();
+                var tenTaiSan = $row.find('td:eq(2)').text();
+                var boPhanSuDung = $row.find('td:eq(3)').text();
+                var giaTri = $row.find('td:eq(4)').text();
+                var hmLuyKe = $row.find('td:eq(5)').text();
+                var giaTriConLai = $row.find('td:eq(6)').text();
+                selectedRows.push({
+                    maTaiSan: maTaiSan,
+                    tenTaiSan: tenTaiSan,
+                    boPhanSuDung: boPhanSuDung,
+                    giaTri: giaTri,
+                    hmLuyKe: hmLuyKe,
+                    giaTriConLai: giaTriConLai,
+                });
+            });
+
+            console.log(selectedRows);
         });
     });
 </script>

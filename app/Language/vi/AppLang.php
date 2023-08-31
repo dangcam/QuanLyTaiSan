@@ -33,6 +33,7 @@ return[
     'password' => 'Mật khẩu',
     'active' => 'Bật',
     'inactive' => 'Tắt',
+    'add' => 'Thêm',
     'save' => 'Lưu',
     'close' => 'Đóng',
     'delete' => 'Xoá',
