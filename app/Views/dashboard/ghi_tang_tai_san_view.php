@@ -239,6 +239,7 @@
 <!---->
 
 <script>
+    var selectedRows =[];
     jQuery(document).ready(function($) {
         var ajaxDataTable = $('#data-table').DataTable({
             'processing': true,
@@ -285,10 +286,11 @@
                 $('#ma_chung_tu').prop("readonly",false);
                 const currentDate = new Date();
                 currentDate.setFullYear($('#nam_ghi_tang').val());
-                // Format the date as "yyyy-MM-dd"
                 const formattedDate = currentDate.toISOString().slice(0, 10);
                 $('#ngay_chung_tu').val(formattedDate);
                 $('#ngay_ghi_tang').val(formattedDate);
+                selectedRows = [];
+                loadRowGhiTang();
             }else {
                 $('#myModalLabel').text("<?=lang('GhiTangTaiSanLang.edit_ghitang')?>");
                 $('#ma_chung_tu').prop("readonly",true);
@@ -324,16 +326,16 @@
         // Delete
         $('#smallModal').on('show.bs.modal', function (event) {
             var button = $(event.relatedTarget) // Button that triggered the modal
-            var recipient = button.data('ma_cv') // Extract info from data-* attributes
+            var recipient = button.data('ma_chung_tu') // Extract info from data-* attributes
             $("#modal-btn-yes").on("click", function(event){
                 $("#smallModal").modal('hide');
                 event.preventDefault();
                 $("#response_success").hide('fast');
                 $("#response_danger").hide('fast');
                 $.ajax({
-                    url: '<?= base_url() ?>dashboard/position/delete_position',
+                    url: '<?= base_url() ?>dashboard/ghitangtaisan/delete_ghitang',
                     type: 'POST',
-                    data: { ma_cv:recipient },
+                    data: { ma_chung_tu:recipient },
                     dataType:"json",
                     success:function (data) {
                         if(data[0]==0){
@@ -359,17 +361,19 @@
             $("#response_danger").hide('fast');
             $("#response_danger_modal").hide('fast');
             var name = $("#add_edit").attr("name");
-            var formData = $(this).serialize();
+            //var formData = $(this).serialize();
+            console.log((selectedRows));
             $.ajax({
-                url: "<?= base_url() ?>dashboard/position/"+name+"_position",
+                url: "<?= base_url() ?>dashboard/ghitangtaisan/"+name+"_ghitang",
                 method: "POST",
-                data: formData,
+                data: {ma_chung_tu:$('#ma_chung_tu').val(), ngay_chung_tu:$('#ngay_chung_tu').val(), ngay_ghi_tang:$('#ngay_ghi_tang').val(),
+                    ghi_chu:$('#ghi_chu').val(),nam_ghi_tang:$('#nam_ghi_tang').val(), selectedRows:(selectedRows)},
                 dataType: "json",
                 success: function (data) {
                     if (data[0]==0) {
                         $("#response_success").show('fast');
                         $("#response_success").html(data[1]);
-                        $('#myModal').modal('toggle');
+                        $('#myModal_Full').modal('toggle');
                         ajaxDataTable.ajax.reload();
                     } else {
                         $("#response_danger_modal").show('fast');
@@ -398,8 +402,6 @@
         $('#add_row').on('click', function (e) {
             e.preventDefault(); // Prevent the default form submission
 
-            var selectedRows = []; // Array to store the selected row values
-
             $('.item-checkbox:checked').each(function () {
                 var $row = $(this).closest('tr'); // Get the closest row element
                 var maTaiSan = $row.find('td:eq(1)').text();
@@ -408,18 +410,55 @@
                 var giaTri = $row.find('td:eq(4)').text();
                 var hmLuyKe = $row.find('td:eq(5)').text();
                 var giaTriConLai = $row.find('td:eq(6)').text();
-                selectedRows.push({
-                    maTaiSan: maTaiSan,
-                    tenTaiSan: tenTaiSan,
-                    boPhanSuDung: boPhanSuDung,
-                    giaTri: giaTri,
-                    hmLuyKe: hmLuyKe,
-                    giaTriConLai: giaTriConLai,
+                var exists = selectedRows.some(function (row) {
+                    return row.maTaiSan === maTaiSan;
                 });
+                if (!exists) {
+                    selectedRows.push({
+                        maTaiSan: maTaiSan,
+                        tenTaiSan: tenTaiSan,
+                        boPhanSuDung: boPhanSuDung,
+                        giaTri: giaTri,
+                        hmLuyKe: hmLuyKe,
+                        giaTriConLai: giaTriConLai,
+                    });
+                }
             });
-
+            $('#myModal').modal('toggle');
+            loadRowGhiTang();
             console.log(selectedRows);
         });
+
     });
+    function loadRowGhiTang() {
+        let tongNguyenGia = 0;
+        let rowhtml = '';
+
+        selectedRows.forEach(function (row) {
+            let active_row =
+                '          <a href="javascript:void(remove_row_ghi_tang(\''+row.maTaiSan+'\'))" class="mr-4" ' +
+                '               data-toggle="tooltip" data-placement="to" title="<?=lang('AppLang.delete')?>">' +
+                '           <i class="fa fa-close color-danger"></i></a>\n';
+            rowhtml += '<tr>';
+            rowhtml += '<td>' + row.maTaiSan + '</td>';
+            rowhtml += '<td>' + row.tenTaiSan + '</td>';
+            rowhtml += '<td>' + row.boPhanSuDung + '</td>';
+            rowhtml += '<td>' + row.giaTri + '</td>';
+            rowhtml += '<td>' + row.hmLuyKe + '</td>';
+            rowhtml += '<td>' + row.giaTriConLai + '</td>';
+            rowhtml += '<td>' + active_row + '</td>';
+            rowhtml += '</tr>'
+            tongNguyenGia += parseInt(row.giaTri);
+        });
+
+        $('#lits_tai_san_ghi_tang').html(rowhtml);
+        $('#tong_nguyen_gia').val(tongNguyenGia);
+    };
+    function remove_row_ghi_tang(id) {
+        selectedRows = selectedRows.filter(function (row) {
+            return row.maTaiSan !== id;
+        });
+        loadRowGhiTang();
+    };
 </script>
 

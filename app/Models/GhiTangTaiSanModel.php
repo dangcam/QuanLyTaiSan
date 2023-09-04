@@ -16,10 +16,8 @@ class GhiTangTaiSanModel Extends BaseModel
     public function add_ghi_tang($data)
     {
         unset($data['add']);
-        $data_ghi_tang = $data['data'];
-        unset($data['data']);
-        if(isset($data['su_dung']))
-            $data['su_dung'] = 1;
+        $data_ghi_tang = $data['selectedRows'];
+        unset($data['selectedRows']);
         if(!$this->validate($data))
         {
             foreach ($this->errors() as $error) {
@@ -29,12 +27,13 @@ class GhiTangTaiSanModel Extends BaseModel
         }
         if(!$this->insert($data))
         {
-            $this->set_message("GhiTangTaiSanLang.ghitang_creation_successful");
-            $this->db->table('ghi_tang_chung_tu')->where('ma_chung_tu',$data['ma_chung_tu'])->delete();
             foreach ($data_ghi_tang as $index => $item ) {
-                $item['ma_chung_tu'] = $data['ma_chung_tu'];;
-                $this->db->table('ghi_tang_chung_tu')->insert($item);
+                $ghi_tang['ma_chung_tu'] = $data['ma_chung_tu'];
+                $ghi_tang['ma_tai_san'] = $item['maTaiSan'];
+                $this->db->table('ghi_tang_chung_tu')->insert($ghi_tang);
+                $this->db->table('tai_san')->set('trang_thai',1)->where('ma_tai_san',$ghi_tang['ma_tai_san'])->update();
             }
+            $this->set_message("GhiTangTaiSanLang.ghitang_creation_successful");
             return 0;
         }else
         {
@@ -77,6 +76,12 @@ class GhiTangTaiSanModel Extends BaseModel
 
         if($this->where('ma_chung_tu',$data_id)->delete())
         {
+            //
+            $result = $this->db->table('ghi_tang_chung_tu')->where('ma_chung_tu',$data_id)->get()->getResult();
+            foreach ($result as $key){
+                $this->db->table('tai_san')->set('trang_thai',0)->where('ma_tai_san',$key->ma_tai_san)->update();
+            }
+            //
             $this->db->table('ghi_tang_chung_tu')->where('ma_chung_tu',$data_id)->delete();
             $this->set_message("GhiTangTaiSanLang.ghitang_delete_successful");
             return 0;
