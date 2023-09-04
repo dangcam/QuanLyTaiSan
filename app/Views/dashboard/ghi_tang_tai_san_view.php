@@ -271,6 +271,7 @@
             var button = $(event.relatedTarget); // Button that triggered the modal
             var recipient = button.data('whatever'); // Extract info from data-* attributes
             var ma_chung_tu = button.data('ma_chung_tu');
+            var ngay_chung_tu = button.data('ngay_chung_tu');
             var ngay_ghi_tang = button.data('ngay_ghi_tang');
             var tong_nguyen_gia = button.data('tong_nguyen_gia');
             var ghi_chu = button.data('ghi_chu');
@@ -298,9 +299,14 @@
                     url: "<?= base_url() ?>dashboard/ghitangtaisan/ghitang_taisan_ajax",
                     method: "POST",
                     dataType: "json",
-                    data: {report_month: $('#report_month').val() },
+                    data: {ma_chung_tu: ma_chung_tu },
                     success: function (data) {
-                        $("#list_tai_san_ghi_tang").html(data);
+                        console.log(data);
+                        selectedRows =[];
+                        data.forEach(function (row) {
+                            selectedRows.push(row);
+                        });
+                        loadRowGhiTang();
                     },
                     error: function (data) {
                         $("#list_tai_san_ghi_tang").html(data);
@@ -366,7 +372,8 @@
             $.ajax({
                 url: "<?= base_url() ?>dashboard/ghitangtaisan/"+name+"_ghitang",
                 method: "POST",
-                data: {ma_chung_tu:$('#ma_chung_tu').val(), ngay_chung_tu:$('#ngay_chung_tu').val(), ngay_ghi_tang:$('#ngay_ghi_tang').val(),
+                data: {ma_chung_tu:$('#ma_chung_tu').val(), ngay_chung_tu:$('#ngay_chung_tu').val(),
+                    ngay_ghi_tang:$('#ngay_ghi_tang').val(),tong_nguyen_gia:$('#tong_nguyen_gia').val(),
                     ghi_chu:$('#ghi_chu').val(),nam_ghi_tang:$('#nam_ghi_tang').val(), selectedRows:(selectedRows)},
                 dataType: "json",
                 success: function (data) {

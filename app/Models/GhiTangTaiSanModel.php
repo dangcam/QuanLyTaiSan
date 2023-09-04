@@ -27,12 +27,7 @@ class GhiTangTaiSanModel Extends BaseModel
         }
         if(!$this->insert($data))
         {
-            foreach ($data_ghi_tang as $index => $item ) {
-                $ghi_tang['ma_chung_tu'] = $data['ma_chung_tu'];
-                $ghi_tang['ma_tai_san'] = $item['maTaiSan'];
-                $this->db->table('ghi_tang_chung_tu')->insert($ghi_tang);
-                $this->db->table('tai_san')->set('trang_thai',1)->where('ma_tai_san',$ghi_tang['ma_tai_san'])->update();
-            }
+            $this->extracted($data_ghi_tang, $data['ma_chung_tu']);
             $this->set_message("GhiTangTaiSanLang.ghitang_creation_successful");
             return 0;
         }else
@@ -44,25 +39,24 @@ class GhiTangTaiSanModel Extends BaseModel
     public function edit_ghi_tang($data)
     {
         $data_id = $data['ma_chung_tu'];
-        $data_ghi_tang = $data['data'];
-        unset($data['data']);
+        $data_ghi_tang = $data['selectedRows'];
+        unset($data['selectedRows']);
         unset($data['edit']);
         unset($data['ma_chung_tu']);
-        //
-        if(isset($data['su_dung']))
-            $data['su_dung'] = 1;
-        else
-            $data['su_dung'] = 0;
-        //
+
         $result = $this->update($data_id,$data);
         if($result)
         {
-            $this->set_message("GhiTangTaiSanLang.ghitang_update_successful");
-            $this->db->table('ghi_tang_chung_tu')->where('ma_chung_tu',$data_id)->delete();
-            foreach ($data_ghi_tang as $index => $item ) {
-                $item['ma_chung_tu'] = $data_id;
-                $this->db->table('ghi_tang_chung_tu')->insert($item);
+            //
+            $result = $this->db->table('ghi_tang_chung_tu')->where('ma_chung_tu',$data_id)->get()->getResult();
+            foreach ($result as $key){
+                $this->db->table('tai_san')->set('trang_thai',0)->where('trang_thai',1)
+                    ->where('ma_tai_san',$key->ma_tai_san)->update();
             }
+            //
+            $this->db->table('ghi_tang_chung_tu')->where('ma_chung_tu',$data_id)->delete();
+            $this->extracted($data_ghi_tang, $data['ma_chung_tu']);
+            $this->set_message("GhiTangTaiSanLang.ghitang_update_successful");
             return 0;
         }else
         {
@@ -79,7 +73,8 @@ class GhiTangTaiSanModel Extends BaseModel
             //
             $result = $this->db->table('ghi_tang_chung_tu')->where('ma_chung_tu',$data_id)->get()->getResult();
             foreach ($result as $key){
-                $this->db->table('tai_san')->set('trang_thai',0)->where('ma_tai_san',$key->ma_tai_san)->update();
+                $this->db->table('tai_san')->set('trang_thai',0)->where('trang_thai',1)
+                    ->where('ma_tai_san',$key->ma_tai_san)->update();
             }
             //
             $this->db->table('ghi_tang_chung_tu')->where('ma_chung_tu',$data_id)->delete();
@@ -93,8 +88,9 @@ class GhiTangTaiSanModel Extends BaseModel
     }
     public function listTaiSan($nam_ghi_tang)
     {
+        $dicBoPhan = $this->dicBoPhan($this->listBoPhan());
         $tb = $this->db->table('tai_san');
-        $tb->where('trang_thai',0);
+        $tb->where('trang_thai !=',1);
         $tb->where('nam_theo_doi',$nam_ghi_tang);
         $result = $tb->get()->getResult();
         $response = '';
@@ -103,7 +99,7 @@ class GhiTangTaiSanModel Extends BaseModel
             $response .='<td><input type="checkbox" class="item-checkbox"></td>';
             $response .='<td>'.$key->ma_tai_san.'</td>';
             $response .='<td>'.$key->ten_tai_san.'</td>';
-            $response .='<td>'.$key->bo_phan_su_dung.'</td>';
+            $response .='<td>'.($dicBoPhan[$key->bo_phan_su_dung] ?? $key->bo_phan_su_dung).'</td>';
             $response .='<td>'.($key->hm_luy_ke + $key->gia_tri_con_lai).'</td>';
             $response .='<td>'.($key->hm_luy_ke).'</td>';
             $response .='<td>'.($key->gia_tri_con_lai).'</td>';
@@ -111,7 +107,42 @@ class GhiTangTaiSanModel Extends BaseModel
         }
         return $response;
     }
+    public function listGhiTangTaiSan($ma_chung_tu)
+    {
+        $data= array();
+        $dicBoPhan = $this->dicBoPhan($this->listBoPhan());
+        $sql = 'SELECT tai_san.ma_tai_san,ten_tai_san,bo_phan_su_dung,hm_luy_ke,gia_tri_con_lai 
+                FROM ghi_tang_chung_tu, tai_san WHERE (ma_chung_tu = ?)
+                            AND ghi_tang_chung_tu.ma_tai_san = tai_san.ma_tai_san';
+        $result = $this->db->query($sql,$ma_chung_tu)->getResult();
+        foreach ($result as $key) {
+            $item['maTaiSan'] = $key->ma_tai_san;
+            $item['tenTaiSan'] = $key->ten_tai_san;
+            $item['boPhanSuDung'] = ($dicBoPhan[$key->bo_phan_su_dung] ?? $key->bo_phan_su_dung);
+            $item['giaTri'] = ($key->hm_luy_ke + $key->gia_tri_con_lai);
+            $item['hmLuyKe'] = $key->hm_luy_ke;
+            $item['giaTriConLai'] = $key->gia_tri_con_lai;
+            $data[] = $item;
+        }
 
+        return $data;
+    }
+    public function listBoPhan()
+    {
+        $tb = $this->db->table('bo_phan');
+        return $tb->get()->getResult();
+    }
+    public function dicBoPhan($list)
+    {
+        $data = array();
+        if (count($list)) {
+            foreach ($list as $key => $item) {
+                if(!isset($data[$item->ma_bp]))
+                    $data[$item->ma_bp] = $item->ten_bp;
+            }
+        }
+        return $data;
+    }
     public function getGhiTangTaiSan($postData=null){
         ## Read value
         $draw = $postData['draw'];
@@ -145,7 +176,7 @@ class GhiTangTaiSanModel Extends BaseModel
                 "tong_nguyen_gia"=>$record->tong_nguyen_gia,
                 "ghi_chu"=>$record->ghi_chu,
                 "active"=> ' <span>
-                            <a class="mr-4" data-toggle="modal" data-target="#myModal" data-whatever="edit"
+                            <a class="mr-4" data-toggle="modal" data-target="#myModal_Full" data-whatever="edit"
                              data-ma_chung_tu="'.$record->ma_chung_tu.'" data-ngay_chung_tu ="'.$record->ngay_chung_tu.'"                          
                              data-ngay_ghi_tang ="'.$record->ngay_ghi_tang.'" data-tong_nguyen_gia ="'.$record->tong_nguyen_gia.'"
                              data-ghi_chu ="'.$record->ghi_chu.'"                            
@@ -166,5 +197,20 @@ class GhiTangTaiSanModel Extends BaseModel
         );
 
         return $response;
+    }
+
+    /**
+     * @param $data_ghi_tang
+     * @param $ma_chung_tu
+     * @return void
+     */
+    public function extracted($data_ghi_tang, $ma_chung_tu): void
+    {
+        foreach ($data_ghi_tang as $index => $item) {
+            $ghi_tang['ma_chung_tu'] = $ma_chung_tu;
+            $ghi_tang['ma_tai_san'] = $item['maTaiSan'];
+            $this->db->table('ghi_tang_chung_tu')->insert($ghi_tang);
+            $this->db->table('tai_san')->set('trang_thai', 1)->where('ma_tai_san', $ghi_tang['ma_tai_san'])->update();
+        }
     }
 }

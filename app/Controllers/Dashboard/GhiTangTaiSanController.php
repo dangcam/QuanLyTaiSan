@@ -39,6 +39,17 @@ class GhiTangTaiSanController extends BaseController
             echo json_encode('No Data');
         }
     }
+    public function ghitang_taisan_ajax()
+    {
+        if($this->request->getPost())
+        {
+            $data = $this->request->getPost();
+            $return_value = $this->ghitang_model->listGhiTangTaiSan($data['ma_chung_tu']);
+            echo json_encode($return_value);
+        }else {
+            echo json_encode('No Data');
+        }
+    }
     public function add_ghitang()
     {
         if($this->request->getPost()&&($this->libauth->checkFunction('ghi_tang_tai_san','add')))

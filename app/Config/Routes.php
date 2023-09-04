@@ -161,6 +161,7 @@ $routes->group('dashboard',['filter'=>'authFilters'], static function ($routes) 
         $routes->get('/','Dashboard\GhiTangTaiSanController::index');
         $routes->post('ghitang_ajax','Dashboard\GhiTangTaiSanController::ghitang_ajax');
         $routes->post('taisan_ajax','Dashboard\GhiTangTaiSanController::taisan_ajax');
+        $routes->post('ghitang_taisan_ajax','Dashboard\GhiTangTaiSanController::ghitang_taisan_ajax');
         $routes->post('add_ghitang','Dashboard\GhiTangTaiSanController::add_ghitang');
         $routes->post('edit_ghitang','Dashboard\GhiTangTaiSanController::edit_ghitang');
         $routes->post('delete_ghitang','Dashboard\GhiTangTaiSanController::delete_ghitang');
