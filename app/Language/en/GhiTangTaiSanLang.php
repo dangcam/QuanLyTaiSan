@@ -7,6 +7,7 @@ return[
     'ghi_chu' => 'Note',
 
     'chon_tai_san' => 'Add asset',
+    'chua_chon_tai_san' => 'Haven\'t selected assets yet',
 
     'add_ghitang'=>'Add write increase property asset',
     'edit_ghitang' => 'Edit property assets',

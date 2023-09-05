@@ -8,6 +8,7 @@ return[
 
 
     'chon_tai_san' => 'Chọn tài sản',
+    'chua_chon_tai_san' => 'Chưa chọn tài sản ghi tăng',
 
     'add_ghitang'=>'Thêm ghi tăng tài sản tài sản',
     'edit_ghitang' => 'Sửa ghi tăng tài sản tài sản',

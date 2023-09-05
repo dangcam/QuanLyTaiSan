@@ -367,6 +367,11 @@
             $("#response_danger").hide('fast');
             $("#response_danger_modal").hide('fast');
             var name = $("#add_edit").attr("name");
+            if(selectedRows.length == 0){
+                $("#response_danger_modal").show('fast');
+                $("#response_danger_modal").html("<?=lang('GhiTangTaiSanLang.chua_chon_tai_san')?>");
+                return;
+            }
             //var formData = $(this).serialize();
             console.log((selectedRows));
             $.ajax({

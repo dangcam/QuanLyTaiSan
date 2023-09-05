@@ -47,15 +47,18 @@ class GhiTangTaiSanModel Extends BaseModel
         $result = $this->update($data_id,$data);
         if($result)
         {
+
             //
-            $result = $this->db->table('ghi_tang_chung_tu')->where('ma_chung_tu',$data_id)->get()->getResult();
-            foreach ($result as $key){
+            $result_gt = $this->db->table('ghi_tang_chung_tu')->where('ma_chung_tu',$data_id)->get()->getResult();
+            foreach ($result_gt as $key){
                 $this->db->table('tai_san')->set('trang_thai',0)->where('trang_thai',1)
                     ->where('ma_tai_san',$key->ma_tai_san)->update();
             }
             //
             $this->db->table('ghi_tang_chung_tu')->where('ma_chung_tu',$data_id)->delete();
-            $this->extracted($data_ghi_tang, $data['ma_chung_tu']);
+            $this->extracted($data_ghi_tang, $data_id);
+
+
             $this->set_message("GhiTangTaiSanLang.ghitang_update_successful");
             return 0;
         }else
