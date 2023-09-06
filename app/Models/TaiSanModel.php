@@ -220,9 +220,9 @@ class TaiSanModel Extends BaseModel
                 "loai_tai_san"=>$record->loai_tai_san,
                 "bo_phan_su_dung"=>isset($dicBoPhan[$record->bo_phan_su_dung])?$dicBoPhan[$record->bo_phan_su_dung]:$record->bo_phan_su_dung,
                 "so_luong"=>$record->so_luong,
-                "gia_tri"=>$record->gia_tri,
-                "hm_luy_ke"=>$record->hm_luy_ke,
-                "gia_tri_con_lai"=>$record->gia_tri_con_lai,
+                "gia_tri"=>number_format((int)$record->hm_luy_ke+(int)$record->gia_tri_con_lai),
+                "hm_luy_ke"=>number_format($record->hm_luy_ke),
+                "gia_tri_con_lai"=>number_format($record->gia_tri_con_lai),
                 "ngay_ghi_tang"=>$record->ngay_ghi_tang,
                 "trang_thai"=>lang('TaiSanLang.trang_thai_'.$record->trang_thai),
                 "active"=> ' <span>
@@ -233,6 +233,61 @@ class TaiSanModel Extends BaseModel
                                 data-placement="top" title="'.lang('AppLang.delete').'" data-ma_tai_san="'.$record->ma_tai_san.'">
                                 <i class="fa fa-close color-danger"></i></a>
                             </span>'
+            );
+        }
+
+        ## Response
+        $response = array(
+            "draw" => intval($draw),
+            "iTotalRecords" => $totalRecords,
+            "iTotalDisplayRecords" => $totalRecords,
+            "aaData" => $data
+        );
+
+        return $response;
+    }
+    public function getReportTaiSan($postData=null){
+        ## Read value
+        $draw = $postData['draw'];
+        $start = $postData['start'];
+        $rowperpage = $postData['length']; // Rows display per page
+        $columnIndex = $postData['order'][0]['column']; // Column index
+        $columnName = $postData['columns'][$columnIndex]['data']; // Column name
+        $columnSortOrder = $postData['order'][0]['dir']; // asc or desc
+        $strInput=$postData['search']['value'];
+        // Custom search filter
+        $searchYear = $postData['searchYear'];
+        $searchBoPhan = $postData['searchBoPhan'];
+        //
+        ## Total number of records without filtering
+        $this->select('count(*) as allcount')->where('nam_theo_doi',$searchYear);
+        if(strlen($searchBoPhan)>0)
+            $this->where('bo_phan_su_dung',$searchBoPhan);
+        $records = $this->find();
+        $totalRecords = $records[0]->allcount;
+        ## Fetch records
+        $this->like('ten_tai_san',$strInput)->where('nam_theo_doi',$searchYear);
+        if(strlen($searchBoPhan)>0)
+            $this->where('bo_phan_su_dung',$searchBoPhan);
+        $this->orderBy($columnName, $columnSortOrder);
+        if($rowperpage!=-1)
+            $this->limit($rowperpage, $start);
+        $records = $this->find();
+
+        $dicBoPhan = $this->dicBoPhan($this->listBoPhan());
+        $data = array();
+        foreach($records as $record ){
+            $data[] = array(
+                "ma_tai_san"=>$record->ma_tai_san,
+                "ten_tai_san"=>$record->ten_tai_san,
+                "loai_tai_san"=>$record->loai_tai_san,
+                "bo_phan_su_dung"=>isset($dicBoPhan[$record->bo_phan_su_dung])?$dicBoPhan[$record->bo_phan_su_dung]:$record->bo_phan_su_dung,
+                "so_luong"=>$record->so_luong,
+                "gia_tri"=>number_format((int)$record->hm_luy_ke+(int)$record->gia_tri_con_lai),
+                "hm_luy_ke"=>number_format($record->hm_luy_ke),
+                "gia_tri_con_lai"=>number_format($record->gia_tri_con_lai),
+                "ngay_ghi_tang"=>$record->ngay_ghi_tang,
+                "trang_thai"=>lang('TaiSanLang.trang_thai_'.$record->trang_thai)
             );
         }
 

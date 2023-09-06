@@ -53,6 +53,7 @@ return[
     'system' => 'System',
     'users' => 'Users',
     'report' => 'Report',
+    'report_asset' => 'Report Asset',
     'category' => 'Category',
     'type_asset' => 'Type Asset',
     'type_road' => 'Type Road',

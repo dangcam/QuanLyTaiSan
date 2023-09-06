@@ -39,7 +39,7 @@
                                     <th scope="col"><?=lang('TaiSanLang.ten_tai_san')?></th>
                                     <th scope="col"><?=lang('TaiSanLang.loai_tai_san')?></th>
                                     <th scope="col"><?=lang('TaiSanLang.bo_phan_su_dung')?></th>
-                                    <th scope="col"><?=lang('TaiSanLang.so_luong')?></th>
+                                    <th scope="col" ><?=lang('TaiSanLang.so_luong')?></th>
                                     <th scope="col"><?=lang('TaiSanLang.gia_tri')?></th>
                                     <th scope="col"><?=lang('TaiSanLang.hm_luy_ke')?></th>
                                     <th scope="col"><?=lang('TaiSanLang.gia_tri_con_lai')?></th>

@@ -51,6 +51,7 @@ return[
     'system' => 'Hệ thống',
     'users' => 'Người dùng',
     'report' => 'Báo cáo',
+    'report_asset' => 'Báo cáo tài sản',
     'year' => 'Năm',
     'month' => 'Tháng',
     'category' => 'Danh Mục',

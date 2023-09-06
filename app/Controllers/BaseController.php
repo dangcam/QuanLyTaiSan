@@ -79,10 +79,17 @@ abstract class BaseController extends Controller
             $response .= '<li><a href="'.base_url().'dashboard/tai_san">'.lang('AppLang.tai_san').'</a></li>';
         if($this->libauth->checkFunction('ghi_tang_tai_san','view'))
             $response .= '<li><a href="'.base_url().'dashboard/ghitangtaisan">'.lang('AppLang.ghi_tang_tai_san').'</a></li>';
-
         $response .= '  </ul>
                       </li>';
-
+        //
+        $response .= '<li><a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                            <i class="icon icon-book-open-2"></i><span class="nav-text">'.lang('AppLang.report').'</span></a>
+                        <ul aria-expanded="false">';
+        if($this->libauth->checkFunction('report_asset','view'))
+            $response .= '<li><a href="'.base_url().'dashboard/report/report_asset">'.lang('AppLang.report_asset').'</a></li>';
+        $response   .='</ul>
+                       </li>';
+        //
         $response .= '<li class="nav-label">'.lang('category').'</li>
                     <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
                         class="icon icon-tablet-mobile"></i><span class="nav-text">'.lang('AppLang.type_asset').'</span></a>

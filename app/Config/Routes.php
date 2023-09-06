@@ -150,12 +150,9 @@ $routes->group('dashboard',['filter'=>'authFilters'], static function ($routes) 
         $routes->post('delete_dm','Dashboard\DMTaiSanController::delete_dm');
         $routes->post('list_dinh_muc','Dashboard\DMTaiSanController::list_dinh_muc');
     });
-    $routes->group('report_group',static function($routes){
-        $routes->get('/','Dashboard\ReportGroupController::index');
-        $routes->get('print','Dashboard\ReportGroupController::report_print');
-        $routes->post('data_report_group','Dashboard\ReportGroupController::data_report_group');
-        $routes->post('data_report_group_print','Dashboard\ReportGroupController::data_report_group_print');
-        $routes->post('save_report_group','Dashboard\ReportGroupController::save_report_group');
+    $routes->group('report',static function($routes){
+        $routes->get('report_asset','Dashboard\ReportController::report_asset');
+        $routes->post('report_tai_san_ajax','Dashboard\ReportController::report_tai_san_ajax');
     });
     $routes->group('ghitangtaisan',static function($routes){
         $routes->get('/','Dashboard\GhiTangTaiSanController::index');
