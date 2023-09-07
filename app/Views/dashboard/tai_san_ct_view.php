@@ -820,6 +820,9 @@
                                     });
                                     calculateSum();
                                 }
+                                else {
+                                    add_row_nguon_hinh_thanh(['0','0']);
+                                }
                             },
                             error: function (data) {
                                 console.log(data);
