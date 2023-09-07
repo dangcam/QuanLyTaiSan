@@ -86,4 +86,8 @@ return[
     'edit_data_successful' => 'Edit data successful',
     'save_data_successful' => 'Save data successful',
     'save_data_unsuccessful' => 'Save data unsuccessful',
+    // Trang chủ
+    'tong_so_tai_san' =>'Total Asset',
+    'tong_nguyen_gia' =>'Total original price',
+    'gia_tri_con_lai' =>'Residual value',
 ];

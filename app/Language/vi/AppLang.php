@@ -85,4 +85,8 @@ return[
     'edit_data_successful' => 'Sửa dữ liệu thành công',
     'save_data_successful' => 'Lưu dữ liệu thành công',
     'save_data_unsuccessful' => 'Lưu dữ liệu không thành công',
+    // Trang chủ
+    'tong_so_tai_san' =>'Tổng số tài sản',
+    'tong_nguyen_gia' =>'Tổng nguyên giá',
+    'gia_tri_con_lai' =>'Giá trị còn lại',
 ];
