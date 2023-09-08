@@ -5,7 +5,7 @@
 ***********************************-->
 <div class="footer">
     <div class="copyright">
-        <p>Copyright © Designed &amp; Developed by <a href="#" target="_blank">TieuMoStore</a> 2019</p>
+        <p>Copyright © Designed &amp; Developed by <a href="#" target="_blank">BaoTD</a> 2023</p>
     </div>
 </div>
 <!--**********************************
