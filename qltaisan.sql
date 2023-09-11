@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th9 08, 2023 lúc 06:40 PM
+-- Thời gian đã tạo: Th9 11, 2023 lúc 07:24 PM
 -- Phiên bản máy phục vụ: 10.4.27-MariaDB
 -- Phiên bản PHP: 8.2.0
 
@@ -11641,6 +11641,7 @@ INSERT INTO `functions` (`function_id`, `function_name`, `function_status`, `fun
 ('department', 'department', 1, 3),
 ('function', 'function_manager', 1, 1),
 ('funding', 'funding', 1, 3),
+('ghi_giam_tai_san', 'ghi_giam_tai_san', 1, 5),
 ('ghi_tang_tai_san', 'ghi_tang_tai_san', 1, 5),
 ('group', 'group_manager', 1, 1),
 ('nguoi_dung', 'user', 1, 3),
@@ -11666,7 +11667,7 @@ INSERT INTO `functions` (`function_id`, `function_name`, `function_status`, `fun
 CREATE TABLE `ghi_giam_chung_tu` (
   `ma_chung_tu` varchar(20) NOT NULL,
   `ma_tai_san` varchar(20) NOT NULL,
-  `ly_do_giam` int(11) NOT NULL
+  `ly_do_giam` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
@@ -12217,6 +12218,7 @@ INSERT INTO `user_function` (`user_id`, `function_id`, `function_view`, `functio
 ('admin', 'department', 1, 1, 1, 1),
 ('admin', 'function', 1, 1, 1, 1),
 ('admin', 'funding', 1, 1, 1, 1),
+('admin', 'ghi_giam_tai_san', 1, 1, 1, 1),
 ('admin', 'ghi_tang_tai_san', 1, 1, 1, 1),
 ('admin', 'group', 1, 1, 1, 1),
 ('admin', 'nguoi_dung', 1, 1, 1, 1),

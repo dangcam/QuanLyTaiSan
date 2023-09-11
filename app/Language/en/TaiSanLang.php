@@ -83,6 +83,8 @@ return[
     'dong_xe' => 'Vehicle line',
     'so_khung' => 'Frame number',
 
+    'nam_ghi_tang' => 'Year recorded increase',
+
     'add_taisan'=>'Add Asset',
     'edit_taisan' => 'Edit Asset',
     'taisan_creation_successful' => 'Asset Creation Successful',

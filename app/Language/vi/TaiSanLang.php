@@ -91,6 +91,8 @@ return[
     'dong_xe' => 'Dòng xe',
     'so_khung' => 'Số khung',
 
+    'nam_ghi_tang' => 'Năm ghi tăng',
+
     'add_taisan'=>'Thêm tài sản',
     'edit_taisan' => 'Sửa tài sản',
     'taisan_creation_successful' => 'Thêm tài sản thành công',

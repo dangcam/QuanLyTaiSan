@@ -23,6 +23,7 @@ return[
     'page_title_property_norms' => 'Type of property norm',
     'page_title_tai_san' => 'List of assets',
     'page_title_ghi_tang' => 'Record increase in assets',
+    'page_title_ghi_giam' => 'Write down assets',
 
     'do_not_have_permission' => 'You do not have permission!',
 
@@ -78,6 +79,7 @@ return[
     'nha_cung_cap' => 'Supplies',
     'tai_san' => 'Assets',
     'ghi_tang_tai_san' => 'Write increase',
+    'ghi_giam_tai_san' => 'Write down',
 
 
     'add_data_unsuccessful' => 'Add data unsuccessful',

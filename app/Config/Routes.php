@@ -163,6 +163,15 @@ $routes->group('dashboard',['filter'=>'authFilters'], static function ($routes) 
         $routes->post('edit_ghitang','Dashboard\GhiTangTaiSanController::edit_ghitang');
         $routes->post('delete_ghitang','Dashboard\GhiTangTaiSanController::delete_ghitang');
     });
+    $routes->group('ghigiamtaisan',static function($routes){
+        $routes->get('/','Dashboard\GhiGiamTaiSanController::index');
+        $routes->post('ghigiam_ajax','Dashboard\GhiGiamTaiSanController::ghigiam_ajax');
+        $routes->post('taisan_ajax','Dashboard\GhiGiamTaiSanController::taisan_ajax');
+        $routes->post('ghigiam_taisan_ajax','Dashboard\GhiGiamTaiSanController::ghigiam_taisan_ajax');
+        $routes->post('add_ghigiam','Dashboard\GhiGiamTaiSanController::add_ghigiam');
+        $routes->post('edit_ghigiam','Dashboard\GhiGiamTaiSanController::edit_ghigiam');
+        $routes->post('delete_ghigiam','Dashboard\GhiGiamTaiSanController::delete_ghigiam');
+    });
     $routes->group('tai_san',static function($routes) {
         $routes->get('/', 'Dashboard\TaiSanController::index');
         $routes->post('tai_san_ajax','Dashboard\TaiSanController::tai_san_ajax');
