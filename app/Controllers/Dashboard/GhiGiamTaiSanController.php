@@ -11,7 +11,6 @@ class GhiGiamTaiSanController extends BaseController
         $this->ghigiam_model = new GhiGiamTaiSanModel();
 
     }
-
     public function index()
     {
         if($this->libauth->checkFunction('ghi_giam_tai_san','view')) {
@@ -52,10 +51,10 @@ class GhiGiamTaiSanController extends BaseController
     }
     public function add_ghigiam()
     {
-        if($this->request->getPost()&&($this->libauth->checkFunction('ghi_tang_tai_san','add')))
+        if($this->request->getPost()&&($this->libauth->checkFunction('ghi_giam_tai_san','add')))
         {
             $data_post = $this->request->getPost();
-            $data['result'] = ($this->ghigiam_model->add_ghi_tang($data_post));
+            $data['result'] = ($this->ghigiam_model->add_ghi_giam($data_post));
             $data['message']= $this->ghigiam_model->get_messages();
             echo json_encode(array_values($data));
         }
@@ -65,10 +64,10 @@ class GhiGiamTaiSanController extends BaseController
     }
     public function edit_ghigiam()
     {
-        if($this->request->getPost()&&($this->libauth->checkFunction('ghi_tang_tai_san','edit')))
+        if($this->request->getPost()&&($this->libauth->checkFunction('ghi_giam_tai_san','edit')))
         {
             $data_post = $this->request->getPost();
-            $data['result'] = ($this->ghigiam_model->edit_ghi_tang($data_post));
+            $data['result'] = ($this->ghigiam_model->edit_ghi_giam($data_post));
             $data['message']= $this->ghigiam_model->get_messages();
             echo json_encode(array_values($data));
         }else
@@ -76,10 +75,10 @@ class GhiGiamTaiSanController extends BaseController
     }
     public function delete_ghigiam()
     {
-        if($this->request->getPost()&&($this->libauth->checkFunction('ghi_tang_tai_san','delete')))
+        if($this->request->getPost()&&($this->libauth->checkFunction('ghi_giam_tai_san','delete')))
         {
             $data_post = $this->request->getPost();
-            $data['result'] = ($this->ghigiam_model->delete_ghi_tang($data_post));
+            $data['result'] = ($this->ghigiam_model->delete_ghi_giam($data_post));
             $data['message']= $this->ghigiam_model->get_messages();
             echo json_encode(array_values($data));
         }else

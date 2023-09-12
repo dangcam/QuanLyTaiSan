@@ -15,7 +15,6 @@ class GhiGiamTaiSanModel Extends BaseModel
     ];
     public function add_ghi_giam($data)
     {
-        unset($data['add']);
         $data_ghi_giam = $data['selectedRows'];
         unset($data['selectedRows']);
         if(!$this->validate($data))
@@ -25,6 +24,7 @@ class GhiGiamTaiSanModel Extends BaseModel
             }
             return 3;
         }
+
         if(!$this->insert($data))
         {
             $this->extracted($data_ghi_giam, $data['ma_chung_tu']);
@@ -213,7 +213,7 @@ class GhiGiamTaiSanModel Extends BaseModel
      * @param $ma_chung_tu
      * @return void
      */
-    public function extracted($data_ghi_giam, $ma_chung_tu): void
+    public function extracted($data_ghi_giam, $ma_chung_tu)
     {
         foreach ($data_ghi_giam as $index => $item) {
             $ghi_giam['ma_chung_tu'] = $ma_chung_tu;
