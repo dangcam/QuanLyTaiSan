@@ -20,6 +20,14 @@
     <div class="container-fluid h-100">
         <div class="row justify-content-center h-100 align-items-center">
             <div class="col-md-6">
+                <div class="row page-titles mx-0">
+                    <div class="col-sm-12 p-md-0">
+                        <div class="text-center">
+                            <h2>PHẦN MỀM QUẢN LÝ TÀI SẢN<br/> </h2>
+                            <h4> VĂN PHÒNG ĐĂNG KÝ ĐẤT ĐAI TỈNH BÌNH PHƯỚC</h4>
+                        </div>
+                    </div>
+                </div>
                 <div class="authincation-content">
                     <div class="row no-gutters">
                         <div class="col-xl-12">
