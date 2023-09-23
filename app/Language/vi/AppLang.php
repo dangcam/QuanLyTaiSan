@@ -91,4 +91,5 @@ return[
     'tong_so_tai_san' =>'Tổng số tài sản',
     'tong_nguyen_gia' =>'Tổng nguyên giá',
     'gia_tri_con_lai' =>'Giá trị còn lại',
+    'ngay_bao_cao' =>'Ngày báo cáo',
 ];

@@ -1,5 +1,15 @@
 <div class="content-body">
     <div class="container-fluid">
+        <div class="row page-titles mx-0">
+            <div class="col-sm-6 p-md-0">
+                <div class="form-group row">
+                    <label class="col-sm-4 col-form-label"><?=lang('AppLang.ngay_bao_cao')?></label>
+                    <div class="col-sm-4">
+                        <input type="date" id="ngay_bao_cao" class="form-control" >
+                    </div>
+                </div>
+            </div>
+        </div>
         <!---->
         <div class="row">
             <div class="col-lg-4 col-sm-6">
@@ -45,3 +55,11 @@
         <!---->
     </div>
 </div>
+
+<script type="text/javascript">
+    var currentDate = new Date();
+    $('#ngay_bao_cao').val(currentDate.toISOString().slice(0, 10));
+    $('#ngay_bao_cao').change(function(){
+
+    });
+</script>

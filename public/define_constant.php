@@ -20,25 +20,30 @@ DEFINE('THOUSANDS_SEP','.');
 /** Cau hinh Codeigniter4
  * 1. Chay php spark serve bao loi
  * Mo file Xampp\php\php.ini xoa dau ";" o dong extension=intl
- * 2. Tao virtualhost
+ * 2. Tao virtualhost xampp\apache\conf\extra
  * - Them dong: LoadModule vhost_alias_module modules/mod_vhost_alias.so (file httpd.conf)
  * - Them dong:
  *      <VirtualHost *:80>
-        DocumentRoot "D:/xampp/htdocs/Codeigniter4/public"
-        ServerName quanlybaocao.local
-        </VirtualHost>
-        <VirtualHost *:80>
-        DocumentRoot "D:/xampp/htdocs"
-        ServerName localhost
-        </VirtualHost>
+        * DocumentRoot "D:/xampp/htdocs/Codeigniter4/public"
+        * ServerName quanlybaocao.local
+         * <Directory D:/Soft/xampp/htdocs/QuanLyTaiSan/public>
+         * DirectoryIndex index.php
+         * AllowOverride All
+         * Require all granted
+         * </Directory>
+ * </VirtualHost>
+        * <VirtualHost *:80>
+        * DocumentRoot "D:/xampp/htdocs"
+        * ServerName localhost
+        * </VirtualHost>
  *  file httpd-vhosts.conf
  * - Chinh sua trong file host may LAN
  * - Cau hinh lai folder icons trong file httpd-autoindex.conf
  *      Alias /icons/ "./icons/"
-        <Directory "./icons">
-        Options Indexes MultiViews
-        AllowOverride None
-        Require all granted
-        </Directory>
+        * <Directory "./icons">
+        * Options Indexes MultiViews
+        * AllowOverride None
+        * Require all granted
+        * </Directory>
  *
  */
