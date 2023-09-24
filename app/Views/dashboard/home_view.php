@@ -20,7 +20,7 @@
                         </div>
                         <div class="stat-content d-inline-block">
                             <div class="stat-text"><?=lang('AppLang.tong_so_tai_san')?></div>
-                            <div class="stat-digit">961</div>
+                            <div class="stat-digit" id="tong_tai_san">961</div>
                         </div>
                     </div>
                 </div>
@@ -33,7 +33,7 @@
                         </div>
                         <div class="stat-content d-inline-block">
                             <div class="stat-text"><?=lang('AppLang.tong_nguyen_gia')?></div>
-                            <div class="stat-digit">1,012</div>
+                            <div class="stat-digit" id="tong_nguyen_gia">1,012</div>
                         </div>
                     </div>
                 </div>
@@ -46,7 +46,7 @@
                         </div>
                         <div class="stat-content d-inline-block">
                             <div class="stat-text"><?=lang('AppLang.gia_tri_con_lai')?></div>
-                            <div class="stat-digit">2,781</div>
+                            <div class="stat-digit" id="gia_tri_con_lai">2,781</div>
                         </div>
                     </div>
                 </div>
@@ -60,6 +60,24 @@
     var currentDate = new Date();
     $('#ngay_bao_cao').val(currentDate.toISOString().slice(0, 10));
     $('#ngay_bao_cao').change(function(){
-
+       loadData();
     });
+    function loadData(){
+        $.ajax({
+            url: "<?= base_url() ?>dashboard/ngay_bao_cao_ajax",
+            method: "POST",
+            dataType: "json",
+            data: {ngay_bao_cao: $('#ngay_bao_cao').val() },
+            success: function (data) {
+                console.log(data);
+                var tong_tai_san = data['tong_tai_san'];
+                $('#tong_tai_san').html(parseFloat(tong_tai_san['tong_tai_san']).toLocaleString());
+                $('#tong_nguyen_gia').html(parseFloat(tong_tai_san['tong_nguyen_gia']).toLocaleString());
+                $('#gia_tri_con_lai').html(parseFloat(tong_tai_san['gia_tri_con_lai']).toLocaleString());
+            },
+            error: function (data) {
+            }
+        });
+    };
+    loadData();
 </script>
