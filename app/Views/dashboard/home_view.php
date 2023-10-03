@@ -53,9 +53,43 @@
             </div>
         </div>
         <!---->
+        <!-- row -->
+
+        <div class="row">
+            <div class="col-12">
+                <div class="row">
+                    <div class="col-lg-6 col-sm-6">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">Basic Bar Chart</h4>
+                            </div>
+                            <div class="card-body">
+                                <canvas id="barChart_1"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-sm-6">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">Gradient Bar Chart</h4>
+                            </div>
+                            <div class="card-body">
+                                <canvas id="barChart_2"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+        <!----->
     </div>
 </div>
-
+<!-- Chart ChartJS plugin files -->
+<script src="vendor/chart.js/Chart.bundle.min.js"></script>
+<script src="js/plugins-init/chartjs-init.js"></script>
 <script type="text/javascript">
     var currentDate = new Date();
     $('#ngay_bao_cao').val(currentDate.toISOString().slice(0, 10));
