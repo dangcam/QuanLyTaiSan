@@ -28,7 +28,7 @@ async function export_excel(nam_theo_doi,bo_phan_su_dung,myData){
 	// Tiêu đề
 	let row = ws.addRow();
 	mergeCells(ws, row, 1, 5);
-	row.getCell(1).value ="VĂN PHÒNG ĐĂNG KÝ ĐẤT \N"+ bo_phan_su_dung;
+	row.getCell(1).value ="VĂN PHÒNG ĐĂNG KÝ ĐẤT \n"+ bo_phan_su_dung;
 	mergeCells(ws, row, 6, 11);
 	row.getCell(8).value = "CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM\nĐộc lập - Tự do - Hạnh phúc";
 	set_section_row(row,title);
