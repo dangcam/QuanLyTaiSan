@@ -296,7 +296,8 @@ class TaiSanModel Extends BaseModel
             "draw" => intval($draw),
             "iTotalRecords" => $totalRecords,
             "iTotalDisplayRecords" => $totalRecords,
-            "aaData" => $data
+            "aaData" => $data,
+            "data_table" => $data,
         );
 
         return $response;

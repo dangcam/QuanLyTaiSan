@@ -38,6 +38,10 @@
                                         endif ?>
                                     </select>
                                 </div>
+                                <div class="col-lg-2">
+                                    <button type="button" id="export_excel" class="btn btn-rounded btn-success"><span class="btn-icon-left text-success"><i class="fa fa-upload color-success"></i>
+                                        </span>Excel</button>
+                                </div>
                             </div>
 
                             <!---->
@@ -75,8 +79,20 @@
 <script src="vendor/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
 <script src="js/plugins-init/datatables.init.js"></script>
 
+<script lang="javascript" src="js/exceljs.min.js"></script>
+<script lang="javascript" src="js/FileSaver.min.js"></script>
+<script lang="javascript" src="js/export2excel.js"></script>
+
 <script>
     jQuery(document).ready(function($) {
+        let myData = [];
+        $("#export_excel").on( "click", function() {
+            var nam_theo_doi = document.getElementById('nam_theo_doi');
+            var bo_phan_su_dung = document.getElementById('bo_phan_su_dung');
+            console.log(myData);
+            export_excel(nam_theo_doi.options[nam_theo_doi.selectedIndex].text,
+                bo_phan_su_dung.options[bo_phan_su_dung.selectedIndex].text,myData);
+        });
         var ajaxDataTable = $('#data-table').DataTable({
             'processing': true,
             'serverSide': true,
@@ -88,6 +104,9 @@
                 'data': function (data) {
                     data.searchYear = $('#nam_theo_doi').val();
                     data.searchBoPhan = $('#bo_phan_su_dung').val();
+                },
+                'complete': function (data) {
+                    myData = data.responseJSON['data_table'];
                 }
             },
             'columns': [
