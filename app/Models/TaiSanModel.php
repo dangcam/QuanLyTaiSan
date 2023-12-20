@@ -94,6 +94,23 @@ class TaiSanModel Extends BaseModel
             return 3;
         }
     }
+    public function getMaTaiSan()
+    {
+        $this->select('count(*) as allcount, max(ma_tai_san) as max_ma_tai_san');
+        $records = $this->find();
+        $totalRecords = $records[0]->allcount;
+        $ma_tai_san = $records[0]->max_ma_tai_san;
+        $max_ma_tai_san = 'TS000001';
+        if(strlen($ma_tai_san)>=9){
+            try {
+                $max_ma_tai_san = '00000' . (substr($ma_tai_san, 3, 6) + 1);
+                $max_ma_tai_san = 'NCC'. (substr($max_ma_tai_san, strlen($max_ma_tai_san)-6, 6));
+            }catch (Exception $e){
+                $max_ma_tai_san = 'TS000001';
+            }
+        }
+        return $max_ma_tai_san;
+    }
     public function listNguyenGia($ma_tai_san)
     {
         $tb = $this->db->table('nguyen_gia')->where('ma_tai_san',$ma_tai_san);

@@ -383,6 +383,8 @@
 <script type="text/javascript">
     let nam_theo_doi = <?=(isset($selected_year)?$selected_year:Date().getFullYear())?>;
     let ma_tai_san = "<?=(isset($ma_tai_san)?$ma_tai_san:'')?>";
+    console.log(ma_tai_san);
+    let add_new = "<?=(isset($add_new)?$add_new:true)?>";
     let html_hien_trang = "<div class=\"form-check form-check-inline\">\n" +
         "                                            <label class=\"form-check-label\">\n" +
         "                                                <input type=\"checkbox\" id=\"quan_ly_nha_nuoc\" name=\"quan_ly_nha_nuoc\"\n" +
@@ -692,7 +694,7 @@
     function load_form_hao_mon() {
         var field = document.getElementById("add_edit");
 
-        if(ma_tai_san.length>0){
+        if(!add_new){
             $('#text_add_edit_tai_san').html("<?=lang('TaiSanLang.edit_taisan')?>");
             field.setAttribute("name",'edit');
             $.ajax({
@@ -840,6 +842,7 @@
             // Format the date as "yyyy-MM-dd"
             const formattedDate = currentDate.toISOString().slice(0, 10);
             $('#ma_tai_san').prop("readonly",false);
+            $("#ma_tai_san").val(ma_tai_san);
             $('#nam_theo_doi').val(nam_theo_doi);
             $('#ngay_mua').val(formattedDate);
             $('#ngay_bd_su_dung').val(formattedDate);

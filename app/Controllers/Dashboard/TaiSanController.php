@@ -31,13 +31,23 @@ class TaiSanController extends BaseController
         if($this->request->getGet()) {
             $year = $this->request->getGet('year');
             $ma_tai_san = $this->request->getGet('ma_tai_san');
+            if(!isset($ma_tai_san)){
+                $ma_tai_san = $this->tai_san_model->getMaTaiSan();
+                $add_new = true;
+            }else
+            {
+                $add_new = false;
+            }
+
         }
         else {
             $year = date('Y');
-            $ma_tai_san = '';
+            $ma_tai_san = $this->tai_san_model->getMaTaiSan();
+            $add_new = true;
         }
         $data['selected_year'] = $year;
         $data['ma_tai_san'] = $ma_tai_san;
+        $data['add_new'] = $add_new;
 
         return $this->page_construct('dashboard/tai_san_ct_view',$meta,$data);
     }
