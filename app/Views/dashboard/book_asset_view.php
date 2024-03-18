@@ -26,18 +26,6 @@
                                     </select>
                                 </div>
 
-                                <label  class="col-lg-2 col-form-label" for="bo_phan_su_dung"><?=lang('TaiSanLang.bo_phan_su_dung')?></label>
-                                <div class="col-lg-4">
-                                    <select class="form-control" id="bo_phan_su_dung" name="bo_phan_su_dung">
-                                        <option value=""><?=lang('ReportLang.all')?></option>
-                                        <?php if (isset($list_bo_phan_su_dung) && count($list_bo_phan_su_dung)) :
-                                            foreach ($list_bo_phan_su_dung as $key => $item) : ?>
-                                                <option value="<?=$item->ma_bp?>"><?=$item->ten_bp?></option>
-                                            <?php
-                                            endforeach;
-                                        endif ?>
-                                    </select>
-                                </div>
                                 <div class="col-lg-2">
                                     <button type="button" id="export_excel" class="btn btn-rounded btn-success"><span class="btn-icon-left text-success"><i class="fa fa-upload color-success"></i>
                                         </span>Excel</button>
@@ -103,7 +91,6 @@
                 'url': '<?=base_url()?>dashboard/report/report_tai_san_ajax',
                 'data': function (data) {
                     data.searchYear = $('#nam_theo_doi').val();
-                    data.searchBoPhan = $('#bo_phan_su_dung').val();
                 },
                 'complete': function (data) {
                     myData = data.responseJSON['data_table'];
