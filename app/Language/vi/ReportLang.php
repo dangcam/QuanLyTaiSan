@@ -6,5 +6,6 @@ return[
     'quarter' => 'Quý',
     'all' => 'Tất cả',
     'general' => 'Tổng hợp',
-    'detail' => 'Chi tiết'
+    'detail' => 'Chi tiết',
+    'book_asset' => 'Sổ tài sản cố định',
 ];

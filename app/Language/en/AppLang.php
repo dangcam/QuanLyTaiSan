@@ -55,6 +55,7 @@ return[
     'users' => 'Users',
     'report' => 'Report',
     'report_asset' => 'Report Asset',
+    'book_asset'=>'Book Asset',
     'category' => 'Category',
     'type_asset' => 'Type Asset',
     'type_road' => 'Type Road',

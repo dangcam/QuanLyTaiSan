@@ -53,6 +53,7 @@ return[
     'users' => 'Người dùng',
     'report' => 'Báo cáo',
     'report_asset' => 'Báo cáo tài sản',
+    'book_asset'=>'Sổ tài sản',
     'year' => 'Năm',
     'month' => 'Tháng',
     'category' => 'Danh Mục',

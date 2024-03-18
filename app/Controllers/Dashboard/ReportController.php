@@ -17,6 +17,12 @@ class ReportController extends BaseController
         $meta = array('page_title'=>lang('AppLang.report_asset'));
         return $this->page_construct('dashboard/bao_cao_tai_san_view',$meta,$data);
     }
+    public function book_asset()
+    {
+        $data['list_bo_phan_su_dung'] = $this->tai_san_model->listBoPhan();
+        $meta = array('page_title'=>lang('AppLang.book_asset'));
+        return $this->page_construct('dashboard/book_asset_view',$meta,$data);
+    }
     public function report_tai_san_ajax()
     {
         if($this->request->getPost())

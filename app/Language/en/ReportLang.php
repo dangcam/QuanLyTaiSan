@@ -6,5 +6,6 @@ return[
     'quarter' => 'Quarter',
     'all' => 'All',
     'general' => 'General',
-    'detail' => 'Detail'
+    'detail' => 'Detail',
+    'book_asset' => 'Fixed asset book'
 ];
