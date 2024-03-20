@@ -328,78 +328,92 @@ class TaiSanModel Extends BaseModel
         $group_id = $this->session->get('group_id');
 
 
-        $sql = 'SELECT * FROM tai_san WHERE nam_theo_doi = ? AND group_id = ? ORDER BY loai_tai_san';
+        $sql = 'SELECT * FROM 
+             (SELECT * FROM tai_san TS,loai_tai_san LTS WHERE TS.loai_tai_san = LTS.ma_loai_ts AND nam_theo_doi = ? AND group_id = ?) AS TS 
+                 Left JOIN (SELECT GT.ma_chung_tu,ngay_chung_tu,ma_tai_san FROM ghi_tang_tai_san GT,ghi_tang_chung_tu CT WHERE GT.ma_chung_tu =CT.ma_chung_tu) AS CT 
+                     ON TS.ma_tai_san = CT.ma_tai_san ORDER BY loai_tai_san';
 
         $result = $this->db->query($sql,[$report_year,$group_id])->getResult();
-        $i = 0;
-        $row_total = array();
-        $t = count($result)+1;
-        $row_total[$t]['ma_tai_san'] = '';
-        $row_total[$t]['ten_tai_san'] = 'Tổng';
-        $row_total[$t]['hm_kh_nam'] = 0;
-        $row_total[$t]['hm_luy_ke'] = 0;
-        $row_total[$t]['gia_tri'] = 0; // hm_luy_ke + gia_tri_con_lai
 
+        $row_total = array();
+        $loai_tai_san = '';
+        $i = 1;
         foreach ($result as $item) {
-            $i++;
-            $row_total[$i]['ma_tai_san'] = $item->group_name;
-            $row_total[$i]['ten_tai_san'] = $item->group_id;
-            $row_total[$i]['value1'] = (int)$item->value1;
-            $row_total[$i]['value2'] = (int)$item->value2;
-            $row_total[$i]['value3'] = (int)$item->value3;
-            $row_total[$i]['value4'] = (int)$item->value4;
-            $row_total[$i]['value5'] = (int)$item->value5;
-            $row_total[$i]['value6'] = (int)$item->value6;
-            $row_total[$i]['value7'] = (int)$item->value7;
-            $row_total[$i]['value8'] = (int)$item->value8;
-            $row_total[$i]['value9'] = (int)$item->value9;
-            $row_total[$i]['value10'] = (int)$item->value10;
-            $row_total[$i]['value11'] = (int)$item->value11;
-            $row_total[$i]['value12'] = (int)$item->value12;
-            $row_total[$i]['value13'] = (int)$item->value13;
+            if ($loai_tai_san == $item->loai_tai_san)
+                $i++;
+            else
+            {
+                $i = 1;
+                $loai_tai_san = $item->loai_tai_san;
+                $row_total[$loai_tai_san]['stt'] = 0;
+                $row_total[$loai_tai_san]['ten_tai_san'] = $item->ten_loai_ts;
+                $row_total[$loai_tai_san]['gia_tri'] = 0;
+                $row_total[$loai_tai_san]['hm_kh_nam'] = 0;
+                $row_total[$loai_tai_san]['hm_luy_ke'] = 0;
+            }
+            $row_total[$loai_tai_san.$i]['stt'] = $i;
+            $row_total[$loai_tai_san.$i]['ma_chung_tu'] = $item->ma_chung_tu;
+            $row_total[$loai_tai_san.$i]['ngay_chung_tu'] = $item->ngay_chung_tu;
+            $row_total[$loai_tai_san.$i]['ten_tai_san'] = $item->ten_tai_san;
+            $row_total[$loai_tai_san.$i]['nuoc_san_xuat'] = $item->nuoc_san_xuat;
+            $row_total[$loai_tai_san.$i]['ngay_bd_su_dung'] = $item->ngay_bd_su_dung;
+            $row_total[$loai_tai_san.$i]['ma_tai_san'] = $item->ma_tai_san;
+            $row_total[$loai_tai_san.$i]['gia_tri'] = (int)$item->hm_luy_ke + (int)$item->gia_tri_con_lai;
+            $row_total[$loai_tai_san.$i]['tyle_haomon'] = $item->tyle_haomon;
+            $row_total[$loai_tai_san.$i]['hm_kh_nam'] = (int)$item->hm_kh_nam;
+            $row_total[$loai_tai_san.$i]['hm_luy_ke'] = (int)$item->hm_luy_ke;
+
+
             //
-            $row_total[$t]['value1'] += (int)$item->value1;
-            $row_total[$t]['value2'] += (int)$item->value2;
-            $row_total[$t]['value3'] += (int)$item->value3;
-            $row_total[$t]['value4'] += (int)$item->value4;
-            $row_total[$t]['value5'] += (int)$item->value5;
-            $row_total[$t]['value6'] += (int)$item->value6;
-            $row_total[$t]['value7'] += (int)$item->value7;
-            $row_total[$t]['value8'] += (int)$item->value8;
-            $row_total[$t]['value9'] += (int)$item->value9;
-            $row_total[$t]['value10'] += (int)$item->value10;
-            $row_total[$t]['value11'] += (int)$item->value11;
-            $row_total[$t]['value12'] += (int)$item->value12;
-            $row_total[$t]['value13'] += (int)$item->value13;
+            $row_total[$loai_tai_san]['gia_tri'] += (int)$item->hm_luy_ke + (int)$item->gia_tri_con_lai;
+            $row_total[$loai_tai_san]['hm_kh_nam'] += (int)$item->hm_kh_nam;
+            $row_total[$loai_tai_san]['hm_luy_ke'] += (int)$item->hm_luy_ke;
         }
 
         $i = 0;
         $response='';
-        for($j = 1;$j<=$t;$j++) {
+        foreach($row_total as $item) {
             $response .= '<tr >';
             $i++;
-            if($row_total[$i]['group_id'] == $group_id)
+            if($item['stt'] == 0)
             {
                 $th_td = 'th';
-                $response .= '<td></td>';
+                $response .= '<' . $th_td . ' colspan = "8">Loại tài sản: ' . $item['ten_tai_san'] . '</' . $th_td . '>';
+                $response .= '<' . $th_td . '>' . number_format($item['gia_tri']) . '</' . $th_td . '>';
+                $response .= '<' . $th_td . '></' . $th_td . '>';
+                $response .= '<' . $th_td . '></' . $th_td . '>';
+                $response .= '<' . $th_td . '></' . $th_td . '>';
+                $response .= '<' . $th_td . '>' . number_format($item['hm_kh_nam']) . '</' . $th_td . '>';
+                $response .= '<' . $th_td . '>' . number_format($item['hm_kh_nam']) . '</' . $th_td . '>';
+                $response .= '<' . $th_td . '>' . number_format($item['hm_luy_ke']) . '</' . $th_td . '>';
+                $response .= '<' . $th_td . '></' . $th_td . '>';
+                $response .= '<' . $th_td . '></' . $th_td . '>';
+                $response .= '<' . $th_td . '></' . $th_td . '>';
+                $response .= '<' . $th_td . '></' . $th_td . '>';
+
             }else {
                 $th_td = 'td';
-                $response .= '<td>' . $i . '</td>';
+                $response .= '<td>' . $item['stt'] . '</td>';
+                $response .= '<' . $th_td . '>' . $item['ma_chung_tu'] . '</' . $th_td . '>';
+                $response .= '<' . $th_td . '>' . $item['ngay_chung_tu'] . '</' . $th_td . '>';
+                $response .= '<' . $th_td . '>' . $item['ten_tai_san'] . '</' . $th_td . '>';
+                $response .= '<' . $th_td . '>' . $item['nuoc_san_xuat'] . '</' . $th_td . '>';
+                $response .= '<' . $th_td . '>' . $item['ngay_bd_su_dung'] . '</' . $th_td . '>';
+                $response .= '<' . $th_td . '>' . $item['ma_tai_san'] . '</' . $th_td . '>';
+                $response .= '<' . $th_td . '>' . $item['ma_tai_san'] . '</' . $th_td . '>';
+                $response .= '<' . $th_td . '>' . number_format($item['gia_tri']) . '</' . $th_td . '>';
+                $response .= '<' . $th_td . '></' . $th_td . '>';
+                $response .= '<' . $th_td . '></' . $th_td . '>';
+                $response .= '<' . $th_td . '>' . $item['tyle_haomon'] . '</' . $th_td . '>';
+                $response .= '<' . $th_td . '>' . number_format($item['hm_kh_nam']) . '</' . $th_td . '>';
+                $response .= '<' . $th_td . '>' . number_format($item['hm_kh_nam']) . '</' . $th_td . '>';
+                $response .= '<' . $th_td . '>' . number_format($item['hm_luy_ke']) . '</' . $th_td . '>';
+                $response .= '<' . $th_td . '></' . $th_td . '>';
+                $response .= '<' . $th_td . '></' . $th_td . '>';
+                $response .= '<' . $th_td . '></' . $th_td . '>';
+                $response .= '<' . $th_td . '></' . $th_td . '>';
             }
-            $response .= '<' . $th_td . '>' . $row_total[$i]['group_name'] . '</' . $th_td . '>';
-            $response .= '<' . $th_td . '>' . $row_total[$i]['value1'] . '</' . $th_td . '>
-                          <' . $th_td . '>' . $row_total[$i]['value2'] . '</' . $th_td . '>
-                          <' . $th_td . '>' . $row_total[$i]['value3'] . '</' . $th_td . '>
-                          <' . $th_td . '>' . $row_total[$i]['value4'] . '</' . $th_td . '>
-                          <' . $th_td . '>' . $row_total[$i]['value5'] . '</' . $th_td . '>
-                          <' . $th_td . '>' . $row_total[$i]['value6'] . '</' . $th_td . '>
-                          <' . $th_td . '>' . $row_total[$i]['value7'] . '</' . $th_td . '>
-                          <' . $th_td . '>' . $row_total[$i]['value8'] . '</' . $th_td . '>
-                          <' . $th_td . '>' . $row_total[$i]['value9'] . '</' . $th_td . '>
-                          <' . $th_td . '>' . $row_total[$i]['value10'] . '</' . $th_td . '>
-                          <' . $th_td . '>' . $row_total[$i]['value11'] . '</' . $th_td . '>
-                          <' . $th_td . '>' . $row_total[$i]['value12'] . '</' . $th_td . '>
-                          <' . $th_td . '>' . $row_total[$i]['value13'] . '</' . $th_td . '>';
+
 
             $response .= '</tr>';
         }

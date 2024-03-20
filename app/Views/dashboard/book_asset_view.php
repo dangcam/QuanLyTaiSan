@@ -119,7 +119,7 @@
                 }
             });
         };
-
+        loadDataTable();
         $('#nam_theo_doi').change(function(){
             loadDataTable();
         });
