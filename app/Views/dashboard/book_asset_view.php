@@ -38,21 +38,41 @@
                     <div class="card-body">
                             <div class="table-responsive">
                                 <table id="data-table" class="table table-bordered table-striped verticle-middle table-responsive-sm" style="width:100%">
-                                    <thead>
+                                    <thead style="text-align:center;vertical-align: middle" >
                                     <tr>
-                                        <th scope="col"><?=lang('TaiSanLang.ma_tai_san')?></th>
-                                        <th scope="col"><?=lang('TaiSanLang.ten_tai_san')?></th>
-                                        <th scope="col"><?=lang('TaiSanLang.loai_tai_san')?></th>
-                                        <th scope="col"><?=lang('TaiSanLang.bo_phan_su_dung')?></th>
-                                        <th scope="col" ><?=lang('TaiSanLang.so_luong')?></th>
-                                        <th scope="col"><?=lang('TaiSanLang.gia_tri')?></th>
-                                        <th scope="col"><?=lang('TaiSanLang.hm_luy_ke')?></th>
-                                        <th scope="col"><?=lang('TaiSanLang.gia_tri_con_lai')?></th>
-                                        <th scope="col"><?=lang('TaiSanLang.ngay_ghi_tang')?></th>
-                                        <th scope="col"><?=lang('TaiSanLang.trang_thai')?></th>
+                                        <th rowspan="3">STT</th>
+                                        <th colspan="2">Chứng từ</th>
+                                        <th colspan="6">Ghi tăng tài sản cố định</th>
+                                        <th colspan="6">Khấu hao (hao mòn) tài sản cố định</th>
+                                        <th colspan="4">Ghi giảm TSCĐ</th>
+                                    </tr>
+                                    <tr>
+                                        <th rowspan="2">Số hiệu</th>
+                                        <th rowspan="2">Ngày, tháng</th>
+                                        <th rowspan="2">Tên, đặc điểm, ký hiệu TSCĐ</th>
+                                        <th rowspan="2">Nước sản xuất</th>
+                                        <th rowspan="2">Tháng, năm đưa vào sử dụng ở đơn vị</th>
+                                        <th rowspan="2">Số hiệu TSCĐ</th>
+                                        <th rowspan="2">Thẻ TSCĐ</th>
+                                        <th rowspan="2">Nguyên giá TSCĐ</th>
+                                        <th colspan="2">Khấu hao</th>
+                                        <th colspan="2">Hao mòn</th>
+                                        <th rowspan="2">Tổng số khấu hao (hao mòn) phát sinh trong năm</th>
+                                        <th rowspan="2">Lũy kế khấu hao/hao mòn đã tính đến khi chuyển sổ hoặc ghi giảm TSCĐ</th>
+                                        <th colspan="2">Chứng từ</th>
+                                        <th rowspan="2">Lý do ghi giảm TSCĐ</th>
+                                        <th rowspan="2">Giá trị còn lại của TSCĐ</th>
+                                    </tr>
+                                    <tr>
+                                        <th>Tỷ lệ %</th>
+                                        <th>Số tiền</th>
+                                        <th>Tỷ lệ</th>
+                                        <th>Số tiền</th>
+                                        <th>Số hiệu</th>
+                                        <th>Ngày, tháng</th>
                                     </tr>
                                     </thead>
-                                    <tbody>
+                                    <tbody id ="data_table">
                                     </tbody>
                                 </table>
                         </div>
@@ -81,37 +101,27 @@
             export_excel(nam_theo_doi.options[nam_theo_doi.selectedIndex].text,
                 bo_phan_su_dung.options[bo_phan_su_dung.selectedIndex].text,myData);
         });
-        var ajaxDataTable = $('#data-table').DataTable({
-            'processing': true,
-            'serverSide': true,
-            'serverMethod': 'post',
-            "aLengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "<?= lang('AppLang.all') ?>"]],
-            'searching': true, // Remove default Search Control
-            'ajax': {
-                'url': '<?=base_url()?>dashboard/report/report_tai_san_ajax',
-                'data': function (data) {
-                    data.searchYear = $('#nam_theo_doi').val();
-                },
-                'complete': function (data) {
-                    myData = data.responseJSON['data_table'];
-                }
-            },
-            'columns': [
-                {data: 'ma_tai_san'},
-                {data: 'ten_tai_san'},
-                {data: 'loai_tai_san'},
-                {data: 'bo_phan_su_dung'},
-                {data: 'so_luong'},
-                {data: 'gia_tri'},
-                {data: 'hm_luy_ke'},
-                {data: 'gia_tri_con_lai'},
-                {data: 'ngay_ghi_tang'},
-                {data: 'trang_thai'}
-            ]
-        });
+        function loadDataTable() {
+            var year = $('#nam_theo_doi').val();
 
-        $('#nam_theo_doi,#bo_phan_su_dung').change(function(){
-            ajaxDataTable.draw();
+            $.ajax({
+                url: "<?= base_url() ?>dashboard/report/book_asset_ajax",
+                method: "POST",
+                dataType: "json",
+                data: {report_year: year},
+                success: function (data) {
+                    $("#data_table").html(data[1]);
+                    myData = (data[0]);
+                    console.log(myData);
+                },
+                error: function (data) {
+                    $("#data_table").html(data[1]);
+                }
+            });
+        };
+
+        $('#nam_theo_doi').change(function(){
+            loadDataTable();
         });
     });
 </script>

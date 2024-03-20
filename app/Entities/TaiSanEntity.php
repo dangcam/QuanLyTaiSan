@@ -76,4 +76,5 @@ class TaiSanEntity extends Entity{
     protected $ngay_kt_hm;
     protected $hm_luy_ke;
     protected $gia_tri_con_lai;
+    protected $group_id;
 }

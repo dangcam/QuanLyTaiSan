@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Mar 18, 2024 at 06:17 PM
--- Server version: 10.4.32-MariaDB
--- PHP Version: 8.0.30
+-- Máy chủ: 127.0.0.1
+-- Thời gian đã tạo: Th3 20, 2024 lúc 10:17 AM
+-- Phiên bản máy phục vụ: 10.4.28-MariaDB
+-- Phiên bản PHP: 8.0.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `qltaisan`
+-- Cơ sở dữ liệu: `qltaisan`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `bo_phan`
+-- Cấu trúc bảng cho bảng `bo_phan`
 --
 
 CREATE TABLE `bo_phan` (
@@ -37,7 +37,7 @@ CREATE TABLE `bo_phan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `bo_phan`
+-- Đang đổ dữ liệu cho bảng `bo_phan`
 --
 
 INSERT INTO `bo_phan` (`ma_bp`, `ten_bp`, `truc_thuoc`, `ghi_chu`, `chuong_md`, `khoan_md`) VALUES
@@ -53,7 +53,7 @@ INSERT INTO `bo_phan` (`ma_bp`, `ten_bp`, `truc_thuoc`, `ghi_chu`, `chuong_md`, 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `chuc_vu`
+-- Cấu trúc bảng cho bảng `chuc_vu`
 --
 
 CREATE TABLE `chuc_vu` (
@@ -63,7 +63,7 @@ CREATE TABLE `chuc_vu` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `chuc_vu`
+-- Đang đổ dữ liệu cho bảng `chuc_vu`
 --
 
 INSERT INTO `chuc_vu` (`ma_cv`, `ten_cv`, `ghi_chu`) VALUES
@@ -72,7 +72,7 @@ INSERT INTO `chuc_vu` (`ma_cv`, `ten_cv`, `ghi_chu`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `chuong_md`
+-- Cấu trúc bảng cho bảng `chuong_md`
 --
 
 CREATE TABLE `chuong_md` (
@@ -81,7 +81,7 @@ CREATE TABLE `chuong_md` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `chuong_md`
+-- Đang đổ dữ liệu cho bảng `chuong_md`
 --
 
 INSERT INTO `chuong_md` (`ma`, `ten`) VALUES
@@ -90,7 +90,7 @@ INSERT INTO `chuong_md` (`ma`, `ten`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `cong_dung_cu`
+-- Cấu trúc bảng cho bảng `cong_dung_cu`
 --
 
 CREATE TABLE `cong_dung_cu` (
@@ -102,7 +102,7 @@ CREATE TABLE `cong_dung_cu` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `cong_dung_cu`
+-- Đang đổ dữ liệu cho bảng `cong_dung_cu`
 --
 
 INSERT INTO `cong_dung_cu` (`ma_ccdc`, `ten_ccdc`, `thuoc_loai`, `ghi_chu`, `su_dung`) VALUES
@@ -112,7 +112,7 @@ INSERT INTO `cong_dung_cu` (`ma_ccdc`, `ten_ccdc`, `thuoc_loai`, `ghi_chu`, `su_
 -- --------------------------------------------------------
 
 --
--- Table structure for table `dinh_muc`
+-- Cấu trúc bảng cho bảng `dinh_muc`
 --
 
 CREATE TABLE `dinh_muc` (
@@ -123,7 +123,7 @@ CREATE TABLE `dinh_muc` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `dinh_muc`
+-- Đang đổ dữ liệu cho bảng `dinh_muc`
 --
 
 INSERT INTO `dinh_muc` (`ma_dm_ts`, `ma_dm`, `dinh_muc`, `don_gia`) VALUES
@@ -132,7 +132,7 @@ INSERT INTO `dinh_muc` (`ma_dm_ts`, `ma_dm`, `dinh_muc`, `don_gia`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `dm_huyen`
+-- Cấu trúc bảng cho bảng `dm_huyen`
 --
 
 CREATE TABLE `dm_huyen` (
@@ -143,7 +143,7 @@ CREATE TABLE `dm_huyen` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `dm_huyen`
+-- Đang đổ dữ liệu cho bảng `dm_huyen`
 --
 
 INSERT INTO `dm_huyen` (`ma`, `ten`, `cap`, `ma_tinh`) VALUES
@@ -856,7 +856,7 @@ INSERT INTO `dm_huyen` (`ma`, `ten`, `cap`, `ma_tinh`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `dm_tai_san`
+-- Cấu trúc bảng cho bảng `dm_tai_san`
 --
 
 CREATE TABLE `dm_tai_san` (
@@ -869,7 +869,7 @@ CREATE TABLE `dm_tai_san` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `dm_tai_san`
+-- Đang đổ dữ liệu cho bảng `dm_tai_san`
 --
 
 INSERT INTO `dm_tai_san` (`ma_dm`, `ten_dm`, `thuoc_loai`, `don_vi`, `dinh_muc`, `su_dung`) VALUES
@@ -878,7 +878,7 @@ INSERT INTO `dm_tai_san` (`ma_dm`, `ten_dm`, `thuoc_loai`, `don_vi`, `dinh_muc`,
 -- --------------------------------------------------------
 
 --
--- Table structure for table `dm_tinh`
+-- Cấu trúc bảng cho bảng `dm_tinh`
 --
 
 CREATE TABLE `dm_tinh` (
@@ -888,7 +888,7 @@ CREATE TABLE `dm_tinh` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `dm_tinh`
+-- Đang đổ dữ liệu cho bảng `dm_tinh`
 --
 
 INSERT INTO `dm_tinh` (`ma`, `ten`, `cap`) VALUES
@@ -959,7 +959,7 @@ INSERT INTO `dm_tinh` (`ma`, `ten`, `cap`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `dm_xa`
+-- Cấu trúc bảng cho bảng `dm_xa`
 --
 
 CREATE TABLE `dm_xa` (
@@ -970,7 +970,7 @@ CREATE TABLE `dm_xa` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `dm_xa`
+-- Đang đổ dữ liệu cho bảng `dm_xa`
 --
 
 INSERT INTO `dm_xa` (`ma`, `ten`, `cap`, `ma_huyen`) VALUES
@@ -11584,7 +11584,7 @@ INSERT INTO `dm_xa` (`ma`, `ten`, `cap`, `ma_huyen`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `don_vi_qd`
+-- Cấu trúc bảng cho bảng `don_vi_qd`
 --
 
 CREATE TABLE `don_vi_qd` (
@@ -11593,7 +11593,7 @@ CREATE TABLE `don_vi_qd` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `don_vi_qd`
+-- Đang đổ dữ liệu cho bảng `don_vi_qd`
 --
 
 INSERT INTO `don_vi_qd` (`ma_dv`, `ten_dv`) VALUES
@@ -11602,7 +11602,7 @@ INSERT INTO `don_vi_qd` (`ma_dv`, `ten_dv`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `du_an`
+-- Cấu trúc bảng cho bảng `du_an`
 --
 
 CREATE TABLE `du_an` (
@@ -11613,7 +11613,7 @@ CREATE TABLE `du_an` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `du_an`
+-- Đang đổ dữ liệu cho bảng `du_an`
 --
 
 INSERT INTO `du_an` (`ma_da`, `ten_da`, `ghi_chu`, `su_dung`) VALUES
@@ -11622,7 +11622,7 @@ INSERT INTO `du_an` (`ma_da`, `ten_da`, `ghi_chu`, `su_dung`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `functions`
+-- Cấu trúc bảng cho bảng `functions`
 --
 
 CREATE TABLE `functions` (
@@ -11633,7 +11633,7 @@ CREATE TABLE `functions` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `functions`
+-- Đang đổ dữ liệu cho bảng `functions`
 --
 
 INSERT INTO `functions` (`function_id`, `function_name`, `function_status`, `function_group`) VALUES
@@ -11662,7 +11662,7 @@ INSERT INTO `functions` (`function_id`, `function_name`, `function_status`, `fun
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ghi_giam_chung_tu`
+-- Cấu trúc bảng cho bảng `ghi_giam_chung_tu`
 --
 
 CREATE TABLE `ghi_giam_chung_tu` (
@@ -11674,7 +11674,7 @@ CREATE TABLE `ghi_giam_chung_tu` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ghi_giam_tai_san`
+-- Cấu trúc bảng cho bảng `ghi_giam_tai_san`
 --
 
 CREATE TABLE `ghi_giam_tai_san` (
@@ -11688,7 +11688,7 @@ CREATE TABLE `ghi_giam_tai_san` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ghi_tang_chung_tu`
+-- Cấu trúc bảng cho bảng `ghi_tang_chung_tu`
 --
 
 CREATE TABLE `ghi_tang_chung_tu` (
@@ -11697,7 +11697,7 @@ CREATE TABLE `ghi_tang_chung_tu` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `ghi_tang_chung_tu`
+-- Đang đổ dữ liệu cho bảng `ghi_tang_chung_tu`
 --
 
 INSERT INTO `ghi_tang_chung_tu` (`ma_chung_tu`, `ma_tai_san`) VALUES
@@ -11706,7 +11706,7 @@ INSERT INTO `ghi_tang_chung_tu` (`ma_chung_tu`, `ma_tai_san`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ghi_tang_tai_san`
+-- Cấu trúc bảng cho bảng `ghi_tang_tai_san`
 --
 
 CREATE TABLE `ghi_tang_tai_san` (
@@ -11719,7 +11719,7 @@ CREATE TABLE `ghi_tang_tai_san` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `ghi_tang_tai_san`
+-- Đang đổ dữ liệu cho bảng `ghi_tang_tai_san`
 --
 
 INSERT INTO `ghi_tang_tai_san` (`ma_chung_tu`, `ngay_chung_tu`, `ngay_ghi_tang`, `tong_nguyen_gia`, `ghi_chu`, `nam_ghi_tang`) VALUES
@@ -11728,7 +11728,7 @@ INSERT INTO `ghi_tang_tai_san` (`ma_chung_tu`, `ngay_chung_tu`, `ngay_ghi_tang`,
 -- --------------------------------------------------------
 
 --
--- Table structure for table `groups`
+-- Cấu trúc bảng cho bảng `groups`
 --
 
 CREATE TABLE `groups` (
@@ -11739,7 +11739,7 @@ CREATE TABLE `groups` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `groups`
+-- Đang đổ dữ liệu cho bảng `groups`
 --
 
 INSERT INTO `groups` (`group_id`, `group_name`, `group_parent`, `group_status`) VALUES
@@ -11761,7 +11761,7 @@ INSERT INTO `groups` (`group_id`, `group_name`, `group_parent`, `group_status`) 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `khoan_md`
+-- Cấu trúc bảng cho bảng `khoan_md`
 --
 
 CREATE TABLE `khoan_md` (
@@ -11770,7 +11770,7 @@ CREATE TABLE `khoan_md` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `khoan_md`
+-- Đang đổ dữ liệu cho bảng `khoan_md`
 --
 
 INSERT INTO `khoan_md` (`ma`, `ten`) VALUES
@@ -11779,7 +11779,7 @@ INSERT INTO `khoan_md` (`ma`, `ten`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `loai_tai_san`
+-- Cấu trúc bảng cho bảng `loai_tai_san`
 --
 
 CREATE TABLE `loai_tai_san` (
@@ -11800,7 +11800,7 @@ CREATE TABLE `loai_tai_san` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `loai_tai_san`
+-- Đang đổ dữ liệu cho bảng `loai_tai_san`
 --
 
 INSERT INTO `loai_tai_san` (`ma_loai_ts`, `ten_loai_ts`, `thuoc_loai`, `nhom_ts`, `tyle_haomon`, `sonam_sudung`, `ghi_chu`, `nhac_nho`, `ky_nhacnho`, `so_ky_nhacnho`, `tk_nguyen_gia`, `tk_haomon`, `tieu_muc`, `su_dung`) VALUES
@@ -11816,7 +11816,7 @@ INSERT INTO `loai_tai_san` (`ma_loai_ts`, `ten_loai_ts`, `thuoc_loai`, `nhom_ts`
 -- --------------------------------------------------------
 
 --
--- Table structure for table `loai_ts_duong_bo`
+-- Cấu trúc bảng cho bảng `loai_ts_duong_bo`
 --
 
 CREATE TABLE `loai_ts_duong_bo` (
@@ -11830,7 +11830,7 @@ CREATE TABLE `loai_ts_duong_bo` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `loai_ts_duong_bo`
+-- Đang đổ dữ liệu cho bảng `loai_ts_duong_bo`
 --
 
 INSERT INTO `loai_ts_duong_bo` (`ma_loai_ts`, `ten_loai_ts`, `thuoc_loai`, `tyle_haomon`, `sonam_sudung`, `ghi_chu`, `su_dung`) VALUES
@@ -11839,7 +11839,7 @@ INSERT INTO `loai_ts_duong_bo` (`ma_loai_ts`, `ten_loai_ts`, `thuoc_loai`, `tyle
 -- --------------------------------------------------------
 
 --
--- Table structure for table `nguoi_su_dung`
+-- Cấu trúc bảng cho bảng `nguoi_su_dung`
 --
 
 CREATE TABLE `nguoi_su_dung` (
@@ -11851,7 +11851,7 @@ CREATE TABLE `nguoi_su_dung` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `nguoi_su_dung`
+-- Đang đổ dữ liệu cho bảng `nguoi_su_dung`
 --
 
 INSERT INTO `nguoi_su_dung` (`ma_nd`, `ten_nd`, `bo_phan`, `chuc_vu`, `su_dung`) VALUES
@@ -11860,7 +11860,7 @@ INSERT INTO `nguoi_su_dung` (`ma_nd`, `ten_nd`, `bo_phan`, `chuc_vu`, `su_dung`)
 -- --------------------------------------------------------
 
 --
--- Table structure for table `nguon_hinh_thanh`
+-- Cấu trúc bảng cho bảng `nguon_hinh_thanh`
 --
 
 CREATE TABLE `nguon_hinh_thanh` (
@@ -11869,7 +11869,7 @@ CREATE TABLE `nguon_hinh_thanh` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `nguon_hinh_thanh`
+-- Đang đổ dữ liệu cho bảng `nguon_hinh_thanh`
 --
 
 INSERT INTO `nguon_hinh_thanh` (`ma_nguon`, `ten_nguon`) VALUES
@@ -11884,7 +11884,7 @@ INSERT INTO `nguon_hinh_thanh` (`ma_nguon`, `ten_nguon`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `nguon_kinh_phi`
+-- Cấu trúc bảng cho bảng `nguon_kinh_phi`
 --
 
 CREATE TABLE `nguon_kinh_phi` (
@@ -11897,7 +11897,7 @@ CREATE TABLE `nguon_kinh_phi` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `nguon_kinh_phi`
+-- Đang đổ dữ liệu cho bảng `nguon_kinh_phi`
 --
 
 INSERT INTO `nguon_kinh_phi` (`ma_kp`, `ten_kp`, `thuoc_nguon`, `nguon_ht`, `ghi_chu`, `su_dung`) VALUES
@@ -11914,7 +11914,7 @@ INSERT INTO `nguon_kinh_phi` (`ma_kp`, `ten_kp`, `thuoc_nguon`, `nguon_ht`, `ghi
 -- --------------------------------------------------------
 
 --
--- Table structure for table `nguyen_gia`
+-- Cấu trúc bảng cho bảng `nguyen_gia`
 --
 
 CREATE TABLE `nguyen_gia` (
@@ -11924,7 +11924,7 @@ CREATE TABLE `nguyen_gia` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `nguyen_gia`
+-- Đang đổ dữ liệu cho bảng `nguyen_gia`
 --
 
 INSERT INTO `nguyen_gia` (`ma_kp`, `ma_tai_san`, `gia_tri`) VALUES
@@ -11934,7 +11934,7 @@ INSERT INTO `nguyen_gia` (`ma_kp`, `ma_tai_san`, `gia_tri`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `nha_cung_cap`
+-- Cấu trúc bảng cho bảng `nha_cung_cap`
 --
 
 CREATE TABLE `nha_cung_cap` (
@@ -11945,7 +11945,7 @@ CREATE TABLE `nha_cung_cap` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `nha_cung_cap`
+-- Đang đổ dữ liệu cho bảng `nha_cung_cap`
 --
 
 INSERT INTO `nha_cung_cap` (`ma_ncc`, `ten_ncc`, `dia_chi`, `ncc_status`) VALUES
@@ -11955,7 +11955,7 @@ INSERT INTO `nha_cung_cap` (`ma_ncc`, `ten_ncc`, `dia_chi`, `ncc_status`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `nhom_tai_san`
+-- Cấu trúc bảng cho bảng `nhom_tai_san`
 --
 
 CREATE TABLE `nhom_tai_san` (
@@ -11964,7 +11964,7 @@ CREATE TABLE `nhom_tai_san` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `nhom_tai_san`
+-- Đang đổ dữ liệu cho bảng `nhom_tai_san`
 --
 
 INSERT INTO `nhom_tai_san` (`id`, `ten_nts`) VALUES
@@ -11982,7 +11982,7 @@ INSERT INTO `nhom_tai_san` (`id`, `ten_nts`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tai_san`
+-- Cấu trúc bảng cho bảng `tai_san`
 --
 
 CREATE TABLE `tai_san` (
@@ -12052,21 +12052,22 @@ CREATE TABLE `tai_san` (
   `de_o` int(11) NOT NULL,
   `bo_trong` int(11) NOT NULL,
   `bi_lan_chiem` int(11) NOT NULL,
-  `su_dung_hon_hop` int(11) NOT NULL
+  `su_dung_hon_hop` int(11) NOT NULL,
+  `group_id` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `tai_san`
+-- Đang đổ dữ liệu cho bảng `tai_san`
 --
 
-INSERT INTO `tai_san` (`nhom_tai_san`, `loai_tai_san`, `ma_tai_san`, `ten_tai_san`, `ly_do_tang`, `so_luong`, `don_vi_tinh`, `bo_phan_su_dung`, `ma_tinh`, `ma_huyen`, `ma_xa`, `dia_chi`, `so_tang`, `chieu_dai`, `dien_tich_xd`, `the_tich`, `nam_xay_dung`, `nuoc_san_xuat`, `bien_kiem_soat`, `nhan_xe`, `model`, `so_seri`, `so_may`, `tai_trong`, `so_cho_ngoi`, `so_cau`, `cong_suat_xe`, `dung_tich_xe`, `giay_cndk_so`, `ngay_dk`, `co_quan_cap_dk`, `nguon_goc_xe`, `mau_son`, `nguoi_su_dung`, `hinh_thuc_bo_tri_su_dung`, `chuc_danh_su_dung`, `qd_trang_cap`, `ngay_dq_trang_cap`, `du_an`, `loai_tai_san_ke_khai`, `thong_so_ky_thuat`, `quan_ly_nha_nuoc`, `hdsn_kkd`, `hdsn_kd`, `hdsn_ldlk`, `hdsn_ct`, `su_dung_khac`, `trang_thai`, `tong_dien_tich`, `gia_tri_dat`, `ngay_mua`, `ngay_bd_su_dung`, `ngay_ghi_tang`, `nam_theo_doi`, `ngay_bd_tinh_hm`, `so_nam_su_dung`, `ty_le_hao_mon`, `hm_kh_nam`, `so_nam_sd_con_lai`, `ngay_kt_hm`, `hm_luy_ke`, `gia_tri_con_lai`, `muc_dich_su_dung`, `de_o`, `bo_trong`, `bi_lan_chiem`, `su_dung_hon_hop`) VALUES
-(2, '101', 'MTS0002', 'Toà nhà chính', 'Tiếp nhận', 1, 'Cái', 'DDD_BD', '70', '698', '25264', 'ĐT741 ', 5, 0, 500, 0, 2023, 0, '', '', '', '', '', 0, 0, 0, 0, 0, '', '', '', '', '', '', '', '', '', '', '', 0, '', 0, 400, 0, 0, 50, 0, 1, 450, 0, '2023-08-17', '2023-08-17', '2023-08-17', 2023, '2023-08-17', 80, 1.25, 19375000, 80, '2103-08-17', 0, 1550000000, '1', 0, 0, 0, 0),
-(6, '50101', 'TSMT001', 'Máy tính để bàn', 'Tiếp nhận', 1, 'Cái', 'PKT', '70', '698', '25264', 'Đường ĐT.741, Thôn Phú Thịnh', 0, 0, 0, 0, 0, 0, '', '', '', '', '', 0, 0, 0, 0, 0, '', '', '', '', '', '', '', '', '', '', '', 5, 'Thông số kỹ thuật máy tính để bàn', 1, 1, 0, 0, 0, 1, 0, 6, 0, '2022-08-08', '2022-08-08', '2022-08-08', 2023, '2022-08-08', 5, 20, 2900000, 4, '2027-08-08', 2900000, 11600000, '', 0, 0, 0, 0);
+INSERT INTO `tai_san` (`nhom_tai_san`, `loai_tai_san`, `ma_tai_san`, `ten_tai_san`, `ly_do_tang`, `so_luong`, `don_vi_tinh`, `bo_phan_su_dung`, `ma_tinh`, `ma_huyen`, `ma_xa`, `dia_chi`, `so_tang`, `chieu_dai`, `dien_tich_xd`, `the_tich`, `nam_xay_dung`, `nuoc_san_xuat`, `bien_kiem_soat`, `nhan_xe`, `model`, `so_seri`, `so_may`, `tai_trong`, `so_cho_ngoi`, `so_cau`, `cong_suat_xe`, `dung_tich_xe`, `giay_cndk_so`, `ngay_dk`, `co_quan_cap_dk`, `nguon_goc_xe`, `mau_son`, `nguoi_su_dung`, `hinh_thuc_bo_tri_su_dung`, `chuc_danh_su_dung`, `qd_trang_cap`, `ngay_dq_trang_cap`, `du_an`, `loai_tai_san_ke_khai`, `thong_so_ky_thuat`, `quan_ly_nha_nuoc`, `hdsn_kkd`, `hdsn_kd`, `hdsn_ldlk`, `hdsn_ct`, `su_dung_khac`, `trang_thai`, `tong_dien_tich`, `gia_tri_dat`, `ngay_mua`, `ngay_bd_su_dung`, `ngay_ghi_tang`, `nam_theo_doi`, `ngay_bd_tinh_hm`, `so_nam_su_dung`, `ty_le_hao_mon`, `hm_kh_nam`, `so_nam_sd_con_lai`, `ngay_kt_hm`, `hm_luy_ke`, `gia_tri_con_lai`, `muc_dich_su_dung`, `de_o`, `bo_trong`, `bi_lan_chiem`, `su_dung_hon_hop`, `group_id`) VALUES
+(2, '101', 'MTS0002', 'Toà nhà chính', 'Tiếp nhận', 1, 'Cái', 'DDD_BD', '70', '698', '25264', 'ĐT741 ', 5, 0, 500, 0, 2023, 0, '', '', '', '', '', 0, 0, 0, 0, 0, '', '', '', '', '', '', '', '', '', '', '', 0, '', 0, 400, 0, 0, 50, 0, 1, 450, 0, '2023-08-17', '2023-08-17', '2023-08-17', 2023, '2023-08-17', 80, 1.25, 19375000, 79, '2103-08-17', 19375000, 1530630000, '1', 0, 0, 0, 0, 'vpddt'),
+(6, '50101', 'TSMT001', 'Máy tính để bàn', 'Tiếp nhận', 1, 'Cái', 'PKT', '70', '698', '25264', 'Đường ĐT.741, Thôn Phú Thịnh', 0, 0, 0, 0, 0, 0, '', '', '', '', '', 0, 0, 0, 0, 0, '', '', '', '', '', '', '', '', '', '', '', 5, 'Thông số kỹ thuật máy tính để bàn', 1, 1, 0, 0, 0, 1, 0, 6, 0, '2022-08-08', '2022-08-08', '2022-08-08', 2023, '2022-08-08', 5, 20, 2900000, 3, '2027-08-08', 5800000, 8700000, '', 0, 0, 0, 0, 'vpddt');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `thiet_bi_yte`
+-- Cấu trúc bảng cho bảng `thiet_bi_yte`
 --
 
 CREATE TABLE `thiet_bi_yte` (
@@ -12078,7 +12079,7 @@ CREATE TABLE `thiet_bi_yte` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `thiet_bi_yte`
+-- Đang đổ dữ liệu cho bảng `thiet_bi_yte`
 --
 
 INSERT INTO `thiet_bi_yte` (`ma_tb`, `ten_tb`, `thuoc_loai`, `ghi_chu`, `su_dung`) VALUES
@@ -12087,7 +12088,7 @@ INSERT INTO `thiet_bi_yte` (`ma_tb`, `ten_tb`, `thuoc_loai`, `ghi_chu`, `su_dung
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tieu_muc`
+-- Cấu trúc bảng cho bảng `tieu_muc`
 --
 
 CREATE TABLE `tieu_muc` (
@@ -12096,7 +12097,7 @@ CREATE TABLE `tieu_muc` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `tieu_muc`
+-- Đang đổ dữ liệu cho bảng `tieu_muc`
 --
 
 INSERT INTO `tieu_muc` (`ma_tm`, `ten_tm`) VALUES
@@ -12112,7 +12113,7 @@ INSERT INTO `tieu_muc` (`ma_tm`, `ten_tm`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tk_hao_mon`
+-- Cấu trúc bảng cho bảng `tk_hao_mon`
 --
 
 CREATE TABLE `tk_hao_mon` (
@@ -12121,7 +12122,7 @@ CREATE TABLE `tk_hao_mon` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `tk_hao_mon`
+-- Đang đổ dữ liệu cho bảng `tk_hao_mon`
 --
 
 INSERT INTO `tk_hao_mon` (`ma_tk`, `ten_tk`) VALUES
@@ -12132,7 +12133,7 @@ INSERT INTO `tk_hao_mon` (`ma_tk`, `ten_tk`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tk_nguyen_gia`
+-- Cấu trúc bảng cho bảng `tk_nguyen_gia`
 --
 
 CREATE TABLE `tk_nguyen_gia` (
@@ -12141,7 +12142,7 @@ CREATE TABLE `tk_nguyen_gia` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `tk_nguyen_gia`
+-- Đang đổ dữ liệu cho bảng `tk_nguyen_gia`
 --
 
 INSERT INTO `tk_nguyen_gia` (`ma_tk`, `ten_tk`) VALUES
@@ -12152,7 +12153,7 @@ INSERT INTO `tk_nguyen_gia` (`ma_tk`, `ten_tk`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `trang_cap`
+-- Cấu trúc bảng cho bảng `trang_cap`
 --
 
 CREATE TABLE `trang_cap` (
@@ -12163,7 +12164,7 @@ CREATE TABLE `trang_cap` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `trang_cap`
+-- Đang đổ dữ liệu cho bảng `trang_cap`
 --
 
 INSERT INTO `trang_cap` (`so_qd`, `ten_qd`, `don_vi`, `su_dung`) VALUES
@@ -12172,7 +12173,7 @@ INSERT INTO `trang_cap` (`so_qd`, `ten_qd`, `don_vi`, `su_dung`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Cấu trúc bảng cho bảng `users`
 --
 
 CREATE TABLE `users` (
@@ -12187,7 +12188,7 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `users`
+-- Đang đổ dữ liệu cho bảng `users`
 --
 
 INSERT INTO `users` (`user_id`, `username`, `password`, `gender`, `email`, `phonenumber`, `group_id`, `user_status`) VALUES
@@ -12198,7 +12199,7 @@ INSERT INTO `users` (`user_id`, `username`, `password`, `gender`, `email`, `phon
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user_function`
+-- Cấu trúc bảng cho bảng `user_function`
 --
 
 CREATE TABLE `user_function` (
@@ -12211,7 +12212,7 @@ CREATE TABLE `user_function` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `user_function`
+-- Đang đổ dữ liệu cho bảng `user_function`
 --
 
 INSERT INTO `user_function` (`user_id`, `function_id`, `function_view`, `function_add`, `function_edit`, `function_delete`) VALUES
@@ -12246,237 +12247,237 @@ INSERT INTO `user_function` (`user_id`, `function_id`, `function_view`, `functio
 ('admin2', 'user', 0, 0, 0, 0);
 
 --
--- Indexes for dumped tables
+-- Chỉ mục cho các bảng đã đổ
 --
 
 --
--- Indexes for table `bo_phan`
+-- Chỉ mục cho bảng `bo_phan`
 --
 ALTER TABLE `bo_phan`
   ADD PRIMARY KEY (`ma_bp`);
 
 --
--- Indexes for table `chuc_vu`
+-- Chỉ mục cho bảng `chuc_vu`
 --
 ALTER TABLE `chuc_vu`
   ADD PRIMARY KEY (`ma_cv`);
 
 --
--- Indexes for table `chuong_md`
+-- Chỉ mục cho bảng `chuong_md`
 --
 ALTER TABLE `chuong_md`
   ADD PRIMARY KEY (`ma`);
 
 --
--- Indexes for table `cong_dung_cu`
+-- Chỉ mục cho bảng `cong_dung_cu`
 --
 ALTER TABLE `cong_dung_cu`
   ADD PRIMARY KEY (`ma_ccdc`);
 
 --
--- Indexes for table `dinh_muc`
+-- Chỉ mục cho bảng `dinh_muc`
 --
 ALTER TABLE `dinh_muc`
   ADD PRIMARY KEY (`ma_dm_ts`,`ma_dm`);
 
 --
--- Indexes for table `dm_huyen`
+-- Chỉ mục cho bảng `dm_huyen`
 --
 ALTER TABLE `dm_huyen`
   ADD PRIMARY KEY (`ma`);
 
 --
--- Indexes for table `dm_tai_san`
+-- Chỉ mục cho bảng `dm_tai_san`
 --
 ALTER TABLE `dm_tai_san`
   ADD PRIMARY KEY (`ma_dm`);
 
 --
--- Indexes for table `dm_tinh`
+-- Chỉ mục cho bảng `dm_tinh`
 --
 ALTER TABLE `dm_tinh`
   ADD PRIMARY KEY (`ma`);
 
 --
--- Indexes for table `dm_xa`
+-- Chỉ mục cho bảng `dm_xa`
 --
 ALTER TABLE `dm_xa`
   ADD PRIMARY KEY (`ma`);
 
 --
--- Indexes for table `don_vi_qd`
+-- Chỉ mục cho bảng `don_vi_qd`
 --
 ALTER TABLE `don_vi_qd`
   ADD PRIMARY KEY (`ma_dv`);
 
 --
--- Indexes for table `du_an`
+-- Chỉ mục cho bảng `du_an`
 --
 ALTER TABLE `du_an`
   ADD PRIMARY KEY (`ma_da`);
 
 --
--- Indexes for table `functions`
+-- Chỉ mục cho bảng `functions`
 --
 ALTER TABLE `functions`
   ADD PRIMARY KEY (`function_id`);
 
 --
--- Indexes for table `ghi_giam_chung_tu`
+-- Chỉ mục cho bảng `ghi_giam_chung_tu`
 --
 ALTER TABLE `ghi_giam_chung_tu`
   ADD PRIMARY KEY (`ma_chung_tu`);
 
 --
--- Indexes for table `ghi_giam_tai_san`
+-- Chỉ mục cho bảng `ghi_giam_tai_san`
 --
 ALTER TABLE `ghi_giam_tai_san`
   ADD PRIMARY KEY (`ma_chung_tu`);
 
 --
--- Indexes for table `ghi_tang_chung_tu`
+-- Chỉ mục cho bảng `ghi_tang_chung_tu`
 --
 ALTER TABLE `ghi_tang_chung_tu`
   ADD PRIMARY KEY (`ma_chung_tu`,`ma_tai_san`);
 
 --
--- Indexes for table `ghi_tang_tai_san`
+-- Chỉ mục cho bảng `ghi_tang_tai_san`
 --
 ALTER TABLE `ghi_tang_tai_san`
   ADD PRIMARY KEY (`ma_chung_tu`);
 
 --
--- Indexes for table `groups`
+-- Chỉ mục cho bảng `groups`
 --
 ALTER TABLE `groups`
   ADD PRIMARY KEY (`group_id`);
 
 --
--- Indexes for table `khoan_md`
+-- Chỉ mục cho bảng `khoan_md`
 --
 ALTER TABLE `khoan_md`
   ADD PRIMARY KEY (`ma`);
 
 --
--- Indexes for table `loai_tai_san`
+-- Chỉ mục cho bảng `loai_tai_san`
 --
 ALTER TABLE `loai_tai_san`
   ADD PRIMARY KEY (`ma_loai_ts`);
 
 --
--- Indexes for table `loai_ts_duong_bo`
+-- Chỉ mục cho bảng `loai_ts_duong_bo`
 --
 ALTER TABLE `loai_ts_duong_bo`
   ADD PRIMARY KEY (`ma_loai_ts`);
 
 --
--- Indexes for table `nguoi_su_dung`
+-- Chỉ mục cho bảng `nguoi_su_dung`
 --
 ALTER TABLE `nguoi_su_dung`
   ADD PRIMARY KEY (`ma_nd`);
 
 --
--- Indexes for table `nguon_hinh_thanh`
+-- Chỉ mục cho bảng `nguon_hinh_thanh`
 --
 ALTER TABLE `nguon_hinh_thanh`
   ADD PRIMARY KEY (`ma_nguon`);
 
 --
--- Indexes for table `nguon_kinh_phi`
+-- Chỉ mục cho bảng `nguon_kinh_phi`
 --
 ALTER TABLE `nguon_kinh_phi`
   ADD PRIMARY KEY (`ma_kp`);
 
 --
--- Indexes for table `nguyen_gia`
+-- Chỉ mục cho bảng `nguyen_gia`
 --
 ALTER TABLE `nguyen_gia`
   ADD PRIMARY KEY (`ma_kp`,`ma_tai_san`);
 
 --
--- Indexes for table `nha_cung_cap`
+-- Chỉ mục cho bảng `nha_cung_cap`
 --
 ALTER TABLE `nha_cung_cap`
   ADD PRIMARY KEY (`ma_ncc`);
 
 --
--- Indexes for table `nhom_tai_san`
+-- Chỉ mục cho bảng `nhom_tai_san`
 --
 ALTER TABLE `nhom_tai_san`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `tai_san`
+-- Chỉ mục cho bảng `tai_san`
 --
 ALTER TABLE `tai_san`
   ADD PRIMARY KEY (`ma_tai_san`);
 
 --
--- Indexes for table `thiet_bi_yte`
+-- Chỉ mục cho bảng `thiet_bi_yte`
 --
 ALTER TABLE `thiet_bi_yte`
   ADD PRIMARY KEY (`ma_tb`);
 
 --
--- Indexes for table `tieu_muc`
+-- Chỉ mục cho bảng `tieu_muc`
 --
 ALTER TABLE `tieu_muc`
   ADD PRIMARY KEY (`ma_tm`);
 
 --
--- Indexes for table `tk_hao_mon`
+-- Chỉ mục cho bảng `tk_hao_mon`
 --
 ALTER TABLE `tk_hao_mon`
   ADD PRIMARY KEY (`ma_tk`);
 
 --
--- Indexes for table `tk_nguyen_gia`
+-- Chỉ mục cho bảng `tk_nguyen_gia`
 --
 ALTER TABLE `tk_nguyen_gia`
   ADD PRIMARY KEY (`ma_tk`);
 
 --
--- Indexes for table `trang_cap`
+-- Chỉ mục cho bảng `trang_cap`
 --
 ALTER TABLE `trang_cap`
   ADD PRIMARY KEY (`so_qd`);
 
 --
--- Indexes for table `users`
+-- Chỉ mục cho bảng `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`user_id`),
   ADD KEY `group_id` (`group_id`);
 
 --
--- Indexes for table `user_function`
+-- Chỉ mục cho bảng `user_function`
 --
 ALTER TABLE `user_function`
   ADD PRIMARY KEY (`user_id`,`function_id`),
   ADD KEY `user_function_ibfk_2` (`function_id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT cho các bảng đã đổ
 --
 
 --
--- AUTO_INCREMENT for table `nguon_hinh_thanh`
+-- AUTO_INCREMENT cho bảng `nguon_hinh_thanh`
 --
 ALTER TABLE `nguon_hinh_thanh`
   MODIFY `ma_nguon` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT for table `nhom_tai_san`
+-- AUTO_INCREMENT cho bảng `nhom_tai_san`
 --
 ALTER TABLE `nhom_tai_san`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
--- Constraints for dumped tables
+-- Các ràng buộc cho các bảng đã đổ
 --
 
 --
--- Constraints for table `user_function`
+-- Các ràng buộc cho bảng `user_function`
 --
 ALTER TABLE `user_function`
   ADD CONSTRAINT `user_function_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`),

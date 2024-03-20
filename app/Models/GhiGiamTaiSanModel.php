@@ -163,6 +163,7 @@ class GhiGiamTaiSanModel Extends BaseModel
         $strInput=$postData['search']['value'];
         // Custom search filter
         $searchYear = $postData['searchYear'];
+        // $groupId =  $this->session->get('group_id');
         //
         ## Total number of records without filtering
         $this->select('count(*) as allcount')->where('nam_ghi_giam',$searchYear);

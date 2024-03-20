@@ -17,6 +17,7 @@ class TaiSanModel Extends BaseModel
         unset($data['add']);
         $data_nguyen_gia = $data['data'];
         unset($data['data']);
+        $data['group_id'] = $this->session->get('group_id');
 
         if(!$this->validate($data))
         {
@@ -48,6 +49,7 @@ class TaiSanModel Extends BaseModel
         unset($data['data']);
         unset($data['edit']);
         unset($data['ma_tai_san']);
+        $data['group_id'] = $this->session->get('group_id');
         //
         if(!isset($data['quan_ly_nha_nuoc']))
             $data['quan_ly_nha_nuoc'] = 0;
@@ -216,13 +218,14 @@ class TaiSanModel Extends BaseModel
         $strInput=$postData['search']['value'];
         // Custom search filter
         $searchYear = $postData['searchYear'];
+        $groupId =  $this->session->get('group_id');
         //
         ## Total number of records without filtering
-        $this->select('count(*) as allcount')->where('nam_theo_doi',$searchYear);
+        $this->select('count(*) as allcount')->where('nam_theo_doi',$searchYear)->where('group_id',$groupId);
         $records = $this->find();
         $totalRecords = $records[0]->allcount;
         ## Fetch records
-        $this->like('ten_tai_san',$strInput)->where('nam_theo_doi',$searchYear);
+        $this->like('ten_tai_san',$strInput)->where('nam_theo_doi',$searchYear)->where('group_id',$groupId);
         $this->orderBy($columnName, $columnSortOrder);
         if($rowperpage!=-1)
             $this->limit($rowperpage, $start);
@@ -318,5 +321,91 @@ class TaiSanModel Extends BaseModel
         );
 
         return $response;
+    }
+    public function getReportSoTaiSanPrint($data)
+    {
+        $report_year = $data['report_year'];
+        $group_id = $this->session->get('group_id');
+
+
+        $sql = 'SELECT * FROM tai_san WHERE nam_theo_doi = ? AND group_id = ? ORDER BY loai_tai_san';
+
+        $result = $this->db->query($sql,[$report_year,$group_id])->getResult();
+        $i = 0;
+        $row_total = array();
+        $t = count($result)+1;
+        $row_total[$t]['ma_tai_san'] = '';
+        $row_total[$t]['ten_tai_san'] = 'Tổng';
+        $row_total[$t]['hm_kh_nam'] = 0;
+        $row_total[$t]['hm_luy_ke'] = 0;
+        $row_total[$t]['gia_tri'] = 0; // hm_luy_ke + gia_tri_con_lai
+
+        foreach ($result as $item) {
+            $i++;
+            $row_total[$i]['ma_tai_san'] = $item->group_name;
+            $row_total[$i]['ten_tai_san'] = $item->group_id;
+            $row_total[$i]['value1'] = (int)$item->value1;
+            $row_total[$i]['value2'] = (int)$item->value2;
+            $row_total[$i]['value3'] = (int)$item->value3;
+            $row_total[$i]['value4'] = (int)$item->value4;
+            $row_total[$i]['value5'] = (int)$item->value5;
+            $row_total[$i]['value6'] = (int)$item->value6;
+            $row_total[$i]['value7'] = (int)$item->value7;
+            $row_total[$i]['value8'] = (int)$item->value8;
+            $row_total[$i]['value9'] = (int)$item->value9;
+            $row_total[$i]['value10'] = (int)$item->value10;
+            $row_total[$i]['value11'] = (int)$item->value11;
+            $row_total[$i]['value12'] = (int)$item->value12;
+            $row_total[$i]['value13'] = (int)$item->value13;
+            //
+            $row_total[$t]['value1'] += (int)$item->value1;
+            $row_total[$t]['value2'] += (int)$item->value2;
+            $row_total[$t]['value3'] += (int)$item->value3;
+            $row_total[$t]['value4'] += (int)$item->value4;
+            $row_total[$t]['value5'] += (int)$item->value5;
+            $row_total[$t]['value6'] += (int)$item->value6;
+            $row_total[$t]['value7'] += (int)$item->value7;
+            $row_total[$t]['value8'] += (int)$item->value8;
+            $row_total[$t]['value9'] += (int)$item->value9;
+            $row_total[$t]['value10'] += (int)$item->value10;
+            $row_total[$t]['value11'] += (int)$item->value11;
+            $row_total[$t]['value12'] += (int)$item->value12;
+            $row_total[$t]['value13'] += (int)$item->value13;
+        }
+
+        $i = 0;
+        $response='';
+        for($j = 1;$j<=$t;$j++) {
+            $response .= '<tr >';
+            $i++;
+            if($row_total[$i]['group_id'] == $group_id)
+            {
+                $th_td = 'th';
+                $response .= '<td></td>';
+            }else {
+                $th_td = 'td';
+                $response .= '<td>' . $i . '</td>';
+            }
+            $response .= '<' . $th_td . '>' . $row_total[$i]['group_name'] . '</' . $th_td . '>';
+            $response .= '<' . $th_td . '>' . $row_total[$i]['value1'] . '</' . $th_td . '>
+                          <' . $th_td . '>' . $row_total[$i]['value2'] . '</' . $th_td . '>
+                          <' . $th_td . '>' . $row_total[$i]['value3'] . '</' . $th_td . '>
+                          <' . $th_td . '>' . $row_total[$i]['value4'] . '</' . $th_td . '>
+                          <' . $th_td . '>' . $row_total[$i]['value5'] . '</' . $th_td . '>
+                          <' . $th_td . '>' . $row_total[$i]['value6'] . '</' . $th_td . '>
+                          <' . $th_td . '>' . $row_total[$i]['value7'] . '</' . $th_td . '>
+                          <' . $th_td . '>' . $row_total[$i]['value8'] . '</' . $th_td . '>
+                          <' . $th_td . '>' . $row_total[$i]['value9'] . '</' . $th_td . '>
+                          <' . $th_td . '>' . $row_total[$i]['value10'] . '</' . $th_td . '>
+                          <' . $th_td . '>' . $row_total[$i]['value11'] . '</' . $th_td . '>
+                          <' . $th_td . '>' . $row_total[$i]['value12'] . '</' . $th_td . '>
+                          <' . $th_td . '>' . $row_total[$i]['value13'] . '</' . $th_td . '>';
+
+            $response .= '</tr>';
+        }
+        $data_table['data_table'] = array_values($row_total);
+        $data_table['response'] = $response;
+        return $data_table;
+
     }
 }

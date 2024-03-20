@@ -41,5 +41,15 @@ class ReportController extends BaseController
             echo json_encode('No Data');
         }
     }
-
+    public function book_asset_ajax()
+    {
+        if($this->request->getPost())
+        {
+            $data = $this->request->getPost();
+            $return_value = $this->tai_san_model->getReportSoTaiSanPrint($data);
+            echo json_encode(array_values($return_value));
+        }else {
+            echo json_encode(array_values('No Data'));
+        }
+    }
 }
