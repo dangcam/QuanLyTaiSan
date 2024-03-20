@@ -372,6 +372,10 @@ class TaiSanModel Extends BaseModel
 
         $i = 0;
         $response='';
+        $row_tt = array();
+        $row_tt['gia_tri'] = 0;
+        $row_tt['hm_kh_nam'] = 0;
+        $row_tt['hm_luy_ke'] = 0;
         foreach($row_total as $item) {
             $response .= '<tr >';
             $i++;
@@ -390,7 +394,9 @@ class TaiSanModel Extends BaseModel
                 $response .= '<' . $th_td . '></' . $th_td . '>';
                 $response .= '<' . $th_td . '></' . $th_td . '>';
                 $response .= '<' . $th_td . '></' . $th_td . '>';
-
+                $row_tt['gia_tri'] += (int)$item['gia_tri'];
+                $row_tt['hm_kh_nam'] += (int)$item['hm_kh_nam'];;
+                $row_tt['hm_luy_ke'] += (int)$item['hm_luy_ke'];;
             }else {
                 $th_td = 'td';
                 $response .= '<td>' . $item['stt'] . '</td>';
@@ -417,6 +423,21 @@ class TaiSanModel Extends BaseModel
 
             $response .= '</tr>';
         }
+        //
+        $th_td = 'th';
+        $response .= '<' . $th_td . ' colspan = "8">Cộng</' . $th_td . '>';
+        $response .= '<' . $th_td . '>' . number_format($row_tt['gia_tri']) . '</' . $th_td . '>';
+        $response .= '<' . $th_td . '></' . $th_td . '>';
+        $response .= '<' . $th_td . '></' . $th_td . '>';
+        $response .= '<' . $th_td . '></' . $th_td . '>';
+        $response .= '<' . $th_td . '>' . number_format($row_tt['hm_kh_nam']) . '</' . $th_td . '>';
+        $response .= '<' . $th_td . '>' . number_format($row_tt['hm_kh_nam']) . '</' . $th_td . '>';
+        $response .= '<' . $th_td . '>' . number_format($row_tt['hm_luy_ke']) . '</' . $th_td . '>';
+        $response .= '<' . $th_td . '></' . $th_td . '>';
+        $response .= '<' . $th_td . '></' . $th_td . '>';
+        $response .= '<' . $th_td . '></' . $th_td . '>';
+        $response .= '<' . $th_td . '></' . $th_td . '>';
+        //
         $data_table['data_table'] = array_values($row_total);
         $data_table['response'] = $response;
         return $data_table;
