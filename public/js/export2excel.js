@@ -84,6 +84,96 @@ async function export_excel(nam_theo_doi,bo_phan_su_dung,myData){
 	const buf = await wb.xlsx.writeBuffer();
 	saveAs(new Blob([buf]), `${bo_phan_su_dung}_${nam_theo_doi}.xlsx`);
 }
+async function export_excel_so_ts(nam_theo_doi,myData){
+	const title = {
+		border: false,
+		height: 35,
+		font: { name: 'Times New Roman',size: 13, bold: true},
+		alignment: { horizontal: 'center', vertical: 'middle' , wrapText: true},
+	};
+	const header_title = {
+		border: false,
+		font: { name: 'Times New Roman',size: 12, bold: true},
+		alignment: { horizontal: 'left', vertical: 'middle' , wrapText: true},
+	};
+	const header = {
+		border: true,
+		font: {  name: 'Times New Roman', size: 12, bold: true },
+		alignment: { horizontal: 'center', vertical: 'middle', wrapText: true },
+	};
+	const data = {
+		border: true,
+		font: { name: 'Times New Roman',size: 12, bold: false },
+		alignment: { horizontal: 'center', vertical: 'middle', wrapText: true },
+		fill: null,
+	};
+	let wb = new ExcelJS.Workbook();
+	let ws = wb.addWorksheet('Export');
+	widths = [{ width: 5 },{ width: 10 },{ width: 25 },{ width: 10 },{ width: 25 },{ width: 10 },{ width: 15 },{ width: 15 },{ width: 15 },
+		{ width: 15 },{ width: 20 }];
+	ws.columns = widths;
+	// Tiêu đề
+	let row = ws.addRow();
+	mergeCells(ws, row, 1, 10);
+	row.getCell(1).value ="Đơn vị: Văn phòng Đăng ký Đất đai tỉnh Bình Phước";
+	set_section_row(row.getCell(1),header_title);
+	mergeCells(ws, row, 11, 19);
+	row.getCell(11).value = "Mẫu số: S24-H";
+	row.getCell(11).font = {name: 'Times New Roman', size: 12, bold: true};
+	row.getCell(11).alignment = { horizontal: 'center', vertical: 'middle', wrapText: true };
+	//set_section_row(row,header_title);
+	row = ws.addRow();
+	mergeCells(ws, row, 1, 10);
+	row.getCell(1).value ="Mã QHNS: 1090828";
+	set_section_row(row.getCell(1),header_title);
+	mergeCells(ws, row, 11, 19);
+	row.getCell(11).value = "(Ban hành kèm theo Thông tư số 107/2017/TT-BTC\nngày 10/10/2017 của Bộ Tài chính)";
+	row.getCell(11).font = {name: 'Times New Roman', size: 12, italic: true, bold: false};
+	row.getCell(11).alignment = { horizontal: 'center', vertical: 'middle', wrapText: true };
+	//set_section_row(row,header_title);
+	row.height = 35;
+
+
+	row = ws.addRow();
+	mergeCells(ws, row, 1, 11);
+	row.getCell(1).value = "BIỂU TỔNG HỢP TÀI SẢN";
+	set_section_row(row,title);
+	row.font = {name: 'Times New Roman', size: 11, bold: true};
+	row.alignment = {horizontal: 'center',vertical:'bottom'}
+	row = ws.addRow();
+	mergeCells(ws, row, 1, 11);
+	row.getCell(1).value = nam_theo_doi;
+	row.font = {name: 'Times New Roman', size: 12, italic: true, bold: true};
+	row.alignment = { horizontal: 'center', vertical: 'middle' , wrapText: true};
+	// header
+	row_header(ws,'A5:A5','A5','STT',header);
+
+	const rowValues = [];
+	let i = 0;
+	/*if (myData && Array.isArray(myData)) {
+		myData.forEach((rowData) => {
+			rowValues[2] = rowData['ma_tai_san'];
+			rowValues[3] = rowData['ten_tai_san'];
+			rowValues[4] = rowData['loai_tai_san'];
+			rowValues[5] = rowData['bo_phan_su_dung'];
+			rowValues[6] = rowData['so_luong'];
+			rowValues[7] = rowData['gia_tri'];
+			rowValues[8] = rowData['hm_luy_ke'];
+			rowValues[9] = rowData['gia_tri_con_lai'];
+			rowValues[10] = rowData['ngay_ghi_tang'];
+			rowValues[11] = rowData['trang_thai'];
+			i++;
+			rowValues[1] = i;
+			addRow(ws,rowValues,data);
+		});
+	} else {
+		console.error('myData is not defined or not an array.');
+	}*/
+
+	//
+	const buf = await wb.xlsx.writeBuffer();
+	saveAs(new Blob([buf]), `SoTaiSan_${nam_theo_doi}.xlsx`);
+}
 function row_header(ws,merCell,mcell,value,section){
 	ws.mergeCells(merCell);
 	ws.getCell(mcell).value = value;

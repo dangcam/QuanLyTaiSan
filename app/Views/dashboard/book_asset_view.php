@@ -96,10 +96,8 @@
         let myData = [];
         $("#export_excel").on( "click", function() {
             var nam_theo_doi = document.getElementById('nam_theo_doi');
-            var bo_phan_su_dung = document.getElementById('bo_phan_su_dung');
             console.log(myData);
-            export_excel(nam_theo_doi.options[nam_theo_doi.selectedIndex].text,
-                bo_phan_su_dung.options[bo_phan_su_dung.selectedIndex].text,myData);
+            export_excel_so_ts(nam_theo_doi.options[nam_theo_doi.selectedIndex].text,myData);
         });
         function loadDataTable() {
             var year = $('#nam_theo_doi').val();
