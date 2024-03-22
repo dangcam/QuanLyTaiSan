@@ -22,8 +22,8 @@ async function export_excel(nam_theo_doi,bo_phan_su_dung,myData){
 	};
 	let wb = new ExcelJS.Workbook();
 	let ws = wb.addWorksheet('Export');
-	widths = [{ width: 5 },{ width: 10 },{ width: 25 },{ width: 10 },{ width: 25 },{ width: 10 },{ width: 15 },{ width: 15 },{ width: 15 },
-				{ width: 15 },{ width: 20 }];
+	widths = [{ width: 5 },{ width: 10 },{ width: 10 },{ width: 30 },{ width: 10 },{ width: 15 },{ width: 15 },{ width: 15 },{ width: 20 },
+				{ width: 5 },{ width: 20 },{ width: 5 },{ width: 20 },{ width: 20 },{ width: 20 },{ width: 15 },{ width: 15 },{ width: 15 },{ width: 15 }];
 	ws.columns = widths;
 	// Tiêu đề
 	let row = ws.addRow();
@@ -130,28 +130,52 @@ async function export_excel_so_ts(nam_theo_doi,myData){
 	row.getCell(11).value = "(Ban hành kèm theo Thông tư số 107/2017/TT-BTC\nngày 10/10/2017 của Bộ Tài chính)";
 	row.getCell(11).font = {name: 'Times New Roman', size: 12, italic: true, bold: false};
 	row.getCell(11).alignment = { horizontal: 'center', vertical: 'middle', wrapText: true };
-	//set_section_row(row,header_title);
 	row.height = 35;
-
-
 	row = ws.addRow();
-	mergeCells(ws, row, 1, 11);
+	mergeCells(ws, row, 1, 19);
 	row.getCell(1).value = "BIỂU TỔNG HỢP TÀI SẢN";
 	set_section_row(row,title);
 	row.font = {name: 'Times New Roman', size: 11, bold: true};
 	row.alignment = {horizontal: 'center',vertical:'bottom'}
 	row = ws.addRow();
-	mergeCells(ws, row, 1, 11);
+	mergeCells(ws, row, 1, 19);
 	row.getCell(1).value = nam_theo_doi;
 	row.font = {name: 'Times New Roman', size: 12, italic: true, bold: true};
 	row.alignment = { horizontal: 'center', vertical: 'middle' , wrapText: true};
 	// header
-	row_header(ws,'A5:A5','A5','STT',header);
+	row_header(ws,'A5:A7','A5','STT',header);
+	row_header(ws,'B5:C5','B5','Chứng từ',header);
+	row_header(ws,'B6:B7','B6','Số hiệu',header);
+	row_header(ws,'C6:C7','C7','Ngày, tháng',header);
+	row_header(ws,'D5:I5','D5','Ghi tăng tài sản cố định',header);
+	row_header(ws,'D6:D7','D6','Tên, đặc điểm, ký hiệu TSCĐ',header);
+	row_header(ws,'E6:E7','E6','Nước sản xuất',header);
+	row_header(ws,'F6:F7','F6','Tháng, năm đưa vào sử dụng ở đơn vị',header);
+	row_header(ws,'G6:G7','G6','Số hiệu TSCĐ',header);
+	row_header(ws,'H6:H7','H6','Thẻ TSCĐ',header);
+	row_header(ws,'I6:I7','I6','Nguyên giá TSCĐ',header);
+	row_header(ws,'J5:O5','J5','Khấu hao (hao mòn) tài sản cố định',header);
+	row_header(ws,'J6:K6','K6','Khấu hao',header);
+	row_header(ws,'L6:M6','L6','Hao mòn',header);
+	row_header(ws,'J7:J7','J7','Tỷ lệ %',header);
+	row_header(ws,'K7:K7','K7','Số tiền',header);
+	row_header(ws,'L7:L7','L7','Tỷ lệ %',header);
+	row_header(ws,'M7:M7','M7','Số tiền',header);
+	row_header(ws,'N6:N7','N6','Tổng số khấu hao (hao mòn) phát sinh trong năm',header);
+	row_header(ws,'O6:O7','O6','Lũy kế khấu hao/hao mòn đã tính đến khi chuyển sổ hoặc ghi giảm TSCĐ',header);
+	row_header(ws,'P5:S5','P5','Ghi giảm TSCĐ',header);
+	row_header(ws,'P6:Q6','P6','Chứng từ',header);
+	row_header(ws,'P7:P7','P7','Số hiệu',header);
+	row_header(ws,'Q7:Q7','Q7','Ngày, tháng',header);
+	row_header(ws,'R6:R7','R6','Lý do ghi giảm TSCĐ',header);
+	row_header(ws,'S6:S7','S6','Giá trị còn lại của TSCĐ',header);
 
 	const rowValues = [];
-	let i = 0;
-	/*if (myData && Array.isArray(myData)) {
+	if (myData && Array.isArray(myData)) {
 		myData.forEach((rowData) => {
+			if(rowData['stt'] == 0){
+
+			}
 			rowValues[2] = rowData['ma_tai_san'];
 			rowValues[3] = rowData['ten_tai_san'];
 			rowValues[4] = rowData['loai_tai_san'];
@@ -162,13 +186,12 @@ async function export_excel_so_ts(nam_theo_doi,myData){
 			rowValues[9] = rowData['gia_tri_con_lai'];
 			rowValues[10] = rowData['ngay_ghi_tang'];
 			rowValues[11] = rowData['trang_thai'];
-			i++;
-			rowValues[1] = i;
+
 			addRow(ws,rowValues,data);
 		});
 	} else {
 		console.error('myData is not defined or not an array.');
-	}*/
+	}
 
 	//
 	const buf = await wb.xlsx.writeBuffer();

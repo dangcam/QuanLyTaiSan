@@ -66,7 +66,7 @@
                                     <tr>
                                         <th>Tỷ lệ %</th>
                                         <th>Số tiền</th>
-                                        <th>Tỷ lệ</th>
+                                        <th>Tỷ lệ %</th>
                                         <th>Số tiền</th>
                                         <th>Số hiệu</th>
                                         <th>Ngày, tháng</th>
