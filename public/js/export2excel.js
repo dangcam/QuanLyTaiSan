@@ -109,8 +109,8 @@ async function export_excel_so_ts(nam_theo_doi,myData){
 	};
 	let wb = new ExcelJS.Workbook();
 	let ws = wb.addWorksheet('Export');
-	widths = [{ width: 5 },{ width: 10 },{ width: 25 },{ width: 10 },{ width: 25 },{ width: 10 },{ width: 15 },{ width: 15 },{ width: 15 },
-		{ width: 15 },{ width: 20 }];
+	widths = [{ width: 5 },{ width: 10 },{ width: 10 },{ width: 25 },{ width: 10 },{ width: 10 },{ width: 10 },{ width: 10 },{ width: 15 },
+		{ width: 5 },{ width: 10 },{ width: 5 },{ width: 10 },{ width: 10 },{ width: 10 },{ width: 10 },{ width: 10 },{ width: 10 },{ width: 10 }];
 	ws.columns = widths;
 	// Tiêu đề
 	let row = ws.addRow();
@@ -174,20 +174,56 @@ async function export_excel_so_ts(nam_theo_doi,myData){
 	if (myData && Array.isArray(myData)) {
 		myData.forEach((rowData) => {
 			if(rowData['stt'] == 0){
-
-			}
-			rowValues[2] = rowData['ma_tai_san'];
-			rowValues[3] = rowData['ten_tai_san'];
-			rowValues[4] = rowData['loai_tai_san'];
-			rowValues[5] = rowData['bo_phan_su_dung'];
-			rowValues[6] = rowData['so_luong'];
-			rowValues[7] = rowData['gia_tri'];
-			rowValues[8] = rowData['hm_luy_ke'];
-			rowValues[9] = rowData['gia_tri_con_lai'];
-			rowValues[10] = rowData['ngay_ghi_tang'];
-			rowValues[11] = rowData['trang_thai'];
+				row = ws.addRow();
+				set_section_row(row.getCell(1),header);
+				set_section_row(row.getCell(2),header);
+				set_section_row(row.getCell(3),header);
+				set_section_row(row.getCell(4),header);
+				set_section_row(row.getCell(5),header);
+				set_section_row(row.getCell(6),header);
+				set_section_row(row.getCell(7),header);
+				set_section_row(row.getCell(8),header);
+				set_section_row(row.getCell(9),header);
+				set_section_row(row.getCell(10),header);
+				set_section_row(row.getCell(11),header);
+				set_section_row(row.getCell(12),header);
+				set_section_row(row.getCell(13),header);
+				set_section_row(row.getCell(14),header);
+				set_section_row(row.getCell(15),header);
+				set_section_row(row.getCell(16),header);
+				set_section_row(row.getCell(17),header);
+				set_section_row(row.getCell(18),header);
+				set_section_row(row.getCell(19),header);
+				mergeCells(ws, row, 1, 8);
+				row.getCell(1).value = 'Loại tài sản: '+rowData['ten_tai_san'];
+				row.getCell(1).alignment = { horizontal: 'left', vertical: 'middle', wrapText: true };
+				row.getCell(9).value = rowData['gia_tri'];
+				row.getCell(13).value = rowData['hm_kh_nam'];
+				row.getCell(14).value = rowData['hm_kh_nam'];
+				row.getCell(15).value = rowData['hm_luy_ke'];
+			}else{
+			rowValues[1] = rowData['stt'];
+			rowValues[2] = rowData['ma_chung_tu'];
+			rowValues[3] = rowData['ngay_chung_tu'];
+			rowValues[4] = rowData['ten_tai_san'];
+			rowValues[5] = rowData['nuoc_san_xuat'];
+			rowValues[6] = rowData['ngay_bd_su_dung'];
+			rowValues[7] = rowData['ma_tai_san'];
+			rowValues[8] = rowData['ma_tai_san'];
+			rowValues[9] = rowData['gia_tri'];
+			rowValues[10] = '';
+			rowValues[11] = '';
+			rowValues[12] = rowData['tyle_haomon'];
+			rowValues[13] = rowData['hm_kh_nam'];
+			rowValues[14] = rowData['hm_kh_nam'];
+			rowValues[15] = rowData['hm_luy_ke'];
+			rowValues[16] = '';
+			rowValues[17] = '';
+			rowValues[18] = '';
+			rowValues[19] = '';
 
 			addRow(ws,rowValues,data);
+			}
 		});
 	} else {
 		console.error('myData is not defined or not an array.');
