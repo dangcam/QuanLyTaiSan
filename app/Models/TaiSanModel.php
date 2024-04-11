@@ -331,7 +331,11 @@ class TaiSanModel Extends BaseModel
         $sql = 'SELECT * FROM 
              (SELECT * FROM tai_san TS,loai_tai_san LTS WHERE TS.loai_tai_san = LTS.ma_loai_ts AND nam_theo_doi = ? AND group_id = ?) AS TS 
                  Left JOIN (SELECT GT.ma_chung_tu,ngay_chung_tu,ma_tai_san FROM ghi_tang_tai_san GT,ghi_tang_chung_tu CT WHERE GT.ma_chung_tu =CT.ma_chung_tu) AS CT 
-                     ON TS.ma_tai_san = CT.ma_tai_san ORDER BY loai_tai_san';
+                     ON TS.ma_tai_san = CT.ma_tai_san 
+				Left JOIN (SELECT GG.ma_chung_tu as ma_ct_giam,ngay_chung_tu as ngay_ct_giam,ma_tai_san,tong_nguyen_gia, ly_do_giam 
+								FROM ghi_giam_tai_san GG,ghi_giam_chung_tu CT WHERE GG.ma_chung_tu =CT.ma_chung_tu) AS GG 
+                     ON TS.ma_tai_san = GG.ma_tai_san 					 
+					 ORDER BY loai_tai_san;';
 
         $result = $this->db->query($sql,[$report_year,$group_id])->getResult();
 
