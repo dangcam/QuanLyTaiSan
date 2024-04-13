@@ -335,7 +335,7 @@ class TaiSanModel Extends BaseModel
 				Left JOIN (SELECT GG.ma_chung_tu as ma_ct_giam,ngay_chung_tu as ngay_ct_giam,ma_tai_san,tong_nguyen_gia, ly_do_giam 
 								FROM ghi_giam_tai_san GG,ghi_giam_chung_tu CT WHERE GG.ma_chung_tu =CT.ma_chung_tu) AS GG 
                      ON TS.ma_tai_san = GG.ma_tai_san 					 
-					 ORDER BY loai_tai_san;';
+					 ORDER BY loai_tai_san';
 
         $result = $this->db->query($sql,[$report_year,$group_id])->getResult();
 
@@ -354,6 +354,7 @@ class TaiSanModel Extends BaseModel
                 $row_total[$loai_tai_san]['gia_tri'] = 0;
                 $row_total[$loai_tai_san]['hm_kh_nam'] = 0;
                 $row_total[$loai_tai_san]['hm_luy_ke'] = 0;
+                $row_total[$loai_tai_san]['tong_nguyen_gia'] = 0;
             }
             $row_total[$loai_tai_san.$i]['stt'] = $i;
             $row_total[$loai_tai_san.$i]['ma_chung_tu'] = $item->ma_chung_tu;
@@ -366,12 +367,17 @@ class TaiSanModel Extends BaseModel
             $row_total[$loai_tai_san.$i]['tyle_haomon'] = $item->tyle_haomon;
             $row_total[$loai_tai_san.$i]['hm_kh_nam'] = (int)$item->hm_kh_nam;
             $row_total[$loai_tai_san.$i]['hm_luy_ke'] = (int)$item->hm_luy_ke;
+            $row_total[$loai_tai_san.$i]['ma_ct_giam'] = $item->ma_ct_giam;
+            $row_total[$loai_tai_san.$i]['ngay_ct_giam'] = $item->ngay_ct_giam;
+            $row_total[$loai_tai_san.$i]['ly_do_giam'] = $item->ly_do_giam;
+            $row_total[$loai_tai_san.$i]['tong_nguyen_gia'] = (int)$item->tong_nguyen_gia;
 
 
             //
             $row_total[$loai_tai_san]['gia_tri'] += (int)$item->hm_luy_ke + (int)$item->gia_tri_con_lai;
             $row_total[$loai_tai_san]['hm_kh_nam'] += (int)$item->hm_kh_nam;
             $row_total[$loai_tai_san]['hm_luy_ke'] += (int)$item->hm_luy_ke;
+            $row_total[$loai_tai_san]['tong_nguyen_gia'] += (int)$item->tong_nguyen_gia;
         }
 
         $i = 0;
@@ -380,6 +386,7 @@ class TaiSanModel Extends BaseModel
         $row_tt['gia_tri'] = 0;
         $row_tt['hm_kh_nam'] = 0;
         $row_tt['hm_luy_ke'] = 0;
+        $row_tt['tong_nguyen_gia'] = 0;
         foreach($row_total as $item) {
             $response .= '<tr >';
             $i++;
@@ -397,10 +404,11 @@ class TaiSanModel Extends BaseModel
                 $response .= '<' . $th_td . '></' . $th_td . '>';
                 $response .= '<' . $th_td . '></' . $th_td . '>';
                 $response .= '<' . $th_td . '></' . $th_td . '>';
-                $response .= '<' . $th_td . '></' . $th_td . '>';
+                $response .= '<' . $th_td . '>' . number_format($item['tong_nguyen_gia']) . '</' . $th_td . '>';
                 $row_tt['gia_tri'] += (int)$item['gia_tri'];
-                $row_tt['hm_kh_nam'] += (int)$item['hm_kh_nam'];;
-                $row_tt['hm_luy_ke'] += (int)$item['hm_luy_ke'];;
+                $row_tt['hm_kh_nam'] += (int)$item['hm_kh_nam'];
+                $row_tt['hm_luy_ke'] += (int)$item['hm_luy_ke'];
+                $row_tt['tong_nguyen_gia'] += (int)$item['tong_nguyen_gia'];
             }else {
                 $th_td = 'td';
                 $response .= '<td>' . $item['stt'] . '</td>';
@@ -418,10 +426,10 @@ class TaiSanModel Extends BaseModel
                 $response .= '<' . $th_td . '>' . number_format($item['hm_kh_nam']) . '</' . $th_td . '>';
                 $response .= '<' . $th_td . '>' . number_format($item['hm_kh_nam']) . '</' . $th_td . '>';
                 $response .= '<' . $th_td . '>' . number_format($item['hm_luy_ke']) . '</' . $th_td . '>';
-                $response .= '<' . $th_td . '></' . $th_td . '>';
-                $response .= '<' . $th_td . '></' . $th_td . '>';
-                $response .= '<' . $th_td . '></' . $th_td . '>';
-                $response .= '<' . $th_td . '></' . $th_td . '>';
+                $response .= '<' . $th_td . '>' . $item['ma_ct_giam'] . '</' . $th_td . '>';
+                $response .= '<' . $th_td . '>' . $item['ngay_ct_giam'] . '</' . $th_td . '>';
+                $response .= '<' . $th_td . '>' . $item['ly_do_giam'] . '</' . $th_td . '>';
+                $response .= '<' . $th_td . '>' . number_format($item['tong_nguyen_gia']) . '</' . $th_td . '>';
             }
 
 
@@ -440,7 +448,7 @@ class TaiSanModel Extends BaseModel
         $response .= '<' . $th_td . '></' . $th_td . '>';
         $response .= '<' . $th_td . '></' . $th_td . '>';
         $response .= '<' . $th_td . '></' . $th_td . '>';
-        $response .= '<' . $th_td . '></' . $th_td . '>';
+        $response .= '<' . $th_td . '>' . number_format($row_tt['tong_nguyen_gia']) . '</' . $th_td . '>';
         //
         $data_table['data_table'] = array_values($row_total);
         $data_table['response'] = $response;

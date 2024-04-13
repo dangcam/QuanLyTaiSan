@@ -201,6 +201,7 @@ async function export_excel_so_ts(nam_theo_doi,myData){
 				row.getCell(13).value = rowData['hm_kh_nam'];
 				row.getCell(14).value = rowData['hm_kh_nam'];
 				row.getCell(15).value = rowData['hm_luy_ke'];
+				row.getCell(19).value = rowData['tong_nguyen_gia'];
 			}else{
 			rowValues[1] = rowData['stt'];
 			rowValues[2] = rowData['ma_chung_tu'];
@@ -217,10 +218,10 @@ async function export_excel_so_ts(nam_theo_doi,myData){
 			rowValues[13] = rowData['hm_kh_nam'];
 			rowValues[14] = rowData['hm_kh_nam'];
 			rowValues[15] = rowData['hm_luy_ke'];
-			rowValues[16] = '';
-			rowValues[17] = '';
-			rowValues[18] = '';
-			rowValues[19] = '';
+			rowValues[16] = rowData['ma_ct_giam'];
+			rowValues[17] = rowData['ngay_ct_giam'];
+			rowValues[18] = rowData['ly_do_giam'];
+			rowValues[19] = rowData['tong_nguyen_gia'];
 
 			addRow(ws,rowValues,data);
 			}
