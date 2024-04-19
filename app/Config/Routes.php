@@ -154,6 +154,7 @@ $routes->group('dashboard',['filter'=>'authFilters'], static function ($routes) 
     $routes->group('report',static function($routes){
         $routes->get('report_asset','Dashboard\ReportController::report_asset');
         $routes->get('book_asset','Dashboard\ReportController::book_asset');
+        $routes->get('asset_inventory','Dashboard\ReportController::asset_inventory');
         $routes->post('book_asset_ajax','Dashboard\ReportController::book_asset_ajax');
         $routes->post('report_tai_san_ajax','Dashboard\ReportController::report_tai_san_ajax');
     });

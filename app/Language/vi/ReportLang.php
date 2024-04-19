@@ -8,4 +8,5 @@ return[
     'general' => 'Tổng hợp',
     'detail' => 'Chi tiết',
     'book_asset' => 'Sổ tài sản cố định',
+    'asset_inventory' => 'Kiểm kê tài sản',
 ];

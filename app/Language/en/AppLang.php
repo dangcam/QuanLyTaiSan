@@ -81,6 +81,7 @@ return[
     'tai_san' => 'Assets',
     'ghi_tang_tai_san' => 'Write increase',
     'ghi_giam_tai_san' => 'Write down',
+    'asset_inventory' => 'Asset inventory',
 
 
     'add_data_unsuccessful' => 'Add data unsuccessful',

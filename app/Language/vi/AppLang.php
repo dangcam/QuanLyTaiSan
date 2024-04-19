@@ -81,6 +81,7 @@ return[
     'tai_san' => 'Tài sản',
     'ghi_tang_tai_san' => 'Ghi tăng',
     'ghi_giam_tai_san' => 'Ghi giảm',
+    'asset_inventory' => 'Kiểm kê tài sản',
 
     'add_data_unsuccessful' => 'Thêm dữ liệu không thành công',
     'add_data_successful' => 'Thêm dữ liệu thành công',

@@ -91,6 +91,9 @@ abstract class BaseController extends Controller
             $response .= '<li><a href="'.base_url().'dashboard/report/report_asset">'.lang('AppLang.report_asset').'</a></li>';
         if($this->libauth->checkFunction('book_asset','view'))
             $response .= '<li><a href="'.base_url().'dashboard/report/book_asset">'.lang('AppLang.book_asset').'</a></li>';
+        if($this->libauth->checkFunction('asset_inventory','view'))
+            $response .= '<li><a href="'.base_url().'dashboard/report/asset_inventory">'.lang('AppLang.asset_inventory').'</a></li>';
+
         $response   .='</ul>
                        </li>';
         //

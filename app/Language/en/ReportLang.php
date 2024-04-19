@@ -7,5 +7,6 @@ return[
     'all' => 'All',
     'general' => 'General',
     'detail' => 'Detail',
-    'book_asset' => 'Fixed asset book'
+    'book_asset' => 'Fixed asset book',
+    'asset_inventory' => 'Asset Inventory',
 ];
