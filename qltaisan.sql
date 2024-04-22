@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th3 20, 2024 lúc 10:17 AM
+-- Thời gian đã tạo: Th4 22, 2024 lúc 11:07 AM
 -- Phiên bản máy phục vụ: 10.4.28-MariaDB
 -- Phiên bản PHP: 8.0.28
 
@@ -11637,6 +11637,7 @@ CREATE TABLE `functions` (
 --
 
 INSERT INTO `functions` (`function_id`, `function_name`, `function_status`, `function_group`) VALUES
+('asset_inventory', 'asset_inventory', 1, 6),
 ('book_asset', 'book_asset', 1, 6),
 ('ccdc', 'tool', 1, 2),
 ('department', 'department', 1, 3),
@@ -12216,6 +12217,7 @@ CREATE TABLE `user_function` (
 --
 
 INSERT INTO `user_function` (`user_id`, `function_id`, `function_view`, `function_add`, `function_edit`, `function_delete`) VALUES
+('admin', 'asset_inventory', 1, 0, 0, 0),
 ('admin', 'book_asset', 1, 0, 0, 0),
 ('admin', 'ccdc', 1, 1, 1, 1),
 ('admin', 'department', 1, 1, 1, 1),
