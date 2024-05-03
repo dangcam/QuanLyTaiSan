@@ -40,37 +40,17 @@
                                 <table id="data-table" class="table table-bordered table-striped verticle-middle table-responsive-sm" style="width:100%">
                                     <thead style="text-align:center;vertical-align: middle" >
                                     <tr>
-                                        <th rowspan="3">STT</th>
-                                        <th colspan="2">Chứng từ</th>
-                                        <th colspan="6">Ghi tăng tài sản cố định</th>
-                                        <th colspan="6">Khấu hao (hao mòn) tài sản cố định</th>
-                                        <th colspan="4">Ghi giảm TSCĐ</th>
+                                        <th>STT</th>
+                                        <th>Mã tài sản</th>
+                                        <th>Tên tài sản</th>
+                                        <th>Số seri</th>
+                                        <th>Đơn vị tính</th>
+                                        <th>Số lượng theo sổ kế toán</th>
+                                        <th>Số lượng theo thực tế (*)</th>
+                                        <th>Tình trạng của tài sản</th>
+                                        <th>Ghi chú</th>
                                     </tr>
-                                    <tr>
-                                        <th rowspan="2">Số hiệu</th>
-                                        <th rowspan="2">Ngày, tháng</th>
-                                        <th rowspan="2">Tên, đặc điểm, ký hiệu TSCĐ</th>
-                                        <th rowspan="2">Nước sản xuất</th>
-                                        <th rowspan="2">Tháng, năm đưa vào sử dụng ở đơn vị</th>
-                                        <th rowspan="2">Số hiệu TSCĐ</th>
-                                        <th rowspan="2">Thẻ TSCĐ</th>
-                                        <th rowspan="2">Nguyên giá TSCĐ</th>
-                                        <th colspan="2">Khấu hao</th>
-                                        <th colspan="2">Hao mòn</th>
-                                        <th rowspan="2">Tổng số khấu hao (hao mòn) phát sinh trong năm</th>
-                                        <th rowspan="2">Lũy kế khấu hao/hao mòn đã tính đến khi chuyển sổ hoặc ghi giảm TSCĐ</th>
-                                        <th colspan="2">Chứng từ</th>
-                                        <th rowspan="2">Lý do ghi giảm TSCĐ</th>
-                                        <th rowspan="2">Giá trị còn lại của TSCĐ</th>
-                                    </tr>
-                                    <tr>
-                                        <th>Tỷ lệ %</th>
-                                        <th>Số tiền</th>
-                                        <th>Tỷ lệ %</th>
-                                        <th>Số tiền</th>
-                                        <th>Số hiệu</th>
-                                        <th>Ngày, tháng</th>
-                                    </tr>
+
                                     </thead>
                                     <tbody id ="data_table">
                                     </tbody>
@@ -103,7 +83,7 @@
             var year = $('#nam_theo_doi').val();
 
             $.ajax({
-                url: "<?= base_url() ?>dashboard/report/book_asset_ajax",
+                url: "<?= base_url() ?>dashboard/report/asset_inventory_ajax",
                 method: "POST",
                 dataType: "json",
                 data: {report_year: year},
