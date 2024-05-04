@@ -234,6 +234,94 @@ async function export_excel_so_ts(nam_theo_doi,myData){
 	const buf = await wb.xlsx.writeBuffer();
 	saveAs(new Blob([buf]), `SoTaiSan_${nam_theo_doi}.xlsx`);
 }
+async function export_excel_kk_ts(nam_theo_doi,myData){
+	const title = {
+		border: false,
+		height: 35,
+		font: { name: 'Times New Roman',size: 13, bold: true},
+		alignment: { horizontal: 'center', vertical: 'middle' , wrapText: true},
+	};
+	const header_title = {
+		border: false,
+		font: { name: 'Times New Roman',size: 12, bold: true},
+		alignment: { horizontal: 'left', vertical: 'middle' , wrapText: true},
+	};
+	const header = {
+		border: true,
+		font: {  name: 'Times New Roman', size: 12, bold: true },
+		alignment: { horizontal: 'center', vertical: 'middle', wrapText: true },
+	};
+	const data = {
+		border: true,
+		font: { name: 'Times New Roman',size: 12, bold: false },
+		alignment: { horizontal: 'center', vertical: 'middle', wrapText: true },
+		fill: null,
+	};
+	let wb = new ExcelJS.Workbook();
+	let ws = wb.addWorksheet('Export');
+	widths = [{ width: 5 },{ width: 15 },{ width: 30 },{ width: 15 },{ width: 15 },{ width: 15 },{ width: 15 },{ width: 15 },{ width: 15 }];
+	ws.columns = widths;
+	// Tiêu đề
+	let row = ws.addRow();
+	mergeCells(ws, row, 1, 9);
+	row.getCell(1).value = "DANH SÁCH KIỂM KÊ TÀI SẢN CỐ ĐỊNH";
+	set_section_row(row,title);
+	row.font = {name: 'Times New Roman', size: 13, bold: true};
+	row.alignment = {horizontal: 'center',vertical:'bottom'}
+	row = ws.addRow();
+	mergeCells(ws, row, 1, 9);
+	row.getCell(1).value = nam_theo_doi;
+	row.font = {name: 'Times New Roman', size: 12, italic: true, bold: true};
+	row.alignment = { horizontal: 'center', vertical: 'middle' , wrapText: true};
+	// header
+	row_header(ws,'A3:A3','A3','STT',header);
+	row_header(ws,'B3:B3','B3','Mã tài sản',header);
+	row_header(ws,'C3:C3','C3','Tên tài sản',header);
+	row_header(ws,'D3:D3','D3','Số seri',header);
+	row_header(ws,'E3:E3','E3','Đơn vị tính',header);
+	row_header(ws,'F3:F3','F3','Số lượng theo sổ kế toán',header);
+	row_header(ws,'G3:G3','G3','Số lượng theo thực tế (*)',header);
+	row_header(ws,'H3:H3','H3','Tình trạng của tài sản',header);
+	row_header(ws,'I3:I3','I3','Ghi chú',header);
+
+	const rowValues = [];
+	if (myData && Array.isArray(myData)) {
+		myData.forEach((rowData) => {
+			if(rowData['stt'] == 0){
+				row = ws.addRow();
+				set_section_row(row.getCell(1),header);
+				set_section_row(row.getCell(2),header);
+				set_section_row(row.getCell(3),header);
+				set_section_row(row.getCell(4),header);
+				set_section_row(row.getCell(5),header);
+				set_section_row(row.getCell(6),header);
+				set_section_row(row.getCell(7),header);
+				set_section_row(row.getCell(8),header);
+				set_section_row(row.getCell(9),header);
+				mergeCells(ws, row, 1, 9);
+				row.getCell(1).value = 'Bộ phận: '+rowData['ten_bp'] +' ('+rowData['tong']+')';
+				row.getCell(1).alignment = { horizontal: 'left', vertical: 'middle', wrapText: true };
+			}else{
+				rowValues[1] = rowData['stt'];
+				rowValues[2] = rowData['ma_tai_san'];
+				rowValues[4] = rowData['ten_tai_san'];
+				rowValues[4] = rowData['so_seri'];
+				rowValues[5] = rowData['don_vi_tinh'];
+				rowValues[6] = rowData['so_luong'];
+				rowValues[7] = rowData['so_luong'];
+				rowValues[8] = '';
+				rowValues[9] = '';
+				addRow(ws,rowValues,data);
+			}
+		});
+	} else {
+		console.error('myData is not defined or not an array.');
+	}
+
+	//
+	const buf = await wb.xlsx.writeBuffer();
+	saveAs(new Blob([buf]), `KiemKeTaiSan_${nam_theo_doi}.xlsx`);
+}
 function row_header(ws,merCell,mcell,value,section){
 	ws.mergeCells(merCell);
 	ws.getCell(mcell).value = value;

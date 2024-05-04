@@ -455,4 +455,73 @@ class TaiSanModel Extends BaseModel
         return $data_table;
 
     }
+    public function getReportKiemKeTaiSanPrint($data)
+    {
+        $report_year = $data['report_year'];
+        $group_id = $this->session->get('group_id');
+
+
+        $sql = 'SELECT ten_bp, ma_tai_san, ten_tai_san, so_seri, don_vi_tinh, so_luong, ma_bp
+                FROM tai_san,bo_phan where nam_theo_doi = ? and tai_san.bo_phan_su_dung = bo_phan.ma_bp 
+                                     and group_id = ?
+                                     order by bo_phan_su_dung';
+
+        $result = $this->db->query($sql,[$report_year,$group_id])->getResult();
+
+        $row_total = array();
+        $ma_bp = '';
+        $i = 1;
+        foreach ($result as $item) {
+            if ($ma_bp == $item->ma_bp)
+                $i++;
+            else
+            {
+                $i = 1;
+                $ma_bp = $item->ma_bp;
+                $row_total[$ma_bp]['stt'] = 0;
+                $row_total[$ma_bp]['ten_bp'] = $item->ten_bp;
+            }
+            $row_total[$ma_bp.$i]['stt'] = $i;
+            $row_total[$ma_bp.$i]['ma_tai_san'] = $item->ma_tai_san;
+            $row_total[$ma_bp.$i]['ten_tai_san'] = $item->ten_tai_san;
+            $row_total[$ma_bp.$i]['so_seri'] = $item->so_seri;
+            $row_total[$ma_bp.$i]['don_vi_tinh'] = $item->don_vi_tinh;
+            $row_total[$ma_bp.$i]['so_luong'] = $item->so_luong;
+            $row_total[$ma_bp]['tong'] = $i;
+        }
+
+        $i = 0;
+        $response='';
+        foreach($row_total as $item) {
+            $response .= '<tr >';
+            $i++;
+            if($item['stt'] == 0)
+            {
+                $th_td = 'th';
+                $response .= '<' . $th_td . ' colspan = "9">Bộ phận: ' . $item['ten_bp'] . ' ('.$item['tong'].')</' . $th_td . '>';
+
+            }else {
+                $th_td = 'td';
+                $response .= '<td>' . $item['stt'] . '</td>';
+                $response .= '<' . $th_td . '>' . $item['ma_tai_san'] . '</' . $th_td . '>';
+                $response .= '<' . $th_td . '>' . $item['ten_tai_san'] . '</' . $th_td . '>';
+                $response .= '<' . $th_td . '>' . $item['so_seri'] . '</' . $th_td . '>';
+                $response .= '<' . $th_td . '>' . $item['don_vi_tinh'] . '</' . $th_td . '>';
+                $response .= '<' . $th_td . '>' . $item['so_luong'] . '</' . $th_td . '>';
+                $response .= '<' . $th_td . '>' . $item['so_luong'] . '</' . $th_td . '>';
+                $response .= '<' . $th_td . '></' . $th_td . '>';
+                $response .= '<' . $th_td . '></' . $th_td . '>';
+            }
+
+
+            $response .= '</tr>';
+        }
+        //
+
+        //
+        $data_table['data_table'] = array_values($row_total);
+        $data_table['response'] = $response;
+        return $data_table;
+
+    }
 }

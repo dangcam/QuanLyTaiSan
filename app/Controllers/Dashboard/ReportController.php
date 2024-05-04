@@ -61,7 +61,7 @@ class ReportController extends BaseController
         if($this->request->getPost())
         {
             $data = $this->request->getPost();
-            $return_value = $this->tai_san_model->getReportSoTaiSanPrint($data);
+            $return_value = $this->tai_san_model->getReportKiemKeTaiSanPrint($data);
             echo json_encode(array_values($return_value));
         }else {
             echo json_encode(array_values('No Data'));

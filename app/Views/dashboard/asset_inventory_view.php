@@ -77,7 +77,7 @@
         $("#export_excel").on( "click", function() {
             var nam_theo_doi = document.getElementById('nam_theo_doi');
             console.log(myData);
-            export_excel_so_ts(nam_theo_doi.options[nam_theo_doi.selectedIndex].text,myData);
+            export_excel_kk_ts(nam_theo_doi.options[nam_theo_doi.selectedIndex].text,myData);
         });
         function loadDataTable() {
             var year = $('#nam_theo_doi').val();
