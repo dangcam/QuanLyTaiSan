@@ -15,8 +15,8 @@ DEFINE('COOKIE_EXPIRY',86400);
 DEFINE('TIME_ZONE','Asia/Ho_Chi_Minh');
 DEFINE('DEC_POINT',',');
 DEFINE('THOUSANDS_SEP','.');
-
-
+DEFINE('RECAPTCHA_SITE_KEY','6LentRgqAAAAAA--7GMmNnmzB3AvA2yHc20n595i');
+DEFINE('RECAPTCHA_SECRET_KEY','6LentRgqAAAAAC6nqqB0zB_ECv0OdYd-Le1W5RF1');
 /** Cau hinh Codeigniter4
  * 1. Chay php spark serve bao loi
  * Mo file Xampp\php\php.ini xoa dau ";" o dong extension=intl

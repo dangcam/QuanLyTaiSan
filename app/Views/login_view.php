@@ -45,6 +45,7 @@
                                         <label><strong><?=lang('UserLang.password')?></strong></label>
                                         <input type="password" name="password" class="form-control" value="" required>
                                     </div>
+                                    <div class="g-recaptcha" data-sitekey="<?= $siteKey ?>" ></div>
                                     <div class="form-row d-flex justify-content-between mt-4 mb-2">
                                         <div class="form-group">
                                             <div class="form-check ml-2">
@@ -76,6 +77,8 @@
 <script src="js/quixnav-init.js"></script>
 <script src="vendor/jqueryui/js/jquery-ui.min.js"></script>
 
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
 <script>
     jQuery(document).ready(function($) {
         $("#login").on('submit',function (event) {
@@ -95,6 +98,8 @@
                         $("#response_danger").show('fast');
                         $("#response_danger").effect("shake");
                         $("#response_danger").html(data[1]);
+                        // reload lại recaptcha
+                        grecaptcha.reset();
                     }
                 },
                 error:function (data) {
