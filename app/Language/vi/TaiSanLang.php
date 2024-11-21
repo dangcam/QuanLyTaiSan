@@ -19,6 +19,7 @@ return[
     'ma_huyen' => 'Quận/Huyện',
     'ma_xa' => 'Phường/xã',
     'dia_chi' => 'Địa chỉ',
+    'nam_kiem_ke' => 'Năm kiểm kê',
 
     'so_tang' => 'Số tầng',
     'chieu_dai' => 'Chiều dài',

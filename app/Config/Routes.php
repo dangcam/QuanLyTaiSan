@@ -191,6 +191,13 @@ $routes->group('dashboard',['filter'=>'authFilters'], static function ($routes) 
         $routes->post('ma_xa_ajax','Dashboard\TaiSanController::ma_xa_ajax');
         $routes->add('tai_san_ct','Dashboard\TaiSanController::tai_san_ct');
     });
+    $routes->group('off_asset',static function($routes){
+        $routes->get('/','Dashboard\TaiSanNgoaiController::index');
+        $routes->post('asset_ajax','Dashboard\TaiSanNgoaiController::asset_ajax');
+        $routes->post('add_asset','Dashboard\TaiSanNgoaiController::add_asset');
+        $routes->post('edit_asset','Dashboard\TaiSanNgoaiController::edit_asset');
+        $routes->post('delete_asset','Dashboard\TaiSanNgoaiController::delete_asset');
+    });
 });
 /*
  * --------------------------------------------------------------------

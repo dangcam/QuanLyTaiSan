@@ -24,6 +24,7 @@ return[
     'page_title_tai_san' => 'Danh sách tài sản cố định',
     'page_title_ghi_tang' => 'Ghi tăng tài sản',
     'page_title_ghi_giam' => 'Ghi giảm tài sản',
+    'page_title_off_asset' => 'Kiểm kê tài sản ngoài sổ sách',
 
     'do_not_have_permission' => 'Bạn không có quyền thực hiện chức năng này!',
 
@@ -79,6 +80,7 @@ return[
     'report_group_print' => 'Xem báo cáo',
     'nha_cung_cap' => 'Nhà cung cấp',
     'tai_san' => 'Tài sản',
+    'off_asset' => 'Tài sản ngoài SS',
     'ghi_tang_tai_san' => 'Ghi tăng',
     'ghi_giam_tai_san' => 'Ghi giảm',
     'asset_inventory' => 'Kiểm kê tài sản',

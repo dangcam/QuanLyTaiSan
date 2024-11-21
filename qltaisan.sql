@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th4 22, 2024 lúc 11:07 AM
+-- Thời gian đã tạo: Th10 21, 2024 lúc 10:58 AM
 -- Phiên bản máy phục vụ: 10.4.28-MariaDB
 -- Phiên bản PHP: 8.0.28
 
@@ -11648,6 +11648,7 @@ INSERT INTO `functions` (`function_id`, `function_name`, `function_status`, `fun
 ('group', 'group_manager', 1, 1),
 ('nguoi_dung', 'user', 1, 3),
 ('nha_cc', 'nha_cung_cap', 1, 4),
+('off_asset', 'off_asset', 1, 5),
 ('position', 'position', 1, 3),
 ('project', 'project', 1, 4),
 ('property_norms', 'property_norms', 1, 3),
@@ -12068,6 +12069,23 @@ INSERT INTO `tai_san` (`nhom_tai_san`, `loai_tai_san`, `ma_tai_san`, `ten_tai_sa
 -- --------------------------------------------------------
 
 --
+-- Cấu trúc bảng cho bảng `tai_san_ngoai`
+--
+
+CREATE TABLE `tai_san_ngoai` (
+  `id` int(11) NOT NULL,
+  `ten_tai_san` varchar(200) NOT NULL,
+  `so_luong` int(11) NOT NULL,
+  `don_vi` varchar(20) NOT NULL,
+  `nguoi_su_dung` int(11) NOT NULL,
+  `ghi_chu` int(11) NOT NULL,
+  `bo_phan_su_dung` varchar(20) NOT NULL,
+  `nam_kiem_ke` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Cấu trúc bảng cho bảng `thiet_bi_yte`
 --
 
@@ -12217,8 +12235,8 @@ CREATE TABLE `user_function` (
 --
 
 INSERT INTO `user_function` (`user_id`, `function_id`, `function_view`, `function_add`, `function_edit`, `function_delete`) VALUES
-('admin', 'asset_inventory', 1, 0, 0, 0),
-('admin', 'book_asset', 1, 0, 0, 0),
+('admin', 'asset_inventory', 1, 1, 1, 1),
+('admin', 'book_asset', 1, 1, 1, 1),
 ('admin', 'ccdc', 1, 1, 1, 1),
 ('admin', 'department', 1, 1, 1, 1),
 ('admin', 'function', 1, 1, 1, 1),
@@ -12228,11 +12246,12 @@ INSERT INTO `user_function` (`user_id`, `function_id`, `function_view`, `functio
 ('admin', 'group', 1, 1, 1, 1),
 ('admin', 'nguoi_dung', 1, 1, 1, 1),
 ('admin', 'nha_cc', 1, 1, 1, 1),
+('admin', 'off_asset', 1, 1, 1, 1),
 ('admin', 'position', 1, 1, 1, 1),
 ('admin', 'project', 1, 1, 1, 1),
 ('admin', 'property_norms', 1, 1, 1, 1),
 ('admin', 'provide_equipment', 1, 1, 1, 1),
-('admin', 'report_asset', 1, 0, 0, 0),
+('admin', 'report_asset', 1, 1, 1, 1),
 ('admin', 'report_group', 1, 1, 1, 1),
 ('admin', 'tai_san', 1, 1, 1, 1),
 ('admin', 'tbyte', 1, 1, 1, 1),
@@ -12415,6 +12434,12 @@ ALTER TABLE `tai_san`
   ADD PRIMARY KEY (`ma_tai_san`);
 
 --
+-- Chỉ mục cho bảng `tai_san_ngoai`
+--
+ALTER TABLE `tai_san_ngoai`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Chỉ mục cho bảng `thiet_bi_yte`
 --
 ALTER TABLE `thiet_bi_yte`
@@ -12473,6 +12498,12 @@ ALTER TABLE `nguon_hinh_thanh`
 --
 ALTER TABLE `nhom_tai_san`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT cho bảng `tai_san_ngoai`
+--
+ALTER TABLE `tai_san_ngoai`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Các ràng buộc cho các bảng đã đổ

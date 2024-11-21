@@ -21,6 +21,7 @@ return[
     'ma_huyen' => 'District/District',
     'ma_xa' => 'Ward/commune',
     'dia_chi' => 'Address',
+    'nam_kiem_ke' => 'Year of inventory',
 
     'so_tang' => 'Number of floors',
     'chieu_dai' => 'Length',
