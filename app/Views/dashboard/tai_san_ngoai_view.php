@@ -31,10 +31,11 @@
                             <table id="data-table" class="table table-bordered table-striped verticle-middle table-responsive-sm" style="width:100%">
                                 <thead>
                                 <tr>
-                                    <th scope="col"><?=lang('DuAnLang.ma_da')?></th>
-                                    <th scope="col"><?=lang('DuAnLang.ten_da')?></th>
-                                    <th scope="col"><?=lang('DuAnLang.ghi_chu')?></th>
-                                    <th scope="col"><?=lang('DuAnLang.su_dung')?></th>
+                                    <th scope="col"><?=lang('TaiSanLang.ten_tai_san')?></th>
+                                    <th scope="col"><?=lang('TaiSanLang.so_luong')?></th>
+                                    <th scope="col"><?=lang('TaiSanLang.don_vi')?></th>
+                                    <th scope="col"><?=lang('TaiSanLang.nguoi_su_dung')?></th>
+                                    <th scope="col"><?=lang('TaiSanLang.ghi_chu')?></th>
                                     <th scope="col">Action</th>
                                 </tr>
                                 </thead>
@@ -42,10 +43,11 @@
                                 </tbody>
                                 <tfoot>
                                 <tr>
-                                    <th><?=lang('DuAnLang.ma_da')?></th>
-                                    <th><?=lang('DuAnLang.ten_da')?></th>
-                                    <th><?=lang('DuAnLang.ghi_chu')?></th>
-                                    <th><?=lang('DuAnLang.su_dung')?></th>
+                                    <th><?=lang('TaiSanLang.ten_tai_san')?></th>
+                                    <th><?=lang('TaiSanLang.so_luong')?></th>
+                                    <th><?=lang('TaiSanLang.don_vi')?></th>
+                                    <th><?=lang('TaiSanLang.nguoi_su_dung')?></th>
+                                    <th><?=lang('TaiSanLang.ghi_chu')?></th>
                                     <th>Action</th>
                                 </tr>
                                 </tfoot>
@@ -67,10 +69,6 @@
 <script src="vendor/jqueryui/js/jquery-ui.min.js"></script>
 <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script src="vendor/moment/moment.min.js"></script>
-
-
-<script src="vendor/bootstrap-tree/js/bootstrap-treeview.js"></script>
-<link href="vendor/bootstrap-tree/css/bootstrap-treeview.css" rel="stylesheet">
 
 <script src="vendor/datatables/js/jquery.dataTables.min.js"></script>
 <link href="vendor/datatables.net-bs4/css/dataTables.bootstrap4.min.css" rel="stylesheet">
@@ -155,15 +153,16 @@
             "aLengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "<?= lang('AppLang.all') ?>"]],
             'searching': true, // Remove default Search Control
             'ajax': {
-                'url': '<?=base_url()?>dashboard/project/project_ajax',
+                'url': '<?=base_url()?>dashboard/off_asset/asset_ajax',
                 'data': function (data) {
                 },
             },
             'columns': [
-                {data: 'ma_da'},
-                {data: 'ten_da'},
+                {data: 'ten_tai_san'},
+                {data: 'so_luong'},
+                {data: 'don_vi'},
+                {data: 'nguoi_su_dung'},
                 {data: 'ghi_chu'},
-                {data: 'su_dung'},
                 {data: 'active'}
             ],
 

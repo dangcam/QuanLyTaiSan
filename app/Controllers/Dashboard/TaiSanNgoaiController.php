@@ -3,12 +3,14 @@ namespace App\Controllers\Dashboard;
 
 use App\Controllers\BaseController;
 use App\Models\DuAnModel;
+use App\Models\TaiSanNgoaiModel;
 
 class TaiSanNgoaiController extends BaseController
 {
     public function __construct()
     {
         $this->da_model = new DuAnModel();
+        $this->ts_model = new TaiSanNgoaiModel();
 
     }
 
@@ -24,7 +26,7 @@ class TaiSanNgoaiController extends BaseController
     {
         if($this->request->getPost())
         {
-            $data = $this->da_model->getDuAn($this->request->getPost());
+            $data = $this->ts_model->getTaiSanNgoai($this->request->getPost());
             echo json_encode($data);
         }
     }

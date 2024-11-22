@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 21, 2024 lúc 10:58 AM
+-- Thời gian đã tạo: Th10 22, 2024 lúc 05:22 AM
 -- Phiên bản máy phục vụ: 10.4.28-MariaDB
 -- Phiên bản PHP: 8.0.28
 
@@ -12077,8 +12077,8 @@ CREATE TABLE `tai_san_ngoai` (
   `ten_tai_san` varchar(200) NOT NULL,
   `so_luong` int(11) NOT NULL,
   `don_vi` varchar(20) NOT NULL,
-  `nguoi_su_dung` int(11) NOT NULL,
-  `ghi_chu` int(11) NOT NULL,
+  `nguoi_su_dung` varchar(50) NOT NULL,
+  `ghi_chu` text NOT NULL,
   `bo_phan_su_dung` varchar(20) NOT NULL,
   `nam_kiem_ke` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;

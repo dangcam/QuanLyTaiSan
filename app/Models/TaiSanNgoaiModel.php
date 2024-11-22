@@ -5,8 +5,8 @@ use App\Entities\TaiSanNgoaiEntity;
 
 class TaiSanNgoaiModel extends BaseModel
 {
-    protected $table      = 'du_an';
-    protected $primaryKey = 'ma_da';
+    protected $table      = 'tai_san_ngoai';
+    protected $primaryKey = 'id';
     protected $useAutoIncrement = true;
     protected $protectFields = false;
     protected $returnType = TaiSanNgoaiEntity::class;
@@ -24,11 +24,11 @@ class TaiSanNgoaiModel extends BaseModel
         }
         if(!$this->insert($data))
         {
-            $this->set_message("DuAnLang.da_creation_successful");
+            $this->set_message("TaiSanLang.taisan_creation_successful");
             return 0;
         }else
         {
-            $this->set_message("DuAnLang.da_creation_unsuccessful");
+            $this->set_message("TaiSanLang.taisan_creation_unsuccessful");
             return 3;
         }
     }
@@ -40,11 +40,11 @@ class TaiSanNgoaiModel extends BaseModel
         $result = $this->update($data_id,$data);
         if($result)
         {
-            $this->set_message("DuAnLang.da_update_successful");
+            $this->set_message("TaiSanLang.taisan_update_successful");
             return 0;
         }else
         {
-            $this->set_message("DuAnLang.da_update_unsuccessful");
+            $this->set_message("TaiSanLang.taisan_update_unsuccessful");
             return 3;
         }
     }
@@ -53,11 +53,11 @@ class TaiSanNgoaiModel extends BaseModel
         $data_id = $data['ma_da'];
         if($this->where('ma_da',$data_id)->delete())
         {
-            $this->set_message("DuAnLang.da_delete_successful");
+            $this->set_message("TaiSanLang.taisan_delete_successful");
             return 0;
         }else
         {
-            $this->set_message("DuAnLang.da_delete_unsuccessful");
+            $this->set_message("TaiSanLang.taisan_delete_unsuccessful");
             return 3;
         }
     }
@@ -67,7 +67,7 @@ class TaiSanNgoaiModel extends BaseModel
         $this->where('su_dung',1);
         return $this->find();
     }
-    public function getDuAn($postData=null){
+    public function getTaiSanNgoai($postData=null){
         ## Read value
         $draw = $postData['draw'];
         $start = $postData['start'];
@@ -93,18 +93,20 @@ class TaiSanNgoaiModel extends BaseModel
 
         foreach($records as $record ){
             $data[] = array(
-                "ma_da"=>$record->ma_da,
-                "ten_da"=>$record->ten_da,
+                "ten_tai_san"=>$record->ten_tai_san,
+                "so_luong"=>$record->so_luong,
+                "don_vi"=>$record->don_vi,
+                "nguoi_su_dung"=>$record->nguoi_su_dung,
                 "ghi_chu"=>$record->ghi_chu,
-                "su_dung"=>$record->su_dung==1?'<div class="badge badge-success">'.lang('AppLang.active').'</div>':
-                    '<div class="badge badge-danger">'.lang('AppLang.inactive').'</div>',
                 "active"=> ' <span>
                             <a class="mr-4" data-toggle="modal" data-target="#myModal" data-whatever="edit"
-                             data-ma_da="'.$record->ma_da.'" data-ten_da ="'.$record->ten_da.'"                          
-                             data-ghi_chu ="'.$record->ghi_chu.'" data-su_dung ="'.$record->su_dung.'"
+                             data-id="'.$record->id.'" data-ten_tai_san ="'.$record->ten_tai_san.'"                          
+                             data-so_luong="'.$record->so_luong.'" data-don_vi ="'.$record->don_vi.'"                          
+                             data-ghi_chu ="'.$record->ghi_chu.'" data-nguoi_su_dung ="'.$record->nguoi_su_dung.'"
+                             data-bo_phan_su_dung ="'.$record->bo_phan_su_dung.'" data-nam_kiem_ke ="'.$record->nam_kiem_ke.'"
                                 data-placement="top" title="'.lang('AppLang.edit').'"><i class="fa fa-pencil color-muted"></i> </a>
                             <a href="#" data-toggle="modal" data-target="#smallModal"
-                                data-placement="top" title="'.lang('AppLang.delete').'" data-ma_da="'.$record->ma_da.'">
+                                data-placement="top" title="'.lang('AppLang.delete').'" data-id="'.$record->id.'">
                                 <i class="fa fa-close color-danger"></i></a>
                             </span>'
             );
