@@ -15,14 +15,8 @@ class TaiSanNgoaiModel extends BaseModel
     public function add_asset($data)
     {
         unset($data['add']);
-        if(!$this->validate($data))
-        {
-            foreach ($this->errors() as $error) {
-                $this->set_message($error);
-            }
-            return 3;
-        }
-        if(!$this->insert($data))
+        unset($data['id']);
+        if($this->insert($data))
         {
             $this->set_message("TaiSanLang.taisan_creation_successful");
             return 0;
@@ -34,9 +28,9 @@ class TaiSanNgoaiModel extends BaseModel
     }
     public function edit_asset($data)
     {
-        $data_id = $data['ma_da'];
+        $data_id = $data['id'];
         unset($data['edit']);
-        unset($data['ma_da']);
+        unset($data['id']);
         $result = $this->update($data_id,$data);
         if($result)
         {
@@ -50,8 +44,8 @@ class TaiSanNgoaiModel extends BaseModel
     }
     public function delete_asset($data)
     {
-        $data_id = $data['ma_da'];
-        if($this->where('ma_da',$data_id)->delete())
+        $data_id = $data['id'];
+        if($this->where('id',$data_id)->delete())
         {
             $this->set_message("TaiSanLang.taisan_delete_successful");
             return 0;
@@ -61,11 +55,10 @@ class TaiSanNgoaiModel extends BaseModel
             return 3;
         }
     }
-    public function listDuAn()
+    public function listBoPhan()
     {
-        $this->select('ma_da, ten_da');
-        $this->where('su_dung',1);
-        return $this->find();
+        $tb = $this->db->table('bo_phan');
+        return $tb->get()->getResult();
     }
     public function getTaiSanNgoai($postData=null){
         ## Read value
@@ -78,12 +71,15 @@ class TaiSanNgoaiModel extends BaseModel
         $strInput=$postData['search']['value'];
 
         //
+        $searchYear = $postData['searchYear'];
+        $searchBoPhan = $postData['searchBoPhan'];
+        //
         ## Total number of records without filtering
-        $this->select('count(*) as allcount');
+        $this->select('count(*) as allcount')->where('nam_kiem_ke',$searchYear)->where('bo_phan_su_dung',$searchBoPhan);
         $records = $this->find();
         $totalRecords = $records[0]->allcount;
         ## Fetch records
-        $this->like('ten_tai_san',$strInput);
+        $this->like('ten_tai_san',$strInput)->where('nam_kiem_ke',$searchYear)->where('bo_phan_su_dung',$searchBoPhan);
         $this->orderBy($columnName, $columnSortOrder);
         if($rowperpage!=-1)
             $this->limit($rowperpage, $start);

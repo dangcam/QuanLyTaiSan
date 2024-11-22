@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 22, 2024 lúc 05:22 AM
+-- Thời gian đã tạo: Th10 22, 2024 lúc 10:32 AM
 -- Phiên bản máy phục vụ: 10.4.28-MariaDB
 -- Phiên bản PHP: 8.0.28
 
@@ -12083,6 +12083,23 @@ CREATE TABLE `tai_san_ngoai` (
   `nam_kiem_ke` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- Đang đổ dữ liệu cho bảng `tai_san_ngoai`
+--
+
+INSERT INTO `tai_san_ngoai` (`id`, `ten_tai_san`, `so_luong`, `don_vi`, `nguoi_su_dung`, `ghi_chu`, `bo_phan_su_dung`, `nam_kiem_ke`) VALUES
+(1, 'Nhà mới', 1, '', '', '', '', 0),
+(2, 'Nhà mới', 10, '', '', '', '', 0),
+(3, 'Nhà mới', 10, '', '', '', '', 0),
+(4, 'Nhà mới', 10, '', '', '', '', 0),
+(5, 'Nhà mới', 10, '', '', '', '', 2024),
+(6, 'Nhà mới', 10, '', '', '', 'DDD_BD', 2024),
+(7, 'Nhà mới', 10, '', '', '', 'DDD_BD', 2024),
+(8, 'Nhà mới', 10, '', '', '', 'DDD_BD', 2024),
+(9, 'Nhà mới', 10, '', '', '', 'DDD_BD', 2024),
+(10, 'Nhà mới', 10, '', '', '', 'DDD_BD', 2024),
+(11, 'Nhà mới', 10, '', '', '', 'DDD_BD', 2024);
+
 -- --------------------------------------------------------
 
 --
@@ -12503,7 +12520,7 @@ ALTER TABLE `nhom_tai_san`
 -- AUTO_INCREMENT cho bảng `tai_san_ngoai`
 --
 ALTER TABLE `tai_san_ngoai`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- Các ràng buộc cho các bảng đã đổ

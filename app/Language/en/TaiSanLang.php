@@ -22,6 +22,7 @@ return[
     'ma_xa' => 'Ward/commune',
     'dia_chi' => 'Address',
     'nam_kiem_ke' => 'Year of inventory',
+    'ghi_chu' => 'Note',
 
     'so_tang' => 'Number of floors',
     'chieu_dai' => 'Length',

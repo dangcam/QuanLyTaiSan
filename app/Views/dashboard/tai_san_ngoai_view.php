@@ -21,6 +21,33 @@
                                     </span>Add</a>
                     </div>
                     <div class="card-body">
+                        <div class="form-group row">
+                            <label class="col-lg-1 col-form-label" ><?=lang('AppLang.year')?></label>
+                            <div class="col-lg-2">
+                                <select class="form-control" id="nam_kiem_ke_view" name="nam_kiem_ke_view">
+                                    <?php
+                                    $nowYear =2022;
+                                    foreach (range(date('Y'), $nowYear) as $i) {
+                                        echo "<option value=$i>$i</option>";
+                                    }
+                                    ?>
+                                </select>
+                            </div>
+                            <label  class="col-lg-2 col-form-label" for="bo_phan_su_dung"><?=lang('TaiSanLang.bo_phan_su_dung')?></label>
+                            <div class="col-lg-4">
+                                <select class="form-control" id="bo_phan_su_dung_view" name="bo_phan_su_dung_view">
+                                    <?php if (isset($list_bo_phan_su_dung) && count($list_bo_phan_su_dung)) :
+                                        foreach ($list_bo_phan_su_dung as $key => $item) : ?>
+                                            <option value="<?=$item->ma_bp?>"><?=$item->ten_bp?></option>
+                                        <?php
+                                        endforeach;
+                                    endif ?>
+                                </select>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="card-body">
                         <!---->
                         <div class="alert alert-success alert-alt"role="alert" id="response_success"></div>
                         <div class="alert alert-info alert-alt"role="alert" id="response_info"></div>
@@ -33,7 +60,7 @@
                                 <tr>
                                     <th scope="col"><?=lang('TaiSanLang.ten_tai_san')?></th>
                                     <th scope="col"><?=lang('TaiSanLang.so_luong')?></th>
-                                    <th scope="col"><?=lang('TaiSanLang.don_vi')?></th>
+                                    <th scope="col"><?=lang('TaiSanLang.don_vi_tinh')?></th>
                                     <th scope="col"><?=lang('TaiSanLang.nguoi_su_dung')?></th>
                                     <th scope="col"><?=lang('TaiSanLang.ghi_chu')?></th>
                                     <th scope="col">Action</th>
@@ -45,7 +72,7 @@
                                 <tr>
                                     <th><?=lang('TaiSanLang.ten_tai_san')?></th>
                                     <th><?=lang('TaiSanLang.so_luong')?></th>
-                                    <th><?=lang('TaiSanLang.don_vi')?></th>
+                                    <th><?=lang('TaiSanLang.don_vi_tinh')?></th>
                                     <th><?=lang('TaiSanLang.nguoi_su_dung')?></th>
                                     <th><?=lang('TaiSanLang.ghi_chu')?></th>
                                     <th>Action</th>
@@ -93,25 +120,30 @@
             </div>
             <form method="post" id="form_id">
                 <div class="modal-body">
+                    <input type="text" name="id" class="form-control" id="id" hidden >
+                    <input type="text" name="nam_kiem_ke" class="form-control" id="nam_kiem_ke" hidden >
+                    <input type="text" name="bo_phan_su_dung" class="form-control" id="bo_phan_su_dung" hidden >
                     <div class="form-group">
-                        <label for="recipient-name" class="col-form-label"><?=lang('DuAnLang.ma_da')?></label>
-                        <input type="text" name="ma_da" class="form-control" id="ma_da" required placeholder="<?=lang('DuAnLang.ma_da')?>">
+                        <label for="recipient-name" class="col-form-label"><?=lang('TaiSanLang.ten_tai_san')?></label>
+                        <input type="text" name="ten_tai_san" class="form-control" id="ma_da" required placeholder="<?=lang('TaiSanLang.ten_tai_san')?>">
                     </div>
                     <div class="form-group">
-                        <label for="message-text" class="col-form-label"><?=lang('DuAnLang.ten_da')?></label>
-                        <input type="text" name="ten_da" class="form-control" id="ten_da" required placeholder="<?=lang('DuAnLang.ten_da')?>">
+                        <label for="recipient-name" class="col-form-label"><?=lang('TaiSanLang.so_luong')?></label>
+                        <input type="text" name="so_luong" class="form-control" id="so_luong" required placeholder="<?=lang('TaiSanLang.so_luong')?>">
+                    </div>
+                    <div class="form-group">
+                        <label for="message-text" class="col-form-label"><?=lang('TaiSanLang.don_vi_tinh')?></label>
+                        <input type="text" name="don_vi" class="form-control" id="don_vi"  placeholder="<?=lang('TaiSanLang.don_vi_tinh')?>">
                     </div>                    
                     <div class="form-group">
-                        <label for="message-text" class="col-form-label"><?=lang('DuAnLang.ghi_chu')?></label>
-                        <input type="text" name="ghi_chu" class="form-control" id="ghi_chu" placeholder="<?=lang('DuAnLang.ghi_chu')?>">
+                        <label for="message-text" class="col-form-label"><?=lang('TaiSanLang.nguoi_su_dung')?></label>
+                        <input type="text" name="nguoi_su_dung" class="form-control" id="nguoi_su_dung" placeholder="<?=lang('TaiSanLang.nguoi_su_dung')?>">
                     </div>
                     <div class="form-group">
-                        <label for="message-text" class="col-form-label"><?=lang('DuAnLang.su_dung')?></label>
-                        <select id="su_dung" class="form-control"name ="su_dung">
-                            <option value="1"><?=lang('AppLang.active')?></option>
-                            <option value="2"><?=lang('AppLang.inactive')?></option>
-                        </select>
+                        <label for="message-text" class="col-form-label"><?=lang('TaiSanLang.ghi_chu')?></label>
+                        <input type="text" name="ghi_chu" class="form-control" id="ghi_chu" placeholder="<?=lang('TaiSanLang.ghi_chu')?>">
                     </div>
+
 
                 </div>
                 <div class="modal-footer">
@@ -155,6 +187,8 @@
             'ajax': {
                 'url': '<?=base_url()?>dashboard/off_asset/asset_ajax',
                 'data': function (data) {
+                    data.searchYear = $('#nam_kiem_ke_view').val();
+                    data.searchBoPhan = $('#bo_phan_su_dung_view').val();
                 },
             },
             'columns': [
@@ -167,44 +201,54 @@
             ],
 
         });
-
+        $('#nam_kiem_ke_view,#bo_phan_su_dung_view').change(function(){
+            ajaxDataTable.draw();
+        });
         $('#myModal').on('show.bs.modal', function (event) {
             $("#response_danger_modal").hide('fast');
             var button = $(event.relatedTarget); // Button that triggered the modal
             var recipient = button.data('whatever'); // Extract info from data-* attributes
-            var ma_da = button.data('ma_da');
-            var ten_da = button.data('ten_da');
+            var id = button.data('id');
+            var ten_tai_san = button.data('ten_tai_san');
+            var so_luong = button.data('so_luong');
+            var don_vi = button.data('don_vi');
+            var nguoi_su_dung = button.data('nguoi_su_dung');
+            var nam_kiem_ke = $('#nam_kiem_ke_view').val();
             var ghi_chu = button.data('ghi_chu');
-            var su_dung = button.data('su_dung');
+            var bo_phan_su_dung = $('#bo_phan_su_dung_view').val();
             var field = document.getElementById("add_edit");
             field.setAttribute("name",recipient);
-            $('#ma_da').val(ma_da);
-            $('#ten_da').val(ten_da);
+            $('#id').val(id);
+            $('#ten_tai_san').val(ten_tai_san);
+            $('#so_luong').val(so_luong);
+            $('#don_vi').val(don_vi);
+            $('#nguoi_su_dung').val(nguoi_su_dung);
             $('#ghi_chu').val(ghi_chu);
-            $('#su_dung').val(su_dung);
+            $('#bo_phan_su_dung').val(bo_phan_su_dung);
+            $('#nam_kiem_ke').val(nam_kiem_ke);
             if(recipient=="add"){
-                $('#myModalLabel').text("<?=lang('DuAnLang.add_da')?>");
-                $('#ma_da').prop("readonly",false);
-                $('#su_dung').val(1);
+                $('#myModalLabel').text("<?=lang('TaiSanLang.add_taisan')?>");
+                //$('#ma_da').prop("readonly",false);
+                //$('#su_dung').val(1);
             }else {
-                $('#myModalLabel').text("<?=lang('DuAnLang.edit_da')?>");
-                $('#ma_da').prop("readonly",true);
-                $('#su_dung').val(su_dung);
+                $('#myModalLabel').text("<?=lang('TaiSanLang.edit_taisan')?>");
+                //$('#ma_da').prop("readonly",true);
+                //$('#su_dung').val(su_dung);
             }
         });
         // Delete
         $('#smallModal').on('show.bs.modal', function (event) {
             var button = $(event.relatedTarget) // Button that triggered the modal
-            var recipient = button.data('ma_da') // Extract info from data-* attributes
+            var recipient = button.data('id') // Extract info from data-* attributes
             $("#modal-btn-yes").on("click", function(event){
                 $("#smallModal").modal('hide');
                 event.preventDefault();
                 $("#response_success").hide('fast');
                 $("#response_danger").hide('fast');
                 $.ajax({
-                    url: '<?= base_url() ?>dashboard/project/delete_project',
+                    url: '<?= base_url() ?>dashboard/off_asset/delete_asset',
                     type: 'POST',
-                    data: { ma_da:recipient },
+                    data: { id:recipient },
                     dataType:"json",
                     success:function (data) {
                         if(data[0]==0){
@@ -231,8 +275,9 @@
             $("#response_danger_modal").hide('fast');
             var name = $("#add_edit").attr("name");
             var formData = $(this).serialize();
+            console.log(formData);
             $.ajax({
-                url: "<?= base_url() ?>dashboard/project/"+name+"_project",
+                url: "<?= base_url() ?>dashboard/off_asset/"+name+"_asset",
                 method: "POST",
                 data: formData,
                 dataType: "json",

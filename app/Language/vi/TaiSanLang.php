@@ -20,6 +20,7 @@ return[
     'ma_xa' => 'Phường/xã',
     'dia_chi' => 'Địa chỉ',
     'nam_kiem_ke' => 'Năm kiểm kê',
+    'ghi_chu' => 'Ghi chú',
 
     'so_tang' => 'Số tầng',
     'chieu_dai' => 'Chiều dài',
