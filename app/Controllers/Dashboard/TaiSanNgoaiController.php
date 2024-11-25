@@ -64,4 +64,40 @@ class TaiSanNgoaiController extends BaseController
         }else
             echo json_encode(array_values($this->libauth->getError()));
     }
+    public function off_asset_import()
+    {
+        if($this->request->getPost()) {
+            $data = $this->request->getPost();
+            $upload_file = $_FILES['file_import']['name'];
+            $extension = pathinfo($upload_file, PATHINFO_EXTENSION);
+            if ($extension == 'csv') {
+                $reader = new \PhpOffice\PhpSpreadsheet\Reader\Csv();
+            } elseif ($extension == 'xls') {
+                $reader = new \PhpOffice\PhpSpreadsheet\Reader\Xls();
+            } else {
+                $reader = new \PhpOffice\PhpSpreadsheet\Reader\Xlsx();
+            }
+            $spreadsheet = $reader->load($_FILES['file_import']['tmp_name']);
+            $sheetdata = $spreadsheet->getActiveSheet()->toArray();
+            $sheetcount = count($sheetdata);
+            $row_count = 0;
+            if ($sheetcount > 1)// lấy dữ liệu từ dòng 2
+            {
+                $row_id ='';
+                $data_import['bo_phan_su_dung'] = $data['bo_phan_su_dung'];
+                $data_import['nam_kiem_ke'] = $data['nam_kiem_ke'];
+                for ($i = 6; $i < $sheetcount; $i++) {
+
+                    $data_import['ten_tai_san'] = $sheetdata[$i][2];
+                    $data_import['so_luong'] = is_null($sheetdata[$i][3])?'0':$sheetdata[$i][3];
+                    $data_import['don_vi'] = $sheetdata[$i][4];
+                    $data_import['nguoi_su_dung'] = $sheetdata[$i][5];
+                    $data_import['ghi_chu'] = $sheetdata[$i][6];
+                    if($this->ts_model->add_asset($data_import) == 0)
+                        $row_count++;
+                }
+            }
+            echo 'Lưu thành công '.$row_count.'/'.($sheetcount-6).' dòng dữ liệu!';
+        }
+    }
 }

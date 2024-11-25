@@ -197,6 +197,7 @@ $routes->group('dashboard',['filter'=>'authFilters'], static function ($routes) 
         $routes->post('add_asset','Dashboard\TaiSanNgoaiController::add_asset');
         $routes->post('edit_asset','Dashboard\TaiSanNgoaiController::edit_asset');
         $routes->post('delete_asset','Dashboard\TaiSanNgoaiController::delete_asset');
+        $routes->post('off_asset_import','Dashboard\TaiSanNgoaiController::off_asset_import');
     });
 });
 /*

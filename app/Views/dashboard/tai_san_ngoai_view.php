@@ -19,6 +19,11 @@
                         <a href="#" type="button" class="btn btn-rounded btn-info" data-toggle="modal" data-target="#myModal" data-whatever="add">
                             <span class="btn-icon-left text-info"><i class="fa fa-plus color-info"></i>
                                     </span>Add</a>
+                        <input type="file" id="myfile" name="myfile"><br><br>
+                        <div class="col-lg-2">
+                            <button type="button" id="import_excel" class="btn btn-rounded btn-success"><span class="btn-icon-left text-success"><i class="fa fa-upload color-success"></i>
+                                        </span>Excel</button>
+                        </div>
                     </div>
                     <div class="card-body">
                         <div class="form-group row">
@@ -125,7 +130,7 @@
                     <input type="text" name="bo_phan_su_dung" class="form-control" id="bo_phan_su_dung" hidden >
                     <div class="form-group">
                         <label for="recipient-name" class="col-form-label"><?=lang('TaiSanLang.ten_tai_san')?></label>
-                        <input type="text" name="ten_tai_san" class="form-control" id="ma_da" required placeholder="<?=lang('TaiSanLang.ten_tai_san')?>">
+                        <input type="text" name="ten_tai_san" class="form-control" id="ten_tai_san" required placeholder="<?=lang('TaiSanLang.ten_tai_san')?>">
                     </div>
                     <div class="form-group">
                         <label for="recipient-name" class="col-form-label"><?=lang('TaiSanLang.so_luong')?></label>
@@ -298,6 +303,32 @@
                 }
             });
         });
+        $("#import_excel").on( "click",async function() {
+            let data_file = document.getElementById("myfile").files[0];
+            let formData = new FormData();
+            formData.append("file_import", myfile.files[0]);
+            formData.append("bo_phan_su_dung", $('#bo_phan_su_dung').val());
+            formData.append("nam_kiem_ke", $('#nam_kiem_ke').val());
+            try {
+                let response = await fetch('<?= base_url() ?>dashboard/off_asset/off_asset_import', {
+                    method: "POST",
+                    body: formData
+                });
+
+                if (response.ok) {
+                    let message = await response.text();
+                    loadDataTable();
+                    alert(message); // Hiển thị thông báo từ server
+                } else {
+                    throw new Error('Network response was not ok.');
+                }
+            } catch (error) {
+                console.error('There was a problem with the fetch operation:', error);
+                alert('An error occurred. Please try again later.'); // Thông báo lỗi nếu có lỗi xảy ra
+            }
+
+        });
+
     });
 </script>
 
