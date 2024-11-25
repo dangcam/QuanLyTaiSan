@@ -26,6 +26,29 @@ class TaiSanNgoaiModel extends BaseModel
             return 3;
         }
     }
+    public function add_import($data)
+    {
+        // Loại bỏ các trường không cần thiết
+        unset($data['add']);
+        unset($data['id']);
+
+        // Kiểm tra dữ liệu đầu vào
+        if (empty($data['ten_tai_san']) || !is_numeric($data['so_luong'])) {
+            log_message('error', 'Invalid data: ' . json_encode($data));
+            $this->set_message("TaiSanLang.taisan_invalid_data");
+            return 1; // Lỗi dữ liệu
+        }
+
+        // Chèn dữ liệu vào cơ sở dữ liệu
+        if ($this->insert($data)) {
+            $this->set_message("TaiSanLang.taisan_creation_successful");
+            return 0; // Thành công
+        } else {
+            log_message('error', 'Failed to insert asset: ' . $this->errors());
+            $this->set_message("TaiSanLang.taisan_creation_unsuccessful");
+            return 3; // Thất bại
+        }
+    }
     public function edit_asset($data)
     {
         $data_id = $data['id'];

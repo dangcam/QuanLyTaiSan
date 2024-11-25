@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 22, 2024 lúc 10:32 AM
+-- Thời gian đã tạo: Th10 25, 2024 lúc 09:56 AM
 -- Phiên bản máy phục vụ: 10.4.28-MariaDB
 -- Phiên bản PHP: 8.0.28
 
@@ -12088,17 +12088,73 @@ CREATE TABLE `tai_san_ngoai` (
 --
 
 INSERT INTO `tai_san_ngoai` (`id`, `ten_tai_san`, `so_luong`, `don_vi`, `nguoi_su_dung`, `ghi_chu`, `bo_phan_su_dung`, `nam_kiem_ke`) VALUES
-(1, 'Nhà mới', 1, '', '', '', '', 0),
-(2, 'Nhà mới', 10, '', '', '', '', 0),
-(3, 'Nhà mới', 10, '', '', '', '', 0),
-(4, 'Nhà mới', 10, '', '', '', '', 0),
-(5, 'Nhà mới', 10, '', '', '', '', 2024),
-(6, 'Nhà mới', 10, '', '', '', 'DDD_BD', 2024),
-(7, 'Nhà mới', 10, '', '', '', 'DDD_BD', 2024),
-(8, 'Nhà mới', 10, '', '', '', 'DDD_BD', 2024),
-(9, 'Nhà mới', 10, '', '', '', 'DDD_BD', 2024),
-(10, 'Nhà mới', 10, '', '', '', 'DDD_BD', 2024),
-(11, 'Nhà mới', 10, '', '', '', 'DDD_BD', 2024);
+(18, 'Nhà mới 01', 10, 'Cái', 'Nguyễn Văn Một', 'ghi chú', 'DDD_BD', 2024),
+(19, 'Máy lạnh', 2, '1 HCTH, 1 BV', '', '', 'DDD_BD', 2024),
+(20, 'Máy lạnh đứng  hội trường', 1, 'Hội trường', '', '', 'DDD_BD', 2024),
+(21, 'Máy vi tính', 1, 'Hải', '', '', 'DDD_BD', 2024),
+(22, 'Máy vi tính', 1, 'Trang', '', '', 'DDD_BD', 2024),
+(23, 'Máy vi tính', 1, 'Thanh', '', '', 'DDD_BD', 2024),
+(24, 'Máy vi tính', 1, 'Thảo', '', '', 'DDD_BD', 2024),
+(25, 'Bàn làm việc', 1, 'Trang', '', '', 'DDD_BD', 2024),
+(26, 'Bàn làm việc', 1, 'Hải', '', '', 'DDD_BD', 2024),
+(27, 'Bàn làm việc', 1, 'Hiệp', '', '', 'DDD_BD', 2024),
+(28, 'Bàn làm việc', 1, 'Thanh', '', '', 'DDD_BD', 2024),
+(29, 'Bàn làm việc', 1, 'Thảo', '', '', 'DDD_BD', 2024),
+(30, 'Bàn làm việc', 1, 'Linh', '', '', 'DDD_BD', 2024),
+(32, 'Tủ sắt 8 cánh ', 1, 'Hiệp', '', '', 'DDD_BD', 2024),
+(33, 'Tủ sắt 2 cánh', 1, 'Hiệp', '', '', 'DDD_BD', 2024),
+(34, 'Kệ đựng hồ sơ', 1, 'Thanh', '', '', 'DDD_BD', 2024),
+(36, 'Máy in A4', 1, 'Trang', '', '', 'DDD_BD', 2024),
+(37, 'Máy in Cannon LP2900', 1, 'Hiệp', '', '', 'DDD_BD', 2024),
+(38, 'Máy Scan A4 ', 1, 'Thanh', '', '', 'DDD_BD', 2024),
+(39, 'Máy in A4 ', 1, 'Linh', '', '', 'DDD_BD', 2024),
+(40, 'Két sắt ', 1, '', '', '', 'DDD_BD', 2024),
+(41, 'Ghế xoay ', 1, 'Hải', '', '', 'DDD_BD', 2024),
+(42, 'Ghế xoay ', 1, 'Trang', '', '', 'DDD_BD', 2024),
+(43, 'Ghế innox', 10, 'Phòng làm việc + Hội', '', '', 'DDD_BD', 2024),
+(44, 'Điện thoại bàn ', 2, '', '', '', 'DDD_BD', 2024),
+(45, 'Bình nước nóng lạnh ', 1, 'Hội trường', '', '', 'DDD_BD', 2024),
+(46, 'Bục phát biểu', 1, 'Hội trường', '', '', 'DDD_BD', 2024),
+(47, 'Kệ để tượng Bác Hồ ', 1, 'Hội trường', '', '', 'DDD_BD', 2024),
+(48, 'Tượng Bác Hồ ', 1, 'Hội trường', '', '', 'DDD_BD', 2024),
+(49, 'Ghế nhựa ', 51, 'Hội trường', '', '', 'DDD_BD', 2024),
+(50, 'Tủ lạnh ', 1, 'Bảo vệ', '', '', 'DDD_BD', 2024),
+(51, 'Bình chữa cháy', 3, 'TTPTQĐ chuyển sang', '', '', 'DDD_BD', 2024),
+(52, 'Máy lạnh', 2, '1 HCTH, 1 BV', '', '', 'DDD_BD', 2024),
+(53, 'Máy lạnh đứng  hội trường', 1, 'Hội trường', '', '', 'DDD_BD', 2024),
+(54, 'Máy vi tính', 1, 'Hư hỏng (Hiệp giữ)', 'Máy của Hải đi BGM để lại', 'Máy của Hải đi BGM để lại', 'DDD_BD', 2024),
+(55, 'Máy vi tính', 1, 'Trang', '0', '', 'DDD_BD', 2024),
+(56, 'Máy vi tính', 1, 'Thanh', '0', '', 'DDD_BD', 2024),
+(57, 'Máy vi tính', 1, 'Thảo', '0', '', 'DDD_BD', 2024),
+(58, 'Bàn làm việc', 1, 'Trang', '0', '', 'DDD_BD', 2024),
+(59, 'Bàn làm việc', 1, 'Công', 'Bàn của Hải đi để lại', 'Bàn của Hải đi để lại', 'DDD_BD', 2024),
+(60, 'Bàn làm việc', 1, 'Hiệp', '', '', 'DDD_BD', 2024),
+(61, 'Bàn làm việc', 1, 'Thanh', '', '', 'DDD_BD', 2024),
+(62, 'Bàn làm việc', 1, 'Thảo', '', '', 'DDD_BD', 2024),
+(63, 'Bàn làm việc', 1, 'Linh', '', '', 'DDD_BD', 2024),
+(64, 'Tủ đựng hồ sơ', 1, 'Trang', '', '', 'DDD_BD', 2024),
+(65, 'Tủ sắt 8 cánh ', 1, 'Hiệp', '', '', 'DDD_BD', 2024),
+(66, 'Tủ sắt 2 cánh  ', 1, 'Hiệp', '', '', 'DDD_BD', 2024),
+(67, 'Kệ đựng hồ sơ ', 1, 'Thanh', '', '', 'DDD_BD', 2024),
+(69, 'Máy in A4 ', 1, 'Trang', '', '', 'DDD_BD', 2024),
+(70, 'Máy in Cannon LP2900', 1, 'Hiệp', '', '', 'DDD_BD', 2024),
+(71, 'Máy Scan A4  ', 1, 'Thanh', '', '', 'DDD_BD', 2024),
+(72, 'Máy in A4 ', 1, 'Linh', '', '', 'DDD_BD', 2024),
+(73, 'Két sắt ', 1, '', '', '', 'DDD_BD', 2024),
+(74, 'Ghế xoay  ', 1, 'Trang', '', '', 'DDD_BD', 2024),
+(75, 'Ghế xoay  ', 1, 'Công', 'Hải', '', 'DDD_BD', 2024),
+(76, 'Ghế innox', 10, 'Phòng làm việc + Hội', '', '', 'DDD_BD', 2024),
+(77, 'Điện thoại bàn ', 2, '', '', '', 'DDD_BD', 2024),
+(78, 'Bình nước nóng lạnh ', 1, '', '', '', 'DDD_BD', 2024),
+(79, 'Bục phát biểu ', 1, 'Hội trường', '', '', 'DDD_BD', 2024),
+(80, 'Kệ để tượng Bác Hồ ', 1, 'Hội trường', '', '', 'DDD_BD', 2024),
+(81, 'Tượng Bác Hồ ', 1, 'Hội trường', '', '', 'DDD_BD', 2024),
+(82, 'Ghế nhựa ', 51, 'Hội trường', '', '', 'DDD_BD', 2024),
+(83, 'Tủ lạnh ', 1, 'Bảo vệ', '', '', 'DDD_BD', 2024),
+(84, 'Bình chữa cháy', 3, 'TTPTQĐ chuyển sang', '', '', 'DDD_BD', 2024),
+(85, 'Máy in A4 Canon MF232W (2020)', 1, 'Anh Công (chuyển từ ', '2019 ở Đội, 2020 về HCTH, 2021 về gcn', '2019 ở Đội, 2020 về HCTH, 2021 về gcn', 'DDD_BD', 2024),
+(86, 'Máy vi tính (2020)', 1, 'Anh Công (chuyển từ ', '2019 ở Đội, 2020 về HCTH, 2021 về gcn', '2019 ở Đội, 2020 về HCTH, 2021 về gcn', 'DDD_BD', 2024),
+(87, 'Bàn làm việc (2020)', 1, 'Sơn', 'Sơn tăng 2020, bàn Công mang từ GCN qua', 'Sơn tăng 2020, bàn Công mang từ GCN qua', 'DDD_BD', 2024);
 
 -- --------------------------------------------------------
 
@@ -12520,7 +12576,7 @@ ALTER TABLE `nhom_tai_san`
 -- AUTO_INCREMENT cho bảng `tai_san_ngoai`
 --
 ALTER TABLE `tai_san_ngoai`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=88;
 
 --
 -- Các ràng buộc cho các bảng đã đổ

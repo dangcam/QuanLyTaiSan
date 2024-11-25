@@ -1,0 +1,573 @@
+CRITICAL - 2024-11-25 04:23:15 --> Class "PhpOffice\PhpSpreadsheet\Reader\Xls" not found
+in APPPATH\Controllers\Dashboard\TaiSanNgoaiController.php on line 76.
+ 1 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Dashboard\TaiSanNgoaiController->off_asset_import()
+ 2 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard\TaiSanNgoaiController))
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-11-25 06:53:01 --> mysqli_sql_exception: Column 'don_vi' cannot be null in D:\Xampp\htdocs\QuanLyTaiSan\system\Database\MySQLi\Connection.php:295
+Stack trace:
+#0 D:\Xampp\htdocs\QuanLyTaiSan\system\Database\MySQLi\Connection.php(295): mysqli->query('INSERT INTO `ta...', 0)
+#1 D:\Xampp\htdocs\QuanLyTaiSan\system\Database\BaseConnection.php(691): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `ta...')
+#2 D:\Xampp\htdocs\QuanLyTaiSan\system\Database\BaseConnection.php(605): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `ta...')
+#3 D:\Xampp\htdocs\QuanLyTaiSan\system\Database\BaseBuilder.php(2309): CodeIgniter\Database\BaseConnection->query('INSERT INTO `ta...', Array, false)
+#4 D:\Xampp\htdocs\QuanLyTaiSan\system\Model.php(330): CodeIgniter\Database\BaseBuilder->insert()
+#5 D:\Xampp\htdocs\QuanLyTaiSan\system\BaseModel.php(782): CodeIgniter\Model->doInsert(Array)
+#6 D:\Xampp\htdocs\QuanLyTaiSan\system\Model.php(730): CodeIgniter\BaseModel->insert(Array, true)
+#7 D:\Xampp\htdocs\QuanLyTaiSan\app\Models\TaiSanNgoaiModel.php(19): CodeIgniter\Model->insert(Array)
+#8 D:\Xampp\htdocs\QuanLyTaiSan\app\Controllers\Dashboard\TaiSanNgoaiController.php(96): App\Models\TaiSanNgoaiModel->add_asset(Array)
+#9 D:\Xampp\htdocs\QuanLyTaiSan\system\CodeIgniter.php(934): App\Controllers\Dashboard\TaiSanNgoaiController->off_asset_import()
+#10 D:\Xampp\htdocs\QuanLyTaiSan\system\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard\TaiSanNgoaiController))
+#11 D:\Xampp\htdocs\QuanLyTaiSan\system\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#12 D:\Xampp\htdocs\QuanLyTaiSan\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#13 {main}
+CRITICAL - 2024-11-25 06:53:01 --> Column 'don_vi' cannot be null
+in SYSTEMPATH\Database\BaseConnection.php on line 645.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2309): CodeIgniter\Database\BaseConnection->query('INSERT INTO `tai_san_ngoai` (`bo_phan_su_dung`, `nam_kiem_ke`, `ten_tai_san`, `so_luong`, `don_vi`, `nguoi_su_dung`, `ghi_chu`) VALUES (:bo_phan_su_dung:, :nam_kiem_ke:, :ten_tai_san:, :so_luong:, :don_vi:, :nguoi_su_dung:, :ghi_chu:)', [...], false)
+ 2 SYSTEMPATH\Model.php(330): CodeIgniter\Database\BaseBuilder->insert()
+ 3 SYSTEMPATH\BaseModel.php(782): CodeIgniter\Model->doInsert([...])
+ 4 SYSTEMPATH\Model.php(730): CodeIgniter\BaseModel->insert([...], true)
+ 5 APPPATH\Models\TaiSanNgoaiModel.php(19): CodeIgniter\Model->insert([...])
+ 6 APPPATH\Controllers\Dashboard\TaiSanNgoaiController.php(96): App\Models\TaiSanNgoaiModel->add_asset([...])
+ 7 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Dashboard\TaiSanNgoaiController->off_asset_import()
+ 8 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard\TaiSanNgoaiController))
+ 9 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-11-25 07:02:00 --> mysqli_sql_exception: Column 'don_vi' cannot be null in D:\Xampp\htdocs\QuanLyTaiSan\system\Database\MySQLi\Connection.php:295
+Stack trace:
+#0 D:\Xampp\htdocs\QuanLyTaiSan\system\Database\MySQLi\Connection.php(295): mysqli->query('INSERT INTO `ta...', 0)
+#1 D:\Xampp\htdocs\QuanLyTaiSan\system\Database\BaseConnection.php(691): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `ta...')
+#2 D:\Xampp\htdocs\QuanLyTaiSan\system\Database\BaseConnection.php(605): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `ta...')
+#3 D:\Xampp\htdocs\QuanLyTaiSan\system\Database\BaseBuilder.php(2309): CodeIgniter\Database\BaseConnection->query('INSERT INTO `ta...', Array, false)
+#4 D:\Xampp\htdocs\QuanLyTaiSan\system\Model.php(330): CodeIgniter\Database\BaseBuilder->insert()
+#5 D:\Xampp\htdocs\QuanLyTaiSan\system\BaseModel.php(782): CodeIgniter\Model->doInsert(Array)
+#6 D:\Xampp\htdocs\QuanLyTaiSan\system\Model.php(730): CodeIgniter\BaseModel->insert(Array, true)
+#7 D:\Xampp\htdocs\QuanLyTaiSan\app\Models\TaiSanNgoaiModel.php(19): CodeIgniter\Model->insert(Array)
+#8 D:\Xampp\htdocs\QuanLyTaiSan\app\Controllers\Dashboard\TaiSanNgoaiController.php(97): App\Models\TaiSanNgoaiModel->add_asset(Array)
+#9 D:\Xampp\htdocs\QuanLyTaiSan\system\CodeIgniter.php(934): App\Controllers\Dashboard\TaiSanNgoaiController->off_asset_import()
+#10 D:\Xampp\htdocs\QuanLyTaiSan\system\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard\TaiSanNgoaiController))
+#11 D:\Xampp\htdocs\QuanLyTaiSan\system\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#12 D:\Xampp\htdocs\QuanLyTaiSan\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#13 {main}
+CRITICAL - 2024-11-25 07:02:00 --> Column 'don_vi' cannot be null
+in SYSTEMPATH\Database\BaseConnection.php on line 645.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2309): CodeIgniter\Database\BaseConnection->query('INSERT INTO `tai_san_ngoai` (`bo_phan_su_dung`, `nam_kiem_ke`, `ten_tai_san`, `so_luong`, `don_vi`, `nguoi_su_dung`, `ghi_chu`) VALUES (:bo_phan_su_dung:, :nam_kiem_ke:, :ten_tai_san:, :so_luong:, :don_vi:, :nguoi_su_dung:, :ghi_chu:)', [...], false)
+ 2 SYSTEMPATH\Model.php(330): CodeIgniter\Database\BaseBuilder->insert()
+ 3 SYSTEMPATH\BaseModel.php(782): CodeIgniter\Model->doInsert([...])
+ 4 SYSTEMPATH\Model.php(730): CodeIgniter\BaseModel->insert([...], true)
+ 5 APPPATH\Models\TaiSanNgoaiModel.php(19): CodeIgniter\Model->insert([...])
+ 6 APPPATH\Controllers\Dashboard\TaiSanNgoaiController.php(97): App\Models\TaiSanNgoaiModel->add_asset([...])
+ 7 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Dashboard\TaiSanNgoaiController->off_asset_import()
+ 8 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard\TaiSanNgoaiController))
+ 9 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-11-25 07:02:26 --> Undefined array key "file_import"
+in APPPATH\Controllers\Dashboard\TaiSanNgoaiController.php on line 71.
+ 1 APPPATH\Controllers\Dashboard\TaiSanNgoaiController.php(71): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "file_import"', 'APPPATH\\Controllers\\Dashboard\\TaiSanNgoaiController.php', 71)
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Dashboard\TaiSanNgoaiController->off_asset_import()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard\TaiSanNgoaiController))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-11-25 07:02:32 --> mysqli_sql_exception: Column 'don_vi' cannot be null in D:\Xampp\htdocs\QuanLyTaiSan\system\Database\MySQLi\Connection.php:295
+Stack trace:
+#0 D:\Xampp\htdocs\QuanLyTaiSan\system\Database\MySQLi\Connection.php(295): mysqli->query('INSERT INTO `ta...', 0)
+#1 D:\Xampp\htdocs\QuanLyTaiSan\system\Database\BaseConnection.php(691): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `ta...')
+#2 D:\Xampp\htdocs\QuanLyTaiSan\system\Database\BaseConnection.php(605): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `ta...')
+#3 D:\Xampp\htdocs\QuanLyTaiSan\system\Database\BaseBuilder.php(2309): CodeIgniter\Database\BaseConnection->query('INSERT INTO `ta...', Array, false)
+#4 D:\Xampp\htdocs\QuanLyTaiSan\system\Model.php(330): CodeIgniter\Database\BaseBuilder->insert()
+#5 D:\Xampp\htdocs\QuanLyTaiSan\system\BaseModel.php(782): CodeIgniter\Model->doInsert(Array)
+#6 D:\Xampp\htdocs\QuanLyTaiSan\system\Model.php(730): CodeIgniter\BaseModel->insert(Array, true)
+#7 D:\Xampp\htdocs\QuanLyTaiSan\app\Models\TaiSanNgoaiModel.php(19): CodeIgniter\Model->insert(Array)
+#8 D:\Xampp\htdocs\QuanLyTaiSan\app\Controllers\Dashboard\TaiSanNgoaiController.php(97): App\Models\TaiSanNgoaiModel->add_asset(Array)
+#9 D:\Xampp\htdocs\QuanLyTaiSan\system\CodeIgniter.php(934): App\Controllers\Dashboard\TaiSanNgoaiController->off_asset_import()
+#10 D:\Xampp\htdocs\QuanLyTaiSan\system\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard\TaiSanNgoaiController))
+#11 D:\Xampp\htdocs\QuanLyTaiSan\system\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#12 D:\Xampp\htdocs\QuanLyTaiSan\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#13 {main}
+CRITICAL - 2024-11-25 07:02:32 --> Column 'don_vi' cannot be null
+in SYSTEMPATH\Database\BaseConnection.php on line 645.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2309): CodeIgniter\Database\BaseConnection->query('INSERT INTO `tai_san_ngoai` (`bo_phan_su_dung`, `nam_kiem_ke`, `ten_tai_san`, `so_luong`, `don_vi`, `nguoi_su_dung`, `ghi_chu`) VALUES (:bo_phan_su_dung:, :nam_kiem_ke:, :ten_tai_san:, :so_luong:, :don_vi:, :nguoi_su_dung:, :ghi_chu:)', [...], false)
+ 2 SYSTEMPATH\Model.php(330): CodeIgniter\Database\BaseBuilder->insert()
+ 3 SYSTEMPATH\BaseModel.php(782): CodeIgniter\Model->doInsert([...])
+ 4 SYSTEMPATH\Model.php(730): CodeIgniter\BaseModel->insert([...], true)
+ 5 APPPATH\Models\TaiSanNgoaiModel.php(19): CodeIgniter\Model->insert([...])
+ 6 APPPATH\Controllers\Dashboard\TaiSanNgoaiController.php(97): App\Models\TaiSanNgoaiModel->add_asset([...])
+ 7 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Dashboard\TaiSanNgoaiController->off_asset_import()
+ 8 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard\TaiSanNgoaiController))
+ 9 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-11-25 07:04:59 --> Undefined array key "file_import"
+in APPPATH\Controllers\Dashboard\TaiSanNgoaiController.php on line 71.
+ 1 APPPATH\Controllers\Dashboard\TaiSanNgoaiController.php(71): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "file_import"', 'APPPATH\\Controllers\\Dashboard\\TaiSanNgoaiController.php', 71)
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Dashboard\TaiSanNgoaiController->off_asset_import()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard\TaiSanNgoaiController))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-11-25 07:05:04 --> mysqli_sql_exception: Column 'don_vi' cannot be null in D:\Xampp\htdocs\QuanLyTaiSan\system\Database\MySQLi\Connection.php:295
+Stack trace:
+#0 D:\Xampp\htdocs\QuanLyTaiSan\system\Database\MySQLi\Connection.php(295): mysqli->query('INSERT INTO `ta...', 0)
+#1 D:\Xampp\htdocs\QuanLyTaiSan\system\Database\BaseConnection.php(691): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `ta...')
+#2 D:\Xampp\htdocs\QuanLyTaiSan\system\Database\BaseConnection.php(605): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `ta...')
+#3 D:\Xampp\htdocs\QuanLyTaiSan\system\Database\BaseBuilder.php(2309): CodeIgniter\Database\BaseConnection->query('INSERT INTO `ta...', Array, false)
+#4 D:\Xampp\htdocs\QuanLyTaiSan\system\Model.php(330): CodeIgniter\Database\BaseBuilder->insert()
+#5 D:\Xampp\htdocs\QuanLyTaiSan\system\BaseModel.php(782): CodeIgniter\Model->doInsert(Array)
+#6 D:\Xampp\htdocs\QuanLyTaiSan\system\Model.php(730): CodeIgniter\BaseModel->insert(Array, true)
+#7 D:\Xampp\htdocs\QuanLyTaiSan\app\Models\TaiSanNgoaiModel.php(19): CodeIgniter\Model->insert(Array)
+#8 D:\Xampp\htdocs\QuanLyTaiSan\app\Controllers\Dashboard\TaiSanNgoaiController.php(98): App\Models\TaiSanNgoaiModel->add_asset(Array)
+#9 D:\Xampp\htdocs\QuanLyTaiSan\system\CodeIgniter.php(934): App\Controllers\Dashboard\TaiSanNgoaiController->off_asset_import()
+#10 D:\Xampp\htdocs\QuanLyTaiSan\system\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard\TaiSanNgoaiController))
+#11 D:\Xampp\htdocs\QuanLyTaiSan\system\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#12 D:\Xampp\htdocs\QuanLyTaiSan\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#13 {main}
+CRITICAL - 2024-11-25 07:05:04 --> Column 'don_vi' cannot be null
+in SYSTEMPATH\Database\BaseConnection.php on line 645.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2309): CodeIgniter\Database\BaseConnection->query('INSERT INTO `tai_san_ngoai` (`bo_phan_su_dung`, `nam_kiem_ke`, `ten_tai_san`, `so_luong`, `don_vi`, `nguoi_su_dung`, `ghi_chu`) VALUES (:bo_phan_su_dung:, :nam_kiem_ke:, :ten_tai_san:, :so_luong:, :don_vi:, :nguoi_su_dung:, :ghi_chu:)', [...], false)
+ 2 SYSTEMPATH\Model.php(330): CodeIgniter\Database\BaseBuilder->insert()
+ 3 SYSTEMPATH\BaseModel.php(782): CodeIgniter\Model->doInsert([...])
+ 4 SYSTEMPATH\Model.php(730): CodeIgniter\BaseModel->insert([...], true)
+ 5 APPPATH\Models\TaiSanNgoaiModel.php(19): CodeIgniter\Model->insert([...])
+ 6 APPPATH\Controllers\Dashboard\TaiSanNgoaiController.php(98): App\Models\TaiSanNgoaiModel->add_asset([...])
+ 7 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Dashboard\TaiSanNgoaiController->off_asset_import()
+ 8 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard\TaiSanNgoaiController))
+ 9 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-11-25 07:05:20 --> mysqli_sql_exception: Column 'don_vi' cannot be null in D:\Xampp\htdocs\QuanLyTaiSan\system\Database\MySQLi\Connection.php:295
+Stack trace:
+#0 D:\Xampp\htdocs\QuanLyTaiSan\system\Database\MySQLi\Connection.php(295): mysqli->query('INSERT INTO `ta...', 0)
+#1 D:\Xampp\htdocs\QuanLyTaiSan\system\Database\BaseConnection.php(691): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `ta...')
+#2 D:\Xampp\htdocs\QuanLyTaiSan\system\Database\BaseConnection.php(605): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `ta...')
+#3 D:\Xampp\htdocs\QuanLyTaiSan\system\Database\BaseBuilder.php(2309): CodeIgniter\Database\BaseConnection->query('INSERT INTO `ta...', Array, false)
+#4 D:\Xampp\htdocs\QuanLyTaiSan\system\Model.php(330): CodeIgniter\Database\BaseBuilder->insert()
+#5 D:\Xampp\htdocs\QuanLyTaiSan\system\BaseModel.php(782): CodeIgniter\Model->doInsert(Array)
+#6 D:\Xampp\htdocs\QuanLyTaiSan\system\Model.php(730): CodeIgniter\BaseModel->insert(Array, true)
+#7 D:\Xampp\htdocs\QuanLyTaiSan\app\Models\TaiSanNgoaiModel.php(19): CodeIgniter\Model->insert(Array)
+#8 D:\Xampp\htdocs\QuanLyTaiSan\app\Controllers\Dashboard\TaiSanNgoaiController.php(99): App\Models\TaiSanNgoaiModel->add_asset(Array)
+#9 D:\Xampp\htdocs\QuanLyTaiSan\system\CodeIgniter.php(934): App\Controllers\Dashboard\TaiSanNgoaiController->off_asset_import()
+#10 D:\Xampp\htdocs\QuanLyTaiSan\system\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard\TaiSanNgoaiController))
+#11 D:\Xampp\htdocs\QuanLyTaiSan\system\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#12 D:\Xampp\htdocs\QuanLyTaiSan\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#13 {main}
+CRITICAL - 2024-11-25 07:05:20 --> Column 'don_vi' cannot be null
+in SYSTEMPATH\Database\BaseConnection.php on line 645.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2309): CodeIgniter\Database\BaseConnection->query('INSERT INTO `tai_san_ngoai` (`bo_phan_su_dung`, `nam_kiem_ke`, `ten_tai_san`, `so_luong`, `don_vi`, `nguoi_su_dung`, `ghi_chu`) VALUES (:bo_phan_su_dung:, :nam_kiem_ke:, :ten_tai_san:, :so_luong:, :don_vi:, :nguoi_su_dung:, :ghi_chu:)', [...], false)
+ 2 SYSTEMPATH\Model.php(330): CodeIgniter\Database\BaseBuilder->insert()
+ 3 SYSTEMPATH\BaseModel.php(782): CodeIgniter\Model->doInsert([...])
+ 4 SYSTEMPATH\Model.php(730): CodeIgniter\BaseModel->insert([...], true)
+ 5 APPPATH\Models\TaiSanNgoaiModel.php(19): CodeIgniter\Model->insert([...])
+ 6 APPPATH\Controllers\Dashboard\TaiSanNgoaiController.php(99): App\Models\TaiSanNgoaiModel->add_asset([...])
+ 7 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Dashboard\TaiSanNgoaiController->off_asset_import()
+ 8 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard\TaiSanNgoaiController))
+ 9 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-11-25 07:07:14 --> mysqli_sql_exception: Column 'don_vi' cannot be null in D:\Xampp\htdocs\QuanLyTaiSan\system\Database\MySQLi\Connection.php:295
+Stack trace:
+#0 D:\Xampp\htdocs\QuanLyTaiSan\system\Database\MySQLi\Connection.php(295): mysqli->query('INSERT INTO `ta...', 0)
+#1 D:\Xampp\htdocs\QuanLyTaiSan\system\Database\BaseConnection.php(691): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `ta...')
+#2 D:\Xampp\htdocs\QuanLyTaiSan\system\Database\BaseConnection.php(605): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `ta...')
+#3 D:\Xampp\htdocs\QuanLyTaiSan\system\Database\BaseBuilder.php(2309): CodeIgniter\Database\BaseConnection->query('INSERT INTO `ta...', Array, false)
+#4 D:\Xampp\htdocs\QuanLyTaiSan\system\Model.php(330): CodeIgniter\Database\BaseBuilder->insert()
+#5 D:\Xampp\htdocs\QuanLyTaiSan\system\BaseModel.php(782): CodeIgniter\Model->doInsert(Array)
+#6 D:\Xampp\htdocs\QuanLyTaiSan\system\Model.php(730): CodeIgniter\BaseModel->insert(Array, true)
+#7 D:\Xampp\htdocs\QuanLyTaiSan\app\Models\TaiSanNgoaiModel.php(19): CodeIgniter\Model->insert(Array)
+#8 D:\Xampp\htdocs\QuanLyTaiSan\app\Controllers\Dashboard\TaiSanNgoaiController.php(99): App\Models\TaiSanNgoaiModel->add_asset(Array)
+#9 D:\Xampp\htdocs\QuanLyTaiSan\system\CodeIgniter.php(934): App\Controllers\Dashboard\TaiSanNgoaiController->off_asset_import()
+#10 D:\Xampp\htdocs\QuanLyTaiSan\system\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard\TaiSanNgoaiController))
+#11 D:\Xampp\htdocs\QuanLyTaiSan\system\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#12 D:\Xampp\htdocs\QuanLyTaiSan\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#13 {main}
+CRITICAL - 2024-11-25 07:07:14 --> Column 'don_vi' cannot be null
+in SYSTEMPATH\Database\BaseConnection.php on line 645.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2309): CodeIgniter\Database\BaseConnection->query('INSERT INTO `tai_san_ngoai` (`bo_phan_su_dung`, `nam_kiem_ke`, `ten_tai_san`, `so_luong`, `don_vi`, `nguoi_su_dung`, `ghi_chu`) VALUES (:bo_phan_su_dung:, :nam_kiem_ke:, :ten_tai_san:, :so_luong:, :don_vi:, :nguoi_su_dung:, :ghi_chu:)', [...], false)
+ 2 SYSTEMPATH\Model.php(330): CodeIgniter\Database\BaseBuilder->insert()
+ 3 SYSTEMPATH\BaseModel.php(782): CodeIgniter\Model->doInsert([...])
+ 4 SYSTEMPATH\Model.php(730): CodeIgniter\BaseModel->insert([...], true)
+ 5 APPPATH\Models\TaiSanNgoaiModel.php(19): CodeIgniter\Model->insert([...])
+ 6 APPPATH\Controllers\Dashboard\TaiSanNgoaiController.php(99): App\Models\TaiSanNgoaiModel->add_asset([...])
+ 7 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Dashboard\TaiSanNgoaiController->off_asset_import()
+ 8 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard\TaiSanNgoaiController))
+ 9 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-11-25 07:20:33 --> Undefined array key "file_import"
+in APPPATH\Controllers\Dashboard\TaiSanNgoaiController.php on line 72.
+ 1 APPPATH\Controllers\Dashboard\TaiSanNgoaiController.php(72): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "file_import"', 'APPPATH\\Controllers\\Dashboard\\TaiSanNgoaiController.php', 72)
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Dashboard\TaiSanNgoaiController->off_asset_import()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard\TaiSanNgoaiController))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-11-25 07:20:38 --> mysqli_sql_exception: Column 'don_vi' cannot be null in D:\Xampp\htdocs\QuanLyTaiSan\system\Database\MySQLi\Connection.php:295
+Stack trace:
+#0 D:\Xampp\htdocs\QuanLyTaiSan\system\Database\MySQLi\Connection.php(295): mysqli->query('INSERT INTO `ta...', 0)
+#1 D:\Xampp\htdocs\QuanLyTaiSan\system\Database\BaseConnection.php(691): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `ta...')
+#2 D:\Xampp\htdocs\QuanLyTaiSan\system\Database\BaseConnection.php(605): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `ta...')
+#3 D:\Xampp\htdocs\QuanLyTaiSan\system\Database\BaseBuilder.php(2309): CodeIgniter\Database\BaseConnection->query('INSERT INTO `ta...', Array, false)
+#4 D:\Xampp\htdocs\QuanLyTaiSan\system\Model.php(330): CodeIgniter\Database\BaseBuilder->insert()
+#5 D:\Xampp\htdocs\QuanLyTaiSan\system\BaseModel.php(782): CodeIgniter\Model->doInsert(Array)
+#6 D:\Xampp\htdocs\QuanLyTaiSan\system\Model.php(730): CodeIgniter\BaseModel->insert(Array, true)
+#7 D:\Xampp\htdocs\QuanLyTaiSan\app\Models\TaiSanNgoaiModel.php(19): CodeIgniter\Model->insert(Array)
+#8 D:\Xampp\htdocs\QuanLyTaiSan\app\Controllers\Dashboard\TaiSanNgoaiController.php(99): App\Models\TaiSanNgoaiModel->add_asset(Array)
+#9 D:\Xampp\htdocs\QuanLyTaiSan\system\CodeIgniter.php(934): App\Controllers\Dashboard\TaiSanNgoaiController->off_asset_import()
+#10 D:\Xampp\htdocs\QuanLyTaiSan\system\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard\TaiSanNgoaiController))
+#11 D:\Xampp\htdocs\QuanLyTaiSan\system\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#12 D:\Xampp\htdocs\QuanLyTaiSan\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#13 {main}
+CRITICAL - 2024-11-25 07:20:38 --> Column 'don_vi' cannot be null
+in SYSTEMPATH\Database\BaseConnection.php on line 645.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2309): CodeIgniter\Database\BaseConnection->query('INSERT INTO `tai_san_ngoai` (`bo_phan_su_dung`, `nam_kiem_ke`, `ten_tai_san`, `so_luong`, `don_vi`, `nguoi_su_dung`, `ghi_chu`) VALUES (:bo_phan_su_dung:, :nam_kiem_ke:, :ten_tai_san:, :so_luong:, :don_vi:, :nguoi_su_dung:, :ghi_chu:)', [...], false)
+ 2 SYSTEMPATH\Model.php(330): CodeIgniter\Database\BaseBuilder->insert()
+ 3 SYSTEMPATH\BaseModel.php(782): CodeIgniter\Model->doInsert([...])
+ 4 SYSTEMPATH\Model.php(730): CodeIgniter\BaseModel->insert([...], true)
+ 5 APPPATH\Models\TaiSanNgoaiModel.php(19): CodeIgniter\Model->insert([...])
+ 6 APPPATH\Controllers\Dashboard\TaiSanNgoaiController.php(99): App\Models\TaiSanNgoaiModel->add_asset([...])
+ 7 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Dashboard\TaiSanNgoaiController->off_asset_import()
+ 8 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard\TaiSanNgoaiController))
+ 9 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-11-25 07:20:58 --> Undefined array key "file_import"
+in APPPATH\Controllers\Dashboard\TaiSanNgoaiController.php on line 72.
+ 1 APPPATH\Controllers\Dashboard\TaiSanNgoaiController.php(72): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "file_import"', 'APPPATH\\Controllers\\Dashboard\\TaiSanNgoaiController.php', 72)
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Dashboard\TaiSanNgoaiController->off_asset_import()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard\TaiSanNgoaiController))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-11-25 07:21:03 --> mysqli_sql_exception: Column 'don_vi' cannot be null in D:\Xampp\htdocs\QuanLyTaiSan\system\Database\MySQLi\Connection.php:295
+Stack trace:
+#0 D:\Xampp\htdocs\QuanLyTaiSan\system\Database\MySQLi\Connection.php(295): mysqli->query('INSERT INTO `ta...', 0)
+#1 D:\Xampp\htdocs\QuanLyTaiSan\system\Database\BaseConnection.php(691): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `ta...')
+#2 D:\Xampp\htdocs\QuanLyTaiSan\system\Database\BaseConnection.php(605): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `ta...')
+#3 D:\Xampp\htdocs\QuanLyTaiSan\system\Database\BaseBuilder.php(2309): CodeIgniter\Database\BaseConnection->query('INSERT INTO `ta...', Array, false)
+#4 D:\Xampp\htdocs\QuanLyTaiSan\system\Model.php(330): CodeIgniter\Database\BaseBuilder->insert()
+#5 D:\Xampp\htdocs\QuanLyTaiSan\system\BaseModel.php(782): CodeIgniter\Model->doInsert(Array)
+#6 D:\Xampp\htdocs\QuanLyTaiSan\system\Model.php(730): CodeIgniter\BaseModel->insert(Array, true)
+#7 D:\Xampp\htdocs\QuanLyTaiSan\app\Models\TaiSanNgoaiModel.php(19): CodeIgniter\Model->insert(Array)
+#8 D:\Xampp\htdocs\QuanLyTaiSan\app\Controllers\Dashboard\TaiSanNgoaiController.php(99): App\Models\TaiSanNgoaiModel->add_asset(Array)
+#9 D:\Xampp\htdocs\QuanLyTaiSan\system\CodeIgniter.php(934): App\Controllers\Dashboard\TaiSanNgoaiController->off_asset_import()
+#10 D:\Xampp\htdocs\QuanLyTaiSan\system\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard\TaiSanNgoaiController))
+#11 D:\Xampp\htdocs\QuanLyTaiSan\system\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#12 D:\Xampp\htdocs\QuanLyTaiSan\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#13 {main}
+CRITICAL - 2024-11-25 07:21:03 --> Column 'don_vi' cannot be null
+in SYSTEMPATH\Database\BaseConnection.php on line 645.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2309): CodeIgniter\Database\BaseConnection->query('INSERT INTO `tai_san_ngoai` (`bo_phan_su_dung`, `nam_kiem_ke`, `ten_tai_san`, `so_luong`, `don_vi`, `nguoi_su_dung`, `ghi_chu`) VALUES (:bo_phan_su_dung:, :nam_kiem_ke:, :ten_tai_san:, :so_luong:, :don_vi:, :nguoi_su_dung:, :ghi_chu:)', [...], false)
+ 2 SYSTEMPATH\Model.php(330): CodeIgniter\Database\BaseBuilder->insert()
+ 3 SYSTEMPATH\BaseModel.php(782): CodeIgniter\Model->doInsert([...])
+ 4 SYSTEMPATH\Model.php(730): CodeIgniter\BaseModel->insert([...], true)
+ 5 APPPATH\Models\TaiSanNgoaiModel.php(19): CodeIgniter\Model->insert([...])
+ 6 APPPATH\Controllers\Dashboard\TaiSanNgoaiController.php(99): App\Models\TaiSanNgoaiModel->add_asset([...])
+ 7 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Dashboard\TaiSanNgoaiController->off_asset_import()
+ 8 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard\TaiSanNgoaiController))
+ 9 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-11-25 07:27:25 --> mysqli_sql_exception: Column 'ten_tai_san' cannot be null in D:\Xampp\htdocs\QuanLyTaiSan\system\Database\MySQLi\Connection.php:295
+Stack trace:
+#0 D:\Xampp\htdocs\QuanLyTaiSan\system\Database\MySQLi\Connection.php(295): mysqli->query('INSERT INTO `ta...', 0)
+#1 D:\Xampp\htdocs\QuanLyTaiSan\system\Database\BaseConnection.php(691): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `ta...')
+#2 D:\Xampp\htdocs\QuanLyTaiSan\system\Database\BaseConnection.php(605): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `ta...')
+#3 D:\Xampp\htdocs\QuanLyTaiSan\system\Database\BaseBuilder.php(2309): CodeIgniter\Database\BaseConnection->query('INSERT INTO `ta...', Array, false)
+#4 D:\Xampp\htdocs\QuanLyTaiSan\system\Model.php(330): CodeIgniter\Database\BaseBuilder->insert()
+#5 D:\Xampp\htdocs\QuanLyTaiSan\system\BaseModel.php(782): CodeIgniter\Model->doInsert(Array)
+#6 D:\Xampp\htdocs\QuanLyTaiSan\system\Model.php(730): CodeIgniter\BaseModel->insert(Array, true)
+#7 D:\Xampp\htdocs\QuanLyTaiSan\app\Models\TaiSanNgoaiModel.php(19): CodeIgniter\Model->insert(Array)
+#8 D:\Xampp\htdocs\QuanLyTaiSan\app\Controllers\Dashboard\TaiSanNgoaiController.php(99): App\Models\TaiSanNgoaiModel->add_asset(Array)
+#9 D:\Xampp\htdocs\QuanLyTaiSan\system\CodeIgniter.php(934): App\Controllers\Dashboard\TaiSanNgoaiController->off_asset_import()
+#10 D:\Xampp\htdocs\QuanLyTaiSan\system\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard\TaiSanNgoaiController))
+#11 D:\Xampp\htdocs\QuanLyTaiSan\system\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#12 D:\Xampp\htdocs\QuanLyTaiSan\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#13 {main}
+CRITICAL - 2024-11-25 07:27:25 --> Column 'ten_tai_san' cannot be null
+in SYSTEMPATH\Database\BaseConnection.php on line 645.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2309): CodeIgniter\Database\BaseConnection->query('INSERT INTO `tai_san_ngoai` (`bo_phan_su_dung`, `nam_kiem_ke`, `ten_tai_san`, `so_luong`, `don_vi`, `nguoi_su_dung`, `ghi_chu`) VALUES (:bo_phan_su_dung:, :nam_kiem_ke:, :ten_tai_san:, :so_luong:, :don_vi:, :nguoi_su_dung:, :ghi_chu:)', [...], false)
+ 2 SYSTEMPATH\Model.php(330): CodeIgniter\Database\BaseBuilder->insert()
+ 3 SYSTEMPATH\BaseModel.php(782): CodeIgniter\Model->doInsert([...])
+ 4 SYSTEMPATH\Model.php(730): CodeIgniter\BaseModel->insert([...], true)
+ 5 APPPATH\Models\TaiSanNgoaiModel.php(19): CodeIgniter\Model->insert([...])
+ 6 APPPATH\Controllers\Dashboard\TaiSanNgoaiController.php(99): App\Models\TaiSanNgoaiModel->add_asset([...])
+ 7 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Dashboard\TaiSanNgoaiController->off_asset_import()
+ 8 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard\TaiSanNgoaiController))
+ 9 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-11-25 07:27:34 --> mysqli_sql_exception: Column 'ten_tai_san' cannot be null in D:\Xampp\htdocs\QuanLyTaiSan\system\Database\MySQLi\Connection.php:295
+Stack trace:
+#0 D:\Xampp\htdocs\QuanLyTaiSan\system\Database\MySQLi\Connection.php(295): mysqli->query('INSERT INTO `ta...', 0)
+#1 D:\Xampp\htdocs\QuanLyTaiSan\system\Database\BaseConnection.php(691): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `ta...')
+#2 D:\Xampp\htdocs\QuanLyTaiSan\system\Database\BaseConnection.php(605): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `ta...')
+#3 D:\Xampp\htdocs\QuanLyTaiSan\system\Database\BaseBuilder.php(2309): CodeIgniter\Database\BaseConnection->query('INSERT INTO `ta...', Array, false)
+#4 D:\Xampp\htdocs\QuanLyTaiSan\system\Model.php(330): CodeIgniter\Database\BaseBuilder->insert()
+#5 D:\Xampp\htdocs\QuanLyTaiSan\system\BaseModel.php(782): CodeIgniter\Model->doInsert(Array)
+#6 D:\Xampp\htdocs\QuanLyTaiSan\system\Model.php(730): CodeIgniter\BaseModel->insert(Array, true)
+#7 D:\Xampp\htdocs\QuanLyTaiSan\app\Models\TaiSanNgoaiModel.php(19): CodeIgniter\Model->insert(Array)
+#8 D:\Xampp\htdocs\QuanLyTaiSan\app\Controllers\Dashboard\TaiSanNgoaiController.php(99): App\Models\TaiSanNgoaiModel->add_asset(Array)
+#9 D:\Xampp\htdocs\QuanLyTaiSan\system\CodeIgniter.php(934): App\Controllers\Dashboard\TaiSanNgoaiController->off_asset_import()
+#10 D:\Xampp\htdocs\QuanLyTaiSan\system\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard\TaiSanNgoaiController))
+#11 D:\Xampp\htdocs\QuanLyTaiSan\system\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#12 D:\Xampp\htdocs\QuanLyTaiSan\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#13 {main}
+CRITICAL - 2024-11-25 07:27:34 --> Column 'ten_tai_san' cannot be null
+in SYSTEMPATH\Database\BaseConnection.php on line 645.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2309): CodeIgniter\Database\BaseConnection->query('INSERT INTO `tai_san_ngoai` (`bo_phan_su_dung`, `nam_kiem_ke`, `ten_tai_san`, `so_luong`, `don_vi`, `nguoi_su_dung`, `ghi_chu`) VALUES (:bo_phan_su_dung:, :nam_kiem_ke:, :ten_tai_san:, :so_luong:, :don_vi:, :nguoi_su_dung:, :ghi_chu:)', [...], false)
+ 2 SYSTEMPATH\Model.php(330): CodeIgniter\Database\BaseBuilder->insert()
+ 3 SYSTEMPATH\BaseModel.php(782): CodeIgniter\Model->doInsert([...])
+ 4 SYSTEMPATH\Model.php(730): CodeIgniter\BaseModel->insert([...], true)
+ 5 APPPATH\Models\TaiSanNgoaiModel.php(19): CodeIgniter\Model->insert([...])
+ 6 APPPATH\Controllers\Dashboard\TaiSanNgoaiController.php(99): App\Models\TaiSanNgoaiModel->add_asset([...])
+ 7 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Dashboard\TaiSanNgoaiController->off_asset_import()
+ 8 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard\TaiSanNgoaiController))
+ 9 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-11-25 07:28:13 --> mysqli_sql_exception: Column 'ten_tai_san' cannot be null in D:\Xampp\htdocs\QuanLyTaiSan\system\Database\MySQLi\Connection.php:295
+Stack trace:
+#0 D:\Xampp\htdocs\QuanLyTaiSan\system\Database\MySQLi\Connection.php(295): mysqli->query('INSERT INTO `ta...', 0)
+#1 D:\Xampp\htdocs\QuanLyTaiSan\system\Database\BaseConnection.php(691): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `ta...')
+#2 D:\Xampp\htdocs\QuanLyTaiSan\system\Database\BaseConnection.php(605): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `ta...')
+#3 D:\Xampp\htdocs\QuanLyTaiSan\system\Database\BaseBuilder.php(2309): CodeIgniter\Database\BaseConnection->query('INSERT INTO `ta...', Array, false)
+#4 D:\Xampp\htdocs\QuanLyTaiSan\system\Model.php(330): CodeIgniter\Database\BaseBuilder->insert()
+#5 D:\Xampp\htdocs\QuanLyTaiSan\system\BaseModel.php(782): CodeIgniter\Model->doInsert(Array)
+#6 D:\Xampp\htdocs\QuanLyTaiSan\system\Model.php(730): CodeIgniter\BaseModel->insert(Array, true)
+#7 D:\Xampp\htdocs\QuanLyTaiSan\app\Models\TaiSanNgoaiModel.php(19): CodeIgniter\Model->insert(Array)
+#8 D:\Xampp\htdocs\QuanLyTaiSan\app\Controllers\Dashboard\TaiSanNgoaiController.php(99): App\Models\TaiSanNgoaiModel->add_asset(Array)
+#9 D:\Xampp\htdocs\QuanLyTaiSan\system\CodeIgniter.php(934): App\Controllers\Dashboard\TaiSanNgoaiController->off_asset_import()
+#10 D:\Xampp\htdocs\QuanLyTaiSan\system\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard\TaiSanNgoaiController))
+#11 D:\Xampp\htdocs\QuanLyTaiSan\system\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#12 D:\Xampp\htdocs\QuanLyTaiSan\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#13 {main}
+CRITICAL - 2024-11-25 07:28:13 --> Column 'ten_tai_san' cannot be null
+in SYSTEMPATH\Database\BaseConnection.php on line 645.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2309): CodeIgniter\Database\BaseConnection->query('INSERT INTO `tai_san_ngoai` (`bo_phan_su_dung`, `nam_kiem_ke`, `ten_tai_san`, `so_luong`, `don_vi`, `nguoi_su_dung`, `ghi_chu`) VALUES (:bo_phan_su_dung:, :nam_kiem_ke:, :ten_tai_san:, :so_luong:, :don_vi:, :nguoi_su_dung:, :ghi_chu:)', [...], false)
+ 2 SYSTEMPATH\Model.php(330): CodeIgniter\Database\BaseBuilder->insert()
+ 3 SYSTEMPATH\BaseModel.php(782): CodeIgniter\Model->doInsert([...])
+ 4 SYSTEMPATH\Model.php(730): CodeIgniter\BaseModel->insert([...], true)
+ 5 APPPATH\Models\TaiSanNgoaiModel.php(19): CodeIgniter\Model->insert([...])
+ 6 APPPATH\Controllers\Dashboard\TaiSanNgoaiController.php(99): App\Models\TaiSanNgoaiModel->add_asset([...])
+ 7 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Dashboard\TaiSanNgoaiController->off_asset_import()
+ 8 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard\TaiSanNgoaiController))
+ 9 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-11-25 07:28:58 --> Undefined variable $row_count
+in APPPATH\Controllers\Dashboard\TaiSanNgoaiController.php on line 105.
+ 1 APPPATH\Controllers\Dashboard\TaiSanNgoaiController.php(105): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $row_count', 'APPPATH\\Controllers\\Dashboard\\TaiSanNgoaiController.php', 105)
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Dashboard\TaiSanNgoaiController->off_asset_import()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard\TaiSanNgoaiController))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-11-25 07:29:02 --> Undefined variable $row_count
+in APPPATH\Controllers\Dashboard\TaiSanNgoaiController.php on line 105.
+ 1 APPPATH\Controllers\Dashboard\TaiSanNgoaiController.php(105): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $row_count', 'APPPATH\\Controllers\\Dashboard\\TaiSanNgoaiController.php', 105)
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Dashboard\TaiSanNgoaiController->off_asset_import()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard\TaiSanNgoaiController))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-11-25 07:39:10 --> Undefined array key "file_import"
+in APPPATH\Controllers\Dashboard\TaiSanNgoaiController.php on line 73.
+ 1 APPPATH\Controllers\Dashboard\TaiSanNgoaiController.php(73): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "file_import"', 'APPPATH\\Controllers\\Dashboard\\TaiSanNgoaiController.php', 73)
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Dashboard\TaiSanNgoaiController->off_asset_import()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard\TaiSanNgoaiController))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-11-25 07:39:32 --> Undefined array key "file_import"
+in APPPATH\Controllers\Dashboard\TaiSanNgoaiController.php on line 71.
+ 1 APPPATH\Controllers\Dashboard\TaiSanNgoaiController.php(71): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "file_import"', 'APPPATH\\Controllers\\Dashboard\\TaiSanNgoaiController.php', 71)
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Dashboard\TaiSanNgoaiController->off_asset_import()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard\TaiSanNgoaiController))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-11-25 07:39:34 --> Undefined array key "file_import"
+in APPPATH\Controllers\Dashboard\TaiSanNgoaiController.php on line 71.
+ 1 APPPATH\Controllers\Dashboard\TaiSanNgoaiController.php(71): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "file_import"', 'APPPATH\\Controllers\\Dashboard\\TaiSanNgoaiController.php', 71)
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Dashboard\TaiSanNgoaiController->off_asset_import()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard\TaiSanNgoaiController))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-11-25 07:39:45 --> Undefined array key "file_import"
+in APPPATH\Controllers\Dashboard\TaiSanNgoaiController.php on line 71.
+ 1 APPPATH\Controllers\Dashboard\TaiSanNgoaiController.php(71): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "file_import"', 'APPPATH\\Controllers\\Dashboard\\TaiSanNgoaiController.php', 71)
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Dashboard\TaiSanNgoaiController->off_asset_import()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard\TaiSanNgoaiController))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-11-25 07:39:48 --> Undefined array key "file_import"
+in APPPATH\Controllers\Dashboard\TaiSanNgoaiController.php on line 71.
+ 1 APPPATH\Controllers\Dashboard\TaiSanNgoaiController.php(71): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "file_import"', 'APPPATH\\Controllers\\Dashboard\\TaiSanNgoaiController.php', 71)
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Dashboard\TaiSanNgoaiController->off_asset_import()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard\TaiSanNgoaiController))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-11-25 07:40:02 --> Undefined array key "file_import"
+in APPPATH\Controllers\Dashboard\TaiSanNgoaiController.php on line 71.
+ 1 APPPATH\Controllers\Dashboard\TaiSanNgoaiController.php(71): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "file_import"', 'APPPATH\\Controllers\\Dashboard\\TaiSanNgoaiController.php', 71)
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Dashboard\TaiSanNgoaiController->off_asset_import()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard\TaiSanNgoaiController))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-11-25 07:40:07 --> Undefined array key "file_import"
+in APPPATH\Controllers\Dashboard\TaiSanNgoaiController.php on line 71.
+ 1 APPPATH\Controllers\Dashboard\TaiSanNgoaiController.php(71): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "file_import"', 'APPPATH\\Controllers\\Dashboard\\TaiSanNgoaiController.php', 71)
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Dashboard\TaiSanNgoaiController->off_asset_import()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard\TaiSanNgoaiController))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-11-25 07:41:06 --> mysqli_sql_exception: Column 'don_vi' cannot be null in D:\Xampp\htdocs\QuanLyTaiSan\system\Database\MySQLi\Connection.php:295
+Stack trace:
+#0 D:\Xampp\htdocs\QuanLyTaiSan\system\Database\MySQLi\Connection.php(295): mysqli->query('INSERT INTO `ta...', 0)
+#1 D:\Xampp\htdocs\QuanLyTaiSan\system\Database\BaseConnection.php(691): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `ta...')
+#2 D:\Xampp\htdocs\QuanLyTaiSan\system\Database\BaseConnection.php(605): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `ta...')
+#3 D:\Xampp\htdocs\QuanLyTaiSan\system\Database\BaseBuilder.php(2309): CodeIgniter\Database\BaseConnection->query('INSERT INTO `ta...', Array, false)
+#4 D:\Xampp\htdocs\QuanLyTaiSan\system\Model.php(330): CodeIgniter\Database\BaseBuilder->insert()
+#5 D:\Xampp\htdocs\QuanLyTaiSan\system\BaseModel.php(782): CodeIgniter\Model->doInsert(Array)
+#6 D:\Xampp\htdocs\QuanLyTaiSan\system\Model.php(730): CodeIgniter\BaseModel->insert(Array, true)
+#7 D:\Xampp\htdocs\QuanLyTaiSan\app\Models\TaiSanNgoaiModel.php(19): CodeIgniter\Model->insert(Array)
+#8 D:\Xampp\htdocs\QuanLyTaiSan\app\Controllers\Dashboard\TaiSanNgoaiController.php(100): App\Models\TaiSanNgoaiModel->add_asset(Array)
+#9 D:\Xampp\htdocs\QuanLyTaiSan\system\CodeIgniter.php(934): App\Controllers\Dashboard\TaiSanNgoaiController->off_asset_import()
+#10 D:\Xampp\htdocs\QuanLyTaiSan\system\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard\TaiSanNgoaiController))
+#11 D:\Xampp\htdocs\QuanLyTaiSan\system\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#12 D:\Xampp\htdocs\QuanLyTaiSan\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#13 {main}
+CRITICAL - 2024-11-25 07:41:06 --> Column 'don_vi' cannot be null
+in SYSTEMPATH\Database\BaseConnection.php on line 645.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2309): CodeIgniter\Database\BaseConnection->query('INSERT INTO `tai_san_ngoai` (`bo_phan_su_dung`, `nam_kiem_ke`, `ten_tai_san`, `so_luong`, `don_vi`, `nguoi_su_dung`, `ghi_chu`) VALUES (:bo_phan_su_dung:, :nam_kiem_ke:, :ten_tai_san:, :so_luong:, :don_vi:, :nguoi_su_dung:, :ghi_chu:)', [...], false)
+ 2 SYSTEMPATH\Model.php(330): CodeIgniter\Database\BaseBuilder->insert()
+ 3 SYSTEMPATH\BaseModel.php(782): CodeIgniter\Model->doInsert([...])
+ 4 SYSTEMPATH\Model.php(730): CodeIgniter\BaseModel->insert([...], true)
+ 5 APPPATH\Models\TaiSanNgoaiModel.php(19): CodeIgniter\Model->insert([...])
+ 6 APPPATH\Controllers\Dashboard\TaiSanNgoaiController.php(100): App\Models\TaiSanNgoaiModel->add_asset([...])
+ 7 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Dashboard\TaiSanNgoaiController->off_asset_import()
+ 8 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard\TaiSanNgoaiController))
+ 9 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-11-25 08:02:44 --> mysqli_sql_exception: Column 'nguoi_su_dung' cannot be null in D:\Xampp\htdocs\QuanLyTaiSan\system\Database\MySQLi\Connection.php:295
+Stack trace:
+#0 D:\Xampp\htdocs\QuanLyTaiSan\system\Database\MySQLi\Connection.php(295): mysqli->query('INSERT INTO `ta...', 0)
+#1 D:\Xampp\htdocs\QuanLyTaiSan\system\Database\BaseConnection.php(691): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `ta...')
+#2 D:\Xampp\htdocs\QuanLyTaiSan\system\Database\BaseConnection.php(605): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `ta...')
+#3 D:\Xampp\htdocs\QuanLyTaiSan\system\Database\BaseBuilder.php(2309): CodeIgniter\Database\BaseConnection->query('INSERT INTO `ta...', Array, false)
+#4 D:\Xampp\htdocs\QuanLyTaiSan\system\Model.php(330): CodeIgniter\Database\BaseBuilder->insert()
+#5 D:\Xampp\htdocs\QuanLyTaiSan\system\BaseModel.php(782): CodeIgniter\Model->doInsert(Array)
+#6 D:\Xampp\htdocs\QuanLyTaiSan\system\Model.php(730): CodeIgniter\BaseModel->insert(Array, true)
+#7 D:\Xampp\htdocs\QuanLyTaiSan\app\Models\TaiSanNgoaiModel.php(19): CodeIgniter\Model->insert(Array)
+#8 D:\Xampp\htdocs\QuanLyTaiSan\app\Controllers\Dashboard\TaiSanNgoaiController.php(99): App\Models\TaiSanNgoaiModel->add_asset(Array)
+#9 D:\Xampp\htdocs\QuanLyTaiSan\system\CodeIgniter.php(934): App\Controllers\Dashboard\TaiSanNgoaiController->off_asset_import()
+#10 D:\Xampp\htdocs\QuanLyTaiSan\system\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard\TaiSanNgoaiController))
+#11 D:\Xampp\htdocs\QuanLyTaiSan\system\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#12 D:\Xampp\htdocs\QuanLyTaiSan\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#13 {main}
+CRITICAL - 2024-11-25 08:02:44 --> Column 'nguoi_su_dung' cannot be null
+in SYSTEMPATH\Database\BaseConnection.php on line 645.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2309): CodeIgniter\Database\BaseConnection->query('INSERT INTO `tai_san_ngoai` (`bo_phan_su_dung`, `nam_kiem_ke`, `ten_tai_san`, `so_luong`, `don_vi`, `nguoi_su_dung`, `ghi_chu`) VALUES (:bo_phan_su_dung:, :nam_kiem_ke:, :ten_tai_san:, :so_luong:, :don_vi:, :nguoi_su_dung:, :ghi_chu:)', [...], false)
+ 2 SYSTEMPATH\Model.php(330): CodeIgniter\Database\BaseBuilder->insert()
+ 3 SYSTEMPATH\BaseModel.php(782): CodeIgniter\Model->doInsert([...])
+ 4 SYSTEMPATH\Model.php(730): CodeIgniter\BaseModel->insert([...], true)
+ 5 APPPATH\Models\TaiSanNgoaiModel.php(19): CodeIgniter\Model->insert([...])
+ 6 APPPATH\Controllers\Dashboard\TaiSanNgoaiController.php(99): App\Models\TaiSanNgoaiModel->add_asset([...])
+ 7 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Dashboard\TaiSanNgoaiController->off_asset_import()
+ 8 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard\TaiSanNgoaiController))
+ 9 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-11-25 08:10:00 --> mysqli_sql_exception: Column 'nguoi_su_dung' cannot be null in D:\Xampp\htdocs\QuanLyTaiSan\system\Database\MySQLi\Connection.php:295
+Stack trace:
+#0 D:\Xampp\htdocs\QuanLyTaiSan\system\Database\MySQLi\Connection.php(295): mysqli->query('INSERT INTO `ta...', 0)
+#1 D:\Xampp\htdocs\QuanLyTaiSan\system\Database\BaseConnection.php(691): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `ta...')
+#2 D:\Xampp\htdocs\QuanLyTaiSan\system\Database\BaseConnection.php(605): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `ta...')
+#3 D:\Xampp\htdocs\QuanLyTaiSan\system\Database\BaseBuilder.php(2309): CodeIgniter\Database\BaseConnection->query('INSERT INTO `ta...', Array, false)
+#4 D:\Xampp\htdocs\QuanLyTaiSan\system\Model.php(330): CodeIgniter\Database\BaseBuilder->insert()
+#5 D:\Xampp\htdocs\QuanLyTaiSan\system\BaseModel.php(782): CodeIgniter\Model->doInsert(Array)
+#6 D:\Xampp\htdocs\QuanLyTaiSan\system\Model.php(730): CodeIgniter\BaseModel->insert(Array, true)
+#7 D:\Xampp\htdocs\QuanLyTaiSan\app\Models\TaiSanNgoaiModel.php(19): CodeIgniter\Model->insert(Array)
+#8 D:\Xampp\htdocs\QuanLyTaiSan\app\Controllers\Dashboard\TaiSanNgoaiController.php(99): App\Models\TaiSanNgoaiModel->add_asset(Array)
+#9 D:\Xampp\htdocs\QuanLyTaiSan\system\CodeIgniter.php(934): App\Controllers\Dashboard\TaiSanNgoaiController->off_asset_import()
+#10 D:\Xampp\htdocs\QuanLyTaiSan\system\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard\TaiSanNgoaiController))
+#11 D:\Xampp\htdocs\QuanLyTaiSan\system\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#12 D:\Xampp\htdocs\QuanLyTaiSan\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#13 {main}
+CRITICAL - 2024-11-25 08:10:00 --> Column 'nguoi_su_dung' cannot be null
+in SYSTEMPATH\Database\BaseConnection.php on line 645.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2309): CodeIgniter\Database\BaseConnection->query('INSERT INTO `tai_san_ngoai` (`bo_phan_su_dung`, `nam_kiem_ke`, `ten_tai_san`, `so_luong`, `don_vi`, `nguoi_su_dung`, `ghi_chu`) VALUES (:bo_phan_su_dung:, :nam_kiem_ke:, :ten_tai_san:, :so_luong:, :don_vi:, :nguoi_su_dung:, :ghi_chu:)', [...], false)
+ 2 SYSTEMPATH\Model.php(330): CodeIgniter\Database\BaseBuilder->insert()
+ 3 SYSTEMPATH\BaseModel.php(782): CodeIgniter\Model->doInsert([...])
+ 4 SYSTEMPATH\Model.php(730): CodeIgniter\BaseModel->insert([...], true)
+ 5 APPPATH\Models\TaiSanNgoaiModel.php(19): CodeIgniter\Model->insert([...])
+ 6 APPPATH\Controllers\Dashboard\TaiSanNgoaiController.php(99): App\Models\TaiSanNgoaiModel->add_asset([...])
+ 7 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Dashboard\TaiSanNgoaiController->off_asset_import()
+ 8 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard\TaiSanNgoaiController))
+ 9 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-11-25 08:13:34 --> mysqli_sql_exception: Column 'nguoi_su_dung' cannot be null in D:\Xampp\htdocs\QuanLyTaiSan\system\Database\MySQLi\Connection.php:295
+Stack trace:
+#0 D:\Xampp\htdocs\QuanLyTaiSan\system\Database\MySQLi\Connection.php(295): mysqli->query('INSERT INTO `ta...', 0)
+#1 D:\Xampp\htdocs\QuanLyTaiSan\system\Database\BaseConnection.php(691): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `ta...')
+#2 D:\Xampp\htdocs\QuanLyTaiSan\system\Database\BaseConnection.php(605): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `ta...')
+#3 D:\Xampp\htdocs\QuanLyTaiSan\system\Database\BaseBuilder.php(2309): CodeIgniter\Database\BaseConnection->query('INSERT INTO `ta...', Array, false)
+#4 D:\Xampp\htdocs\QuanLyTaiSan\system\Model.php(330): CodeIgniter\Database\BaseBuilder->insert()
+#5 D:\Xampp\htdocs\QuanLyTaiSan\system\BaseModel.php(782): CodeIgniter\Model->doInsert(Array)
+#6 D:\Xampp\htdocs\QuanLyTaiSan\system\Model.php(730): CodeIgniter\BaseModel->insert(Array, true)
+#7 D:\Xampp\htdocs\QuanLyTaiSan\app\Models\TaiSanNgoaiModel.php(32): CodeIgniter\Model->insert(Array)
+#8 D:\Xampp\htdocs\QuanLyTaiSan\app\Controllers\Dashboard\TaiSanNgoaiController.php(99): App\Models\TaiSanNgoaiModel->add_import(Array)
+#9 D:\Xampp\htdocs\QuanLyTaiSan\system\CodeIgniter.php(934): App\Controllers\Dashboard\TaiSanNgoaiController->off_asset_import()
+#10 D:\Xampp\htdocs\QuanLyTaiSan\system\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard\TaiSanNgoaiController))
+#11 D:\Xampp\htdocs\QuanLyTaiSan\system\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#12 D:\Xampp\htdocs\QuanLyTaiSan\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#13 {main}
+CRITICAL - 2024-11-25 08:13:34 --> Column 'nguoi_su_dung' cannot be null
+in SYSTEMPATH\Database\BaseConnection.php on line 645.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2309): CodeIgniter\Database\BaseConnection->query('INSERT INTO `tai_san_ngoai` (`id`, `bo_phan_su_dung`, `nam_kiem_ke`, `ten_tai_san`, `so_luong`, `don_vi`, `nguoi_su_dung`, `ghi_chu`) VALUES (:id:, :bo_phan_su_dung:, :nam_kiem_ke:, :ten_tai_san:, :so_luong:, :don_vi:, :nguoi_su_dung:, :ghi_chu:)', [...], false)
+ 2 SYSTEMPATH\Model.php(330): CodeIgniter\Database\BaseBuilder->insert()
+ 3 SYSTEMPATH\BaseModel.php(782): CodeIgniter\Model->doInsert([...])
+ 4 SYSTEMPATH\Model.php(730): CodeIgniter\BaseModel->insert([...], true)
+ 5 APPPATH\Models\TaiSanNgoaiModel.php(32): CodeIgniter\Model->insert([...])
+ 6 APPPATH\Controllers\Dashboard\TaiSanNgoaiController.php(99): App\Models\TaiSanNgoaiModel->add_import([...])
+ 7 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Dashboard\TaiSanNgoaiController->off_asset_import()
+ 8 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard\TaiSanNgoaiController))
+ 9 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-11-25 08:18:29 --> mysqli_sql_exception: Column 'nguoi_su_dung' cannot be null in D:\Xampp\htdocs\QuanLyTaiSan\system\Database\MySQLi\Connection.php:295
+Stack trace:
+#0 D:\Xampp\htdocs\QuanLyTaiSan\system\Database\MySQLi\Connection.php(295): mysqli->query('INSERT INTO `ta...', 0)
+#1 D:\Xampp\htdocs\QuanLyTaiSan\system\Database\BaseConnection.php(691): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `ta...')
+#2 D:\Xampp\htdocs\QuanLyTaiSan\system\Database\BaseConnection.php(605): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `ta...')
+#3 D:\Xampp\htdocs\QuanLyTaiSan\system\Database\BaseBuilder.php(2309): CodeIgniter\Database\BaseConnection->query('INSERT INTO `ta...', Array, false)
+#4 D:\Xampp\htdocs\QuanLyTaiSan\system\Model.php(330): CodeIgniter\Database\BaseBuilder->insert()
+#5 D:\Xampp\htdocs\QuanLyTaiSan\system\BaseModel.php(782): CodeIgniter\Model->doInsert(Array)
+#6 D:\Xampp\htdocs\QuanLyTaiSan\system\Model.php(730): CodeIgniter\BaseModel->insert(Array, true)
+#7 D:\Xampp\htdocs\QuanLyTaiSan\app\Models\TaiSanNgoaiModel.php(43): CodeIgniter\Model->insert(Array)
+#8 D:\Xampp\htdocs\QuanLyTaiSan\app\Controllers\Dashboard\TaiSanNgoaiController.php(99): App\Models\TaiSanNgoaiModel->add_import(Array)
+#9 D:\Xampp\htdocs\QuanLyTaiSan\system\CodeIgniter.php(934): App\Controllers\Dashboard\TaiSanNgoaiController->off_asset_import()
+#10 D:\Xampp\htdocs\QuanLyTaiSan\system\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard\TaiSanNgoaiController))
+#11 D:\Xampp\htdocs\QuanLyTaiSan\system\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#12 D:\Xampp\htdocs\QuanLyTaiSan\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#13 {main}
+CRITICAL - 2024-11-25 08:18:29 --> Column 'nguoi_su_dung' cannot be null
+in SYSTEMPATH\Database\BaseConnection.php on line 645.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2309): CodeIgniter\Database\BaseConnection->query('INSERT INTO `tai_san_ngoai` (`bo_phan_su_dung`, `nam_kiem_ke`, `ten_tai_san`, `so_luong`, `don_vi`, `nguoi_su_dung`, `ghi_chu`) VALUES (:bo_phan_su_dung:, :nam_kiem_ke:, :ten_tai_san:, :so_luong:, :don_vi:, :nguoi_su_dung:, :ghi_chu:)', [...], false)
+ 2 SYSTEMPATH\Model.php(330): CodeIgniter\Database\BaseBuilder->insert()
+ 3 SYSTEMPATH\BaseModel.php(782): CodeIgniter\Model->doInsert([...])
+ 4 SYSTEMPATH\Model.php(730): CodeIgniter\BaseModel->insert([...], true)
+ 5 APPPATH\Models\TaiSanNgoaiModel.php(43): CodeIgniter\Model->insert([...])
+ 6 APPPATH\Controllers\Dashboard\TaiSanNgoaiController.php(99): App\Models\TaiSanNgoaiModel->add_import([...])
+ 7 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Dashboard\TaiSanNgoaiController->off_asset_import()
+ 8 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard\TaiSanNgoaiController))
+ 9 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-11-25 08:18:37 --> mysqli_sql_exception: Column 'nguoi_su_dung' cannot be null in D:\Xampp\htdocs\QuanLyTaiSan\system\Database\MySQLi\Connection.php:295
+Stack trace:
+#0 D:\Xampp\htdocs\QuanLyTaiSan\system\Database\MySQLi\Connection.php(295): mysqli->query('INSERT INTO `ta...', 0)
+#1 D:\Xampp\htdocs\QuanLyTaiSan\system\Database\BaseConnection.php(691): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `ta...')
+#2 D:\Xampp\htdocs\QuanLyTaiSan\system\Database\BaseConnection.php(605): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `ta...')
+#3 D:\Xampp\htdocs\QuanLyTaiSan\system\Database\BaseBuilder.php(2309): CodeIgniter\Database\BaseConnection->query('INSERT INTO `ta...', Array, false)
+#4 D:\Xampp\htdocs\QuanLyTaiSan\system\Model.php(330): CodeIgniter\Database\BaseBuilder->insert()
+#5 D:\Xampp\htdocs\QuanLyTaiSan\system\BaseModel.php(782): CodeIgniter\Model->doInsert(Array)
+#6 D:\Xampp\htdocs\QuanLyTaiSan\system\Model.php(730): CodeIgniter\BaseModel->insert(Array, true)
+#7 D:\Xampp\htdocs\QuanLyTaiSan\app\Models\TaiSanNgoaiModel.php(43): CodeIgniter\Model->insert(Array)
+#8 D:\Xampp\htdocs\QuanLyTaiSan\app\Controllers\Dashboard\TaiSanNgoaiController.php(99): App\Models\TaiSanNgoaiModel->add_import(Array)
+#9 D:\Xampp\htdocs\QuanLyTaiSan\system\CodeIgniter.php(934): App\Controllers\Dashboard\TaiSanNgoaiController->off_asset_import()
+#10 D:\Xampp\htdocs\QuanLyTaiSan\system\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard\TaiSanNgoaiController))
+#11 D:\Xampp\htdocs\QuanLyTaiSan\system\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#12 D:\Xampp\htdocs\QuanLyTaiSan\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#13 {main}
+CRITICAL - 2024-11-25 08:18:37 --> Column 'nguoi_su_dung' cannot be null
+in SYSTEMPATH\Database\BaseConnection.php on line 645.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2309): CodeIgniter\Database\BaseConnection->query('INSERT INTO `tai_san_ngoai` (`bo_phan_su_dung`, `nam_kiem_ke`, `ten_tai_san`, `so_luong`, `don_vi`, `nguoi_su_dung`, `ghi_chu`) VALUES (:bo_phan_su_dung:, :nam_kiem_ke:, :ten_tai_san:, :so_luong:, :don_vi:, :nguoi_su_dung:, :ghi_chu:)', [...], false)
+ 2 SYSTEMPATH\Model.php(330): CodeIgniter\Database\BaseBuilder->insert()
+ 3 SYSTEMPATH\BaseModel.php(782): CodeIgniter\Model->doInsert([...])
+ 4 SYSTEMPATH\Model.php(730): CodeIgniter\BaseModel->insert([...], true)
+ 5 APPPATH\Models\TaiSanNgoaiModel.php(43): CodeIgniter\Model->insert([...])
+ 6 APPPATH\Controllers\Dashboard\TaiSanNgoaiController.php(99): App\Models\TaiSanNgoaiModel->add_import([...])
+ 7 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Dashboard\TaiSanNgoaiController->off_asset_import()
+ 8 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard\TaiSanNgoaiController))
+ 9 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()

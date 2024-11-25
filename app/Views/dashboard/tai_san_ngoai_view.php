@@ -307,8 +307,9 @@
             let data_file = document.getElementById("myfile").files[0];
             let formData = new FormData();
             formData.append("file_import", myfile.files[0]);
-            formData.append("bo_phan_su_dung", $('#bo_phan_su_dung').val());
-            formData.append("nam_kiem_ke", $('#nam_kiem_ke').val());
+            formData.append("bo_phan_su_dung", $('#bo_phan_su_dung_view').val());
+            formData.append("nam_kiem_ke", $('#nam_kiem_ke_view').val());
+            //console.log(formData);
             try {
                 let response = await fetch('<?= base_url() ?>dashboard/off_asset/off_asset_import', {
                     method: "POST",
@@ -317,7 +318,7 @@
 
                 if (response.ok) {
                     let message = await response.text();
-                    loadDataTable();
+                    ajaxDataTable.draw();
                     alert(message); // Hiển thị thông báo từ server
                 } else {
                     throw new Error('Network response was not ok.');
