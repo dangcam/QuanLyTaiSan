@@ -22,8 +22,11 @@
                         <input type="file" id="myfile" name="myfile"><br><br>
                         <div class="col-lg-2">
                             <button type="button" id="import_excel" class="btn btn-rounded btn-success"><span class="btn-icon-left text-success"><i class="fa fa-upload color-success"></i>
-                                        </span>Excel</button>
+                                        </span>Upload</button>
+
                         </div>
+                        <button type="button" id="export_excel" class="btn btn-rounded btn-warning"><span class="btn-icon-left text-warning"><i class="fa fa-download color-warning"></i>
+                                    </span>Download</button>
                     </div>
                     <div class="card-body">
                         <div class="form-group row">
@@ -101,16 +104,20 @@
     </div>
 </div>
 
-<!--<script src="vendor/jquery/jquery.min.js"></script>-->
+<!--
 
 <script src="vendor/jqueryui/js/jquery-ui.min.js"></script>
 <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script src="vendor/moment/moment.min.js"></script>
-
+-->
 <script src="vendor/datatables/js/jquery.dataTables.min.js"></script>
 <link href="vendor/datatables.net-bs4/css/dataTables.bootstrap4.min.css" rel="stylesheet">
 <script src="vendor/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
 <script src="js/plugins-init/datatables.init.js"></script>
+
+<script lang="javascript" src="js/exceljs.min.js"></script>
+<script lang="javascript" src="js/FileSaver.min.js"></script>
+<script lang="javascript" src="js/export2excel.js"></script>
 
 
 <!---->
@@ -189,6 +196,14 @@
 
 <script>
     jQuery(document).ready(function($) {
+        let myData = [];
+        $("#export_excel").on( "click", function() {
+            var nam_kiem_ke = document.getElementById('nam_kiem_ke_view');
+            var bo_phan_su_dung = document.getElementById('bo_phan_su_dung_view');
+            var loai_kiem_ke = document.getElementById('loai_kiem_ke_view');
+            export_excel_kiem_ke(nam_kiem_ke.options[nam_kiem_ke.selectedIndex].text,bo_phan_su_dung.options[bo_phan_su_dung.selectedIndex].text,
+                loai_kiem_ke.options[loai_kiem_ke.selectedIndex].text,myData);
+        });
         var ajaxDataTable = $('#data-table').DataTable({
             'processing': true,
             'serverSide': true,
@@ -202,6 +217,9 @@
                     data.searchBoPhan = $('#bo_phan_su_dung_view').val();
                     data.searchLoaiKK = $('#loai_kiem_ke_view').val();
                 },
+                'complete': function (data) {
+                    myData = data.responseJSON['data_table'];
+                }
             },
             'columns': [
                 {data: 'ten_tai_san'},

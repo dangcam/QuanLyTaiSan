@@ -2,6 +2,75 @@
 let myHeader = [];
 let myFooter = [];
 
+async function export_excel_kiem_ke(nam_theo_doi,bo_phan_su_dung,loai_kiem_ke,myData){
+	const title = {
+		border: false,
+		height: 35,
+		font: { name: 'Times New Roman',size: 12, bold: true},
+		alignment: { horizontal: 'center', vertical: 'middle' , wrapText: true},
+	};
+	const header = {
+		border: true,
+		font: {  name: 'Times New Roman', size: 12, bold: true },
+		alignment: { horizontal: 'center', vertical: 'middle', wrapText: true },
+	};
+	const data = {
+		border: true,
+		font: { name: 'Times New Roman',size: 12, bold: false },
+		alignment: { horizontal: 'center', vertical: 'middle', wrapText: true },
+		fill: null,
+	};
+	let wb = new ExcelJS.Workbook();
+	let ws = wb.addWorksheet('Export');
+	widths = [{ width: 7 },{ width: 40 },{ width: 10 },{ width: 10 },{ width: 40 },{ width: 40 }];
+	ws.columns = widths;
+	// Tiêu đề
+	let row = ws.addRow();
+	mergeCells(ws, row, 1, 4);
+	row.getCell(1).value ="SỞ TÀI NGUYÊN VÀ MÔI TRƯỜNG \n VĂN PHÒNG ĐĂNG KÝ ĐẤT ĐAI";
+	mergeCells(ws, row, 5, 6);
+	row.getCell(5).value = "CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM\nĐộc lập - Tự do - Hạnh phúc";
+	set_section_row(row,title);
+	row = ws.addRow();
+	mergeCells(ws, row, 1, 6);
+	row.getCell(1).value = "BIÊN BẢN KIỂM KÊ TRANG THIẾT BỊ LÀM VIỆC \n"+bo_phan_su_dung;
+	set_section_row(row,title);
+	row.font = {name: 'Times New Roman', size: 13, bold: true};
+	row.alignment = {horizontal: 'center',vertical:'bottom',wrapText: true}
+	row = ws.addRow();
+	mergeCells(ws, row, 1, 6);
+	row.getCell(1).value = "Thời điểm kê: Ngày 31 tháng 12 năm "+nam_theo_doi;
+	row.font = {name: 'Times New Roman', size: 12, italic: true, bold: true};
+	row.alignment = { horizontal: 'center', vertical: 'middle' , wrapText: true};
+	// header
+	row_header(ws,'A4:A4','A4','STT',header);
+	row_header(ws,'B4:B4','B4','Tên tài sản, CCDC',header);
+	row_header(ws,'C4:C4','C4','Số lượng',header);
+	row_header(ws,'D4:D4','D4','ĐVT',header);
+	row_header(ws,'E4:E4','E4','Người sử dụng',header);
+	row_header(ws,'F4:F4','F4','Ghi chú',header);
+	//
+	const rowValues = [];
+	let i = 0;
+	if (myData && Array.isArray(myData)) {
+		myData.forEach((rowData) => {
+			rowValues[2] = rowData['ten_tai_san'];
+			rowValues[3] = rowData['so_luong'];
+			rowValues[4] = rowData['don_vi'];
+			rowValues[5] = rowData['nguoi_su_dung'];
+			rowValues[6] = rowData['ghi_chu'];
+			i++;
+			rowValues[1] = i;
+			addRow(ws,rowValues,data);
+		});
+	} else {
+		console.error('myData is not defined or not an array.');
+	}
+
+	//
+	const buf = await wb.xlsx.writeBuffer();
+	saveAs(new Blob([buf]), `${nam_theo_doi}_${bo_phan_su_dung}_${loai_kiem_ke}.xlsx`);
+}
 async function export_excel(nam_theo_doi,bo_phan_su_dung,myData){
 	const title = {
 		border: false,
