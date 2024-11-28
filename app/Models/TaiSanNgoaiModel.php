@@ -96,13 +96,14 @@ class TaiSanNgoaiModel extends BaseModel
         //
         $searchYear = $postData['searchYear'];
         $searchBoPhan = $postData['searchBoPhan'];
+        $searchLoaiKK = $postData['searchLoaiKK'];
         //
         ## Total number of records without filtering
-        $this->select('count(*) as allcount')->where('nam_kiem_ke',$searchYear)->where('bo_phan_su_dung',$searchBoPhan);
+        $this->select('count(*) as allcount')->where('nam_kiem_ke',$searchYear)->where('loai_kiem_ke',$searchLoaiKK)->where('bo_phan_su_dung',$searchBoPhan);
         $records = $this->find();
         $totalRecords = $records[0]->allcount;
         ## Fetch records
-        $this->like('ten_tai_san',$strInput)->where('nam_kiem_ke',$searchYear)->where('bo_phan_su_dung',$searchBoPhan);
+        $this->like('ten_tai_san',$strInput)->where('nam_kiem_ke',$searchYear)->where('loai_kiem_ke',$searchLoaiKK)->where('bo_phan_su_dung',$searchBoPhan);
         $this->orderBy($columnName, $columnSortOrder);
         if($rowperpage!=-1)
             $this->limit($rowperpage, $start);
@@ -123,6 +124,7 @@ class TaiSanNgoaiModel extends BaseModel
                              data-so_luong="'.$record->so_luong.'" data-don_vi ="'.$record->don_vi.'"                          
                              data-ghi_chu ="'.$record->ghi_chu.'" data-nguoi_su_dung ="'.$record->nguoi_su_dung.'"
                              data-bo_phan_su_dung ="'.$record->bo_phan_su_dung.'" data-nam_kiem_ke ="'.$record->nam_kiem_ke.'"
+                             data-loai_kiem_ke ="'.$record->loai_kiem_ke.'"
                                 data-placement="top" title="'.lang('AppLang.edit').'"><i class="fa fa-pencil color-muted"></i> </a>
                             <a href="#" data-toggle="modal" data-target="#smallModal"
                                 data-placement="top" title="'.lang('AppLang.delete').'" data-id="'.$record->id.'">

@@ -89,6 +89,7 @@ class TaiSanNgoaiController extends BaseController
                 $data_import['id'] =0;
                 $data_import['bo_phan_su_dung'] = $data['bo_phan_su_dung'];
                 $data_import['nam_kiem_ke'] = $data['nam_kiem_ke'];
+                $data_import['loai_kiem_ke'] = $data['loai_kiem_ke'];
                 for ($i = 1; $i < $sheetcount; $i++) {
 
                     $data_import['ten_tai_san'] = is_null($sheetdata[$i][1]) ? '' : $sheetdata[$i][1];

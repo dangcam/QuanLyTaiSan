@@ -31,7 +31,7 @@
                             <div class="col-lg-2">
                                 <select class="form-control" id="nam_kiem_ke_view" name="nam_kiem_ke_view">
                                     <?php
-                                    $nowYear =2022;
+                                    $nowYear =2019;
                                     foreach (range(date('Y'), $nowYear) as $i) {
                                         echo "<option value=$i>$i</option>";
                                     }
@@ -49,7 +49,12 @@
                                     endif ?>
                                 </select>
                             </div>
-
+                            <div class="col-lg-2">
+                                <select class="form-control" id="loai_kiem_ke_view" name="loai_kiem_ke_view">
+                                        <option value="1">Trong sổ sách</option>
+                                        <option value="2">Ngoài sổ sách</option>
+                                </select>
+                            </div>
                         </div>
                     </div>
                     <div class="card-body">
@@ -127,6 +132,7 @@
                 <div class="modal-body">
                     <input type="text" name="id" class="form-control" id="id" hidden >
                     <input type="text" name="nam_kiem_ke" class="form-control" id="nam_kiem_ke" hidden >
+                    <input type="text" name="loai_kiem_ke" class="form-control" id="loai_kiem_ke" hidden >
                     <input type="text" name="bo_phan_su_dung" class="form-control" id="bo_phan_su_dung" hidden >
                     <div class="form-group">
                         <label for="recipient-name" class="col-form-label"><?=lang('TaiSanLang.ten_tai_san')?></label>
@@ -194,6 +200,7 @@
                 'data': function (data) {
                     data.searchYear = $('#nam_kiem_ke_view').val();
                     data.searchBoPhan = $('#bo_phan_su_dung_view').val();
+                    data.searchLoaiKK = $('#loai_kiem_ke_view').val();
                 },
             },
             'columns': [
@@ -206,7 +213,7 @@
             ],
 
         });
-        $('#nam_kiem_ke_view,#bo_phan_su_dung_view').change(function(){
+        $('#nam_kiem_ke_view,#bo_phan_su_dung_view,#loai_kiem_ke_view').change(function(){
             ajaxDataTable.draw();
         });
         $('#myModal').on('show.bs.modal', function (event) {
@@ -219,6 +226,7 @@
             var don_vi = button.data('don_vi');
             var nguoi_su_dung = button.data('nguoi_su_dung');
             var nam_kiem_ke = $('#nam_kiem_ke_view').val();
+            var loai_kiem_ke = $('#loai_kiem_ke_view').val();
             var ghi_chu = button.data('ghi_chu');
             var bo_phan_su_dung = $('#bo_phan_su_dung_view').val();
             var field = document.getElementById("add_edit");
@@ -231,6 +239,7 @@
             $('#ghi_chu').val(ghi_chu);
             $('#bo_phan_su_dung').val(bo_phan_su_dung);
             $('#nam_kiem_ke').val(nam_kiem_ke);
+            $('#loai_kiem_ke').val(loai_kiem_ke);
             if(recipient=="add"){
                 $('#myModalLabel').text("<?=lang('TaiSanLang.add_taisan')?>");
                 //$('#ma_da').prop("readonly",false);
@@ -309,6 +318,7 @@
             formData.append("file_import", myfile.files[0]);
             formData.append("bo_phan_su_dung", $('#bo_phan_su_dung_view').val());
             formData.append("nam_kiem_ke", $('#nam_kiem_ke_view').val());
+            formData.append("loai_kiem_ke", $('#loai_kiem_ke_view').val());
             //console.log(formData);
             try {
                 let response = await fetch('<?= base_url() ?>dashboard/off_asset/off_asset_import', {

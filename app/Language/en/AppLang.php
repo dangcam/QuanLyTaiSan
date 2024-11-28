@@ -24,7 +24,7 @@ return[
     'page_title_tai_san' => 'List of assets',
     'page_title_ghi_tang' => 'Record increase in assets',
     'page_title_ghi_giam' => 'Write down assets',
-    'page_title_off_asset' => 'Off-the-books assets',
+    'page_title_off_asset' => 'Inventory assets',
 
     'do_not_have_permission' => 'You do not have permission!',
 

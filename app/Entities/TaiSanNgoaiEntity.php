@@ -12,4 +12,5 @@ class TaiSanNgoaiEntity extends Entity{
     protected $ghi_chu;
     protected $bo_phan_su_dung;
     protected $nam_kiem_ke;
+    protected $loai_kiem_ke;
 }
