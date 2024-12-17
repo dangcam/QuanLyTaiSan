@@ -103,7 +103,7 @@ class TaiSanNgoaiController extends BaseController
                 }
             }
 
-            echo 'Lưu thành công '.$row_count.'/'.($sheetcount-2).' dòng dữ liệu!';
+            echo 'Lưu thành công '.$row_count.'/'.($sheetcount-1).' dòng dữ liệu!';
 
         }
     }

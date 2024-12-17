@@ -21,7 +21,7 @@ DEFINE('RECAPTCHA_SITE_KEY','6LeS24IqAAAAACqd19KQjjvjyFY9espjhN4iIXbV');//
 DEFINE('RECAPTCHA_SECRET_KEY','6LeS24IqAAAAAOZrb1o3VRuo4edtHVc_m3QBrZB3');//
 /** Cau hinh Codeigniter4
  * 1. Chay php spark serve bao loi
- * Mo file Xampp\php\php.ini xoa dau ";" o dong extension=intl
+ * Mo file Xampp\php\php.ini xoa dau ";" o dong extension=intl ;extension=fileinfo ;extension=gd ;extension=zip
  * 2. Tao virtualhost xampp\apache\conf\extra
  * - Them dong: LoadModule vhost_alias_module modules/mod_vhost_alias.so (file httpd.conf)
  * - Them dong:
@@ -47,5 +47,11 @@ DEFINE('RECAPTCHA_SECRET_KEY','6LeS24IqAAAAAOZrb1o3VRuo4edtHVc_m3QBrZB3');//
         * AllowOverride None
         * Require all granted
         * </Directory>
+ *
+ * cai dat php office
+ * truoc het phai cai composer, vao thu muc chua web -> cmd
+ * composer require "ext-gd:*" --ignore-platform-reqs
+ * composer require "ext-fileinfo:*" --ignore-platform-reqs
+ * composer require phpoffice/phpspreadsheet --ignore-platform-reqs
  *
  */
