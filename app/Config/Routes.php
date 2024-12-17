@@ -189,6 +189,7 @@ $routes->group('dashboard',['filter'=>'authFilters'], static function ($routes) 
         $routes->post('nguyen_gia_ajax','Dashboard\TaiSanController::nguyen_gia_ajax');
         $routes->post('ma_huyen_ajax','Dashboard\TaiSanController::ma_huyen_ajax');
         $routes->post('ma_xa_ajax','Dashboard\TaiSanController::ma_xa_ajax');
+        $routes->post('tai_san_import','Dashboard\TaiSanController::tai_san_import');
         $routes->add('tai_san_ct','Dashboard\TaiSanController::tai_san_ct');
     });
     $routes->group('off_asset',static function($routes){

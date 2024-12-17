@@ -160,4 +160,47 @@ class TaiSanController extends BaseController
         }else
             echo json_encode(array_values($this->libauth->getError()));
     }
+    public function tai_san_import()
+    {
+        if($this->request->getPost()) {
+            $data = $this->request->getPost();
+            $upload_file = $_FILES['file_import']['name'];
+            $extension = pathinfo($upload_file, PATHINFO_EXTENSION);
+
+            if ($extension == 'csv') {
+                $reader = new \PhpOffice\PhpSpreadsheet\Reader\Csv();
+            } elseif ($extension == 'xls') {
+                $reader = new \PhpOffice\PhpSpreadsheet\Reader\Xls();
+            } else {
+                $reader = new \PhpOffice\PhpSpreadsheet\Reader\Xlsx();
+            }
+
+            $spreadsheet = $reader->load($_FILES['file_import']['tmp_name']);
+            $sheetdata = $spreadsheet->getActiveSheet()->toArray();
+            $sheetcount = count($sheetdata);
+
+            $row_count = 0;
+            if ($sheetcount > 1)// lấy dữ liệu từ dòng 2
+            {
+                $data_import['id'] =0;
+                $data_import['bo_phan_su_dung'] = $data['bo_phan_su_dung'];
+                $data_import['nam_kiem_ke'] = $data['nam_kiem_ke'];
+                $data_import['loai_kiem_ke'] = $data['loai_kiem_ke'];
+                for ($i = 1; $i < $sheetcount; $i++) {
+
+                    $data_import['ten_tai_san'] = is_null($sheetdata[$i][1]) ? '' : $sheetdata[$i][1];
+                    $data_import['so_luong'] = is_null($sheetdata[$i][2]) ? '0' : $sheetdata[$i][2];
+                    $data_import['don_vi'] =is_null($sheetdata[$i][3]) ? '' : $sheetdata[$i][3];
+                    $data_import['nguoi_su_dung'] = is_null($sheetdata[$i][4]) ? '' : $sheetdata[$i][4];
+                    $data_import['ghi_chu'] =is_null($sheetdata[$i][5]) ? '' : $sheetdata[$i][5];
+                    if ($this->ts_model->add_import($data_import) == 0)
+                        $row_count++;
+
+                }
+            }
+
+            echo 'Lưu thành công '.$row_count.'/'.($sheetcount-1).' dòng dữ liệu!';
+
+        }
+    }
 }
