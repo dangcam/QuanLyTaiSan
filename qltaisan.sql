@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 28, 2024 lúc 04:51 AM
+-- Thời gian đã tạo: Th12 20, 2024 lúc 10:34 AM
 -- Phiên bản máy phục vụ: 10.4.28-MariaDB
 -- Phiên bản PHP: 8.0.28
 
@@ -13624,7 +13624,33 @@ INSERT INTO `tai_san_ngoai` (`id`, `ten_tai_san`, `so_luong`, `don_vi`, `nguoi_s
 (1665, 'CP tư vấn công trình (2020)', 1, '', '', '85', 'PHC-TH', 2023, 1),
 (1666, 'Máy tính bàn (2021)', 2, '', 'Hiệp + Linh', '92', 'PHC-TH', 2023, 1),
 (1667, 'Máy tính bàn (2021)', 1, '', 'Tuyền', '101', 'PHC-TH', 2023, 1),
-(1668, 'Máy vi tính (2021)', 1, '', 'Sơn', '102+', 'PHC-TH', 2023, 1);
+(1668, 'Máy vi tính (2021)', 1, '', 'Sơn', '102+', 'PHC-TH', 2023, 1),
+(1669, 'Máy lạnh', 2, '', '1 HCTH, 1 BV', '', 'BGD', 2024, 1),
+(1670, 'Máy lạnh đứng  hội trường', 1, '', 'Hội trường', '', 'BGD', 2024, 1),
+(1671, 'Máy vi tính', 1, '', 'Hải', '', 'BGD', 2024, 1),
+(1672, 'Máy vi tính', 1, '', 'Trang', '', 'BGD', 2024, 1),
+(1673, 'Máy vi tính', 1, '', 'Thanh', '', 'BGD', 2024, 1),
+(1674, 'Máy vi tính', 1, '', 'Thảo', '', 'BGD', 2024, 1),
+(1681, 'Tủ đựng hồ sơ', 1, '', 'Trang', '', 'BGD', 2024, 1),
+(1682, 'Tủ sắt 8 cánh ', 1, '', 'Hiệp', '', 'BGD', 2024, 1);
+INSERT INTO `tai_san_ngoai` (`id`, `ten_tai_san`, `so_luong`, `don_vi`, `nguoi_su_dung`, `ghi_chu`, `bo_phan_su_dung`, `nam_kiem_ke`, `loai_kiem_ke`) VALUES
+(1683, 'Tủ sắt 2 cánh', 1, '', 'Hiệp', '', 'BGD', 2024, 1),
+(1684, 'Kệ đựng hồ sơ', 1, '', 'Thanh', '', 'BGD', 2024, 1),
+(1686, 'Máy in A4', 1, '', 'Trang', '', 'BGD', 2024, 1),
+(1687, 'Máy in Cannon LP2900', 1, '', 'Hiệp', '', 'BGD', 2024, 1),
+(1688, 'Máy Scan A4 ', 1, '', 'Thanh', '', 'BGD', 2024, 1),
+(1689, 'Máy in A4 ', 1, '', 'Linh', '', 'BGD', 2024, 1),
+(1690, 'Két sắt ', 1, '', '', '', 'BGD', 2024, 1),
+(1691, 'Ghế xoay ', 1, '', 'Hải', '', 'BGD', 2024, 1),
+(1692, 'Ghế xoay ', 1, '', 'Trang', '', 'BGD', 2024, 1),
+(1693, 'Ghế innox', 10, '', 'Phòng làm việc + Hội trường', '', 'BGD', 2024, 1),
+(1694, 'Điện thoại bàn ', 2, '', '', '', 'BGD', 2024, 1),
+(1696, 'Bục phát biểu', 1, '', 'Hội trường', '', 'BGD', 2024, 1),
+(1697, 'Kệ để tượng Bác Hồ ', 1, '', 'Hội trường', '', 'BGD', 2024, 1),
+(1698, 'Tượng Bác Hồ ', 1, '', 'Hội trường', '', 'BGD', 2024, 1),
+(1699, 'Ghế nhựa ', 51, '', 'Hội trường', '', 'BGD', 2024, 1),
+(1700, 'Tủ lạnh ', 1, '', 'Bảo vệ', '', 'BGD', 2024, 1),
+(1701, 'Bình chữa cháy', 3, '', 'TTPTQĐ chuyển sang', '', 'BGD', 2024, 1);
 
 -- --------------------------------------------------------
 
@@ -14046,7 +14072,7 @@ ALTER TABLE `nhom_tai_san`
 -- AUTO_INCREMENT cho bảng `tai_san_ngoai`
 --
 ALTER TABLE `tai_san_ngoai`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1669;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1705;
 
 --
 -- Các ràng buộc cho các bảng đã đổ
