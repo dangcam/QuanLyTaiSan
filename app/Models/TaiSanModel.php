@@ -42,6 +42,33 @@ class TaiSanModel Extends BaseModel
             return 3;
         }
     }
+    public function add_import($data)
+    {
+        $data['group_id'] = $this->session->get('group_id');
+
+        if(!$this->validate($data))
+        {
+            foreach ($this->errors() as $error) {
+                $this->set_message($error);
+            }
+            return 3;
+        }
+        if(!$this->insert($data))
+        {
+            $this->set_message("TaiSanLang.taisan_creation_successful");
+            $this->db->table('nguyen_gia')->where('ma_tai_san',$data['ma_tai_san'])->delete();
+            /*foreach ($data_nguyen_gia as $index => $item ) {
+                $item['ma_tai_san'] = $data['ma_tai_san'];;
+                if(strlen($item['ma_kp']) > 0)
+                    $this->db->table('nguyen_gia')->insert($item);
+            }*/
+            return 0;
+        }else
+        {
+            $this->set_message("TaiSanLang.taisan_creation_unsuccessful");
+            return 3;
+        }
+    }
     public function edit_tai_san($data)
     {
         $data_id = $data['ma_tai_san'];
