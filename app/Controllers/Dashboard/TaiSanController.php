@@ -261,7 +261,8 @@ class TaiSanController extends BaseController
                 }
             }
 
-            echo $this->tai_san_model->get_messages();//'Lưu thành công '.$row_count.'/'.($sheetcount-1).' dòng dữ liệu!';
+            echo 'Lưu thành công '.$row_count.'/'.($sheetcount-1).' dòng dữ liệu!';
+            //$this->tai_san_model->get_messages();//'Lưu thành công '.$row_count.'/'.($sheetcount-1).' dòng dữ liệu!';
 
         }
     }
